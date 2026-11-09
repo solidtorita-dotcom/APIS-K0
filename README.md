@@ -15,6 +15,7 @@ Nexus Mods page: https://www.nexusmods.com/cyberpunk2077/mods/ (link pending)
 | World | `tools/make_world.py` → `ApisK0.archive` (ArchiveXL) | The find site: the case, the van, the bodies, journal entries |
 | Bridge | `bridge/*.py` (Python), shipped as `Apiko.exe` | Speech recognition, the reply model, memory, lore, voice (TTS and effects), 3D audio |
 | Launcher | `launcher/ApisK0Launcher.cpp` (RED4ext plugin) | Starts and stops the bridge with the game |
+| Native bridge | `launcher/NativeBridge.cpp` and friends (in development) | Will replace `Apiko.exe`; off unless `bridge\native.on` exists |
 
 The game and the bridge talk through files in the CET mod folder (`to_bridge.jsonl`, `from_bridge.txt`).
 Player data (settings with API keys, memory) lives in the player's game folder and `%LOCALAPPDATA%\Apiko`, never in
@@ -33,6 +34,8 @@ Steps, from the repository root:
 ```bat
 :: 1. Launcher (RED4ext plugin)
 git clone --depth 1 https://github.com/WopsS/RED4ext.SDK.git launcher\deps\RED4ext.SDK
+mkdir launcher\deps\nlohmann
+curl -L -o launcher\deps\nlohmann\json.hpp https://github.com/nlohmann/json/releases/download/v3.11.3/json.hpp
 launcher\build.bat
 
 :: 2. Bridge environment

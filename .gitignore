@@ -2,6 +2,7 @@
 build/
 dist/
 launcher/out/
+launcher/tests/out/
 launcher/deps/
 __pycache__/
 *.pyc
@@ -16,6 +17,7 @@ memory*.json
 # Internal notes, art and local backups (not part of the source)
 art/
 backup_instalacion_*/
+backup_apiko_data_*/
 DISENO.md
 NOTAS.md
 FRASES.md

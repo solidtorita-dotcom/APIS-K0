@@ -5,7 +5,12 @@
 // It runs in its own console window, started minimized and without focus (the log stays one click away). It is put
 // in a job object that kills it when the job's last handle closes: on unload, on a normal exit, and on a crash.
 // A file named autostart.off next to Apiko.exe turns this off (for running the bridge by hand).
+// A file named native.on there runs the native bridge (NativeBridge.cpp) inside the game instead of Apiko.exe: the
+// plugin that will replace the Python bridge, in development (plan in DISENO.md).
 // Uses RED4ext only as a loader (no game types), so it does not depend on the game version.
+
+#include "NativeBridge.hpp"
+#include "Paths.hpp"
 
 #include <RED4ext/Common.hpp>
 
@@ -49,6 +54,12 @@ void StartBridge(RED4ext::v1::PluginHandle aHandle, const RED4ext::v1::Sdk* aSdk
     auto dir = BridgeDir();
     auto exe = dir / L"Apiko.exe";
     std::error_code error;
+    if (std::filesystem::exists(dir / L"native.on", error))
+    {
+        apiko::native::Start(dir.parent_path(), apiko::paths::DataDir());
+        aSdk->logger->Info(aHandle, "native.on found: the native bridge runs instead of Apiko.exe.");
+        return;
+    }
     if (!std::filesystem::exists(exe, error))
     {
         aSdk->logger->WarnWF(aHandle, L"Apiko.exe not found at '%s': the bridge was not started.", exe.c_str());
@@ -102,6 +113,7 @@ RED4EXT_C_EXPORT bool RED4EXT_CALL Main(RED4ext::v1::PluginHandle aHandle, RED4e
         StartBridge(aHandle, aSdk);
         break;
     case RED4ext::v1::EMainReason::Unload:
+        apiko::native::Stop();
         if (bridgeJob)
         {
             CloseHandle(bridgeJob); // kills the bridge

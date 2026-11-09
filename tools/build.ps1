@@ -61,6 +61,9 @@ $devSrc = Join-Path $src $devRel
 $files = @(Get-ChildItem $src -Recurse -File | Where-Object { $_.FullName -ne $devSrc } |
     ForEach-Object { , @($_.FullName, $_.FullName.Substring($src.Length + 1)) })
 $files += , @($archive, 'archive\pc\mod\ApisK0.archive')
+# Data the native bridge reads from the mod's data\ folder (the Python bridge has it inside Apiko.exe).
+$files += @('prompt.md', 'config.example.json', 'barks.json', 'lore.json', 'first_contact.json', 'beacon_es.wav', 'beacon_en.wav' |
+    ForEach-Object { , @((Join-Path $bridgeSrc $_), "$modRel\data\$_") })
 $files += @(Get-ChildItem $bridgeOut -Recurse -File |
     ForEach-Object { , @($_.FullName, (Join-Path "$modRel\bridge" $_.FullName.Substring($bridgeOut.Length + 1))) })
 # RED4ext plugin that starts the bridge with the game (launcher\build.bat).
