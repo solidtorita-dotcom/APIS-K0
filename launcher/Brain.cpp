@@ -359,7 +359,7 @@ void Brain::Start()
         voice = std::make_unique<voice::Voice>(settings, settingsMutex, config, modDir, dataDir);
         if (!voice->Start())
             voice.reset();
-        ears = std::make_unique<ears::Ears>(settings, settingsMutex, config);
+        ears = std::make_unique<ears::Ears>(settings, settingsMutex, config, dataDir.parent_path() / L"models" / L"whisper-cpp");
     }
     else
         log::Write("voice disabled (voice_enabled false in config.json): subtitles only");
@@ -518,6 +518,13 @@ void Brain::Handle(const Json& aMessage)
     }
     else if (type == "voice")
         Hear(aMessage);
+    else if (type == "warm_up")
+    {
+        if (voice)
+            voice->WarmUp();
+        if (ears)
+            ears->WarmUp();
+    }
     else if (type == "event")
         Event(aMessage);
     else if (type == "world_react")

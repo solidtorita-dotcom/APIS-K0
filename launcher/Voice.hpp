@@ -6,11 +6,12 @@
 // Position is simulated: audio_pose.txt (written by the CET side) gives the drone's distance and side, turned into
 // smoothed left/right gains. Written lines are rendered once and kept in data\speech_cache, the same files and keys
 // as the Python bridge, so a cloud voice is paid once.
-// Local voices (Piper) come in phase 5: until then a choice the native bridge cannot render, or a failed call, leaves
-// Apiko with subtitles only.
+// Piper (Piper.hpp) is the local voice, and the fallback when a cloud voice fails or lacks V's language, so Apiko
+// never goes mute while Piper can run. Kokoro is not in the native bridge.
 #pragma once
 
 #include "Dsp.hpp"
+#include "Piper.hpp"
 #include "Providers.hpp"
 
 #include <nlohmann/json.hpp>
@@ -60,6 +61,9 @@ public:
     std::vector<float> Render(const std::string& aText, const std::string& aLang, double aInstability,
                               bool aCache = false, bool aPhone = false);
 
+    // Loads Piper and runs it once per language (worker thread, at start): the first synthesis is slower.
+    void WarmUp();
+
     // Cuts what Apiko is saying and drops what is queued; returns the id for the next reply's chunks.
     int NewReply();
     // Plays after the chunks already queued for that reply; aOnStart runs when it starts sounding (its subtitle).
@@ -73,12 +77,18 @@ private:
         std::function<void()> onStart;
     };
     void Play();
-    // The cloud voice, resampled to Rate: plain speech, before the machine voice.
-    std::vector<float> Synthesize(const std::string& aText, const std::string& aLang);
+    // The player's voice (or Piper in its place), resampled to Rate: plain speech, before the machine voice.
+    // aEngine: the engine that rendered it.
+    std::vector<float> Synthesize(const std::string& aText, const std::string& aLang, std::string& aEngine);
+    std::vector<float> Local(const std::string& aText, const std::string& aLang);
+    std::vector<float> SynthesizeCloud(const providers::Choice& aChoice, const std::string& aText, const std::string& aLang);
+    // Why the cloud voice cannot speak aLang (it lacks the language, no key), or nothing.
+    std::optional<std::string> CloudProblem(const providers::Choice& aChoice, const std::string& aLang) const;
     // Synthesize + the machine voice for a written line: kept on disk per provider, voice, style and speed.
     std::vector<float> CachedSpeech(const std::string& aText, const std::string& aLang);
-    nlohmann::json StyleJson() const;
-    dsp::Style MachineStyle() const;
+    nlohmann::json StyleJson(const std::string& aEngine) const;
+    dsp::Style MachineStyle(const std::string& aEngine) const;
+    providers::Choice Choice() const;
     double Speed(const std::string& aEngine) const;
     std::string VoiceName(const std::string& aEngine, const std::string& aLang) const;
 
@@ -88,6 +98,8 @@ private:
     std::filesystem::path modDir;
     std::filesystem::path cacheDir;
     std::unique_ptr<Pose> pose;
+    std::unique_ptr<piper::Piper> piper;
+    std::string lastFailure; // last cloud failure logged (worker thread)
     std::unique_ptr<Speaker> speaker;
     std::thread player;
     std::mutex queueMutex;

@@ -567,7 +567,7 @@ registerForEvent("onDraw", function()
             if bridgeOnline then
                 ImGui.TextColored(0.50, 0.91, 0.85, 1.0, "Bridge online")
             else
-                ImGui.TextColored(1.0, 0.45, 0.35, 1.0, "Bridge offline: it starts with the game (ApisK0\\bridge\\Apiko.exe). See its window in the taskbar.")
+                ImGui.TextColored(1.0, 0.45, 0.35, 1.0, "Bridge offline: it runs inside the game (red4ext\\plugins\\ApisK0). Is RED4ext installed? Log: %LOCALAPPDATA%\\Apiko\\data\\native.log")
             end
             ImGui.Separator()
             local footer = ImGui.GetFrameHeightWithSpacing() + 4

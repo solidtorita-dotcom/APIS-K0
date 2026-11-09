@@ -556,6 +556,16 @@ Voice::Voice(providers::Settings& aSettings, std::mutex& aSettingsMutex, const J
     , modDir(aModDir)
     , cacheDir(aDataDir / L"speech_cache")
 {
+    // onnxruntime.dll next to this plugin; espeak-ng-data with the mod's data; voices shared with the Python bridge.
+    HMODULE self = nullptr;
+    GetModuleHandleExW(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
+                       reinterpret_cast<LPCWSTR>(&LoadWav), &self);
+    std::wstring module(MAX_PATH, L'\0');
+    module.resize(GetModuleFileNameW(self, module.data(), static_cast<DWORD>(module.size())));
+    piper = std::make_unique<piper::Piper>(std::filesystem::path(module).parent_path() / L"onnxruntime.dll",
+                                           modDir / L"data" / L"espeak-ng-data", aDataDir.parent_path() / L"models" / L"piper");
+    if (auto problem = piper->Missing())
+        log::Write("Piper unavailable: " + *problem);
 }
 
 Voice::~Voice()
@@ -607,25 +617,35 @@ std::string Voice::Language(const std::string& aLang) const
     return !languages.empty() && languages[0].is_string() ? languages[0].get<std::string>() : std::string("en");
 }
 
+providers::Choice Voice::Choice() const
+{
+    std::lock_guard lock(settingsMutex);
+    return settings.Pick("tts");
+}
+
+std::optional<std::string> Voice::CloudProblem(const providers::Choice& aChoice, const std::string& aLang) const
+{
+    if (aChoice.id != "azure" && aChoice.id != "cartesia" && aChoice.id != "groq" && aChoice.id != "openai")
+        return aChoice.label + " is not in the native bridge (pick Piper or a cloud voice)";
+    if (aChoice.entry.contains("only_langs") && aChoice.entry["only_langs"].is_array())
+    {
+        const auto& only = aChoice.entry["only_langs"];
+        if (std::find(only.begin(), only.end(), Json(aLang)) == only.end())
+            return aChoice.label + " does not speak " + aLang;
+    }
+    return providers::Missing(aChoice);
+}
+
 std::optional<std::string> Voice::Unavailable(const std::string& aLang) const
 {
-    providers::Choice choice;
-    {
-        std::lock_guard lock(settingsMutex);
-        choice = settings.Pick("tts");
-    }
-    if (choice.id == "piper" || choice.id == "kokoro")
-        return choice.label + " is a local voice: the native bridge has none yet (phase 5)";
-    if (choice.id != "azure" && choice.id != "cartesia" && choice.id != "groq" && choice.id != "openai")
-        return choice.label + " is not supported by the native bridge";
-    if (choice.entry.contains("only_langs") && choice.entry["only_langs"].is_array())
-    {
-        const auto& only = choice.entry["only_langs"];
-        if (std::find(only.begin(), only.end(), Json(aLang)) == only.end())
-            return choice.label + " does not speak " + aLang + " (local voices come in phase 5)";
-    }
-    if (auto problem = providers::Missing(choice))
-        return *problem;
+    // Piper renders whatever the chosen voice cannot: only when Piper cannot run either is Apiko mute.
+    auto choice = Choice();
+    auto local = piper->Missing();
+    if (choice.id == "piper")
+        return local;
+    auto problem = CloudProblem(choice, aLang);
+    if (problem && local)
+        return *problem + "; " + *local;
     return std::nullopt;
 }
 
@@ -655,15 +675,71 @@ double Voice::Speed(const std::string& aEngine) const
                                                                    : config.value("voice_speed", 1.0);
 }
 
-std::vector<float> Voice::Synthesize(const std::string& aText, const std::string& aLang)
+std::vector<float> Voice::Local(const std::string& aText, const std::string& aLang)
 {
-    providers::Choice choice;
+    int rate = 0;
+    auto samples = piper->Synthesize(aText, VoiceName("piper", aLang), Speed("piper"), rate);
+    return Resample(std::move(samples), rate);
+}
+
+void Voice::WarmUp()
+{
+    if (piper->Missing())
+        return;
+    auto catalog = settings.Catalog();
+    for (const auto& lang : catalog["languages"])
     {
-        std::lock_guard lock(settingsMutex);
-        choice = settings.Pick("tts");
+        if (!lang.is_string())
+            continue;
+        try
+        {
+            Local("Hola.", lang.get<std::string>());
+        }
+        catch (const std::exception& e)
+        {
+            log::Write("Piper warm-up failed (" + lang.get<std::string>() + "): " + e.what());
+        }
     }
-    if (auto problem = Unavailable(aLang))
-        throw std::runtime_error(*problem);
+}
+
+std::vector<float> Voice::Synthesize(const std::string& aText, const std::string& aLang, std::string& aEngine)
+{
+    auto choice = Choice();
+    aEngine = "piper";
+    if (choice.id == "piper")
+        return Local(aText, aLang);
+    if (auto problem = CloudProblem(choice, aLang))
+    {
+        // A language the cloud voice lacks, or no key: Piper speaks instead.
+        if (*problem != lastFailure)
+        {
+            lastFailure = *problem;
+            log::Write(*problem + ": using Piper");
+        }
+        return Local(aText, aLang);
+    }
+    try
+    {
+        auto samples = SynthesizeCloud(choice, aText, aLang);
+        lastFailure.clear();
+        aEngine = choice.id;
+        return samples;
+    }
+    catch (const std::exception& e)
+    {
+        if (piper->Missing())
+            throw;
+        if (e.what() != lastFailure)
+        {
+            lastFailure = e.what();
+            log::Write(choice.label + " voice failed, using Piper: " + e.what());
+        }
+        return Local(aText, aLang);
+    }
+}
+
+std::vector<float> Voice::SynthesizeCloud(const providers::Choice& choice, const std::string& aText, const std::string& aLang)
+{
     auto voiceName = VoiceName(choice.id, aLang);
     double speed = Speed(choice.id);
     double timeout = config.value("tts_timeout_seconds", 8.0);
@@ -679,17 +755,12 @@ std::vector<float> Voice::Synthesize(const std::string& aText, const std::string
     return Resample(std::move(rendered.audio), rendered.rate);
 }
 
-Json Voice::StyleJson() const
+Json Voice::StyleJson(const std::string& aEngine) const
 {
-    // The catalog's tts.style with the chosen provider's own overrides.
-    providers::Choice choice;
-    {
-        std::lock_guard lock(settingsMutex);
-        choice = settings.Pick("tts");
-    }
+    // The catalog's tts.style with that engine's own overrides.
     auto catalog = settings.Catalog();
     Json style = catalog["tts"].value("style", Json::object());
-    auto own = catalog["tts"]["providers"].value(choice.id, Json::object()).value("style", Json::object());
+    auto own = catalog["tts"]["providers"].value(aEngine, Json::object()).value("style", Json::object());
     if (!style.is_object())
         style = Json::object();
     if (own.is_object())
@@ -697,9 +768,9 @@ Json Voice::StyleJson() const
     return style;
 }
 
-dsp::Style Voice::MachineStyle() const
+dsp::Style Voice::MachineStyle(const std::string& aEngine) const
 {
-    auto style = StyleJson();
+    auto style = StyleJson(aEngine);
     dsp::Style out;
     out.keep = style.value("keep", out.keep);
     out.semitones = style.value("semitones", out.semitones);
@@ -714,12 +785,9 @@ std::vector<float> Voice::CachedSpeech(const std::string& aText, const std::stri
 {
     // The same key as the Python bridge (sha1 of json.dumps([engine, voice, style, speed, lang, text],
     // sort_keys=True)), so the lines it already rendered are reused.
-    providers::Choice choice;
-    {
-        std::lock_guard lock(settingsMutex);
-        choice = settings.Pick("tts");
-    }
-    auto key = PyJson(Json::array({choice.id, VoiceName(choice.id, aLang), StyleJson(), Speed(choice.id), aLang, aText}));
+    auto choice = Choice();
+    auto key = PyJson(
+        Json::array({choice.id, VoiceName(choice.id, aLang), StyleJson(choice.id), Speed(choice.id), aLang, aText}));
     auto hash = Sha1Hex(key);
     auto file = cacheDir / text::Widen(hash + ".npy");
     if (auto cached = LoadNpy(file))
@@ -728,7 +796,12 @@ std::vector<float> Voice::CachedSpeech(const std::string& aText, const std::stri
         return *cached;
     }
     log::Write("speech cache: " + hash.substr(0, 8) + " new");
-    auto speech = dsp::MachineVoice(Synthesize(aText, aLang), Rate, MachineStyle());
+    std::string engine;
+    auto plain = Synthesize(aText, aLang, engine);
+    auto speech = dsp::MachineVoice(plain, Rate, MachineStyle(engine));
+    // A fallback to Piper is not kept: the chosen voice renders it next time.
+    if (engine != choice.id)
+        return speech;
     std::error_code error;
     std::filesystem::create_directories(cacheDir, error);
     if (!SaveNpy(file, speech))
@@ -741,7 +814,6 @@ std::vector<float> Voice::Render(const std::string& aText, const std::string& aL
 {
     // Each piece of speech gets the machine voice; each glitch token becomes a glitch sound; then the effects.
     auto lang = Language(aLang);
-    auto style = MachineStyle();
     std::vector<float> audio;
     std::optional<std::vector<float>> previous;
     const auto& token = GlitchToken();
@@ -760,7 +832,15 @@ std::vector<float> Voice::Render(const std::string& aText, const std::string& aL
         if (!HasWord(piece))
             continue;
         // Speech only: glitch sounds are added afterwards and must not be flattened or gated.
-        auto machine = aCache ? CachedSpeech(piece, lang) : dsp::MachineVoice(Synthesize(piece, lang), Rate, style);
+        std::vector<float> machine;
+        if (aCache)
+            machine = CachedSpeech(piece, lang);
+        else
+        {
+            std::string engine;
+            auto plain = Synthesize(piece, lang, engine);
+            machine = dsp::MachineVoice(plain, Rate, MachineStyle(engine));
+        }
         auto speech = dsp::RandomGlitches(std::move(machine), Rate, aInstability, random);
         audio.insert(audio.end(), speech.begin(), speech.end());
         previous = std::move(speech);

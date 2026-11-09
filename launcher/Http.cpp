@@ -5,6 +5,8 @@
 #include <Windows.h>
 #include <winhttp.h>
 
+#include <fstream>
+#include <functional>
 #include <memory>
 
 #pragma comment(lib, "winhttp.lib")
@@ -40,8 +42,11 @@ std::string Snippet(const std::string& aText, std::size_t aMax)
     return text::Truncate(aText, aMax);
 }
 
-std::string Request(const std::string& aUrl, const std::string* aBody, const std::map<std::string, std::string>& aHeaders,
-                    double aTimeoutSeconds)
+namespace
+{
+// The request; the body of a 2xx answer goes to aSink in pieces when given, else it is returned.
+std::string Perform(const std::string& aUrl, const std::string* aBody, const std::map<std::string, std::string>& aHeaders,
+                    double aTimeoutSeconds, const std::function<void(const char*, std::size_t)>* aSink)
 {
     if (!Session())
         throw Error(LastError("WinHttpOpen"));
@@ -87,6 +92,7 @@ std::string Request(const std::string& aUrl, const std::string* aBody, const std
     WinHttpQueryHeaders(request.get(), WINHTTP_QUERY_STATUS_CODE | WINHTTP_QUERY_FLAG_NUMBER, WINHTTP_HEADER_NAME_BY_INDEX,
                         &status, &size, WINHTTP_NO_HEADER_INDEX);
 
+    bool ok = status >= 200 && status < 300;
     std::string response;
     for (;;)
     {
@@ -101,9 +107,42 @@ std::string Request(const std::string& aUrl, const std::string* aBody, const std
         if (!WinHttpReadData(request.get(), response.data() + start, available, &read))
             throw Error(LastError("read"));
         response.resize(start + read);
+        if (ok && aSink)
+        {
+            (*aSink)(response.data(), response.size());
+            response.clear();
+        }
     }
-    if (status < 200 || status >= 300)
+    if (!ok)
         throw Error("HTTP " + std::to_string(status) + ": " + Snippet(response), static_cast<int>(status));
     return response;
+}
+} // namespace
+
+std::string Request(const std::string& aUrl, const std::string* aBody, const std::map<std::string, std::string>& aHeaders,
+                    double aTimeoutSeconds)
+{
+    return Perform(aUrl, aBody, aHeaders, aTimeoutSeconds, nullptr);
+}
+
+void Download(const std::string& aUrl, const std::filesystem::path& aFile, double aTimeoutSeconds)
+{
+    auto part = aFile;
+    part += L".part";
+    std::error_code error;
+    std::filesystem::create_directories(aFile.parent_path(), error);
+    {
+        std::ofstream out(part, std::ios::binary);
+        if (!out)
+            throw Error("cannot write " + text::PathString(part));
+        std::function<void(const char*, std::size_t)> sink = [&](const char* aData, std::size_t aSize) {
+            if (!out.write(aData, static_cast<std::streamsize>(aSize)))
+                throw Error("cannot write " + text::PathString(part));
+        };
+        Perform(aUrl, nullptr, {{"User-Agent", "APIS-K0"}}, aTimeoutSeconds, &sink);
+    }
+    std::filesystem::rename(part, aFile, error);
+    if (error)
+        throw Error("cannot write " + text::PathString(aFile));
 }
 } // namespace apiko::http

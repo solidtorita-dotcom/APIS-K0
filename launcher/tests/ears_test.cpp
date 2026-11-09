@@ -1,5 +1,5 @@
 // Speech recognition outside the game: a WAV through Ears::Transcribe with the player's settings, a second of
-// silence, and the name fixes. Usage: ears_test <mod folder copy> <speech.wav>
+// silence, and the name fixes. Usage: ears_test <mod folder copy> <speech.wav> [local Whisper models folder]
 #include "../Ears.hpp"
 #include "../Log.hpp"
 #include "../Providers.hpp"
@@ -21,7 +21,7 @@ int wmain(int argc, wchar_t** argv)
     settings.Check([](const std::string& aLine) { std::cout << aLine << "\n"; });
     std::mutex settingsMutex;
     nlohmann::json config = {{"whisper_hint", "Apiko, V, Night City, NetWatch, choom."}, {"stt_timeout_seconds", 8}};
-    apiko::ears::Ears ears(settings, settingsMutex, config);
+    apiko::ears::Ears ears(settings, settingsMutex, config, argc > 3 ? std::filesystem::path(argv[3]) : std::filesystem::path(L"models"));
     auto speech = apiko::voice::LoadWav(argv[2]); // at 24 kHz
     if (!speech)
     {

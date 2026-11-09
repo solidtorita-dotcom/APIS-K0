@@ -9,10 +9,12 @@
 
 #pragma warning(push, 0)
 #include <miniaudio/miniaudio.h>
+#include <whisper.h>
 #pragma warning(pop)
 
 #include <algorithm>
 #include <cmath>
+#include <thread>
 #include <regex>
 #include <set>
 
@@ -140,10 +142,107 @@ private:
     std::vector<float> audio;
 };
 
-Ears::Ears(providers::Settings& aSettings, std::mutex& aSettingsMutex, const Json& aConfig)
+// whisper.cpp with one model loaded at a time.
+class LocalWhisper
+{
+public:
+    explicit LocalWhisper(std::filesystem::path aModels)
+        : models(std::move(aModels))
+    {
+        // whisper.cpp logs a lot to stderr: only errors, into our log.
+        whisper_log_set(
+            [](enum ggml_log_level aLevel, const char* aText, void*) {
+                if (aLevel == GGML_LOG_LEVEL_ERROR && aText)
+                    log::Write(std::string("whisper: ") + text::Trim(aText));
+            },
+            nullptr);
+    }
+
+    ~LocalWhisper()
+    {
+        if (context)
+            whisper_free(context);
+    }
+
+    void Load(const std::string& aName)
+    {
+        if (context && aName == name)
+            return;
+        auto file = models / text::Widen("ggml-" + aName + ".bin");
+        std::error_code error;
+        if (!std::filesystem::exists(file, error))
+        {
+            log::Write("downloading Whisper model " + aName + " (first use, only once)...");
+            http::Download("https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-" + aName + ".bin", file, 120.0);
+        }
+        if (context)
+            whisper_free(context);
+        auto started = GetTickCount64();
+        auto params = whisper_context_default_params();
+        params.use_gpu = false; // the GPU is the game's (and the AMD driver hangs)
+        context = whisper_init_from_file_with_params(text::PathString(file).c_str(), params);
+        if (!context)
+            throw std::runtime_error("Whisper model " + text::PathString(file) + " could not be loaded");
+        name = aName;
+        log::Write("Whisper '" + aName + "' ready (" + std::to_string((GetTickCount64() - started) / 1000.0).substr(0, 4) +
+                   "s)");
+    }
+
+    std::pair<std::string, std::string> Transcribe(const std::vector<float>& aAudio, const std::vector<std::string>& aAllowed,
+                                                   const std::string& aHint)
+    {
+        int threads = std::clamp(static_cast<int>(std::thread::hardware_concurrency()) / 2, 1, 4);
+        // The language first, limited to the allowed ones: short clips are often misdetected.
+        if (whisper_pcm_to_mel(context, aAudio.data(), static_cast<int>(aAudio.size()), threads) != 0)
+            throw std::runtime_error("Whisper could not read the clip");
+        std::vector<float> probs(whisper_lang_max_id() + 1, 0.0f);
+        int best = whisper_lang_auto_detect(context, 0, threads, probs.data());
+        std::string language = best >= 0 ? whisper_lang_str(best) : "";
+        if (!aAllowed.empty() && std::find(aAllowed.begin(), aAllowed.end(), language) == aAllowed.end())
+        {
+            language = aAllowed[0];
+            float top = -1.0f;
+            for (const auto& lang : aAllowed)
+            {
+                int id = whisper_lang_id(lang.c_str());
+                if (id >= 0 && probs[id] > top)
+                {
+                    top = probs[id];
+                    language = lang;
+                }
+            }
+        }
+        auto params = whisper_full_default_params(WHISPER_SAMPLING_GREEDY);
+        params.n_threads = threads;
+        params.language = language.c_str();
+        params.detect_language = false;
+        params.initial_prompt = aHint.c_str();
+        params.no_context = true;
+        params.no_timestamps = true;
+        params.print_progress = false;
+        params.print_realtime = false;
+        params.print_special = false;
+        params.print_timestamps = false;
+        if (whisper_full(context, params, aAudio.data(), static_cast<int>(aAudio.size())) != 0)
+            throw std::runtime_error("Whisper could not transcribe the clip");
+        std::string said;
+        for (int i = 0; i < whisper_full_n_segments(context); ++i)
+            said += whisper_full_get_segment_text(context, i);
+        return {text::Trim(said), language};
+    }
+
+private:
+    std::filesystem::path models;
+    whisper_context* context = nullptr;
+    std::string name;
+};
+
+Ears::Ears(providers::Settings& aSettings, std::mutex& aSettingsMutex, const Json& aConfig,
+           const std::filesystem::path& aModels)
     : settings(aSettings)
     , settingsMutex(aSettingsMutex)
     , config(aConfig)
+    , local(std::make_unique<LocalWhisper>(aModels))
 {
     if (config.contains("input_device") && !config["input_device"].is_null())
         log::Write("ears: config input_device is not used by the native bridge yet (default microphone)");
@@ -216,7 +315,42 @@ std::pair<std::string, std::string> Ears::Remote(const providers::Choice& aChoic
     return {text::Trim(result.value("text", std::string())), detected};
 }
 
-std::pair<std::string, std::string> Ears::TranscribeRemote(const std::vector<float>& aAudio)
+std::vector<std::string> Ears::Allowed() const
+{
+    auto catalog = settings.Catalog();
+    std::vector<std::string> allowed;
+    if (catalog["languages"].is_array())
+        for (const auto& lang : catalog["languages"])
+            if (lang.is_string())
+                allowed.push_back(lang.get<std::string>());
+    return allowed;
+}
+
+std::string Ears::LocalModel() const
+{
+    // The player's local model, or (as the cloud's fallback) the catalog's recommended one.
+    providers::Choice choice;
+    {
+        std::lock_guard lock(settingsMutex);
+        choice = settings.Pick("stt");
+    }
+    if (choice.id == "local" && !choice.model.empty())
+        return choice.model;
+    auto catalog = settings.Catalog();
+    auto models = catalog["stt"]["providers"]["local"].value("models", Json::array());
+    for (const auto& model : models)
+        if (model.value("badge", std::string()) == "Recommended")
+            return model.value("id", std::string("base"));
+    return !models.empty() ? models[0].value("id", std::string("base")) : std::string("base");
+}
+
+std::pair<std::string, std::string> Ears::TranscribeLocal(const std::vector<float>& aAudio)
+{
+    local->Load(LocalModel());
+    return local->Transcribe(aAudio, Allowed(), config.value("whisper_hint", std::string()));
+}
+
+std::pair<std::string, std::string> Ears::Recognize(const std::vector<float>& aAudio, bool aStrict)
 {
     providers::Choice choice;
     {
@@ -224,19 +358,29 @@ std::pair<std::string, std::string> Ears::TranscribeRemote(const std::vector<flo
         choice = settings.Pick("stt");
     }
     if (choice.id == "local")
-        throw providers::Error("local Whisper is not in the native bridge yet (phase 5): pick Groq or OpenAI");
-    auto catalog = settings.Catalog();
-    std::vector<std::string> allowed;
-    if (catalog["languages"].is_array())
-        for (const auto& lang : catalog["languages"])
-            if (lang.is_string())
-                allowed.push_back(lang.get<std::string>());
-    auto wav = ToWav(aAudio, MicRate);
-    auto [said, language] = Remote(choice, wav, "");
-    if (!said.empty() && !allowed.empty() && std::find(allowed.begin(), allowed.end(), language) == allowed.end())
-        // Short clips are sometimes misdetected: try again in the main language.
-        std::tie(said, language) = Remote(choice, wav, allowed[0]);
-    return {said, language};
+        return TranscribeLocal(aAudio);
+    try
+    {
+        auto allowed = Allowed();
+        auto wav = ToWav(aAudio, MicRate);
+        auto [said, language] = Remote(choice, wav, "");
+        if (!said.empty() && !allowed.empty() && std::find(allowed.begin(), allowed.end(), language) == allowed.end())
+            // Short clips are sometimes misdetected: try again in the main language.
+            std::tie(said, language) = Remote(choice, wav, allowed[0]);
+        lastFailure.clear();
+        return {said, language};
+    }
+    catch (const std::exception& e)
+    {
+        if (aStrict)
+            throw;
+        if (e.what() != lastFailure)
+        {
+            lastFailure = e.what();
+            log::Write(choice.label + " speech recognition failed, using local Whisper: " + e.what());
+        }
+        return TranscribeLocal(aAudio);
+    }
 }
 
 std::optional<std::pair<std::string, std::string>> Ears::Transcribe(const std::vector<float>& aAudio)
@@ -252,7 +396,7 @@ std::optional<std::pair<std::string, std::string>> Ears::Transcribe(const std::v
         log::Write(std::string("no speech in the clip (") + seconds + "s voiced), ignored");
         return std::nullopt;
     }
-    auto [said, language] = TranscribeRemote(aAudio);
+    auto [said, language] = Recognize(aAudio);
     if (said.empty())
         return std::nullopt;
     if (Hallucinated(said))
@@ -271,7 +415,35 @@ std::optional<std::pair<std::string, std::string>> Ears::Transcribe(const std::v
 
 void Ears::Test()
 {
-    TranscribeRemote(std::vector<float>(MicRate, 0.0f));
+    providers::Choice choice;
+    {
+        std::lock_guard lock(settingsMutex);
+        choice = settings.Pick("stt");
+    }
+    if (choice.id == "local")
+        local->Load(LocalModel());
+    else
+        Recognize(std::vector<float>(MicRate, 0.0f), true);
+}
+
+void Ears::WarmUp()
+{
+    // The local model is only loaded up front when it is the player's choice; as a fallback, when needed.
+    providers::Choice choice;
+    {
+        std::lock_guard lock(settingsMutex);
+        choice = settings.Pick("stt");
+    }
+    if (choice.id != "local")
+        return;
+    try
+    {
+        local->Load(LocalModel());
+    }
+    catch (const std::exception& e)
+    {
+        log::Write(std::string("Whisper warm-up failed: ") + e.what());
+    }
 }
 
 bool Ears::Hallucinated(const std::string& aText) const

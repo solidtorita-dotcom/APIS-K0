@@ -79,11 +79,13 @@ private:
         ownerToken = "native-" + std::to_string(GetCurrentProcessId()) + "-" + std::to_string(UnixMillis());
         if (!WriteFileAtomic(ownerFile, ownerToken))
             log::Write("could not write bridge_owner.txt");
-        log::Write("APIS-K0 native bridge running (phase 4). Mod folder: " + text::PathString(files.ModDir()));
+        log::Write("APIS-K0 bridge 0.2.0 running in the game. Mod folder: " + text::PathString(files.ModDir()));
         try
         {
             brain.Start();
             brainReady = true;
+            // Local voices load on the worker, not here: the first time they are downloaded.
+            Queue({{"type", "warm_up"}});
         }
         catch (const std::exception& e)
         {
@@ -252,13 +254,13 @@ private:
             if (!now && brainReady)
                 brain.Hush();
         }
-        // Said on the first session, not at start: the plugin starts before CET, which skips the replies already
-        // in from_bridge.txt when it starts.
+        // Why Apiko cannot talk, said on the first session, not at start: the plugin starts before CET, which skips
+        // the replies already in from_bridge.txt when it starts.
         if (now && !greeted)
         {
             greeted = true;
-            files.WriteReply("status", brainReady ? "Native bridge running (phase 4: everything but local voices and local Whisper)."
-                                                  : "Native bridge: " + text::Truncate(brainError, 250));
+            if (!brainReady)
+                files.WriteReply("status", "Apiko bridge: " + text::Truncate(brainError, 250));
         }
         live = now;
     }
