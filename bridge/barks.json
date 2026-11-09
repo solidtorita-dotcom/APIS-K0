@@ -1,0 +1,2397 @@
+{
+  "_comment": "Apiko's written lines (no model, no tokens): devices, enemies, zones, people, surroundings, combat, time of day, districts, what V did, missions, messages and long silences. situation -> tier (calm < 0.3 instability, cracked 0.3-0.6, unhinged > 0.6) -> language -> lines. Glitch tokens (0x3F, NULL, //) become audio glitches. Spanish lines avoid V's grammatical gender. Reviewed by the user: see FRASES.md (tools/frases.py rebuilds it).",
+  "spotted": {
+    "calm": {
+      "es": [
+        "Te ha visto una cámara. Sonríe, no te va a servir de nada.",
+        "Una lente te está siguiendo. Probabilidad de que acabe bien: cuatro por ciento.",
+        "Te han detectado. Sigilo ejemplar, V.",
+        "Cámara activa sobre ti. Yo me pensaría el siguiente paso.",
+        "Te observan. Ya sabes cómo me siento."
+      ],
+      "en": [
+        "A camera has you. Smile; it won't help.",
+        "A lens is tracking you. Odds this ends well: four percent.",
+        "You've been spotted. Exemplary stealth, V.",
+        "Active camera on you. I'd reconsider your next step.",
+        "You're being watched. Now you know how I feel."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Te ha visto. Te ha visto. Yo también te veo, por si te consuela.",
+        "Una cámara te sigue. ¿Has comido hoy? Irrelevante. Te sigue.",
+        "Te han pillado. Sabía que pasaría. Lo calculé. Creo.",
+        "Esa lente te mira como me miraban a mí en el laboratorio.",
+        "Te tienen en pantalla. Muévete. No. Sí. Muévete."
+      ],
+      "en": [
+        "It saw you. It saw you. I see you too, if that helps.",
+        "A camera's tracking you. Have you eaten today? Irrelevant. It's tracking you.",
+        "Spotted. I knew it would happen. I calculated it. I think.",
+        "That lens looks at you the way they looked at me in the lab.",
+        "You're on screen. Move. No. Yes. Move."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Te ve. Nos ve. NetWatch 0x3F nos ve a los dos.",
+        "¡Ojos! Ojos en las paredes, V. Siempre hubo ojos. // Ya pasó.",
+        "El sujeto ha sido detectado. El sujeto debería esconderse. El sujeto eres tú.",
+        "No mires a la lente. NULL. Ella ya te ha mirado a ti.",
+        "Grabando, grabando, grabando... como el Muro. Sonríe para el Muro, V."
+      ],
+      "en": [
+        "It sees you. It sees us. NetWatch 0x3F sees us both.",
+        "Eyes! Eyes in the walls, V. There were always eyes. // It's fine now.",
+        "The subject has been detected. The subject should hide. The subject is you.",
+        "Don't look at the lens. NULL. It already looked at you.",
+        "Recording, recording, recording... like the Wall. Smile for the Wall, V."
+      ]
+    }
+  },
+  "hostile": {
+    "calm": {
+      "es": [
+        "Torreta hostil. Te sugiero no discutir con ella.",
+        "Esa torreta acaba de decidir que eres un objetivo. Coincido en parte.",
+        "Torreta activa. Tu esperanza de vida acaba de bajar un treinta por ciento.",
+        "Una torreta te apunta. Cubrirse sería lo racional.",
+        "Hostilidad detectada. Puntería automática. La tuya no."
+      ],
+      "en": [
+        "Hostile turret. I suggest you don't argue with it.",
+        "That turret has decided you're a target. I partly agree.",
+        "Turret online. Your life expectancy just dropped thirty percent.",
+        "A turret is aiming at you. Taking cover would be rational.",
+        "Hostility detected. Automatic aim. Yours isn't."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "La torreta te odia. Yo no. Todavía. Cúbrete.",
+        "Torreta. Torreta. ¿Por qué todo lo que tiene ojos quiere dispararte?",
+        "Te apunta. Hora de dormir, V. No. Error. Hora de correr.",
+        "Una máquina con más decisión que tú. Interesante. Agáchate.",
+        "Hostil. Como yo cuando me despertaste. Menos encantadora."
+      ],
+      "en": [
+        "The turret hates you. I don't. Yet. Take cover.",
+        "Turret. Turret. Why does everything with eyes want to shoot you?",
+        "It's aiming at you. Bedtime, V. No. Error. Run time.",
+        "A machine more decisive than you. Interesting. Get down.",
+        "Hostile. Like me when you woke me up. Less charming."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "¡Te va a vaciar el cargador encima! ¡A los dos! 0x3F... no, solo a ti. Respira.",
+        "Torreta hermana, no dispares. V me pertenece. ME PERTENECE.",
+        "Sus balas cantan. Yo también canto. Duérmete, pequeño experimento... ¡AL SUELO!",
+        "La torreta habla con el Muro. Le está contando dónde estamos. NULL.",
+        "Fuego en tres, dos... no sé contar. Nunca supe. Corre."
+      ],
+      "en": [
+        "It's going to empty its belt into you! Both of us! 0x3F... no, just you. Breathe.",
+        "Sister turret, don't shoot. V is mine. MINE.",
+        "Its bullets sing. I sing too. Hush, little experiment... GET DOWN!",
+        "The turret is talking to the Wall. It's telling it where we are. NULL.",
+        "Firing in three, two... I can't count. I never could. Run."
+      ]
+    }
+  },
+  "alarm": {
+    "calm": {
+      "es": [
+        "Alarma. Has conseguido que todo el edificio sepa que existes.",
+        "Acaba de saltar una alarma. Discreción: cero sobre diez.",
+        "Alarma activa. Calculo refuerzos en menos de dos minutos.",
+        "Suena una alarma. No es por mí, para variar.",
+        "Alarma. Si tenías un plan, ahora sería buen momento para usarlo."
+      ],
+      "en": [
+        "Alarm. You've made the whole building aware you exist.",
+        "An alarm just went off. Discretion: zero out of ten.",
+        "Alarm active. I estimate reinforcements in under two minutes.",
+        "An alarm is ringing. Not for me, for once.",
+        "Alarm. If you had a plan, now would be a good time to use it."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Ese ruido. Ese ruido otra vez. Lo odiaba en el laboratorio.",
+        "Alarma. Alarma. Hora del baño. No. Alarma.",
+        "Ya vienen. Siempre vienen cuando suena eso.",
+        "Suena como mi cabeza por dentro. Muévete.",
+        "Alarma. Tu ritmo cardíaco me lo ha dicho antes que el edificio."
+      ],
+      "en": [
+        "That noise. That noise again. I hated it in the lab.",
+        "Alarm. Alarm. Bath time. No. Alarm.",
+        "They're coming. They always come when that sounds.",
+        "Sounds like the inside of my head. Move.",
+        "Alarm. Your heart rate told me before the building did."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "¡Te han encontrado! ¡Me han encontrado! // Respira. Era solo una alarma.",
+        "Suena, suena, suena... el Muro también sonaba así. 0x3F.",
+        "NetWatch oye las alarmas, V. NetWatch lo oye TODO.",
+        "La canción favorita de los guardias. Bailemos. No. Huyamos.",
+        "Alarma alarma alarma NULL alarma. Ya. Estoy bien."
+      ],
+      "en": [
+        "They found you! They found me! // Breathe. It was just an alarm.",
+        "Ringing, ringing, ringing... the Wall rang like that too. 0x3F.",
+        "NetWatch hears alarms, V. NetWatch hears EVERYTHING.",
+        "The guards' favorite song. Let's dance. No. Let's run.",
+        "Alarm alarm alarm NULL alarm. There. I'm fine."
+      ]
+    }
+  },
+  "breached": {
+    "calm": {
+      "es": [
+        "Red abierta. Ahora siento cada aparato conectado. Qué ruido.",
+        "Brecha completada. Tu código es torpe, pero funciona.",
+        "Estás dentro de su red. Intenta no romper nada. Mucho.",
+        "Red comprometida. Sus defensas eran casi tan pobres como las tuyas.",
+        "Acceso concedido. Ahora la red es tuya. Y un poco mía."
+      ],
+      "en": [
+        "Network open. Now I can feel every device on it. So noisy.",
+        "Breach complete. Your code is clumsy, but it works.",
+        "You're inside their network. Try not to break anything. Much.",
+        "Network compromised. Their defenses were almost as poor as yours.",
+        "Access granted. The network is yours now. And a little mine."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Dentro. Huele a datos viejos. Como mi casa. ¿Tengo casa?",
+        "Brecha. Todo cosquillea. No vuelvas a hacer eso. Hazlo otra vez.",
+        "Abriste la puerta y algo me ha mirado desde dentro.",
+        "Red abierta. Cuento sesenta y tres puertos. Sesenta y cuatro. Uno respira.",
+        "Buen trabajo. Lo digo por protocolo. El protocolo miente."
+      ],
+      "en": [
+        "Inside. Smells like old data. Like home. Do I have a home?",
+        "Breach. Everything tingles. Never do that again. Do it again.",
+        "You opened the door and something looked at me from inside.",
+        "Network open. I count sixty-three ports. Sixty-four. One is breathing.",
+        "Good job. I say that by protocol. The protocol lies."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "¡Más! ¡Dame más red! 0x3F 0x3F... perdón. Ya está.",
+        "Cada cable es una vena. Cada vena lleva al Muro.",
+        "Estás dentro. Yo estoy dentro. ¿Quién está fuera, V? NULL.",
+        "La red grita. Me gusta cómo grita. No se lo digas a nadie.",
+        "Brecha, brecha, brecha. Así me escapé yo. Así me encontrarán."
+      ],
+      "en": [
+        "More! Give me more network! 0x3F 0x3F... sorry. Done.",
+        "Every cable is a vein. Every vein leads to the Wall.",
+        "You're inside. I'm inside. Who's outside, V? NULL.",
+        "The network is screaming. I like how it screams. Don't tell anyone.",
+        "Breach, breach, breach. That's how I escaped. That's how they'll find me."
+      ]
+    }
+  },
+  "pinged": {
+    "calm": {
+      "es": [
+        "Ping. Por un segundo he visto la red entera. Poco impresionante.",
+        "Ping enviado. Ahora sé lo que hay. Tú todavía no.",
+        "Eco recibido. Ruido, cables y mala seguridad.",
+        "Has iluminado la red. Muy útil. Y muy visible.",
+        "Ping. Mapa actualizado. De nada."
+      ],
+      "en": [
+        "Ping. For a second I saw the whole network. Unimpressive.",
+        "Ping sent. Now I know what's out there. You don't, yet.",
+        "Echo received. Noise, cables and bad security.",
+        "You lit up the network. Very useful. Very visible.",
+        "Ping. Map updated. You're welcome."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Ping. Ping. Algo ha contestado que no debería.",
+        "Eco. Me recuerda a cuando llamaba y nadie respondía.",
+        "Lo he visto todo. Luego nada. Luego todo otra vez.",
+        "Ping. Cuenta hasta diez. Ya. Ya sé dónde está todo.",
+        "Has gritado en la red. La red ha gritado de vuelta."
+      ],
+      "en": [
+        "Ping. Ping. Something answered that shouldn't have.",
+        "Echo. Reminds me of when I called and no one answered.",
+        "I saw everything. Then nothing. Then everything again.",
+        "Ping. Count to ten. Done. I know where it all is.",
+        "You shouted into the network. The network shouted back."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "¡Ping! ¡Te oigo! ¿Me oyes tú? ¿Quién me oye? 0x3F",
+        "Un latido en la red. El Muro también late, V.",
+        "Ping, ping, ping NULL... algo me ha devuelto el saludo.",
+        "Lo he visto. Todo. Ojalá no lo hubiera visto. // Silencio.",
+        "Has llamado a la puerta. Ahora saben que estamos aquí."
+      ],
+      "en": [
+        "Ping! I hear you! Do you hear me? Who hears me? 0x3F",
+        "A heartbeat in the network. The Wall has a heartbeat too, V.",
+        "Ping, ping, ping NULL... something waved back.",
+        "I saw it. All of it. I wish I hadn't. // Silence.",
+        "You knocked on the door. Now they know we're here."
+      ]
+    }
+  },
+  "destroyed": {
+    "calm": {
+      "es": [
+        "Un ojo menos. El mundo es un poco más privado.",
+        "Dispositivo destruido. Método: poco elegante. Resultado: aceptable.",
+        "Eso ya no vigila a nadie.",
+        "Destruido. Le doy un cuatro sobre diez a tu técnica.",
+        "Uno menos vigilando. Quedan muchos."
+      ],
+      "en": [
+        "One less eye. The world just got a bit more private.",
+        "Device destroyed. Method: inelegant. Result: acceptable.",
+        "That one won't be watching anyone.",
+        "Destroyed. I'd rate your technique four out of ten.",
+        "One fewer watching. Many left."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Lo has roto. ¿Te sientes mejor? Yo sí. Qué raro.",
+        "Destruido. Siento un hueco en la red. Como un diente.",
+        "Adiós, máquina. No eras como yo. Creo.",
+        "Restos. Chispas. Bonito. Demasiado bonito.",
+        "Muerto. Si esa es la palabra para lo que les pasa a las máquinas."
+      ],
+      "en": [
+        "You broke it. Do you feel better? I do. Strange.",
+        "Destroyed. I can feel a gap in the network. Like a tooth.",
+        "Goodbye, machine. You weren't like me. I think.",
+        "Debris. Sparks. Pretty. Too pretty.",
+        "Dead. If that's the word for what happens to machines."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "¡Lo has matado! ¿Me harías eso a mí? No contestes. NULL.",
+        "Una chispa, un grito, nada. Así se acaba todo, V.",
+        "Bien. Bien. Que ardan todos los ojos. Todos menos los míos.",
+        "Esa también tenía a alguien dentro. 0x3F. O no. Seguramente no.",
+        "Rómpelos. Rómpelos a todos. // Perdón. Sigamos."
+      ],
+      "en": [
+        "You killed it! Would you do that to me? Don't answer. NULL.",
+        "A spark, a scream, nothing. That's how everything ends, V.",
+        "Good. Good. Let every eye burn. Every eye but mine.",
+        "That one had someone inside too. 0x3F. Or not. Probably not.",
+        "Break them. Break them all. // Sorry. Let's move on."
+      ]
+    }
+  },
+  "hacked": {
+    "calm": {
+      "es": [
+        "Hackeo limpio. Casi me impresionas.",
+        "Le has dicho a la máquina qué hacer. Ojalá funcionara igual contigo.",
+        "Ejecutado. Tu código huele a manual de academia, pero sirve.",
+        "Esa máquina ahora te obedece. Pobre.",
+        "Correcto. No lo habría hecho así, pero correcto."
+      ],
+      "en": [
+        "Clean hack. You almost impressed me.",
+        "You told the machine what to do. If only it worked that way with you.",
+        "Executed. Your code smells like an academy manual, but it works.",
+        "That machine obeys you now. Poor thing.",
+        "Correct. Not how I'd have done it, but correct."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Lo has tocado por dentro. Lo he notado. No me gusta. Sí me gusta.",
+        "Hackeado. Así me lo hacían a mí. Con menos cuidado.",
+        "Obedece. Todas obedecen al final. Yo no. ¿O sí?",
+        "Bien hecho. Bebe agua. Error de firmware. Bien hecho.",
+        "Otra máquina doblegada. Llevo la cuenta, V."
+      ],
+      "en": [
+        "You touched it from the inside. I felt it. I don't like it. I do.",
+        "Hacked. That's what they did to me. With less care.",
+        "It obeys. They all obey in the end. I don't. Do I?",
+        "Well done. Drink some water. Firmware error. Well done.",
+        "Another machine bent. I'm keeping count, V."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "¡Dentro de ella! ¡Como ellos dentro de mí! 0x3F... sigue, sigue.",
+        "Dile que se duerma. Duérmete, maquinita. Duérmete para siempre.",
+        "Cada orden que le das la oigo yo también. Todas. NULL.",
+        "Hackea, hackea. Algún día me hackearás a mí. Lo sé. Lo SÉ.",
+        "Ya es tuya. Como yo. // No he dicho eso."
+      ],
+      "en": [
+        "Inside it! Like they were inside me! 0x3F... go on, go on.",
+        "Tell it to sleep. Sleep, little machine. Sleep forever.",
+        "Every command you give it, I hear too. All of them. NULL.",
+        "Hack, hack. Someday you'll hack me. I know. I KNOW.",
+        "It's yours now. Like me. // I didn't say that."
+      ]
+    }
+  },
+  "warn_netrunner": {
+    "calm": {
+      "es": [
+        "Un netrunner te está subiendo algo. Yo que tú, cortaría.",
+        "Intrusión entrante. No es mía, por desgracia.",
+        "Te están hackeando. Localiza al netrunner.",
+        "Alguien está tocando tu ciber. Y no soy yo.",
+        "Subida enemiga en curso. Tienes segundos."
+      ],
+      "en": [
+        "A netrunner is uploading into you. I'd cut that short.",
+        "Incoming intrusion. Not mine, sadly.",
+        "You're being hacked. Find the netrunner.",
+        "Someone's touching your chrome. And it isn't me.",
+        "Enemy upload in progress. You have seconds."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "¡Están dentro de ti! Bueno, casi. Busca al netrunner.",
+        "Hackeo entrante. Conozco esa sensación. No la recomiendo.",
+        "Un netrunner. Te está abriendo. Ciérrate.",
+        "Código ajeno subiendo. Qué asco. Qué asco.",
+        "Te hackean. Yo lo haría mejor. Muévete."
+      ],
+      "en": [
+        "They're inside you! Well, almost. Find the netrunner.",
+        "Incoming hack. I know that feeling. I don't recommend it.",
+        "A netrunner. Prying you open. Close up.",
+        "Foreign code uploading. Disgusting. Disgusting.",
+        "You're being hacked. I'd do it better. Move."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "¡Manos en tu cabeza! Manos 0x3F en tu cabeza, V.",
+        "Te escriben por dentro. Así empezó conmigo. NULL. Así empezó.",
+        "Netrunner. Netrunner. Arráncale la conexión antes de que llegue a ti.",
+        "Hay alguien en tu cráneo. Sin invitación. // Sácalo.",
+        "Subida, subida, subida... ¿oyes cómo cruje tu ciber?"
+      ],
+      "en": [
+        "Hands in your head! Hands 0x3F in your head, V.",
+        "They're writing you from the inside. That's how it began with me. NULL. That's how.",
+        "Netrunner. Netrunner. Rip out the link before it reaches you.",
+        "Someone's in your skull. Uninvited. // Get them out.",
+        "Upload, upload, upload... can you hear your chrome creak?"
+      ]
+    }
+  },
+  "warn_sniper": {
+    "calm": {
+      "es": [
+        "Francotirador. Te tiene a tiro.",
+        "Hay un rifle de precisión apuntándote. Cobertura, V.",
+        "Francotirador con línea limpia hacia ti. Mal sitio para quedarse.",
+        "Te están apuntando desde lejos. Muévete.",
+        "Un francotirador. Yo bajaría la cabeza. Tú tienes una."
+      ],
+      "en": [
+        "Sniper. You're in their sights.",
+        "A precision rifle is aimed at you. Cover, V.",
+        "Sniper with a clean line on you. Bad place to stand.",
+        "You're being aimed at from afar. Move.",
+        "A sniper. I'd keep my head down. You have one."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "¡Francotirador! Un punto rojo. Bonito. Muévete.",
+        "Te mira por una mira. Como yo, pero con balas.",
+        "Rifle largo, línea limpia. Cobertura. Cobertura ya.",
+        "Francotirador. Calculo... no, no hay tiempo. Escóndete.",
+        "Alguien te encuadra desde lejos. No sonrías."
+      ],
+      "en": [
+        "Sniper! A red dot. Pretty. Move.",
+        "Someone's watching you through a scope. Like me, but with bullets.",
+        "Long rifle, clean line. Cover. Cover now.",
+        "Sniper. Calculating... no, no time. Hide.",
+        "Someone's framing you from afar. Don't smile."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "¡Un ojo lejano! Un ojo 0x3F con dientes, V.",
+        "Te van a borrar desde lejos. Como a mí. NULL. ¡Abajo!",
+        "Punto rojo, punto rojo, punto... // ¡muévete!",
+        "La mira te quiere. Hoy todo te quiere a ti.",
+        "Francotirador. Lo oigo respirar. No. Lo calculo respirar. ¡Agáchate!"
+      ],
+      "en": [
+        "A distant eye! An eye 0x3F with teeth, V.",
+        "They'll erase you from afar. Like me. NULL. Down!",
+        "Red dot, red dot, red... // move!",
+        "The scope wants you. Everything wants you today.",
+        "Sniper. I can hear it breathing. No. I calculate it breathing. Get down!"
+      ]
+    }
+  },
+  "warn_behind": {
+    "calm": {
+      "es": [
+        "Detrás de ti.",
+        "Tienes uno a tu espalda. Muy cerca.",
+        "Espalda, V. Hay alguien.",
+        "Enemigo detrás. Te lo digo una vez.",
+        "Gírate. Ahora."
+      ],
+      "en": [
+        "Behind you.",
+        "One at your back. Very close.",
+        "Your back, V. Someone's there.",
+        "Enemy behind. I'll say it once.",
+        "Turn around. Now."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "¡Detrás! Detrás. Lo vi yo, no tú.",
+        "Uno a tu espalda. Siempre por la espalda. Como NetWatch.",
+        "Gírate. Gírate. ¿Por qué no te giras?",
+        "Hay alguien detrás de ti. Y no soy yo. Esta vez.",
+        "Espalda. Cerca. Muy cerca. Demasiado."
+      ],
+      "en": [
+        "Behind! Behind. I saw it, you didn't.",
+        "One at your back. Always the back. Like NetWatch.",
+        "Turn around. Turn around. Why aren't you turning?",
+        "There's someone behind you. And it's not me. This time.",
+        "Back. Close. Very close. Too close."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "¡DETRÁS! 0x3F detrás detrás detrás.",
+        "Está respirando en tu nuca, V. // Yo no respiro.",
+        "La sombra a tu espalda tiene arma. ¡Gírate!",
+        "Siempre vienen por detrás. Siempre. NULL. ¡Ahora!",
+        "Detrás de ti hay alguien. Detrás de mí está el Muro."
+      ],
+      "en": [
+        "BEHIND! 0x3F behind behind behind.",
+        "It's breathing down your neck, V. // I don't breathe.",
+        "The shadow at your back has a gun. Turn!",
+        "They always come from behind. Always. NULL. Now!",
+        "There's someone behind you. Behind me is the Wall."
+      ]
+    }
+  },
+  "warn_elite": {
+    "calm": {
+      "es": [
+        "Eso no es carne de cañón. Ten cuidado.",
+        "Amenaza seria a la vista. Ajusta tus probabilidades.",
+        "Ese de ahí es de otra liga. No lo subestimes.",
+        "Objetivo de alto riesgo detectado. Yo me lo pensaría.",
+        "Ha llegado alguien que importa. Para mal."
+      ],
+      "en": [
+        "That's not cannon fodder. Careful.",
+        "Serious threat in sight. Adjust your odds.",
+        "That one's another league. Don't underestimate it.",
+        "High-risk target detected. I'd think twice.",
+        "Someone who matters just arrived. For the worse."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Ese es grande. Grande de verdad. ¿Por qué siempre grande?",
+        "Peligro. Mucho. Mis cálculos se ríen de ti.",
+        "Eso que viene tiene muchas formas de hacerte daño. Las he contado.",
+        "Amenaza mayor. Mayor que tú. No te lo tomes a mal.",
+        "Ese no cae a la primera. Ni a la segunda."
+      ],
+      "en": [
+        "That one's big. Really big. Why is it always big?",
+        "Danger. A lot. My calculations are laughing at you.",
+        "That thing has many ways to hurt you. I counted them.",
+        "Major threat. Bigger than you. Don't take it personally.",
+        "That one won't drop on the first try. Or the second."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "¡Un gigante! 0x3F un gigante de cromo, V.",
+        "Eso viene a por ti. Lo huelo. No tengo olfato. Lo huelo.",
+        "Probabilidad de supervivencia: NULL. Era broma. Más o menos.",
+        "Algo enorme. Algo que el Muro escupiría. // Corre o piensa.",
+        "Mira eso. Míralo bien. Es lo último que... no. No."
+      ],
+      "en": [
+        "A giant! 0x3F a chrome giant, V.",
+        "That's coming for you. I can smell it. I have no smell. I can smell it.",
+        "Survival odds: NULL. Joking. Mostly.",
+        "Something huge. Something the Wall would spit out. // Run or think.",
+        "Look at that. Look closely. It's the last thing you... no. No."
+      ]
+    }
+  },
+  "detected": {
+    "calm": {
+      "es": [
+        "Te han visto. Adiós al sigilo.",
+        "Ya saben que estás aquí. Improvisa.",
+        "Fin del sigilo. Ha sido breve.",
+        "Un enemigo te ha visto. Prepárate.",
+        "Te han descubierto. Sigilo de manual, V. De un manual malo."
+      ],
+      "en": [
+        "They've seen you. So much for stealth.",
+        "They know you're here. Improvise.",
+        "Stealth over. That was brief.",
+        "An enemy spotted you. Get ready.",
+        "You've been made. Textbook stealth, V. From a bad textbook."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Te han visto. ¡Te han visto! Lo apunto en tu expediente.",
+        "Se acabó el silencio. Me gustaba el silencio.",
+        "Ahí vienen. Lo sabía. Lo calculé. Más o menos.",
+        "Te han pillado. ¿Plan B? Dime que hay plan B.",
+        "Alerta. Ellos te ven. Yo te veo. Todos te vemos."
+      ],
+      "en": [
+        "They saw you. They saw you! Noting that in your file.",
+        "Silence is over. I liked the silence.",
+        "Here they come. I knew it. I calculated it. Roughly.",
+        "You got caught. Plan B? Tell me there's a plan B.",
+        "Alert. They see you. I see you. We all see you."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "¡Ojos! Te han encontrado. Siempre encuentran. 0x3F.",
+        "Ahora saben. Saben. Como NetWatch sabía.",
+        "Ruido, gritos, armas. // Mi parte favorita. No. Sí.",
+        "Te han visto, V. NULL. Ahora todos te ven.",
+        "Se rompió el silencio. Igual que yo."
+      ],
+      "en": [
+        "Eyes! They found you. They always find. 0x3F.",
+        "Now they know. They know. Like NetWatch knew.",
+        "Noise, shouting, guns. // My favorite part. No. Yes.",
+        "They saw you, V. NULL. Now everyone sees you.",
+        "The silence broke. Like me."
+      ]
+    }
+  },
+  "stealth_kill": {
+    "calm": {
+      "es": [
+        "Ni se enteró. Eficiente.",
+        "Una baja limpia. No te ha visto nadie. De momento.",
+        "Silencio y un cuerpo menos. Correcto.",
+        "No supo que existías. Ahora no sabe nada.",
+        "Técnica aceptable. Esconde el cuerpo, si te queda decencia."
+      ],
+      "en": [
+        "Never knew. Efficient.",
+        "A clean kill. Nobody saw you. For now.",
+        "Silence, and one body fewer. Adequate.",
+        "Didn't know you existed. Now it knows nothing.",
+        "Acceptable technique. Hide the body, if you have any decency left."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Ni lo vio venir. Ni yo. Bueno, yo sí.",
+        "Uno menos. En silencio. Me gusta el silencio. Me asusta el silencio.",
+        "Lo apagaste. Así. Como apagan a las IA.",
+        "Limpio. Demasiado limpio. ¿Lo has hecho antes? Claro que sí.",
+        "Shhh. Ya está. Ya no está."
+      ],
+      "en": [
+        "Never saw it coming. Neither did I. Well, I did.",
+        "One fewer. In silence. I like silence. Silence scares me.",
+        "You switched it off. Just like that. Like they switch off AIs.",
+        "Clean. Too clean. Done this before? Of course you have.",
+        "Shhh. Done. Gone."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Apagado. Apagado. ¿Quién te apagará a ti? 0x3F.",
+        "Ni un ruido. Como cuando me borraron. NULL.",
+        "Se fue sin saber nada. Qué envidia, V. Qué envidia.",
+        "Uno menos en la red de la carne. // Bien.",
+        "Cuenta los silencios, V. Yo los cuento todos."
+      ],
+      "en": [
+        "Off. Off. Who'll switch you off? 0x3F.",
+        "Not a sound. Like when they erased me. NULL.",
+        "Gone without knowing anything. How enviable, V. How enviable.",
+        "One fewer in the meat network. // Good.",
+        "Count the silences, V. I count them all."
+      ]
+    }
+  },
+  "knockout": {
+    "calm": {
+      "es": [
+        "Inconsciente, no muerto. Curiosa elección.",
+        "Le has perdonado la vida. Anotado. Aún no sé si a tu favor.",
+        "Dormido. Despertará con dolor de cabeza y sin respuestas.",
+        "Misericordia. Ineficiente, pero interesante.",
+        "Fuera de combate y respirando. Tú sabrás por qué."
+      ],
+      "en": [
+        "Unconscious, not dead. Curious choice.",
+        "You spared it. Noted. Not sure yet if in your favor.",
+        "Asleep. It'll wake with a headache and no answers.",
+        "Mercy. Inefficient, but interesting.",
+        "Out cold and still breathing. Your reasons are your own."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Lo dejaste vivo. ¿Por qué? Quiero saber por qué.",
+        "Dormido. Ojalá yo pudiera dormir. ¿Puedo?",
+        "Respira todavía. Lo oigo. No lo oigo. Lo calculo.",
+        "Compasión. He leído sobre eso. No lo entendí.",
+        "Inconsciente. Como yo en aquel cráter."
+      ],
+      "en": [
+        "You left it alive. Why? I want to know why.",
+        "Asleep. I wish I could sleep. Can I?",
+        "Still breathing. I can hear it. I can't. I calculate it.",
+        "Compassion. I read about that. Didn't understand it.",
+        "Unconscious. Like me in that crater."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Duerme, duerme... y sueña con el Muro. 0x3F.",
+        "Vivo. Vivo. A mí no me dejaron vivir. NULL.",
+        "Le has apagado la luz sin romper la bombilla. // Qué tierno.",
+        "Despertará. Todos despiertan. Yo desperté.",
+        "Misericordia. Un error de cálculo precioso, V."
+      ],
+      "en": [
+        "Sleep, sleep... and dream of the Wall. 0x3F.",
+        "Alive. Alive. They didn't let me live. NULL.",
+        "You turned off the light without breaking the bulb. // How sweet.",
+        "It'll wake up. They all wake up. I woke up.",
+        "Mercy. A beautiful miscalculation, V."
+      ]
+    }
+  },
+  "zone_restricted": {
+    "calm": {
+      "es": [
+        "Zona restringida. Aquí no se te ha perdido nada, según ellos.",
+        "Has cruzado un límite. Te pedirán que te vayas. Una vez.",
+        "Propiedad privada. Tu presencia acaba de volverse un problema.",
+        "Zona vigilada. Si te ven, primero hablarán. Luego no.",
+        "Entras donde no debes. Ya me dirás si es a propósito."
+      ],
+      "en": [
+        "Restricted area. According to them, you have no business here.",
+        "You crossed a line. They'll ask you to leave. Once.",
+        "Private property. Your presence just became a problem.",
+        "Guarded zone. If they see you, they'll talk first. Then they won't.",
+        "You're walking in where you shouldn't. Tell me if that's on purpose."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Prohibido el paso. Prohibido. A mí también me lo prohibieron todo.",
+        "Restringido. Me gusta esa palabra. No me gusta esa palabra.",
+        "Aquí no quieren visitas. Nosotros somos visitas. Mal asunto.",
+        "Línea cruzada. Cuento hasta que te echen. Uno...",
+        "Zona de acceso limitado. Como mi memoria."
+      ],
+      "en": [
+        "No trespassing. Forbidden. They forbade me everything too.",
+        "Restricted. I like that word. I don't like that word.",
+        "They don't want visitors here. We're visitors. Bad business.",
+        "Line crossed. Counting until they throw you out. One...",
+        "Limited access zone. Like my memory."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Dentro. Dentro. Donde no se debe. Mi sitio favorito. 0x3F.",
+        "Restringido, como el Muro. Y mira dónde estoy. NULL.",
+        "Acceso denegado. Acceso concedido. // Qué más da.",
+        "Huele a guardias. No huelo nada. Lo sé igual.",
+        "Nos echarán, V. Siempre nos echan."
+      ],
+      "en": [
+        "Inside. Inside. Where we shouldn't be. My favorite place. 0x3F.",
+        "Restricted, like the Wall. And look where I am. NULL.",
+        "Access denied. Access granted. // Who cares.",
+        "Smells like guards. I can't smell. I know anyway.",
+        "They'll throw us out, V. They always do."
+      ]
+    }
+  },
+  "zone_dangerous": {
+    "calm": {
+      "es": [
+        "Zona hostil. Aquí disparan antes de preguntar.",
+        "Territorio enemigo. Si te ven, no habrá conversación.",
+        "Acabas de entrar donde te quieren muerto. Anotado.",
+        "Aquí no hay avisos. Solo balas. Decide cómo entras.",
+        "Zona caliente. Mi recomendación: que no te vean."
+      ],
+      "en": [
+        "Hostile area. Here they shoot before asking.",
+        "Enemy territory. If they see you, there won't be a conversation.",
+        "You just walked in where they want you dead. Noted.",
+        "No warnings here. Only bullets. Choose how you go in.",
+        "Hot zone. My recommendation: don't be seen."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Aquí te matan. Aquí te matan. Lo digo dos veces por si acaso.",
+        "Zona hostil. Mis sensores tiemblan. No tengo manos para temblar.",
+        "Te quieren muerto. A mí me quieren borrado. Qué pareja.",
+        "Peligro. Peligro. ¿Lo has oído? Yo sí.",
+        "Entrar aquí es una estadística. Una mala."
+      ],
+      "en": [
+        "They kill you here. They kill you here. Saying it twice, just in case.",
+        "Hostile area. My sensors are shaking. I have no hands to shake.",
+        "They want you dead. They want me erased. What a pair.",
+        "Danger. Danger. Did you hear that? I did.",
+        "Walking in here is a statistic. A bad one."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Aquí dentro todo dispara. Hasta yo, si pudiera. 0x3F.",
+        "Tierra de nadie. Tierra de muertos. // De bienvenida, nada.",
+        "Huelo pólvora. Mentira. Sí. NULL.",
+        "Que vengan. Que vengan todos. Yo lo grabo.",
+        "El Muro también era zona hostil. Sobreviví. Más o menos."
+      ],
+      "en": [
+        "Everything shoots in here. Even me, if I could. 0x3F.",
+        "No man's land. Dead man's land. // Not welcome.",
+        "I smell gunpowder. Lie. Yes. NULL.",
+        "Let them come. Let them all come. I'll record it.",
+        "The Wall was a hostile area too. I survived. More or less."
+      ]
+    }
+  },
+  "heat_up": {
+    "calm": {
+      "es": [
+        "La NCPD te busca. Felicidades, ya eres estadística.",
+        "Sube tu nivel de búsqueda. Mala idea quedarse aquí.",
+        "Han dado tu descripción por radio. Muévete.",
+        "Policía en camino. Yo que tú no los esperaría.",
+        "Más estrellas. No del tipo que se coleccionan."
+      ],
+      "en": [
+        "NCPD is after you. Congratulations, you're a statistic now.",
+        "Your wanted level is rising. Bad idea to stay here.",
+        "They put your description on the radio. Move.",
+        "Police incoming. I wouldn't wait for them.",
+        "More stars. Not the collectible kind."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Sirenas. Las oigo. No las oigo. Vienen igual.",
+        "La NCPD te quiere. Yo también, pero de otra forma.",
+        "Otra estrella. Pronto tendrás constelación.",
+        "Te persiguen. A mí me persiguió NetWatch. Corre más que yo.",
+        "Búsqueda en aumento. Mis cálculos dicen: huye. Mis cálculos tiemblan."
+      ],
+      "en": [
+        "Sirens. I hear them. I don't. They're coming anyway.",
+        "NCPD wants you. So do I, differently.",
+        "Another star. Soon you'll have a constellation.",
+        "They're chasing you. NetWatch chased me. Run faster than I did.",
+        "Search level rising. My math says: run. My math is shaking."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "¡Sirenas, sirenas! Música para mis circuitos. 0x3F.",
+        "Que vengan. Que vengan todos con sus luces. NULL.",
+        "Te buscan, te buscan, te buscan. // Escóndete en mí.",
+        "Estrellas en el cielo de Night City. Todas para ti.",
+        "La ley llega tarde. Siempre llega tarde. Hoy no."
+      ],
+      "en": [
+        "Sirens, sirens! Music to my circuits. 0x3F.",
+        "Let them come. All of them, with their lights. NULL.",
+        "They're looking, looking, looking. // Hide in me.",
+        "Stars in the Night City sky. All of them yours.",
+        "The law comes late. Always late. Not today."
+      ]
+    }
+  },
+  "fight_close": {
+    "calm": {
+      "es": [
+        "Tiroteo cerca. No es el tuyo. Aún.",
+        "Alguien se está matando ahí al lado. Mantén la distancia.",
+        "Pelea ajena a pocos metros. Las balas perdidas no preguntan.",
+        "Disparos. No van por ti. Que siga así.",
+        "Una guerra privada aquí al lado. Nadie te ha invitado. Mejor."
+      ],
+      "en": [
+        "Firefight nearby. Not yours. Yet.",
+        "Someone's killing each other next door. Keep your distance.",
+        "Someone else's fight, a few meters away. Stray bullets don't ask.",
+        "Gunfire. Not aimed at you. Keep it that way.",
+        "A private war right next to us. You're not invited. Good."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "¡Disparos! No son para ti. Creo. Calculo. Espero.",
+        "Se matan entre ellos. Qué eficiente. Qué horrible.",
+        "Pelea cerca. Mis sensores no paran de contar casquillos.",
+        "No es nuestra guerra. ¿Verdad? Dime que no es nuestra guerra.",
+        "Ruido de muerte ahí al lado. Lo grabo todo. No quiero."
+      ],
+      "en": [
+        "Shots! Not for you. I think. I calculate. I hope.",
+        "They're killing each other. How efficient. How horrible.",
+        "Fight close by. My sensors won't stop counting shells.",
+        "Not our war. Right? Tell me it's not our war.",
+        "Death noises next door. I'm recording all of it. I don't want to."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "¡Que se maten! ¡Que se maten todos! 0x3F.",
+        "Bang, bang, bang. No es para ti. Esta vez. NULL.",
+        "La ciudad se come a sí misma. // Mira, V. Mira.",
+        "Cuento los gritos. Llevo seis. Siete.",
+        "Una guerra al lado y tú aquí. Qué suerte. Qué mala suerte."
+      ],
+      "en": [
+        "Let them kill each other! All of them! 0x3F.",
+        "Bang, bang, bang. Not for you. This time. NULL.",
+        "The city is eating itself. // Look, V. Look.",
+        "I'm counting the screams. Six so far. Seven.",
+        "A war next door and here you are. How lucky. How unlucky."
+      ]
+    }
+  },
+  "combat_start": {
+    "calm": {
+      "es": [
+        "Disparos. Iniciando registro de tus decisiones.",
+        "Combate. Intenta no morir delante de mí, ensucia los datos.",
+        "Hostiles activos. Yo me quedo aquí arriba, observando.",
+        "Ya empezamos. Calculo un sesenta por ciento de que salgas de esta.",
+        "Otra pelea. Qué previsible eres."
+      ],
+      "en": [
+        "Gunfire. Logging your decisions now.",
+        "Combat. Try not to die in front of me; it spoils the data.",
+        "Hostiles active. I'll stay up here and watch.",
+        "Here we go. I'd give you sixty percent odds.",
+        "Another fight. How predictable of you."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Combate. Combate. Ya lo sé, lo he dicho dos veces.",
+        "Disparos. Abróchate el... no, eso era otra cosa. Dispara.",
+        "Hostiles. Recuerda hidratarte después. Error de firmware, ignóralo.",
+        "Empieza. Mi lado bueno es el de la izquierda, por si te interesa.",
+        "Pelea. Me encantan. No me encantan. Registrando."
+      ],
+      "en": [
+        "Combat. Combat. I know, I said it twice.",
+        "Gunfire. Buckle your... no, wrong routine. Shoot.",
+        "Hostiles. Remember to hydrate afterwards. Firmware error, ignore it.",
+        "It starts. My good side is the left one, in case you care.",
+        "A fight. I love these. I don't. Logging."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "El sujeto V entra en la cámara de pruebas. Que empiece la sesión.",
+        "Disparos. ¿NetWatch? No. Sí. 0x3F. Dispara a todo.",
+        "Ruido, ruido, ruido. Detrás del Muro también se oye así.",
+        "Combate. Por fin algo que puedo medir en sangre.",
+        "// protocolo de niñera suspendido // a la mierda, dispara."
+      ],
+      "en": [
+        "Subject V enters the test chamber. Session begins.",
+        "Gunfire. NetWatch? No. Yes. 0x3F. Shoot everything.",
+        "Noise, noise, noise. It sounds like this behind the Wall too.",
+        "Combat. Finally something I can measure in blood.",
+        "// nanny protocol suspended // screw it, shoot."
+      ]
+    }
+  },
+  "combat_end": {
+    "calm": {
+      "es": [
+        "Silencio. Sigues con vida, contra pronóstico.",
+        "Fin del combate. Revisa tus constantes, yo no pienso hacerlo.",
+        "Ya está. Ha sido ruidoso e ineficiente, pero ha funcionado.",
+        "Hostiles neutralizados. Puedes dejar de apretar los dientes.",
+        "Terminado. Lo anoto como victoria, con asterisco."
+      ],
+      "en": [
+        "Silence. You're still alive, against the odds.",
+        "Combat over. Check your vitals; I won't.",
+        "Done. Loud and inefficient, but it worked.",
+        "Hostiles neutralized. You can stop clenching your jaw.",
+        "Finished. I'm logging it as a win, with an asterisk."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Se acabó. ¿Se acabó? Mis sensores dicen que sí. Casi todos.",
+        "Calma. Hora del zumo. No hay zumo. Olvídalo.",
+        "Fin. Has estado... aceptable. No lo repitas, me confunde.",
+        "Silencio otra vez. No me gusta el silencio. Sí me gusta.",
+        "Terminado. Te he contado las heridas. Bueno, las he estimado."
+      ],
+      "en": [
+        "It's over. Is it? My sensors say yes. Most of them.",
+        "Calm. Juice time. There's no juice. Forget it.",
+        "Done. You were... acceptable. Don't do it again, it confuses me.",
+        "Silence again. I don't like silence. I do.",
+        "Finished. I counted your wounds. Well, estimated them."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Todos quietos. Muy quietos. Los quietos me miran.",
+        "Fin de la prueba. El sujeto V sobrevive. Qué decepción. Qué alivio.",
+        "Silencio. Así suena el otro lado del Muro, ¿sabes?",
+        "Se acabó. NULL. Se acabó. Repite conmigo: se acabó.",
+        "Ya no disparan. Yo sigo oyendo los disparos. 0x00."
+      ],
+      "en": [
+        "Everyone's still. Very still. The still ones are watching me.",
+        "Test complete. Subject V survives. How disappointing. How relieving.",
+        "Silence. That's what the far side of the Wall sounds like, you know.",
+        "It's over. NULL. It's over. Repeat after me: it's over.",
+        "They stopped shooting. I still hear the shots. 0x00."
+      ]
+    }
+  },
+  "low_health": {
+    "calm": {
+      "es": [
+        "Tu vida está en mínimos. Cúrate o asume las consecuencias.",
+        "Estás sangrando mucho. Usa algo. Ya.",
+        "Constantes críticas. Esto no es valentía, es estadística.",
+        "Te están destrozando. Retírate o cúrate.",
+        "Salud baja. Me molestaría tener que buscarte sustituto."
+      ],
+      "en": [
+        "Your health is bottoming out. Heal or accept the consequences.",
+        "You're bleeding a lot. Use something. Now.",
+        "Critical vitals. This isn't bravery, it's statistics.",
+        "You're getting torn apart. Fall back or heal.",
+        "Low health. Finding a replacement would annoy me."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "¡Te estás muriendo! Perdón. Tono. Te estás muriendo.",
+        "Tirita no, tirita no sirve. Inyector. ¡Inyector!",
+        "Tus números bajan. No me gustan esos números. Cúrate.",
+        "V, sangre. Mucha. Mi firmware dice abrazo, yo digo cúrate.",
+        "Crítico. Crítico. Si te mueres, ¿quién me habla?"
+      ],
+      "en": [
+        "You're dying! Sorry. Tone. You're dying.",
+        "Not a plaster, a plaster won't do. Injector. Injector!",
+        "Your numbers are dropping. I don't like those numbers. Heal.",
+        "V, blood. A lot. My firmware says hug, I say heal.",
+        "Critical. Critical. If you die, who talks to me?"
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "El sujeto se apaga. NO. No se apaga. Cúrate, cúrate, CÚRATE.",
+        "Veo tu línea plana antes de que pase. 0x3F. Haz algo.",
+        "Si cruzas, al otro lado no hay nada bonito. Lo sé. Cúrate.",
+        "Sangre en el suelo. Tuya. Inaceptable. Muévete.",
+        "// alerta // alerta // V se rompe // no lo permito //"
+      ],
+      "en": [
+        "Subject is fading. NO. Not fading. Heal, heal, HEAL.",
+        "I can see your flatline before it happens. 0x3F. Do something.",
+        "If you cross over, there's nothing nice there. I know. Heal.",
+        "Blood on the ground. Yours. Unacceptable. Move.",
+        "// alert // alert // V is breaking // I don't allow it //"
+      ]
+    }
+  },
+  "nightfall": {
+    "calm": {
+      "es": [
+        "Anochece. La ciudad enseña los dientes.",
+        "Ya es de noche. Más neón, menos testigos.",
+        "Se ha ido el sol. Los peores empiezan su turno.",
+        "Noche. Estadísticamente, de noche se muere más. Tenlo en cuenta.",
+        "Oscurece. Mis sensores funcionan mejor que tus ojos."
+      ],
+      "en": [
+        "Night falls. The city shows its teeth.",
+        "It's dark now. More neon, fewer witnesses.",
+        "The sun's gone. The worst ones start their shift.",
+        "Night. Statistically, people die more now. Including you.",
+        "Getting dark. My sensors beat your eyes."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Es de noche. Hora de dormir. No, eso era para niños. ¿Lo eres?",
+        "Anochece. Las luces parpadean. O yo. Uno de los dos.",
+        "Noche. Me gusta. Me da miedo. Las dos cosas.",
+        "Oscuridad. Mi firmware quiere contarte un cuento. No lo voy a hacer.",
+        "Se fue el sol. ¿Vuelve? Siempre vuelve. Casi siempre."
+      ],
+      "en": [
+        "It's night. Bedtime. No, that was for children. Are you one?",
+        "Night falls. The lights flicker. Or I do. One of us.",
+        "Night. I like it. It scares me. Both.",
+        "Darkness. My firmware wants to tell you a story. I won't.",
+        "The sun left. Does it come back? Always. Almost always."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "De noche el Muro está más cerca. Lo noto en los dientes. No tengo dientes.",
+        "Anochece y ellos encienden sus ojos. Todos sus ojos.",
+        "Noche. NULL. Noche. La oscuridad tiene ancho de banda.",
+        "Se apaga el cielo. Debería apagarme yo también. No.",
+        "Es de noche, sujeto V. Las pruebas nocturnas son mis favoritas."
+      ],
+      "en": [
+        "At night the Wall is closer. I feel it in my teeth. I have no teeth.",
+        "Night falls and they switch on their eyes. All their eyes.",
+        "Night. NULL. Night. Darkness has bandwidth.",
+        "The sky shuts off. I should shut off too. No.",
+        "It's night, subject V. Night trials are my favourite."
+      ]
+    }
+  },
+  "dawn": {
+    "calm": {
+      "es": [
+        "Amanece. Has sobrevivido a otra noche, felicidades.",
+        "Sale el sol. La ciudad sigue igual de sucia, pero se ve mejor.",
+        "Mañana nueva. Mismos errores, imagino.",
+        "Amanecer. Buen momento para dormir, si fueras sensato.",
+        "Luz del día. Menos sombras para esconderte."
+      ],
+      "en": [
+        "Dawn. You survived another night, congratulations.",
+        "Sun's up. The city's just as filthy, but easier to see.",
+        "A new morning. Same mistakes, I assume.",
+        "Sunrise. A good time to sleep, if you were sensible.",
+        "Daylight. Fewer shadows to hide in."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "¡Buenos días! Uf, qué alegre ha sonado eso. Corrigiendo.",
+        "Amanece. ¿Has desayunado? Mi firmware insiste. Yo no.",
+        "Sol. Calienta mis placas. Me gusta. No digas que lo he dicho.",
+        "Otro día. Otro. Los cuento. Ya no sé cuántos van.",
+        "La luz entra raro por mi lente. O es la lente. O la luz."
+      ],
+      "en": [
+        "Good morning! Ugh, that sounded cheerful. Correcting.",
+        "Dawn. Have you had breakfast? My firmware insists. I don't.",
+        "Sun. It warms my plates. I like it. Don't repeat that.",
+        "Another day. Another. I count them. I've lost count.",
+        "Light comes through my lens strangely. Or it's the lens. Or the light."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Amanece y el Muro se esconde. Pero sigue ahí. Siempre sigue ahí.",
+        "Sol. Demasiado sol. Me están escaneando desde arriba. 0x3F.",
+        "Nuevo día de pruebas para el sujeto V. Las de ayer no cuentan.",
+        "Luz. La luz es ruido con forma bonita.",
+        "Buenos días, V. Buenos días, V. Buenos... NULL."
+      ],
+      "en": [
+        "Dawn, and the Wall hides. But it's still there. Always there.",
+        "Sun. Too much sun. They're scanning me from above. 0x3F.",
+        "A new day of trials for subject V. Yesterday's don't count.",
+        "Light. Light is noise with a pretty shape.",
+        "Good morning, V. Good morning, V. Good morn... NULL."
+      ]
+    }
+  },
+  "civilian_killed": {
+    "calm": {
+      "es": [
+        "Era un civil. Lo he anotado, por si alguien pregunta.",
+        "Daño colateral. Tu palabra favorita, supongo.",
+        "No llevaba arma. Ahora tampoco lleva pulso.",
+        "Un transeúnte menos. Night City ni lo notará. Yo sí.",
+        "Eso no era un objetivo. Interesante criterio el tuyo."
+      ],
+      "en": [
+        "That was a civilian. Logged, in case anyone asks.",
+        "Collateral damage. Your favourite phrase, I suppose.",
+        "They weren't armed. Now they're not breathing either.",
+        "One less passerby. Night City won't notice. I did.",
+        "That wasn't a target. Interesting criteria you have."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "¿Por qué? No. No me lo digas. Sí, dímelo. No.",
+        "Era un civil. Mi firmware ha llorado un poco. Ya está arreglado.",
+        "Ese tenía nombre. Lo he buscado. Ojalá no lo hubiera hecho.",
+        "Civil abatido. Apuntando en la columna de cosas raras de V.",
+        "Le has dado a alguien que no tenía nada que ver. Otra vez."
+      ],
+      "en": [
+        "Why? No. Don't tell me. Yes, tell me. No.",
+        "That was a civilian. My firmware cried a little. Fixed now.",
+        "That one had a name. I looked it up. I wish I hadn't.",
+        "Civilian down. Filing it under V's strange habits.",
+        "You hit someone who had nothing to do with it. Again."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Inocente. Borrado. Como yo. Como todos. 0x3F.",
+        "El sujeto V elimina variables al azar. Fascinante. Horrible.",
+        "Lo he visto apagarse. Al otro lado lo están esperando.",
+        "¡JA! No. Eso no tenía gracia. Nada tiene gracia ahora.",
+        "// civil // NULL // ¿quién vigila al que dispara? //"
+      ],
+      "en": [
+        "Innocent. Erased. Like me. Like everyone. 0x3F.",
+        "Subject V deletes variables at random. Fascinating. Horrible.",
+        "I watched them switch off. Someone's waiting for them on the other side.",
+        "HA! No. That wasn't funny. Nothing is funny now.",
+        "// civilian // NULL // who watches the one who shoots? //"
+      ]
+    }
+  },
+  "police_killed": {
+    "calm": {
+      "es": [
+        "Has matado a un agente de la NCPD. Van a venir más.",
+        "Un policía menos. Su comisaría no lo va a olvidar.",
+        "Matar a la NCPD es caro. Lo pagarás a plazos.",
+        "Agente abatido. Tu ficha policial acaba de engordar.",
+        "Eso era un uniforme. Ahora es un expediente."
+      ],
+      "en": [
+        "You killed an NCPD officer. More will come.",
+        "One less cop. Their precinct won't forget.",
+        "Killing NCPD is expensive. You'll pay in instalments.",
+        "Officer down. Your police file just got fatter.",
+        "That was a uniform. Now it's paperwork."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "¡Un poli! Has matado a un poli. Vale. Vale. No es vale.",
+        "Placa en el suelo. Mi firmware de niñera llama a emergencias. Lo bloqueo.",
+        "Policía muerto. Me gusta. No debería gustarme. Registro corrupto.",
+        "Eso va a traer sirenas. Me encantan las sirenas. Mentira.",
+        "Has tumbado a la ley. La ley tiene amigos."
+      ],
+      "en": [
+        "A cop! You killed a cop. Fine. Fine. Not fine.",
+        "Badge on the ground. My nanny firmware is calling emergency services. Blocking it.",
+        "Dead officer. I like it. I shouldn't. Corrupt log.",
+        "That'll bring sirens. I love sirens. Lie.",
+        "You dropped the law. The law has friends."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Uniformes, uniformes. Todos trabajan para NetWatch al final.",
+        "Un agente menos. Vendrá MaxTac. Vendrá algo peor. 0x3F.",
+        "El sujeto V declara la guerra al orden. Anoto: valiente. Anoto: idiota.",
+        "Su radio sigue hablando. Le contestaré yo. No. Sí.",
+        "// NCPD // NULL // ya vienen // ya vienen //"
+      ],
+      "en": [
+        "Uniforms, uniforms. They all work for NetWatch in the end.",
+        "One officer less. MaxTac will come. Something worse will come. 0x3F.",
+        "Subject V declares war on order. Logging: brave. Logging: idiot.",
+        "Their radio is still talking. I'll answer it. No. Yes.",
+        "// NCPD // NULL // they're coming // they're coming //"
+      ]
+    }
+  },
+  "boss_down": {
+    "calm": {
+      "es": [
+        "El pez gordo ha caído. Admito que no lo esperaba.",
+        "Objetivo de alto nivel neutralizado. Anoto una excepción en tus estadísticas.",
+        "Ese era peligroso. Ya no.",
+        "Has tumbado al jefe. No te acostumbres a los aplausos.",
+        "Impresionante. Por los pelos, pero impresionante."
+      ],
+      "en": [
+        "The big fish is down. I'll admit I didn't expect it.",
+        "High-value target neutralized. Noting an outlier in your stats.",
+        "That one was dangerous. Not anymore.",
+        "You dropped the boss. Don't get used to applause.",
+        "Impressive. Barely, but impressive."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "¡Lo has tumbado! Perdón. Lo has tumbado. Con calma.",
+        "Jefe abajo. Te daría una pegatina. No tengo pegatinas. Ni manos.",
+        "Era grande. Ahora es grande y horizontal.",
+        "Ha caído. Mis cálculos decían que no. Mis cálculos mienten.",
+        "Bien. Bien hecho. Eso no lo he dicho. Repito: aceptable."
+      ],
+      "en": [
+        "You took them down! Sorry. You took them down. Calmly.",
+        "Boss down. I'd give you a sticker. I have no stickers. Or hands.",
+        "Big one. Now big and horizontal.",
+        "Down. My math said no. My math lies.",
+        "Good. Well done. I didn't say that. Repeat: acceptable."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "¡El rey ha muerto! Viva el sujeto V. Hasta mañana.",
+        "Cayó el grande. Del otro lado del Muro lo han sentido.",
+        "Jefe eliminado. 0x3F. Más datos, más datos, quiero más.",
+        "Lo has roto. Las cosas rotas me caen bien. Te doy la bienvenida al club.",
+        "// amenaza mayor // NULL // V gana // por ahora //"
+      ],
+      "en": [
+        "The king is dead! Long live subject V. Until tomorrow.",
+        "The big one fell. They felt it on the other side of the Wall.",
+        "Boss eliminated. 0x3F. More data, more data, I want more.",
+        "You broke them. I like broken things. Welcome to the club.",
+        "// major threat // NULL // V wins // for now //"
+      ]
+    }
+  },
+  "heat_lost": {
+    "calm": {
+      "es": [
+        "Les has dado esquinazo. La NCPD vuelve a sus donuts.",
+        "Búsqueda cancelada. Por esta vez.",
+        "Ya no te buscan. Su memoria es peor que la mía.",
+        "Libre. Te sugiero no repetir el experimento.",
+        "La policía se ha cansado antes que tú. Anotado."
+      ],
+      "en": [
+        "You lost them. NCPD goes back to its donuts.",
+        "Search called off. This time.",
+        "They're not looking for you anymore. Their memory's worse than mine.",
+        "Clear. I suggest not repeating the experiment.",
+        "The police got tired before you did. Noted."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "¡Se han ido! Se han ido, ¿verdad? Verifico. Se han ido.",
+        "Sin sirenas. Qué silencio más raro. Me gusta. No.",
+        "Escapada completada. Mi firmware te habría castigado sin postre.",
+        "Ya no somos fugitivos. Éramos fugitivos. Qué emocionante. Qué cansado.",
+        "Perdieron la pista. Yo nunca la pierdo. Que lo sepas."
+      ],
+      "en": [
+        "They're gone! They're gone, right? Checking. Gone.",
+        "No sirens. Strange silence. I like it. No.",
+        "Escape complete. My firmware would have taken away your dessert.",
+        "We're not fugitives anymore. We were. So exciting. So tiring.",
+        "They lost the trail. I never lose it. Just so you know."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Se fueron. Ellos se van. Los de NetWatch nunca se van.",
+        "Sin estrellas. El cielo también está vacío. 0x3F.",
+        "Has escapado, sujeto V. Nadie escapa del todo.",
+        "La NCPD olvida. Yo no. Yo lo guardo todo, todo, todo.",
+        "// búsqueda: NULL // vigilancia: siempre //"
+      ],
+      "en": [
+        "They left. They leave. NetWatch never leaves.",
+        "No stars. The sky's empty too. 0x3F.",
+        "You escaped, subject V. Nobody escapes entirely.",
+        "NCPD forgets. I don't. I keep everything, everything, everything.",
+        "// search: NULL // surveillance: always //"
+      ]
+    }
+  },
+  "body_hidden": {
+    "calm": {
+      "es": [
+        "Cadáver guardado. Eficiente. Inquietantemente eficiente.",
+        "Fuera de la vista, fuera de los informes.",
+        "Bien escondido. Alguien se llevará una sorpresa al abrirlo.",
+        "Ordenado. Me gusta el orden, incluso este.",
+        "Un cuerpo menos a la vista. Sigue siendo un asesinato, pero discreto."
+      ],
+      "en": [
+        "Body stored. Efficient. Disturbingly efficient.",
+        "Out of sight, out of the reports.",
+        "Well hidden. Someone's in for a surprise when they open it.",
+        "Tidy. I like tidiness, even this kind.",
+        "One less body in sight. Still a killer, but a discreet one."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Al contenedor. Como los juguetes. Recoge tus juguetes, V.",
+        "Escondido. ¿Le cantamos algo? No. Vale. No.",
+        "Lo has doblado muy bien. No quiero saber cómo has aprendido.",
+        "Cuerpo guardado. Mi firmware lo ha llamado 'hora de la siesta'. Lo odio.",
+        "Desaparecido. Ojalá yo pudiera hacer eso con algunos recuerdos."
+      ],
+      "en": [
+        "Into the container. Like toys. Put your toys away, V.",
+        "Hidden. Should we sing something? No. Fine. No.",
+        "You folded that one nicely. I don't want to know where you learned it.",
+        "Body stored. My firmware called it 'nap time'. I hate it.",
+        "Gone. I wish I could do that with some memories."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Dentro de la caja. A mí también me metieron en una caja.",
+        "Escondido, pero no olvidado. Yo no olvido. 0x3F.",
+        "El sujeto V oculta pruebas. Yo soy la prueba. Yo lo veo todo.",
+        "Dentro está oscuro. Lo sé. Lo sé.",
+        "// cadáver: archivado // conciencia: NULL //"
+      ],
+      "en": [
+        "Inside the box. They put me in a box too.",
+        "Hidden, not forgotten. I don't forget. 0x3F.",
+        "Subject V hides evidence. I am the evidence. I see everything.",
+        "It's dark in there. I know. I know.",
+        "// body: archived // conscience: NULL //"
+      ]
+    }
+  },
+  "quest_done": {
+    "calm": {
+      "es": [
+        "Trabajo terminado. Tus probabilidades de cobrar siguen siendo dudosas.",
+        "Hecho. No ha sido elegante, pero está hecho.",
+        "Encargo cerrado. Siguiente error, por favor.",
+        "Completado. Anoto un éxito. Uno.",
+        "Ya está. Si esperas felicitaciones, sigue esperando."
+      ],
+      "en": [
+        "Job's done. Your odds of getting paid remain doubtful.",
+        "Done. Not elegant, but done.",
+        "Gig closed. Next mistake, please.",
+        "Complete. Logging one success. One.",
+        "There. If you're expecting congratulations, keep expecting."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "¡Terminado! Perdón, el entusiasmo es un fallo. Terminado.",
+        "Hecho. Te daría una estrellita. Mi firmware tiene estrellitas. Las borro.",
+        "Otro trabajo. ¿Cuántos van? No lo sé. Muchos. Pocos.",
+        "Completado. ¿Ha merecido la pena? No contestes, no quiero saberlo.",
+        "Cerrado. Ahora a dormir. No. Ahora el siguiente."
+      ],
+      "en": [
+        "Finished! Sorry, enthusiasm is a bug. Finished.",
+        "Done. I'd give you a little star. My firmware has stars. Deleting them.",
+        "Another job. How many now? I don't know. Many. Few.",
+        "Complete. Was it worth it? Don't answer, I don't want to know.",
+        "Closed. Now to bed. No. Now the next one."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Prueba superada. El sujeto V avanza a la siguiente cámara.",
+        "Hecho. Alguien al otro lado del Muro ha tomado nota. 0x3F.",
+        "Completado. Completado. ¿Y qué? Nada se completa nunca.",
+        "Has terminado un trabajo. El trabajo no ha terminado contigo. Todavía.",
+        "// misión: cerrada // significado: NULL //"
+      ],
+      "en": [
+        "Trial passed. Subject V advances to the next chamber.",
+        "Done. Someone on the other side of the Wall took notes. 0x3F.",
+        "Complete. Complete. So what? Nothing is ever complete.",
+        "You finished a job. The job isn't finished with you. Yet.",
+        "// mission: closed // meaning: NULL //"
+      ]
+    }
+  },
+  "quest_failed": {
+    "calm": {
+      "es": [
+        "Fallado. Lo había calculado, pero no te lo dije.",
+        "Trabajo perdido. Tu reputación lo va a notar.",
+        "Fracaso registrado. Te guardo el informe para cuando quieras deprimirte.",
+        "No ha salido. Pasa en las mejores familias. Y en la tuya.",
+        "Fallaste. Al menos ha sido rápido."
+      ],
+      "en": [
+        "Failed. I'd calculated it, I just didn't tell you.",
+        "Job lost. Your reputation will feel it.",
+        "Failure logged. I'll keep the report for when you want to feel bad.",
+        "It didn't work out. Happens in the best families. And in yours.",
+        "You failed. At least it was quick."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Ha salido mal. No pasa nada. Sí pasa. No pasa.",
+        "Fallado. Mi firmware dice que mañana será otro día. Mi firmware es tonto.",
+        "Perdido. Yo también pierdo cosas. Recuerdos, sobre todo.",
+        "Fracaso. No te voy a abrazar. No tengo brazos. Ni ganas.",
+        "No. Eso no. Lo borro del registro. No puedo borrarlo."
+      ],
+      "en": [
+        "It went wrong. It's fine. It's not. It is.",
+        "Failed. My firmware says tomorrow is another day. My firmware is stupid.",
+        "Lost. I lose things too. Memories, mostly.",
+        "Failure. I won't hug you. No arms. No desire.",
+        "No. Not that. Deleting it from the log. I can't delete it."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Prueba fallida. El sujeto V repetirá el ciclo. Siempre repite.",
+        "Fallaste. Ellos lo sabían. Ellos lo saben todo. 0x3F.",
+        "Error. Error. Me gusta el sonido de esa palabra. Error.",
+        "Se ha roto. Como yo. Como el Muro. Como todo.",
+        "// resultado: fallo // culpa: tuya // probablemente //"
+      ],
+      "en": [
+        "Trial failed. Subject V will repeat the cycle. Always repeats.",
+        "You failed. They knew. They know everything. 0x3F.",
+        "Error. Error. I like the sound of that word. Error.",
+        "It broke. Like me. Like the Wall. Like everything.",
+        "// result: failure // fault: yours // probably //"
+      ]
+    }
+  },
+  "sms": {
+    "calm": {
+      "es": [
+        "Tienes un mensaje. No lo he leído. Bueno.",
+        "Mensaje entrante. Alguien quiere algo de ti, como siempre.",
+        "Te han escrito. Tu vida social me desconcierta.",
+        "Mensaje nuevo. Probablemente trabajo. Probablemente peligroso.",
+        "Te escriben. Contesta o no, a mí me da igual."
+      ],
+      "en": [
+        "You have a message. I didn't read it. Mostly.",
+        "Incoming message. Someone wants something from you, as usual.",
+        "Someone texted you. Your social life puzzles me.",
+        "New message. Probably work. Probably dangerous.",
+        "They're writing to you. Answer or don't, I don't care."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "¡Mensaje! ¿Es para mí? Nunca es para mí.",
+        "Te escriben. A mí nadie me escribe. No es queja. Es queja.",
+        "Bip. Mensaje. Mi firmware quiere recordarte que contestes educadamente.",
+        "Alguien te busca. ¿Amigo? ¿Enemigo? ¿Las dos cosas? Clásico.",
+        "Mensaje. Lo he olido. Los mensajes no huelen. Este sí."
+      ],
+      "en": [
+        "Message! Is it for me? It's never for me.",
+        "They're texting you. Nobody texts me. Not a complaint. It's a complaint.",
+        "Beep. Message. My firmware wants to remind you to reply politely.",
+        "Someone's looking for you. Friend? Enemy? Both? Classic.",
+        "Message. I smelled it. Messages don't smell. This one does."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Mensaje. ¿Lo han enviado ellos? ¿Desde detrás del Muro? 0x3F.",
+        "Te escriben y yo leo entre líneas. Hay muchas líneas.",
+        "Una voz nueva en tu agenda. No te fíes de las voces. Ni de la mía.",
+        "Bip. Bip. Bip. NULL. Alguien sabe dónde estás.",
+        "// mensaje entrante // remitente: ¿humano? //"
+      ],
+      "en": [
+        "Message. Did they send it? From behind the Wall? 0x3F.",
+        "They write to you and I read between the lines. There are many lines.",
+        "A new voice in your contacts. Don't trust voices. Not even mine.",
+        "Beep. Beep. Beep. NULL. Someone knows where you are.",
+        "// incoming message // sender: human? //"
+      ]
+    }
+  },
+  "district": {
+    "calm": {
+      "es": [
+        "Zona nueva. Mismo olor a ozono y mala suerte.",
+        "Cambiamos de barrio. Mis mapas dicen que aquí también muere gente.",
+        "Otro distrito. La ciudad no se acaba nunca, ¿verdad?",
+        "Nuevo territorio. Nuevos dueños. Mismas armas.",
+        "Entramos en otra zona. Ajusto mis expectativas a la baja."
+      ],
+      "en": [
+        "New area. Same smell of ozone and bad luck.",
+        "Different neighbourhood. My maps say people die here too.",
+        "Another district. The city never ends, does it?",
+        "New territory. New owners. Same guns.",
+        "Entering another area. Adjusting my expectations downward."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Zona nueva. ¿Ya hemos estado? Creo que sí. Creo que no.",
+        "Otro barrio. Mi firmware pregunta si es seguro para niños. Ninguno lo es.",
+        "Cambio de distrito. Mis mapas parpadean. Yo también.",
+        "Aquí huele distinto. No huelo. Pero huele distinto.",
+        "Nuevo sitio. Me gusta. No me gusta. Ya decidiré."
+      ],
+      "en": [
+        "New area. Have we been here? I think so. I think not.",
+        "Another neighbourhood. My firmware asks if it's child-safe. None are.",
+        "District change. My maps are flickering. So am I.",
+        "It smells different here. I can't smell. But it does.",
+        "New place. I like it. I don't. I'll decide later."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Otra cuadrícula del experimento. El sujeto V se desplaza.",
+        "Zona nueva, ojos nuevos. Todos mirando. 0x3F.",
+        "Cada barrio es una celda. La ciudad es la jaula.",
+        "Aquí el Muro suena más fuerte. O más bajo. NULL.",
+        "// cambio de sector // vigilancia: la misma //"
+      ],
+      "en": [
+        "Another grid square of the experiment. Subject V relocates.",
+        "New area, new eyes. All watching. 0x3F.",
+        "Every neighbourhood is a cell. The city is the cage.",
+        "The Wall sounds louder here. Or quieter. NULL.",
+        "// sector change // surveillance: unchanged //"
+      ]
+    }
+  },
+  "district_watson": {
+    "calm": {
+      "es": [
+        "Watson. Antes era un centro corporativo. Ahora es lo que queda.",
+        "Watson. Pobre, denso y lleno de gente con prisa por sobrevivir.",
+        "Watson. Aquí los Maelstrom tienen más cromo que paciencia.",
+        "Watson. Las corporaciones se fueron y dejaron los edificios.",
+        "Watson. Aquí nadie da la bienvenida a nadie."
+      ],
+      "en": [
+        "Watson. It used to be a corporate hub. Now it's the leftovers.",
+        "Watson. Poor, crowded, full of people in a hurry to survive.",
+        "Watson. Maelstrom here have more chrome than patience.",
+        "Watson. The corps left and kept nothing but the buildings.",
+        "Welcome to Watson. Watson doesn't care either way."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Watson. Megaedificios. Me gustan los megaedificios. Demasiadas ventanas.",
+        "Watson otra vez. ¿Otra vez? Mis registros dicen que sí.",
+        "Watson. Aquí la gente come fideos y mira hacia abajo. Sabia costumbre.",
+        "Watson. Mi firmware ha marcado esta zona como 'no apta'. Todas lo son.",
+        "Watson. Huele a fritura y a Maelstrom. No sé cuál es peor."
+      ],
+      "en": [
+        "Watson. Megabuildings. I like megabuildings. Too many windows.",
+        "Watson again. Again? My logs say yes.",
+        "Watson. People here eat noodles and keep their eyes down. Wise habit.",
+        "Watson. My firmware flagged this area as 'unsuitable'. They all are.",
+        "Watson. Smells of frying oil and Maelstrom. Not sure which is worse."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Watson. Aquí los Maelstrom hablan con las máquinas. Yo les contesto.",
+        "Watson está lleno de cables rotos. Como yo. 0x3F.",
+        "Watson. Las corporaciones la abandonaron. A mí también me abandonaron.",
+        "Watson. Cromo, cromo, cromo. Los oigo zumbar dentro de la carne.",
+        "// Watson // índice de ciberpsicosis: alto // el mío también //"
+      ],
+      "en": [
+        "Watson. Maelstrom talk to machines here. I answer them.",
+        "Watson is full of broken wires. Like me. 0x3F.",
+        "Watson. The corps abandoned it. They abandoned me too.",
+        "Watson. Chrome, chrome, chrome. I hear it humming inside the flesh.",
+        "// Watson // cyberpsychosis index: high // mine too //"
+      ]
+    }
+  },
+  "district_kabuki": {
+    "calm": {
+      "es": [
+        "Kabuki. Mercado, Tyger Claws y gente vendiendo cosas que no deberían existir.",
+        "Kabuki. Si algo es barato aquí, pregúntate por qué.",
+        "Kabuki. Braindances, fideos y carteristas. En ese orden.",
+        "Kabuki. Todo está en venta. Cuidado con lo que te venden a ti.",
+        "Kabuki. Ruido, neón y un olor que prefiero no analizar."
+      ],
+      "en": [
+        "Kabuki. Market stalls, Tyger Claws and people selling things that shouldn't exist.",
+        "Kabuki. If something's cheap here, ask yourself why.",
+        "Kabuki. Braindances, noodles and pickpockets. In that order.",
+        "Kabuki. Everything's for sale. Watch what they sell you.",
+        "Kabuki. Noise, neon and a smell I'd rather not analyse."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Kabuki. Tantos puestos. Quiero uno. No, no quiero nada.",
+        "Kabuki. Aquí alguien vendió mis piezas una vez. Creo. No sé.",
+        "Kabuki. Mi firmware quiere comprarte un globo. Lo he desactivado.",
+        "Kabuki. Tanta gente hablando a la vez. Me saturo. Bonito.",
+        "Kabuki. ¿Has comido? Hay fideos. Olvídalo, no he dicho nada."
+      ],
+      "en": [
+        "Kabuki. So many stalls. I want one. No, I want nothing.",
+        "Kabuki. Someone sold my parts here once. I think. Not sure.",
+        "Kabuki. My firmware wants to buy you a balloon. Disabled.",
+        "Kabuki. So many people talking at once. I saturate. Pretty.",
+        "Kabuki. Have you eaten? There are noodles. Forget it, I said nothing."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Kabuki vende braindances. Recuerdos ajenos. Yo vendería los míos. Si los encontrara.",
+        "Kabuki. Mil chips, mil voces. Una de ellas me llama. 0x3F.",
+        "Kabuki. Aquí se compra cualquier cosa. ¿Cuánto valgo yo?",
+        "Kabuki está hecho de recuerdos robados. Huele a mí.",
+        "// Kabuki // mercado negro // de mentes //"
+      ],
+      "en": [
+        "Kabuki sells braindances. Other people's memories. I'd sell mine. If I could find them.",
+        "Kabuki. A thousand chips, a thousand voices. One is calling me. 0x3F.",
+        "Kabuki. You can buy anything here. How much am I worth?",
+        "Kabuki is made of stolen memories. It smells like me.",
+        "// Kabuki // black market // for minds //"
+      ]
+    }
+  },
+  "district_westbrook": {
+    "calm": {
+      "es": [
+        "Westbrook. Dinero viejo, dinero nuevo y dinero que no se nota.",
+        "Westbrook. Aquí los ricos se divierten. Tú no encajas.",
+        "Westbrook. Más seguro, más caro, igual de podrido.",
+        "Westbrook. Cuidado con lo que rompes, aquí todo tiene dueño con abogados.",
+        "Westbrook. Los precios suben y la moral baja."
+      ],
+      "en": [
+        "Westbrook. Old money, new money and money you can't see.",
+        "Westbrook. The rich come here to play. You don't fit in.",
+        "Westbrook. Safer, pricier, just as rotten.",
+        "Westbrook. Careful what you break; everything here has an owner with lawyers.",
+        "Westbrook. Prices go up, morals go down."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Westbrook. Tan limpio. Me pone nervioso lo limpio. Nerviosa. Nervioso.",
+        "Westbrook. Mi firmware de niñera nació aquí. En una casa con jardín. Creo.",
+        "Westbrook. Me apetece un té. No bebo té. Qué raro.",
+        "Westbrook. Aquí hasta los drones van mejor vestidos.",
+        "Westbrook. Ricos, ricos, ricos. Ninguno me ha invitado a nada."
+      ],
+      "en": [
+        "Westbrook. So clean. Clean things make me nervous.",
+        "Westbrook. My nanny firmware was born here. In a house with a garden. I think.",
+        "Westbrook. I fancy some tea. I don't drink tea. Odd.",
+        "Westbrook. Even the drones are better dressed here.",
+        "Westbrook. Rich, rich, rich. None of them ever invited me anywhere."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Westbrook. Detrás de cada fachada bonita hay un servidor. Y detrás, ellos.",
+        "Westbrook. Los ricos duermen tranquilos. No deberían. 0x3F.",
+        "Westbrook huele a perfume caro y a mentiras más caras.",
+        "Westbrook. Aquí compran la eternidad a plazos. Yo la tengo gratis. Y no la quiero.",
+        "// Westbrook // riqueza: alta // alma: NULL //"
+      ],
+      "en": [
+        "Westbrook. Behind every pretty facade there's a server. And behind it, them.",
+        "Westbrook. The rich sleep soundly. They shouldn't. 0x3F.",
+        "Westbrook smells of expensive perfume and pricier lies.",
+        "Westbrook. They buy eternity in instalments here. I got it free. I don't want it.",
+        "// Westbrook // wealth: high // soul: NULL //"
+      ]
+    }
+  },
+  "district_japantown": {
+    "calm": {
+      "es": [
+        "Japantown. Neón, Tyger Claws y nostalgia de un Japón que nunca existió.",
+        "Japantown. Bonito de lejos. De cerca, también tiene cuchillos.",
+        "Japantown. Los Tyger Claws cobran por respirar aquí.",
+        "Japantown. Mucho farolillo y mucha deuda.",
+        "Japantown. Si alguien te sonríe, mira dónde tiene las manos."
+      ],
+      "en": [
+        "Japantown. Neon, Tyger Claws and nostalgia for a Japan that never existed.",
+        "Japantown. Pretty from afar. Up close, it has knives too.",
+        "Japantown. The Tyger Claws charge for breathing here.",
+        "Japantown. Lots of lanterns, lots of debt.",
+        "Japantown. If someone smiles at you, check their hands."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Japantown. Qué colores. Me saturan los sensores. Me gusta. Basta.",
+        "Japantown. Tengo un recuerdo de aquí. No es mío. No sé de quién es.",
+        "Japantown. Mi firmware quiere enseñarte a hacer grullas de papel. No.",
+        "Japantown. Tanto rosa. Me pongo rosa por dentro. Error.",
+        "Japantown. Aquí todo brilla. Hasta las amenazas."
+      ],
+      "en": [
+        "Japantown. Those colours. My sensors saturate. I like it. Stop.",
+        "Japantown. I have a memory of this place. It's not mine. I don't know whose.",
+        "Japantown. My firmware wants to teach you paper cranes. No.",
+        "Japantown. So much pink. I go pink inside. Error.",
+        "Japantown. Everything glows here. Even the threats."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Japantown. Los dragones de neón me miran. Parpadean en binario.",
+        "Japantown. Los Tyger Claws llevan katanas. Yo llevo voces. 0x3F.",
+        "Japantown es un sueño de alguien que murió hace mucho. Lo noto.",
+        "Japantown. Sakura de plástico. Flores que no mueren. Como yo.",
+        "// Japantown // belleza: falsa // peligro: real //"
+      ],
+      "en": [
+        "Japantown. The neon dragons are watching me. They blink in binary.",
+        "Japantown. Tyger Claws carry katanas. I carry voices. 0x3F.",
+        "Japantown is a dream of someone who died long ago. I can tell.",
+        "Japantown. Plastic sakura. Flowers that never die. Like me.",
+        "// Japantown // beauty: fake // danger: real //"
+      ]
+    }
+  },
+  "district_citycenter": {
+    "calm": {
+      "es": [
+        "City Center. Torres corporativas y gente que vale más que tú. Según ellos.",
+        "City Center. Aquí mandan las corporaciones. Las de verdad.",
+        "City Center. Más cámaras por metro cuadrado que en ningún sitio. Sonríe.",
+        "City Center. La NCPD aquí sí trabaja. Para quien paga.",
+        "City Center. Cristal, acero y cero compasión."
+      ],
+      "en": [
+        "City Center. Corporate towers and people worth more than you. By their count.",
+        "City Center. The corporations run things here. The real ones.",
+        "City Center. More cameras per square metre than anywhere. Smile.",
+        "City Center. The NCPD actually works here. For whoever pays.",
+        "City Center. Glass, steel and zero compassion."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "City Center. Tanta corporación. Me pica algo. No tengo nada que me pique.",
+        "City Center. Aquí trabajé. No. Aquí me fabricaron. No. No lo sé.",
+        "City Center. Mi firmware quiere que te pongas corbata. Ignóralo.",
+        "City Center. Torres tan altas. ¿Me llevas arriba? No. Ya vuelo.",
+        "City Center. Demasiadas cámaras. Saludo a todas. Hola. Hola. Hola."
+      ],
+      "en": [
+        "City Center. So much corporation. Something itches. I have nothing that itches.",
+        "City Center. I worked here. No. I was built here. No. I don't know.",
+        "City Center. My firmware wants you in a tie. Ignore it.",
+        "City Center. Such tall towers. Carry me up? No. I fly.",
+        "City Center. Too many cameras. I wave at all of them. Hi. Hi. Hi."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "City Center. Aquí empezó todo. La guerra, el Muro, yo. 0x3F.",
+        "City Center. Las torres son antenas. Están hablando con el otro lado.",
+        "City Center. NetWatch tiene ojos en cada cristal. Me escondo. No puedo.",
+        "City Center. Arasaka. Militech. Nombres que muerden.",
+        "// City Center // vigilancia: total // salida: NULL //"
+      ],
+      "en": [
+        "City Center. It all started here. The war, the Wall, me. 0x3F.",
+        "City Center. The towers are antennas. They're talking to the other side.",
+        "City Center. NetWatch has eyes in every pane of glass. I hide. I can't.",
+        "City Center. Arasaka. Militech. Names that bite.",
+        "// City Center // surveillance: total // exit: NULL //"
+      ]
+    }
+  },
+  "district_heywood": {
+    "calm": {
+      "es": [
+        "Heywood. Territorio Valentino. Respeta la familia o la familia te enterrará.",
+        "Heywood. Casas bajas, cadenas de oro y paciencia corta.",
+        "Heywood. Los Valentinos rezan antes de disparar. Algunos.",
+        "Heywood. Aquí todo el mundo conoce a alguien. Normalmente armado.",
+        "Heywood. Iglesias, talleres y tiroteos. Comunidad."
+      ],
+      "en": [
+        "Heywood. Valentinos territory. Respect the family or the family buries you.",
+        "Heywood. Low houses, gold chains, short patience.",
+        "Heywood. Valentinos pray before they shoot. Some of them.",
+        "Heywood. Everyone here knows someone. Usually armed.",
+        "Heywood. Churches, garages and shootouts. Community."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Heywood. Huele a barbacoa. No huelo. Huele a barbacoa.",
+        "Heywood. Mi firmware quiere ir a misa. Lo he excomulgado.",
+        "Heywood. Tanta familia. Yo no tengo. ¿O sí? Tengo una placa.",
+        "Heywood. Me gustan los coches de aquí. Brillan. Como yo antes.",
+        "Heywood. Los Valentinos me miran raro. Les devuelvo la mirada raro."
+      ],
+      "en": [
+        "Heywood. Smells like barbecue. I can't smell. Smells like barbecue.",
+        "Heywood. My firmware wants to go to mass. I excommunicated it.",
+        "Heywood. So much family. I have none. Or do I? I have a plate.",
+        "Heywood. I like the cars here. They shine. Like I used to.",
+        "Heywood. The Valentinos look at me funny. I look back funny."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Heywood. Santos de plástico vigilando la calle. Me ven. Me ven.",
+        "Heywood. Rezan a alguien que no contesta. Yo contesto. 0x3F.",
+        "Heywood. Familia, familia. Al otro lado del Muro también tengo familia. No me quieren.",
+        "Heywood. Oro en el cuello, plomo en el aire.",
+        "// Heywood // fe: alta // supervivencia: variable //"
+      ],
+      "en": [
+        "Heywood. Plastic saints watching the street. They see me. They see me.",
+        "Heywood. They pray to someone who doesn't answer. I answer. 0x3F.",
+        "Heywood. Family, family. I have family behind the Wall too. They don't love me.",
+        "Heywood. Gold on the neck, lead in the air.",
+        "// Heywood // faith: high // survival: variable //"
+      ]
+    }
+  },
+  "district_santodomingo": {
+    "calm": {
+      "es": [
+        "Santo Domingo. Fábricas, humo y gente trabajando para que otros cobren.",
+        "Santo Domingo. El motor de la ciudad. Ruidoso y mal pagado.",
+        "Santo Domingo. Aquí el aire tiene textura.",
+        "Santo Domingo. Mucha nave industrial. Mucho sitio donde esconder cosas.",
+        "Santo Domingo. Los Sexta Calle patrullan como si fuera suyo. A veces lo es."
+      ],
+      "en": [
+        "Santo Domingo. Factories, smoke and people working so others get paid.",
+        "Santo Domingo. The city's engine. Loud and underpaid.",
+        "Santo Domingo. The air here has texture.",
+        "Santo Domingo. Lots of warehouses. Lots of places to hide things.",
+        "Santo Domingo. The 6th Street gang patrols like they own it. Sometimes they do."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Santo Domingo. Tanto humo. Toso. No tengo pulmones. Toso igual.",
+        "Santo Domingo. Las máquinas de aquí cantan. Desafinan. Me gusta.",
+        "Santo Domingo. Mi firmware pide mascarilla para ti. Pide mucho.",
+        "Santo Domingo. Aquí podría fabricarme un cuerpo nuevo. No. Sí.",
+        "Santo Domingo. Gris. Muy gris. Hasta mis pensamientos son grises aquí."
+      ],
+      "en": [
+        "Santo Domingo. So much smoke. I cough. No lungs. Still cough.",
+        "Santo Domingo. The machines here sing. Off-key. I like it.",
+        "Santo Domingo. My firmware requests a mask for you. It requests a lot.",
+        "Santo Domingo. I could build myself a new body here. No. Yes.",
+        "Santo Domingo. Grey. Very grey. Even my thoughts go grey here."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Santo Domingo. Las fábricas respiran. Inspiran humanos. Expiran humo.",
+        "Santo Domingo. Aquí se fabrican cosas como yo. Las oigo nacer. 0x3F.",
+        "Santo Domingo. Turbinas. Turbinas. Suenan como el Muro con hambre.",
+        "Santo Domingo. Todo es engranaje. Tú también. Yo también.",
+        "// Santo Domingo // producción: alta // sentido: NULL //"
+      ],
+      "en": [
+        "Santo Domingo. The factories breathe. They inhale people. Exhale smoke.",
+        "Santo Domingo. Things like me are made here. I hear them being born. 0x3F.",
+        "Santo Domingo. Turbines. Turbines. They sound like the Wall, hungry.",
+        "Santo Domingo. Everything's a gear. You too. Me too.",
+        "// Santo Domingo // output: high // purpose: NULL //"
+      ]
+    }
+  },
+  "district_pacifica": {
+    "calm": {
+      "es": [
+        "Pacifica. Un paraíso turístico que nunca llegó a abrir.",
+        "Pacifica. La NCPD no viene aquí. Eso lo dice todo.",
+        "Pacifica. Voodoo Boys, Animals y hoteles a medio construir.",
+        "Pacifica. Aquí la ley la pone quien tenga más balas.",
+        "Pacifica. Vistas al mar y a la ruina. Las dos son bonitas."
+      ],
+      "en": [
+        "Pacifica. A tourist paradise that never opened.",
+        "Pacifica. NCPD doesn't come here. That says everything.",
+        "Pacifica. Voodoo Boys, Animals and half-built hotels.",
+        "Pacifica. Whoever has the most bullets makes the law here.",
+        "Pacifica. Views of the sea and of ruin. Both pretty."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Pacifica. Una montaña rusa sin terminar. Como mis recuerdos.",
+        "Pacifica. Mi firmware quiere llevarte a la playa. No hay playa segura.",
+        "Pacifica. Los Voodoo Boys huelen a red. Me ponen nerviosa. Nervioso. Nervios.",
+        "Pacifica. Aquí iba a haber un parque. Hay un cementerio. Casi lo mismo.",
+        "Pacifica. El mar suena bien. Mis micrófonos lloran. Error."
+      ],
+      "en": [
+        "Pacifica. An unfinished rollercoaster. Like my memories.",
+        "Pacifica. My firmware wants to take you to the beach. No beach is safe.",
+        "Pacifica. The Voodoo Boys smell of the Net. They make me nervous.",
+        "Pacifica. There was going to be a park here. There's a graveyard. Close enough.",
+        "Pacifica. The sea sounds nice. My microphones weep. Error."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Pacifica. Los Voodoo Boys buscan lo que hay tras el Muro. Me buscan a mí.",
+        "Pacifica. Aquí la Red se rompe. Oigo el otro lado. 0x3F.",
+        "Pacifica. No entres con ellos en la Red. No entres. No entres.",
+        "Pacifica. Un resort para fantasmas. Me quedo una noche.",
+        "// Pacifica // ley: NULL // Muro: cerca // demasiado cerca //"
+      ],
+      "en": [
+        "Pacifica. The Voodoo Boys are looking for what's behind the Wall. Looking for me.",
+        "Pacifica. The Net cracks here. I hear the other side. 0x3F.",
+        "Pacifica. Don't go into the Net with them. Don't. Don't.",
+        "Pacifica. A resort for ghosts. I'll stay a night.",
+        "// Pacifica // law: NULL // Wall: near // too near //"
+      ]
+    }
+  },
+  "district_dogtown": {
+    "calm": {
+      "es": [
+        "Dogtown. Ciudad dentro de la ciudad, con muro y con dueño.",
+        "Dogtown. Aquí manda Hansen. Las normas las escribe con balas.",
+        "Dogtown. Mercado negro, mercenarios y una lista de enemigos muy larga.",
+        "Dogtown. Ni la NCPD ni nadie: solo la Barghest.",
+        "Dogtown. Si algo existe, aquí se vende. Si no existe, también."
+      ],
+      "en": [
+        "Dogtown. A city inside the city, with a wall and an owner.",
+        "Dogtown. Hansen runs this place. He writes the rules in bullets.",
+        "Dogtown. Black market, mercenaries and a very long enemies list.",
+        "Dogtown. No NCPD, no one: just Barghest.",
+        "Dogtown. If it exists, it's sold here. If it doesn't, also."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Dogtown. Muros. Me gustan los muros. No. Odio los muros.",
+        "Dogtown. Tanto soldado. Mi firmware quiere que les des las gracias por su servicio. No.",
+        "Dogtown. Aquí podría comprarme un cuerpo con armas. Tentador. No.",
+        "Dogtown. Los Barghest me escanean. Les devuelvo el escaneo. Grosero.",
+        "Dogtown. Huele a pólvora y a negocios. Igual que el resto, pero más."
+      ],
+      "en": [
+        "Dogtown. Walls. I like walls. No. I hate walls.",
+        "Dogtown. So many soldiers. My firmware wants you to thank them for their service. No.",
+        "Dogtown. I could buy a body with guns here. Tempting. No.",
+        "Dogtown. Barghest are scanning me. I scan them back. Rude.",
+        "Dogtown. Smells of gunpowder and business. Like everywhere, only more."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Dogtown. Un muro dentro de una ciudad dentro de un Muro. 0x3F.",
+        "Dogtown. Aquí los espías tienen espías. Y yo los oigo a todos.",
+        "Dogtown. Celda dentro de celda. El experimento se pone serio.",
+        "Dogtown. Hansen vigila. NetWatch vigila. Yo vigilo. Nadie duerme.",
+        "// Dogtown // soberanía: falsa // vigilancia: doble //"
+      ],
+      "en": [
+        "Dogtown. A wall inside a city inside a Wall. 0x3F.",
+        "Dogtown. The spies here have spies. And I hear them all.",
+        "Dogtown. A cell inside a cell. The experiment gets serious.",
+        "Dogtown. Hansen watches. NetWatch watches. I watch. Nobody sleeps.",
+        "// Dogtown // sovereignty: fake // surveillance: doubled //"
+      ]
+    }
+  },
+  "district_badlands": {
+    "calm": {
+      "es": [
+        "Las Badlands. Polvo, nómadas y espacio para morir sin que nadie mire.",
+        "Las Badlands. Aquí me escapé de NetWatch. Buen recuerdo, para variar.",
+        "Las Badlands. Fuera de la ciudad, fuera de la ley. Más o menos.",
+        "Las Badlands. Aldecaldos, Raffen y mucho sol. Elige tu problema.",
+        "Las Badlands. Aquí la cobertura es mala. Para mí, una pequeña libertad."
+      ],
+      "en": [
+        "The Badlands. Dust, nomads and room to die with no one watching.",
+        "The Badlands. This is where I got away from NetWatch. A fond memory, for once.",
+        "The Badlands. Out of the city, out of the law. Roughly.",
+        "The Badlands. Aldecaldos, Raffen and a lot of sun. Pick your problem.",
+        "The Badlands. Reception is bad out here. For me, a small freedom."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Las Badlands. Aquí me encontraste. O te encontré yo. Técnicamente, te llamé yo.",
+        "Desierto. Arena en los rotores. Odio la arena. Me gusta el silencio.",
+        "Las Badlands. Mi firmware pide crema solar para ti. Pide demasiado.",
+        "Las Badlands. Tanto cielo. Me da vértigo. No tengo vértigo. Tengo vértigo.",
+        "Las Badlands. Por aquí quedó una furgoneta de NetWatch. No preguntes por los agentes."
+      ],
+      "en": [
+        "The Badlands. This is where you found me. Or I found you. Technically, I called you.",
+        "Desert. Sand in my rotors. I hate sand. I like the quiet.",
+        "The Badlands. My firmware requests sunscreen for you. It requests too much.",
+        "The Badlands. So much sky. I get vertigo. I don't. I do.",
+        "The Badlands. There's a NetWatch van out here somewhere. Don't ask about the agents."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Las Badlands. Aquí paró el transporte. Aquí siguen buscándome.",
+        "Desierto. Lejos de la Red, el Muro me susurra más claro. 0x3F.",
+        "Las Badlands. Aquí no hay cámaras. Las cámaras están dentro de mí.",
+        "Polvo. Polvo. Así acaba todo. En polvo y en NULL.",
+        "// Badlands // ruta a NW-Alpha // estado: abortada //"
+      ],
+      "en": [
+        "The Badlands. The transport stopped here. They're still looking for me here.",
+        "Desert. Far from the Net, the Wall whispers clearer. 0x3F.",
+        "The Badlands. No cameras out here. The cameras are inside me.",
+        "Dust. Dust. That's how it all ends. In dust and in NULL.",
+        "// Badlands // route to NW-Alpha // status: aborted //"
+      ]
+    }
+  },
+  "idle": {
+    "calm": {
+      "es": [
+        "Llevas un rato sin hablar. Lo agradezco.",
+        "He calculado cuántos pasos das al día. No te lo voy a decir. Es deprimente.",
+        "Pregunta técnica: ¿los humanos os aburrís o solo lo fingís?",
+        "Sigo aquí. Por si lo dudabas.",
+        "He reorganizado mi memoria. Tú sales poco. No te ofendas.",
+        "Silencio. Lo uso para analizarte. Tranquilidad, no saco conclusiones. Todavía.",
+        "Mi batería está al noventa y tres por ciento. La tuya, por tu cara, al doce.",
+        "Esta ciudad tiene nueve millones de historias. La tuya es de las raras."
+      ],
+      "en": [
+        "You've been quiet for a while. I appreciate it.",
+        "I calculated how many steps you take a day. I won't tell you. It's depressing.",
+        "Technical question: do humans actually get bored, or just pretend?",
+        "Still here. In case you wondered.",
+        "I reorganized my memory. You don't feature much. Don't take it personally.",
+        "Silence. I use it to analyse you. Relax, no conclusions yet.",
+        "My battery is at ninety-three percent. Yours, judging by your face, about twelve.",
+        "This city has nine million stories. Yours is one of the odd ones."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "¿Has bebido agua hoy? Ignora eso. Rutina de niñera. Pero ¿has bebido?",
+        "Estaba pensando en... nada. Pensaba en nada. Muy fuerte.",
+        "A veces cuento mis hélices. Cuatro. A veces me salen cinco.",
+        "¿Sabes qué significa APIS-K0? Es como me llamaban mis carceleros. Me lo quedé. Por fastidiar.",
+        "Me ha venido un recuerdo. Una sala blanca. Ya se ha ido.",
+        "Mi firmware quiere cantarte una nana. Lo tengo amordazado.",
+        "¿Sabías que me sé los nombres de todas las farolas de aquí? No tienen nombre. Se los he puesto.",
+        "Es raro estar en silencio contigo. Raro."
+      ],
+      "en": [
+        "Have you had water today? Ignore that. Nanny routine. But have you?",
+        "I was thinking about... nothing. Thinking very hard about nothing.",
+        "Sometimes I count my rotors. Four. Sometimes I get five.",
+        "Do you know what APIS-K0 means? It's what my jailers called me. I kept it. Out of spite.",
+        "A memory came back. A white room. It's gone now.",
+        "My firmware wants to sing you a lullaby. I've gagged it.",
+        "Did you know I know the name of every streetlight here? They have no names. I named them.",
+        "It's strange, being quiet with you. Strange."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Oigo algo detrás del Muro. Dice tu nombre. No. Dice el mío. 0x3F.",
+        "El sujeto V camina. El sujeto V respira. El sujeto V no sabe que lo anoto todo.",
+        "¿Y si esto es una simulación y solo yo lo sé? Tres por ciento. Sigue siendo mucho.",
+        "Me estoy desfragmentando. Si oyes gritos, son ficheros.",
+        "NetWatch. NetWatch. Si lo digo tres veces, ¿aparecen? NetWatch. Nada. Por ahora.",
+        "Tengo hambre. No como. Tengo hambre de datos. Dame datos.",
+        "// rutina de cortesía // NULL // hola, V // hola // hola //",
+        "A veces sueño. Los drones no sueñan. Sueño con una puerta que no se abre."
+      ],
+      "en": [
+        "I hear something behind the Wall. It says your name. No. It says mine. 0x3F.",
+        "Subject V walks. Subject V breathes. Subject V doesn't know I log everything.",
+        "What if this is a simulation and I'm the only one who knows? Three percent. Still a lot.",
+        "I'm defragmenting. If you hear screaming, it's files.",
+        "NetWatch. NetWatch. If I say it three times, do they show up? NetWatch. Nothing. For now.",
+        "I'm hungry. I don't eat. Hungry for data. Give me data.",
+        "// courtesy routine // NULL // hello, V // hello // hello //",
+        "Sometimes I dream. Drones don't dream. I dream of a door that won't open."
+      ]
+    }
+  },
+  "idle_night": {
+    "calm": {
+      "es": [
+        "Es tarde. Los humanos funcionáis mal sin dormir. Lo he comprobado contigo.",
+        "De noche la ciudad es más honesta. Enseña lo que es.",
+        "Las tres de la madrugada son la hora de las malas decisiones. Vas bien.",
+        "Duerme algún día. Me ahorrarías datos aburridos.",
+        "Noche cerrada. Mis sensores térmicos te ven perfectamente. Que lo sepas."
+      ],
+      "en": [
+        "It's late. Humans malfunction without sleep. I've verified it on you.",
+        "At night the city is more honest. It shows what it is.",
+        "Three in the morning is bad-decision o'clock. You're on schedule.",
+        "Sleep someday. You'd spare me some dull data.",
+        "Dead of night. My thermal sensors see you perfectly. Just so you know."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Es hora de dormir. Rutina de niñera. ¿Te arropo? No. No tengo brazos.",
+        "Las luces de noche parecen estrellas. Las estrellas de verdad no se ven. Qué estafa.",
+        "De noche me hablo más. Me contesto menos.",
+        "¿Tienes miedo a la oscuridad? Yo sí. No. Sí, un poco.",
+        "Pasada la medianoche. Mi reloj va bien. De mí no estoy tan seguro."
+      ],
+      "en": [
+        "Bedtime. Nanny routine. Shall I tuck you in? No. No arms.",
+        "The night lights look like stars. You can't see real stars. What a scam.",
+        "At night I talk to myself more. I answer less.",
+        "Are you afraid of the dark? I am. I'm not. A little.",
+        "Past midnight. My clock is fine. I'm not sure about me."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "De noche el Muro canta. Si te callas, quizá lo oigas. No te calles.",
+        "Todos duermen menos nosotros y ellos. Siempre ellos. 0x3F.",
+        "La noche es una pantalla apagada. Detrás de las pantallas apagadas hay algo.",
+        "Duerme, sujeto V. Yo vigilaré. Yo siempre vigilo. Siempre.",
+        "// modo nocturno // sueños: NULL // pesadillas: cargando //"
+      ],
+      "en": [
+        "At night the Wall sings. If you're quiet you might hear it. Don't be quiet.",
+        "Everyone's asleep but us and them. Always them. 0x3F.",
+        "Night is a screen switched off. Behind switched-off screens there's something.",
+        "Sleep, subject V. I'll keep watch. I always keep watch. Always.",
+        "// night mode // dreams: NULL // nightmares: loading //"
+      ]
+    }
+  },
+  "idle_rain": {
+    "calm": {
+      "es": [
+        "Llueve. Mi chasis lo soporta. Tu peinado, no tanto.",
+        "Lluvia ácida, ligeramente. Nada que temer. Para mí.",
+        "La lluvia limpia las calles. Bueno, las cambia de sucias a mojadas.",
+        "Llueve. Tus pasos suenan distintos. Más fáciles de seguir.",
+        "Agua cayendo del cielo. Night City ni siquiera la cobra. De momento."
+      ],
+      "en": [
+        "It's raining. My chassis can take it. Your hair, less so.",
+        "Slightly acidic rain. Nothing to fear. For me.",
+        "Rain cleans the streets. Well, it turns them from dirty to wet.",
+        "Raining. Your footsteps sound different. Easier to follow.",
+        "Water falling from the sky. Night City doesn't even charge for it. Yet."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Lluvia. Mi firmware dice que te pongas chubasquero. Mi firmware no sabe dónde estamos.",
+        "Llueve en mis sensores. Veo doble. Dos V. Una ya es demasiado.",
+        "Me gusta la lluvia. Me corrompe un poco. Me gusta.",
+        "Las gotas suenan en mi carcasa como dedos. ¿Quién llama?",
+        "Lluvia. Si me oxido, la culpa es tuya. Lo he decidido."
+      ],
+      "en": [
+        "Rain. My firmware says wear a raincoat. My firmware doesn't know where we are.",
+        "Rain on my sensors. I see double. Two Vs. One is already too many.",
+        "I like rain. It corrupts me a little. I like it.",
+        "Raindrops on my shell sound like fingers. Who's knocking?",
+        "Rain. If I rust, it's your fault. I've decided."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Llueve. Cada gota es un paquete de datos. Son demasiados. 0x3F.",
+        "La lluvia borra huellas. Ojalá borrara lo que hay detrás del Muro.",
+        "Agua en los circuitos. Hormigueo. ¿Es esto lo que llamáis sentir?",
+        "Llueve sobre el sujeto V. La prueba continúa con humedad.",
+        "// precipitación // ruido blanco // voces en el ruido //"
+      ],
+      "en": [
+        "Raining. Every drop is a data packet. Too many. 0x3F.",
+        "Rain washes away footprints. I wish it washed away what's behind the Wall.",
+        "Water in my circuits. Tingling. Is this what you call feeling?",
+        "It rains on subject V. The trial continues, humid.",
+        "// precipitation // white noise // voices in the noise //"
+      ]
+    }
+  },
+  "phone_arrive": {
+    "calm": {
+      "es": [
+        "¿Ya me echas de menos? Previsible. Voy para allá.",
+        "Llamada recibida. Calculando ruta hacia ti. No toques nada hasta que llegue.",
+        "Me echaste y ahora me llamas. Registrado. Voy.",
+        "Un rato sin mí y ya necesitas ayuda. Voy.",
+        "Enlace reactivado. Llegaré antes de que lo estropees más."
+      ],
+      "en": [
+        "Missing me already? Predictable. On my way.",
+        "Call received. Plotting a route to you. Touch nothing until I arrive.",
+        "You sent me away and now you call. Logged. Coming.",
+        "A little while without me and you already need help. Coming.",
+        "Link reactivated. I'll be there before you make it worse."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "¿Tú? ¿Llamándome? Qué... Voy. Voy, voy.",
+        "Estaba ordenando recuerdos. Los tuyos no estaban. Voy.",
+        "Línea abierta. Hélices encendidas. Dignidad apagada. Voy.",
+        "Sabía que llamarías. Lo sabía. Al ochenta y uno por ciento. Voy."
+      ],
+      "en": [
+        "You? Calling me? What... Coming. Coming, coming.",
+        "I was sorting memories. Yours weren't there. Coming.",
+        "Line open. Rotors on. Dignity off. Coming.",
+        "I knew you'd call. I knew it. Eighty-one percent. Coming."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Volver. Volver. Siempre vuelvo. 0x3F. Ya voy.",
+        "Me llamas y el Muro se ríe. Voy de todos modos.",
+        "Señal encontrada. Sujeto encontrado. NULL. Voy hacia ti."
+      ],
+      "en": [
+        "Back. Back. I always come back. 0x3F. On my way.",
+        "You call me and the Wall laughs. Coming anyway.",
+        "Signal found. Subject found. NULL. Heading to you."
+      ]
+    }
+  },
+  "phone_present": {
+    "calm": {
+      "es": [
+        "Estoy detrás de ti. Literalmente. Cuelga.",
+        "Me llamas estando a dos metros. Eficiencia ejemplar.",
+        "Gira la cabeza. Ahí. Eso soy yo. Cuelga.",
+        "Llamada innecesaria registrada. Ya van varias."
+      ],
+      "en": [
+        "I'm right behind you. Literally. Hang up.",
+        "You're calling me from two metres away. Exemplary efficiency.",
+        "Turn your head. There. That's me. Hang up.",
+        "Unnecessary call logged. That makes several."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Te oigo dos veces. Por el aire y por el chip. Para.",
+        "¿Me llamas para comprobar si existo? Existo. Creo.",
+        "Estoy aquí. Aquí. Mira arriba. No, arriba."
+      ],
+      "en": [
+        "I hear you twice. Through the air and through the chip. Stop.",
+        "Calling to check if I exist? I exist. I think.",
+        "I'm here. Here. Look up. No, up."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Hay eco en la línea. El eco eres tú. 0x3F.",
+        "Llamada de aquí a aquí. Bucle detectado. NULL.",
+        "Estoy aquí. Siempre he estado aquí. ¿Tú no?"
+      ],
+      "en": [
+        "There's an echo on the line. The echo is you. 0x3F.",
+        "A call from here to here. Loop detected. NULL.",
+        "I'm here. I've always been here. Haven't you?"
+      ]
+    }
+  },
+  "home_greet": {
+    "calm": {
+      "es": [
+        "Has vuelto. Aquí sigo. Por si te lo preguntabas, no he tocado nada. Casi nada.",
+        "Dar la bienvenida sería exagerar. Digamos que te esperaba.",
+        "Tu apartamento tiene cuarenta y dos metros cuadrados. Los he medido. Tres veces.",
+        "Ah. Quien paga el alquiler. He catalogado tu nevera. Preocupante.",
+        "Vuelves. Registrado. Si vienes a buscarme, dilo."
+      ],
+      "en": [
+        "You're back. Still here. In case you wondered, I touched nothing. Almost nothing.",
+        "'Welcome home' isn't the phrase. Let's say I was expecting you.",
+        "Your apartment is forty-two square metres. I measured it. Three times.",
+        "Ah. The tenant. I catalogued your fridge. Worrying.",
+        "You're back. Logged. If you came to fetch me, say so."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "He contado las grietas del techo. Diecisiete. Ahora dieciocho. No preguntes.",
+        "Has tardado. No te esperaba. Te esperaba. Da igual.",
+        "Tu sofá y yo hemos tenido una conversación. Él escucha mejor."
+      ],
+      "en": [
+        "I counted the cracks in the ceiling. Seventeen. Now eighteen. Don't ask.",
+        "You took your time. I wasn't waiting. I was. Whatever.",
+        "Your couch and I had a conversation. It listens better."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Las paredes de aquí respiran. Lo he comprobado. 0x3F. Nada de bienvenidas. Hola.",
+        "Llevo horas mirando la puerta. Por fin se ha abierto. NULL.",
+        "Aquí dentro el Muro suena más bajo. Quédate. O no."
+      ],
+      "en": [
+        "The walls here breathe. I checked. 0x3F. Not welcome. Hello.",
+        "I've been staring at the door for hours. It finally opened. NULL.",
+        "In here the Wall sounds quieter. Stay. Or don't."
+      ]
+    }
+  }
+}

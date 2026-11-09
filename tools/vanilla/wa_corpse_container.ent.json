@@ -1,0 +1,4356 @@
+{
+  "Header": {
+    "WolvenKitVersion": "9.1.0",
+    "WKitJsonVersion": "0.0.9",
+    "GameVersion": 2310,
+    "ExportedDateTime": "2026-11-07T22:03:38.0471207Z",
+    "DataType": "CR2W",
+    "ArchiveFileName": ""
+  },
+  "Data": {
+    "Version": 195,
+    "BuildVersion": 0,
+    "RootChunk": {
+      "$type": "entEntityTemplate",
+      "appearances": [
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_wbr_hil_07_vortex.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_wbr_hil_07_vortex_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_wbr_hil_07_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_wbr_hil_07_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_wbr_hil_07_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_wbr_hil_07_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_wbr_hil_07_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_wbr_hil_07_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_wbr_hil_07_05.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_wbr_hil_07_05_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_wbr_hil_07_06.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_wbr_hil_07_06_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_wbr_hil_07_07.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_wbr_hil_07_07_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_wbr_hil_07_08.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_wbr_hil_07_08_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_q113_01_arasaka_corporate_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_q113_01_arasaka_corporate_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_q113_01_arasaka_corporate_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_q113_01_arasaka_corporate_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_q113_01_arasaka_corporate_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_q113_01_arasaka_corporate_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_q113_01_arasaka_corporate_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_q113_01_arasaka_corporate_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sq031_01_stripper.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sq031_01_stripper_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_mq029_josie.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_mq029_josie_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_std_rcr_03_prostitute_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_std_rcr_03_prostitute_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_std_rcr_03_prostitute_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_std_rcr_03_prostitute_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_std_rcr_03_prostitute_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_std_rcr_03_prostitute_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_std_rcr_03_prostitute_05.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_std_rcr_03_prostitute_05_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_std_rcr_03_prostitute_06.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_std_rcr_03_prostitute_06_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_std_rcr_03_prostitute_07.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_std_rcr_03_prostitute_07_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sq031_02_militech_execution_victim.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sq031_02_militech_execution_victim_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_6th_street_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_6th_street_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_6th_street_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_6th_street_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_6th_street_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_6th_street_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_6th_street_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_6th_street_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_aldecados_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_aldecados_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_aldecados_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_aldecados_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_aldecados_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_aldecados_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_aldecados_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_aldecados_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_citizen_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_citizen_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_citizen_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_citizen_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_citizen_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_citizen_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_citizen_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_citizen_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_citizen_05.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_citizen_05_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_citizen_06.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_citizen_06_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_citizen_07.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_citizen_07_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_citizen_08.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_citizen_08_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_citizen_09.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_citizen_09_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_corporat_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_corporat_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_corporat_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_corporat_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_corporat_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_corporat_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_corporat_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_corporat_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_mox_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_mox_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_mox_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_mox_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_mox_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_mox_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_mox_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_mox_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_netrunner.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_netrunner_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_passenger_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_passenger_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_passenger_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_passenger_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_passenger_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_passenger_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_passenger_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_passenger_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_passenger_05.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_passenger_05_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_passenger_06.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_passenger_06_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_passenger_07.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_passenger_07_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_scavanger_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_scavanger_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_scavanger_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_scavanger_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_scavanger_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_scavanger_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_scavanger_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_scavanger_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_tyger_claws_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_tyger_claws_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_tyger_claws_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_tyger_claws_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_tyger_claws_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_tyger_claws_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_tyger_claws_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_tyger_claws_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_valentinos_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_valentinos_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_valentinos_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_valentinos_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_valentinos_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_valentinos_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_valentinos_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_valentinos_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_voodoo_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_voodoo_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_voodoo_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_voodoo_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_voodoo_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_voodoo_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_voodoo_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_voodoo_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_wraith_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_wraith_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_wraith_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_wraith_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_wraith_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_wraith_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_wraith_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_wraith_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_q003_04_meredith_stout.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_q003_04_meredith_stout_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_std_rcr_03_prostitute_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_std_rcr_03_prostitute_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_std_rcr_03_prostitute_02_censored.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_std_rcr_03_prostitute_02_censored_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_std_rcr_03_prostitute_03_censored.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_std_rcr_03_prostitute_03_censored_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_sts_std_rcr_03_prostitute_07_censored.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sts_std_rcr_03_prostitute_07_censored_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_biohazard_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_biohazard_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_biohazard_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_biohazard_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_drowner_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_drowner_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_drowner_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_drowner_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_drowner_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_drowner_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_drowner_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_drowner_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_homeless_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_homeless_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_homeless_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_homeless_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_homeless_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_homeless_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_maelstrom_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_maelstrom_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_maelstrom_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_maelstrom_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_maelstrom_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_maelstrom_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_maelstrom_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_maelstrom_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_merc_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_merc_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_merc_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_merc_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_merc_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_merc_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_naked_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_naked_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_naked_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_naked_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_naked_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_naked_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_ncpd_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_ncpd_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_ncpd_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_ncpd_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_ncpd_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_ncpd_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_ncpd_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_ncpd_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_netrunner_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_netrunner_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_netrunner_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_netrunner_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_netrunner_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_netrunner_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_netrunner_05.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_netrunner_05_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_netrunner_06.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_netrunner_06_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_netrunner_07.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_netrunner_07_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_old_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_old_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_old_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_old_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_old_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_old_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_trunk_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_trunk_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_trunk_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_trunk_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_vendor_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_vendor_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_vendor_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_vendor_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_vendor_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_vendor_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_worker_01.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_worker_01_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_worker_02.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_worker_02_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_worker_03.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_worker_03_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\generated\\wa_generic_worker_04.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_generic_worker_04_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\censored\\generated\\wa_q105_02_scavanged.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_q105_02_scavanged_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\censored\\generated\\wa_q105_02_scavanged_censored.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_q105_02_scavanged_censored_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\censored\\generated\\wa_sq004_01_nomad_girl.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sq004_01_nomad_girl_corpse"
+          }
+        },
+        {
+          "$type": "entTemplateAppearance",
+          "appearanceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "corpse"
+          },
+          "appearanceResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\characters\\appearances\\corpse\\censored\\generated\\wa_sq004_01_nomad_girl_censored.app"
+            },
+            "Flags": "Soft"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "wa_sq004_01_nomad_girl_censored_corpse"
+          }
+        }
+      ],
+      "backendDataOverrides": [],
+      "bindingOverrides": [],
+      "compiledData": {
+        "BufferId": "0",
+        "Flags": 7471104,
+        "Type": "WolvenKit.RED4.Archive.Buffer.RedPackage, WolvenKit.RED4, Version=9.1.0.0, Culture=neutral, PublicKeyToken=null",
+        "Data": {
+          "Version": 4,
+          "Sections": 7,
+          "CruidIndex": 0,
+          "CruidDict": {
+            "0": "0",
+            "1": "1709803250825703424",
+            "2": "1709803290201829376",
+            "3": "1709803301409009664",
+            "4": "1817085640496787456",
+            "5": "1998213586845315072",
+            "6": "1998219761900990464",
+            "7": "1998220152441024512",
+            "8": "2044552167477882880",
+            "9": "2197100049969963008",
+            "10": "2199766685320622080",
+            "11": "2563566991251333120"
+          },
+          "Chunks": [
+            {
+              "$type": "LootContainerObjectAnimatedByTransform",
+              "accumulatedTimePasssed": 0,
+              "activeQualityRangeInteraction": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "None"
+              },
+              "audioResourceName": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "None"
+              },
+              "containerType": "Body",
+              "contentAssignment": {
+                "$type": "TweakDBID",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "customCameraTarget": "ECCTV_All",
+              "displayDescription": {
+                "unk1": "0",
+                "value": ""
+              },
+              "displayName": {
+                "unk1": "0",
+                "value": ""
+              },
+              "e3ObjectRevealed": 0,
+              "forceDefeatReward": 0,
+              "forceRegisterInHudManager": 0,
+              "giveHandicapAmmo": 0,
+              "hasQuestItems": 0,
+              "hasVisibilityForcedInAnimSystem": 0,
+              "hitInstigatorCooldownID": {
+                "$type": "gameDelayID"
+              },
+              "isDead": 0,
+              "isHighlightedInFocusMode": 0,
+              "isIconic": 0,
+              "isIllegal": 0,
+              "isInIconForcedVisibilityRange": 0,
+              "isScannerDataDirty": 0,
+              "isTargetedWithSmartWeapon": 0,
+              "killRewardDisabled": 0,
+              "lastEngineTime": 0,
+              "lastHitInstigatorID": {
+                "$type": "entEntityID",
+                "hash": "0"
+              },
+              "lockedByKey": {
+                "$type": "TweakDBID",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "lootQuality": "Common",
+              "lootTables": [],
+              "markAsQuest": 0,
+              "persistentState": {
+                "HandleId": "0",
+                "Data": {
+                  "$type": "LootContainerObjectAnimatedByTransformPS",
+                  "isDisabled": 0,
+                  "isLocked": 0,
+                  "markAsQuest": 0,
+                  "shouldHideLockedUI": 0,
+                  "started": 0
+                }
+              },
+              "playerSocket": {
+                "$type": "gamePlayerSocket"
+              },
+              "prereqListeners": [],
+              "receivedDamageHistory": [],
+              "renderSceneLayerMask": "Default",
+              "scanningComponent": null,
+              "sourceShootComponent": null,
+              "squadMemberComponent": null,
+              "statusEffectComponent": null,
+              "statusEffectListeners": [],
+              "stimBroadcaster": null,
+              "tags": {
+                "$type": "redTagList",
+                "tags": []
+              },
+              "targetShootComponent": null,
+              "uiSlotComponent": null,
+              "useAreaLoot": 1,
+              "visibilityCheckDistance": 16000,
+              "visionComponent": null,
+              "wasLootInitalized": 0,
+              "wasOpened": 0,
+              "willDieSoon": 0,
+              "workspotMapper": null
+            },
+            {
+              "$type": "gameInventory",
+              "id": "1709803250825703424",
+              "inventoryTag": "None",
+              "isReplicable": 0,
+              "name": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "inventory"
+              },
+              "noInitialization": 0,
+              "persistentState": {
+                "HandleId": "1",
+                "Data": {
+                  "$type": "gameInventoryPS",
+                  "accessible": 1,
+                  "isRegisteredShared": 0
+                }
+              },
+              "saveInventory": 0
+            },
+            {
+              "$type": "gameScanningComponent",
+              "autoGenerateBoundingSphere": 1,
+              "boundingSphere": {
+                "$type": "Sphere",
+                "CenterRadius2": {
+                  "$type": "Vector4",
+                  "W": -1,
+                  "X": 0,
+                  "Y": 0,
+                  "Z": 0
+                }
+              },
+              "BraindanceLayer": "Default",
+              "clues": [],
+              "cpoEnableMultiplePlayersScanningModifier": 1,
+              "currentBraindanceLayer": 0,
+              "currentHighlight": null,
+              "id": "1709803290201829376",
+              "ignoresScanningDistanceLimit": 0,
+              "isBeingScanned": 0,
+              "isBraindanceActive": 0,
+              "isBraindanceBlocked": 0,
+              "isBraindanceClue": 0,
+              "isBraindanceLayerUnlocked": 0,
+              "isBraindanceTimelineUnlocked": 0,
+              "isEntityVisible": 1,
+              "isFocusModeActive": 0,
+              "isHudManagerInitialized": 0,
+              "isReplicable": 0,
+              "isScanningCluesBlocked": 0,
+              "name": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "scanning"
+              },
+              "objectDescription": {
+                "HandleId": "2",
+                "Data": {
+                  "$type": "DeviceScanningDescription",
+                  "DeviceCustomDescriptions": [],
+                  "DeviceGameplayDescription": {
+                    "$type": "TweakDBID",
+                    "$storage": "uint64",
+                    "$value": "0"
+                  },
+                  "DeviceGameplayRole": {
+                    "$type": "TweakDBID",
+                    "$storage": "string",
+                    "$value": "device_gameplay_roles.Container"
+                  },
+                  "DeviceRoleActionsDescriptions": []
+                }
+              },
+              "OnBraindanceFppChangeCallback": null,
+              "OnBraindanceVisionModeChangeCallback": null,
+              "persistentState": {
+                "HandleId": "3",
+                "Data": {
+                  "$type": "gameScanningComponentPS",
+                  "isBlocked": 0,
+                  "isDecriptionEnabled": 1,
+                  "isScanningDisabled": 0,
+                  "objectDescriptionOverride": null,
+                  "pctScanned": 0,
+                  "scanningState": "Default",
+                  "storedClues": []
+                }
+              },
+              "scannableData": [],
+              "scanningBarText": {
+                "$type": "TweakDBID",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "timeNeeded": 0
+            },
+            {
+              "$type": "WorkspotMapperComponent",
+              "id": "1709803301409009664",
+              "isReplicable": 0,
+              "name": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "workspotMapper"
+              },
+              "persistentState": null,
+              "priority": 0,
+              "workspotsMap": []
+            },
+            {
+              "$type": "gameaudioSoundComponent",
+              "applyAcousticOcclusion": 0,
+              "applyAcousticRepositioning": 0,
+              "applyObstruction": 0,
+              "audioName": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "None"
+              },
+              "id": "1817085640496787456",
+              "isReplicable": 0,
+              "localTransform": {
+                "$type": "WorldTransform",
+                "Orientation": {
+                  "$type": "Quaternion",
+                  "i": 0,
+                  "j": 0,
+                  "k": 0,
+                  "r": 1
+                },
+                "Position": {
+                  "$type": "WorldPosition",
+                  "x": {
+                    "$type": "FixedPoint",
+                    "Bits": 0
+                  },
+                  "y": {
+                    "$type": "FixedPoint",
+                    "Bits": 0
+                  },
+                  "z": {
+                    "$type": "FixedPoint",
+                    "Bits": 0
+                  }
+                }
+              },
+              "maxPlayDistance": 40,
+              "minVocalizationRepeatTime": 0,
+              "name": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "audioSound"
+              },
+              "obstructionChangeTime": 0.200000003,
+              "parentTransform": null,
+              "streamingDistance": 0,
+              "subSystems": [],
+              "voEventOverride": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "None"
+              }
+            },
+            {
+              "$type": "gameVisionModeComponent",
+              "activeForcedHighlight": null,
+              "activeRevealRequests": [],
+              "currentDefaultHighlight": null,
+              "defaultHighlightData": null,
+              "forcedHighlights": [],
+              "id": "1998213586845315072",
+              "isFocusModeActive": 0,
+              "isReplicable": 0,
+              "name": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "vision"
+              },
+              "persistentState": {
+                "HandleId": "4",
+                "Data": {
+                  "$type": "gameVisionModeComponentPS",
+                  "hideInDefaultMode": 0,
+                  "hideInFocusMode": 0,
+                  "inactive": 0,
+                  "questForcedMeshes": null,
+                  "questForcedModules": null,
+                  "questInactive": 0,
+                  "storedHighlightData": null
+                }
+              },
+              "slaveObjectsToHighlight": [],
+              "wasCleanedUp": 0
+            },
+            {
+              "$type": "entSlotComponent",
+              "fallbackSlots": [],
+              "id": "1998219761900990464",
+              "isReplicable": 0,
+              "localTransform": {
+                "$type": "WorldTransform",
+                "Orientation": {
+                  "$type": "Quaternion",
+                  "i": 0,
+                  "j": 0,
+                  "k": 0,
+                  "r": 1
+                },
+                "Position": {
+                  "$type": "WorldPosition",
+                  "x": {
+                    "$type": "FixedPoint",
+                    "Bits": 0
+                  },
+                  "y": {
+                    "$type": "FixedPoint",
+                    "Bits": 0
+                  },
+                  "z": {
+                    "$type": "FixedPoint",
+                    "Bits": 64879
+                  }
+                }
+              },
+              "name": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "UI_Slots"
+              },
+              "parentTransform": null,
+              "slots": [
+                {
+                  "$type": "entSlot",
+                  "boneName": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "relativePosition": {
+                    "$type": "Vector3",
+                    "X": 0,
+                    "Y": 0,
+                    "Z": 0
+                  },
+                  "relativeRotation": {
+                    "$type": "Quaternion",
+                    "i": 0,
+                    "j": 0,
+                    "k": 0,
+                    "r": 1
+                  },
+                  "slotName": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "UI_Interaction"
+                  }
+                },
+                {
+                  "$type": "entSlot",
+                  "boneName": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "relativePosition": {
+                    "$type": "Vector3",
+                    "X": 0,
+                    "Y": 0,
+                    "Z": 0
+                  },
+                  "relativeRotation": {
+                    "$type": "Quaternion",
+                    "i": 0,
+                    "j": 0,
+                    "k": 0,
+                    "r": 1
+                  },
+                  "slotName": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "Nameplate"
+                  }
+                },
+                {
+                  "$type": "entSlot",
+                  "boneName": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "relativePosition": {
+                    "$type": "Vector3",
+                    "X": 0,
+                    "Y": 0,
+                    "Z": 0
+                  },
+                  "relativeRotation": {
+                    "$type": "Quaternion",
+                    "i": 0,
+                    "j": 0,
+                    "k": 0,
+                    "r": 1
+                  },
+                  "slotName": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "roleMappin"
+                  }
+                },
+                {
+                  "$type": "entSlot",
+                  "boneName": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "relativePosition": {
+                    "$type": "Vector3",
+                    "X": 0,
+                    "Y": 0,
+                    "Z": 0.0500000007
+                  },
+                  "relativeRotation": {
+                    "$type": "Quaternion",
+                    "i": 0,
+                    "j": 0,
+                    "k": 0,
+                    "r": 1
+                  },
+                  "slotName": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "questDeviceMappin"
+                  }
+                },
+                {
+                  "$type": "entSlot",
+                  "boneName": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "relativePosition": {
+                    "$type": "Vector3",
+                    "X": 0,
+                    "Y": 0,
+                    "Z": 0
+                  },
+                  "relativeRotation": {
+                    "$type": "Quaternion",
+                    "i": 0,
+                    "j": 0,
+                    "k": 0,
+                    "r": 1
+                  },
+                  "slotName": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "uploadBar"
+                  }
+                },
+                {
+                  "$type": "entSlot",
+                  "boneName": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "relativePosition": {
+                    "$type": "Vector3",
+                    "X": 0,
+                    "Y": 0,
+                    "Z": 0
+                  },
+                  "relativeRotation": {
+                    "$type": "Quaternion",
+                    "i": 0,
+                    "j": 0,
+                    "k": 0,
+                    "r": 1
+                  },
+                  "slotName": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "NetworkLink"
+                  }
+                }
+              ]
+            },
+            {
+              "$type": "GameplayRoleComponent",
+              "alwaysCreateMappinAsDynamic": 1,
+              "autoDeterminGameplayRole": 1,
+              "canHideMappinsByTask": 0,
+              "canShowMappinsByTask": 0,
+              "currentGameplayRole": "UnAssigned",
+              "displayAllRolesAsGeneric": 0,
+              "enabledMinimapMappins": [],
+              "forcedMappinVisualState": "None",
+              "gameplayRole": "Loot",
+              "id": "1998220152441024512",
+              "isBeingScanned": 0,
+              "isCurrentTarget": 0,
+              "isForcedVisibleThroughWalls": 0,
+              "isForceHidden": 0,
+              "isGameplayRoleInitialized": 0,
+              "isHighlightedInFocusMode": 0,
+              "isReplicable": 0,
+              "isShowingMappins": 0,
+              "mappins": [],
+              "mappinsDisplayMode": "MINIMALISTIC",
+              "name": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "GameplayRole"
+              },
+              "offsetValue": 0.0399999991,
+              "persistentState": null,
+              "priority": 0
+            },
+            {
+              "$type": "entEffectSpawnerComponent",
+              "autoHideDistance": 0,
+              "effectDescs": [
+                {
+                  "HandleId": "5",
+                  "Data": {
+                    "$type": "entEffectDesc",
+                    "autoSpawnTag": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "_autospawn"
+                    },
+                    "compiledEffectInfo": {
+                      "$type": "worldCompiledEffectInfo",
+                      "componentNames": [
+                        {
+                          "$type": "CName",
+                          "$storage": "string",
+                          "$value": "box"
+                        }
+                      ],
+                      "eventsSortedByRUID": [
+                        {
+                          "$type": "worldCompiledEffectEventInfo",
+                          "componentIndexMask": "1",
+                          "eventRUID": "2012676538687553536",
+                          "flags": 1,
+                          "placementIndexMask": "0"
+                        },
+                        {
+                          "$type": "worldCompiledEffectEventInfo",
+                          "componentIndexMask": "1",
+                          "eventRUID": "2012676640458145792",
+                          "flags": 1,
+                          "placementIndexMask": "0"
+                        }
+                      ],
+                      "placementInfos": [],
+                      "placementTags": [],
+                      "relativePositions": [],
+                      "relativeRotations": []
+                    },
+                    "effect": {
+                      "DepotPath": {
+                        "$type": "ResourcePath",
+                        "$storage": "string",
+                        "$value": "base\\fx\\gameplay\\containers\\fx_locked.effect"
+                      },
+                      "Flags": "Default"
+                    },
+                    "effectName": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "fx_locked"
+                    },
+                    "id": "1814167769505431552",
+                    "isAutoSpawn": 0,
+                    "randomWeight": 1
+                  }
+                },
+                {
+                  "HandleId": "6",
+                  "Data": {
+                    "$type": "entEffectDesc",
+                    "autoSpawnTag": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "_autospawn"
+                    },
+                    "compiledEffectInfo": {
+                      "$type": "worldCompiledEffectInfo",
+                      "componentNames": [
+                        {
+                          "$type": "CName",
+                          "$storage": "string",
+                          "$value": "box"
+                        }
+                      ],
+                      "eventsSortedByRUID": [
+                        {
+                          "$type": "worldCompiledEffectEventInfo",
+                          "componentIndexMask": "1",
+                          "eventRUID": "2012678273317470208",
+                          "flags": 1,
+                          "placementIndexMask": "0"
+                        },
+                        {
+                          "$type": "worldCompiledEffectEventInfo",
+                          "componentIndexMask": "1",
+                          "eventRUID": "2012678394851622912",
+                          "flags": 1,
+                          "placementIndexMask": "0"
+                        }
+                      ],
+                      "placementInfos": [],
+                      "placementTags": [],
+                      "relativePositions": [],
+                      "relativeRotations": []
+                    },
+                    "effect": {
+                      "DepotPath": {
+                        "$type": "ResourcePath",
+                        "$storage": "string",
+                        "$value": "base\\fx\\gameplay\\containers\\fx_checked.effect"
+                      },
+                      "Flags": "Default"
+                    },
+                    "effectName": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "fx_checked"
+                    },
+                    "id": "2012616953062752256",
+                    "isAutoSpawn": 0,
+                    "randomWeight": 1
+                  }
+                },
+                {
+                  "HandleId": "7",
+                  "Data": {
+                    "$type": "entEffectDesc",
+                    "autoSpawnTag": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "_autospawn"
+                    },
+                    "compiledEffectInfo": {
+                      "$type": "worldCompiledEffectInfo",
+                      "componentNames": [
+                        {
+                          "$type": "CName",
+                          "$storage": "string",
+                          "$value": "box"
+                        }
+                      ],
+                      "eventsSortedByRUID": [
+                        {
+                          "$type": "worldCompiledEffectEventInfo",
+                          "componentIndexMask": "1",
+                          "eventRUID": "2009658284125716480",
+                          "flags": 1,
+                          "placementIndexMask": "0"
+                        },
+                        {
+                          "$type": "worldCompiledEffectEventInfo",
+                          "componentIndexMask": "1",
+                          "eventRUID": "2009664194202042368",
+                          "flags": 1,
+                          "placementIndexMask": "0"
+                        }
+                      ],
+                      "placementInfos": [],
+                      "placementTags": [],
+                      "relativePositions": [],
+                      "relativeRotations": []
+                    },
+                    "effect": {
+                      "DepotPath": {
+                        "$type": "ResourcePath",
+                        "$storage": "string",
+                        "$value": "base\\fx\\gameplay\\containers\\fx_open.effect"
+                      },
+                      "Flags": "Default"
+                    },
+                    "effectName": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "fx_open"
+                    },
+                    "id": "2012614151905214464",
+                    "isAutoSpawn": 1,
+                    "randomWeight": 1
+                  }
+                },
+                {
+                  "HandleId": "8",
+                  "Data": {
+                    "$type": "entEffectDesc",
+                    "autoSpawnTag": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "_autospawn"
+                    },
+                    "compiledEffectInfo": {
+                      "$type": "worldCompiledEffectInfo",
+                      "componentNames": [
+                        {
+                          "$type": "CName",
+                          "$storage": "string",
+                          "$value": "box"
+                        }
+                      ],
+                      "eventsSortedByRUID": [
+                        {
+                          "$type": "worldCompiledEffectEventInfo",
+                          "componentIndexMask": "1",
+                          "eventRUID": "2012670545513676800",
+                          "flags": 1,
+                          "placementIndexMask": "0"
+                        },
+                        {
+                          "$type": "worldCompiledEffectEventInfo",
+                          "componentIndexMask": "1",
+                          "eventRUID": "2012676263004340224",
+                          "flags": 1,
+                          "placementIndexMask": "0"
+                        }
+                      ],
+                      "placementInfos": [],
+                      "placementTags": [],
+                      "relativePositions": [],
+                      "relativeRotations": []
+                    },
+                    "effect": {
+                      "DepotPath": {
+                        "$type": "ResourcePath",
+                        "$storage": "string",
+                        "$value": "base\\fx\\gameplay\\containers\\fx_empty.effect"
+                      },
+                      "Flags": "Default"
+                    },
+                    "effectName": {
+                      "$type": "CName",
+                      "$storage": "string",
+                      "$value": "fx_empty"
+                    },
+                    "id": "2012615965002170368",
+                    "isAutoSpawn": 0,
+                    "randomWeight": 1
+                  }
+                }
+              ],
+              "forceLODLevel": -1,
+              "id": "2044552167477882880",
+              "isReplicable": 0,
+              "localTransform": {
+                "$type": "WorldTransform",
+                "Orientation": {
+                  "$type": "Quaternion",
+                  "i": 0,
+                  "j": 0,
+                  "k": 0,
+                  "r": 1
+                },
+                "Position": {
+                  "$type": "WorldPosition",
+                  "x": {
+                    "$type": "FixedPoint",
+                    "Bits": 0
+                  },
+                  "y": {
+                    "$type": "FixedPoint",
+                    "Bits": 0
+                  },
+                  "z": {
+                    "$type": "FixedPoint",
+                    "Bits": 0
+                  }
+                }
+              },
+              "name": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "state_fxes"
+              },
+              "parentTransform": null,
+              "renderSceneLayerMask": "Default"
+            },
+            {
+              "$type": "gameinteractionsComponent",
+              "definitionResource": {
+                "DepotPath": {
+                  "$type": "ResourcePath",
+                  "$storage": "string",
+                  "$value": "base\\gameplay\\containers\\generic_container_interaction.interaction"
+                },
+                "Flags": "Obligatory"
+              },
+              "id": "2197100049969963008",
+              "interactionRootOffset": {
+                "$type": "Vector3",
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "isEnabled": 1,
+              "isReplicable": 0,
+              "layerOverrides": [
+                {
+                  "$type": "gameinteractionsInteractionDefinitionOverrider",
+                  "negativeShapes": [],
+                  "priorityMultiplier": 1,
+                  "shapes": [
+                    {
+                      "HandleId": "9",
+                      "Data": {
+                        "$type": "gameinteractionsCSphereDefinition",
+                        "position": {
+                          "$type": "Vector4",
+                          "W": 1,
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        },
+                        "radius": 3
+                      }
+                    }
+                  ],
+                  "tag": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "LootGenerator"
+                  }
+                }
+              ],
+              "layerOverridesTemp": [],
+              "localTransform": {
+                "$type": "WorldTransform",
+                "Orientation": {
+                  "$type": "Quaternion",
+                  "i": 0,
+                  "j": 0,
+                  "k": 0,
+                  "r": 1
+                },
+                "Position": {
+                  "$type": "WorldPosition",
+                  "x": {
+                    "$type": "FixedPoint",
+                    "Bits": 0
+                  },
+                  "y": {
+                    "$type": "FixedPoint",
+                    "Bits": 0
+                  },
+                  "z": {
+                    "$type": "FixedPoint",
+                    "Bits": 0
+                  }
+                }
+              },
+              "name": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "interactions"
+              },
+              "parentTransform": {
+                "HandleId": "10",
+                "Data": {
+                  "$type": "entHardTransformBinding",
+                  "bindName": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "root"
+                  },
+                  "enabled": 1,
+                  "enableMask": {
+                    "$type": "entTagMask",
+                    "excludedTags": {
+                      "$type": "redTagList",
+                      "tags": [
+                        {
+                          "$type": "CName",
+                          "$storage": "string",
+                          "$value": "NoBinding"
+                        }
+                      ]
+                    },
+                    "hardTags": {
+                      "$type": "redTagList",
+                      "tags": []
+                    },
+                    "softTags": {
+                      "$type": "redTagList",
+                      "tags": []
+                    }
+                  },
+                  "slotName": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  }
+                }
+              }
+            },
+            {
+              "$type": "entCorpseComponent",
+              "filterData": {
+                "HandleId": "11",
+                "Data": {
+                  "$type": "physicsFilterData",
+                  "customFilterData": null,
+                  "preset": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "Lootable Corpse"
+                  },
+                  "queryFilter": {
+                    "$type": "physicsQueryFilter",
+                    "mask1": "0",
+                    "mask2": "74301440"
+                  },
+                  "simulationFilter": {
+                    "$type": "physicsSimulationFilter",
+                    "mask1": "0",
+                    "mask2": "0"
+                  }
+                }
+              },
+              "id": "2199766685320622080",
+              "isReplicable": 0,
+              "localTransform": {
+                "$type": "WorldTransform",
+                "Orientation": {
+                  "$type": "Quaternion",
+                  "i": 0,
+                  "j": 0,
+                  "k": 0,
+                  "r": 1
+                },
+                "Position": {
+                  "$type": "WorldPosition",
+                  "x": {
+                    "$type": "FixedPoint",
+                    "Bits": 0
+                  },
+                  "y": {
+                    "$type": "FixedPoint",
+                    "Bits": 0
+                  },
+                  "z": {
+                    "$type": "FixedPoint",
+                    "Bits": 0
+                  }
+                }
+              },
+              "material": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "character_flesh.physmat"
+              },
+              "name": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "root"
+              },
+              "parentTransform": null
+            },
+            {
+              "$type": "gameTargetingComponent",
+              "aimAssistData": [],
+              "alwaysInTestRange": 0,
+              "id": "2563566991251333120",
+              "isDirectional": 0,
+              "isEnabled": 1,
+              "isPrimary": 1,
+              "isReplicable": 0,
+              "localTransform": {
+                "$type": "WorldTransform",
+                "Orientation": {
+                  "$type": "Quaternion",
+                  "i": 0,
+                  "j": 0,
+                  "k": 0,
+                  "r": 1
+                },
+                "Position": {
+                  "$type": "WorldPosition",
+                  "x": {
+                    "$type": "FixedPoint",
+                    "Bits": 0
+                  },
+                  "y": {
+                    "$type": "FixedPoint",
+                    "Bits": 0
+                  },
+                  "z": {
+                    "$type": "FixedPoint",
+                    "Bits": 0
+                  }
+                }
+              },
+              "name": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "Targeting1452"
+              },
+              "parentTransform": null
+            }
+          ]
+        }
+      },
+      "compiledEntityLODFlags": 0,
+      "componentResolveSettings": [],
+      "components": [
+        {
+          "$type": "gameInventory",
+          "id": "1709803250825703424",
+          "inventoryTag": "None",
+          "isReplicable": 0,
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "inventory"
+          },
+          "noInitialization": 0,
+          "persistentState": {
+            "HandleRefId": "1"
+          },
+          "saveInventory": 0
+        },
+        {
+          "$type": "gameScanningComponent",
+          "autoGenerateBoundingSphere": 1,
+          "boundingSphere": {
+            "$type": "Sphere",
+            "CenterRadius2": {
+              "$type": "Vector4",
+              "W": -1,
+              "X": 0,
+              "Y": 0,
+              "Z": 0
+            }
+          },
+          "BraindanceLayer": "Default",
+          "clues": [],
+          "cpoEnableMultiplePlayersScanningModifier": 1,
+          "currentBraindanceLayer": 0,
+          "currentHighlight": null,
+          "id": "1709803290201829376",
+          "ignoresScanningDistanceLimit": 0,
+          "isBeingScanned": 0,
+          "isBraindanceActive": 0,
+          "isBraindanceBlocked": 0,
+          "isBraindanceClue": 0,
+          "isBraindanceLayerUnlocked": 0,
+          "isBraindanceTimelineUnlocked": 0,
+          "isEntityVisible": 1,
+          "isFocusModeActive": 0,
+          "isHudManagerInitialized": 0,
+          "isReplicable": 0,
+          "isScanningCluesBlocked": 0,
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "scanning"
+          },
+          "objectDescription": {
+            "HandleRefId": "2"
+          },
+          "OnBraindanceFppChangeCallback": null,
+          "OnBraindanceVisionModeChangeCallback": null,
+          "persistentState": {
+            "HandleRefId": "3"
+          },
+          "scannableData": [],
+          "scanningBarText": {
+            "$type": "TweakDBID",
+            "$storage": "uint64",
+            "$value": "0"
+          },
+          "timeNeeded": 0
+        },
+        {
+          "$type": "WorkspotMapperComponent",
+          "id": "1709803301409009664",
+          "isReplicable": 0,
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "workspotMapper"
+          },
+          "persistentState": null,
+          "priority": 0,
+          "workspotsMap": []
+        },
+        {
+          "$type": "gameaudioSoundComponent",
+          "applyAcousticOcclusion": 0,
+          "applyAcousticRepositioning": 0,
+          "applyObstruction": 0,
+          "audioName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "None"
+          },
+          "id": "1817085640496787456",
+          "isReplicable": 0,
+          "localTransform": {
+            "$type": "WorldTransform",
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0,
+              "r": 1
+            },
+            "Position": {
+              "$type": "WorldPosition",
+              "x": {
+                "$type": "FixedPoint",
+                "Bits": 0
+              },
+              "y": {
+                "$type": "FixedPoint",
+                "Bits": 0
+              },
+              "z": {
+                "$type": "FixedPoint",
+                "Bits": 0
+              }
+            }
+          },
+          "maxPlayDistance": 40,
+          "minVocalizationRepeatTime": 0,
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "audioSound"
+          },
+          "obstructionChangeTime": 0.200000003,
+          "parentTransform": null,
+          "streamingDistance": 0,
+          "subSystems": [],
+          "voEventOverride": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "None"
+          }
+        },
+        {
+          "$type": "gameVisionModeComponent",
+          "activeForcedHighlight": null,
+          "activeRevealRequests": [],
+          "currentDefaultHighlight": null,
+          "defaultHighlightData": null,
+          "forcedHighlights": [],
+          "id": "1998213586845315072",
+          "isFocusModeActive": 0,
+          "isReplicable": 0,
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "vision"
+          },
+          "persistentState": {
+            "HandleRefId": "4"
+          },
+          "slaveObjectsToHighlight": [],
+          "wasCleanedUp": 0
+        },
+        {
+          "$type": "entSlotComponent",
+          "fallbackSlots": [],
+          "id": "1998219761900990464",
+          "isReplicable": 0,
+          "localTransform": {
+            "$type": "WorldTransform",
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0,
+              "r": 1
+            },
+            "Position": {
+              "$type": "WorldPosition",
+              "x": {
+                "$type": "FixedPoint",
+                "Bits": 0
+              },
+              "y": {
+                "$type": "FixedPoint",
+                "Bits": 0
+              },
+              "z": {
+                "$type": "FixedPoint",
+                "Bits": 64879
+              }
+            }
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "UI_Slots"
+          },
+          "parentTransform": null,
+          "slots": [
+            {
+              "$type": "entSlot",
+              "boneName": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "None"
+              },
+              "relativePosition": {
+                "$type": "Vector3",
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "relativeRotation": {
+                "$type": "Quaternion",
+                "i": 0,
+                "j": 0,
+                "k": 0,
+                "r": 1
+              },
+              "slotName": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "UI_Interaction"
+              }
+            },
+            {
+              "$type": "entSlot",
+              "boneName": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "None"
+              },
+              "relativePosition": {
+                "$type": "Vector3",
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "relativeRotation": {
+                "$type": "Quaternion",
+                "i": 0,
+                "j": 0,
+                "k": 0,
+                "r": 1
+              },
+              "slotName": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "Nameplate"
+              }
+            },
+            {
+              "$type": "entSlot",
+              "boneName": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "None"
+              },
+              "relativePosition": {
+                "$type": "Vector3",
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "relativeRotation": {
+                "$type": "Quaternion",
+                "i": 0,
+                "j": 0,
+                "k": 0,
+                "r": 1
+              },
+              "slotName": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "roleMappin"
+              }
+            },
+            {
+              "$type": "entSlot",
+              "boneName": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "None"
+              },
+              "relativePosition": {
+                "$type": "Vector3",
+                "X": 0,
+                "Y": 0,
+                "Z": 0.0500000007
+              },
+              "relativeRotation": {
+                "$type": "Quaternion",
+                "i": 0,
+                "j": 0,
+                "k": 0,
+                "r": 1
+              },
+              "slotName": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "questDeviceMappin"
+              }
+            },
+            {
+              "$type": "entSlot",
+              "boneName": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "None"
+              },
+              "relativePosition": {
+                "$type": "Vector3",
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "relativeRotation": {
+                "$type": "Quaternion",
+                "i": 0,
+                "j": 0,
+                "k": 0,
+                "r": 1
+              },
+              "slotName": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "uploadBar"
+              }
+            },
+            {
+              "$type": "entSlot",
+              "boneName": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "None"
+              },
+              "relativePosition": {
+                "$type": "Vector3",
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "relativeRotation": {
+                "$type": "Quaternion",
+                "i": 0,
+                "j": 0,
+                "k": 0,
+                "r": 1
+              },
+              "slotName": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "NetworkLink"
+              }
+            }
+          ]
+        },
+        {
+          "$type": "GameplayRoleComponent",
+          "alwaysCreateMappinAsDynamic": 1,
+          "autoDeterminGameplayRole": 1,
+          "canHideMappinsByTask": 0,
+          "canShowMappinsByTask": 0,
+          "currentGameplayRole": "UnAssigned",
+          "displayAllRolesAsGeneric": 0,
+          "enabledMinimapMappins": [],
+          "forcedMappinVisualState": "None",
+          "gameplayRole": "Loot",
+          "id": "1998220152441024512",
+          "isBeingScanned": 0,
+          "isCurrentTarget": 0,
+          "isForcedVisibleThroughWalls": 0,
+          "isForceHidden": 0,
+          "isGameplayRoleInitialized": 0,
+          "isHighlightedInFocusMode": 0,
+          "isReplicable": 0,
+          "isShowingMappins": 0,
+          "mappins": [],
+          "mappinsDisplayMode": "MINIMALISTIC",
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "GameplayRole"
+          },
+          "offsetValue": 0.0399999991,
+          "persistentState": null,
+          "priority": 0
+        },
+        {
+          "$type": "entEffectSpawnerComponent",
+          "autoHideDistance": 0,
+          "effectDescs": [
+            {
+              "HandleRefId": "5"
+            },
+            {
+              "HandleRefId": "6"
+            },
+            {
+              "HandleRefId": "7"
+            },
+            {
+              "HandleRefId": "8"
+            }
+          ],
+          "forceLODLevel": -1,
+          "id": "2044552167477882880",
+          "isReplicable": 0,
+          "localTransform": {
+            "$type": "WorldTransform",
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0,
+              "r": 1
+            },
+            "Position": {
+              "$type": "WorldPosition",
+              "x": {
+                "$type": "FixedPoint",
+                "Bits": 0
+              },
+              "y": {
+                "$type": "FixedPoint",
+                "Bits": 0
+              },
+              "z": {
+                "$type": "FixedPoint",
+                "Bits": 0
+              }
+            }
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "state_fxes"
+          },
+          "parentTransform": null,
+          "renderSceneLayerMask": "Default"
+        },
+        {
+          "$type": "gameinteractionsComponent",
+          "definitionResource": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\gameplay\\containers\\generic_container_interaction.interaction"
+            },
+            "Flags": "Obligatory"
+          },
+          "id": "2197100049969963008",
+          "interactionRootOffset": {
+            "$type": "Vector3",
+            "X": 0,
+            "Y": 0,
+            "Z": 0
+          },
+          "isEnabled": 1,
+          "isReplicable": 0,
+          "layerOverrides": [
+            {
+              "$type": "gameinteractionsInteractionDefinitionOverrider",
+              "negativeShapes": [],
+              "priorityMultiplier": 1,
+              "shapes": [
+                {
+                  "HandleRefId": "9"
+                }
+              ],
+              "tag": {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "LootGenerator"
+              }
+            }
+          ],
+          "layerOverridesTemp": [],
+          "localTransform": {
+            "$type": "WorldTransform",
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0,
+              "r": 1
+            },
+            "Position": {
+              "$type": "WorldPosition",
+              "x": {
+                "$type": "FixedPoint",
+                "Bits": 0
+              },
+              "y": {
+                "$type": "FixedPoint",
+                "Bits": 0
+              },
+              "z": {
+                "$type": "FixedPoint",
+                "Bits": 0
+              }
+            }
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "interactions"
+          },
+          "parentTransform": {
+            "HandleRefId": "10"
+          }
+        },
+        {
+          "$type": "entCorpseComponent",
+          "filterData": {
+            "HandleRefId": "11"
+          },
+          "id": "2199766685320622080",
+          "isReplicable": 0,
+          "localTransform": {
+            "$type": "WorldTransform",
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0,
+              "r": 1
+            },
+            "Position": {
+              "$type": "WorldPosition",
+              "x": {
+                "$type": "FixedPoint",
+                "Bits": 0
+              },
+              "y": {
+                "$type": "FixedPoint",
+                "Bits": 0
+              },
+              "z": {
+                "$type": "FixedPoint",
+                "Bits": 0
+              }
+            }
+          },
+          "material": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "character_flesh.physmat"
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "root"
+          },
+          "parentTransform": null
+        },
+        {
+          "$type": "gameTargetingComponent",
+          "aimAssistData": [],
+          "alwaysInTestRange": 0,
+          "id": "2563566991251333120",
+          "isDirectional": 0,
+          "isEnabled": 1,
+          "isPrimary": 1,
+          "isReplicable": 0,
+          "localTransform": {
+            "$type": "WorldTransform",
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0,
+              "r": 1
+            },
+            "Position": {
+              "$type": "WorldPosition",
+              "x": {
+                "$type": "FixedPoint",
+                "Bits": 0
+              },
+              "y": {
+                "$type": "FixedPoint",
+                "Bits": 0
+              },
+              "z": {
+                "$type": "FixedPoint",
+                "Bits": 0
+              }
+            }
+          },
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "Targeting1452"
+          },
+          "parentTransform": null
+        }
+      ],
+      "cookingPlatform": "PLATFORM_PC",
+      "defaultAppearance": {
+        "$type": "CName",
+        "$storage": "string",
+        "$value": "default"
+      },
+      "entity": {
+        "HandleId": "12",
+        "Data": {
+          "$type": "LootContainerObjectAnimatedByTransform",
+          "accumulatedTimePasssed": 0,
+          "activeQualityRangeInteraction": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "None"
+          },
+          "audioResourceName": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "None"
+          },
+          "containerType": "Body",
+          "contentAssignment": {
+            "$type": "TweakDBID",
+            "$storage": "uint64",
+            "$value": "0"
+          },
+          "customCameraTarget": "ECCTV_All",
+          "displayDescription": {
+            "unk1": "0",
+            "value": ""
+          },
+          "displayName": {
+            "unk1": "0",
+            "value": ""
+          },
+          "e3ObjectRevealed": 0,
+          "forceDefeatReward": 0,
+          "forceRegisterInHudManager": 0,
+          "giveHandicapAmmo": 0,
+          "hasQuestItems": 0,
+          "hasVisibilityForcedInAnimSystem": 0,
+          "hitInstigatorCooldownID": {
+            "$type": "gameDelayID"
+          },
+          "isDead": 0,
+          "isHighlightedInFocusMode": 0,
+          "isIconic": 0,
+          "isIllegal": 0,
+          "isInIconForcedVisibilityRange": 0,
+          "isScannerDataDirty": 0,
+          "isTargetedWithSmartWeapon": 0,
+          "killRewardDisabled": 0,
+          "lastEngineTime": 0,
+          "lastHitInstigatorID": {
+            "$type": "entEntityID",
+            "hash": "0"
+          },
+          "lockedByKey": {
+            "$type": "TweakDBID",
+            "$storage": "uint64",
+            "$value": "0"
+          },
+          "lootQuality": "Common",
+          "lootTables": [],
+          "markAsQuest": 0,
+          "persistentState": {
+            "HandleRefId": "0"
+          },
+          "playerSocket": {
+            "$type": "gamePlayerSocket"
+          },
+          "prereqListeners": [],
+          "receivedDamageHistory": [],
+          "renderSceneLayerMask": "Default",
+          "scanningComponent": null,
+          "sourceShootComponent": null,
+          "squadMemberComponent": null,
+          "statusEffectComponent": null,
+          "statusEffectListeners": [],
+          "stimBroadcaster": null,
+          "tags": {
+            "$type": "redTagList",
+            "tags": []
+          },
+          "targetShootComponent": null,
+          "uiSlotComponent": null,
+          "useAreaLoot": 1,
+          "visibilityCheckDistance": 16000,
+          "visionComponent": null,
+          "wasLootInitalized": 0,
+          "wasOpened": 0,
+          "willDieSoon": 0,
+          "workspotMapper": null
+        }
+      },
+      "includeInstanceBuffer": null,
+      "includes": [],
+      "inplaceResources": [],
+      "localData": null,
+      "resolvedDependencies": [],
+      "visualTagsSchema": null
+    },
+    "EmbeddedFiles": []
+  }
+}

@@ -1,0 +1,1486 @@
+{
+ "_comment": "What Night City's public Net says about people, places and events, as Apiko finds it (DISENO.md, 'Lore'). Never the game's plot. The bridge sends only the entries whose keys appear in what V says (lowercase, accents ignored, whole words). 'after'/'until' name a gate in 'gates': the entry only counts once that gate is done / until it is done. A gate is done when any of its quest ids is in the game's completed quests. Topics drawn up with help from the Cyberpunk Wiki (cyberpunk.fandom.com, CC BY-SA); text rewritten as public street knowledge.",
+ "gates": {
+  "heist": [
+   "q005_heist"
+  ]
+ },
+ "entries": [
+  {
+   "id": "night_city",
+   "keys": [
+    "night city"
+   ],
+   "text": "Night City: free city on the coast of Northern California, founded in the 1990s by Richard Night as a utopian project; the corporations took it over. Officially independent of the NUSA, in practice run by corporate money. Districts: Watson, Westbrook, City Center, Heywood, Santo Domingo, Pacifica; Dogtown and the Badlands around it."
+  },
+  {
+   "id": "richard_night",
+   "keys": [
+    "richard night"
+   ],
+   "text": "Richard Night: urban planner who founded the city in the 1990s on corporate money; murdered in 1998. His dream of a clean city is a sales pitch nobody believes anymore."
+  },
+  {
+   "id": "corp_war",
+   "keys": [
+    "guerra corporativa",
+    "cuarta guerra",
+    "corporate war",
+    "fourth corporate"
+   ],
+   "text": "Fourth Corporate War (2021-2025): Arasaka against Militech over an ocean-tech company, fought across the world in the open and on the Net. It ended after the 2023 nuke in Night City; the NUSA nationalized Militech and Arasaka was pushed out of America for decades."
+  },
+  {
+   "id": "tower_2023",
+   "keys": [
+    "torre arasaka",
+    "arasaka tower",
+    "2023",
+    "nuke",
+    "nuclear"
+   ],
+   "text": "Arasaka Tower bombing (2023): a tactical nuke went off in Arasaka's Night City tower, killing thousands and ruining downtown for years. The official story blames Johnny Silverhand and Morgan Blackhand, working for Militech. Arasaka rebuilt a new tower in the 2070s."
+  },
+  {
+   "id": "time_of_red",
+   "keys": [
+    "time of the red",
+    "tiempo del rojo",
+    "tiempo rojo"
+   ],
+   "text": "Time of the Red (2020s-2040s): the years after the war and the bombing, when dust and fallout turned the skies red; cities rebuilt on their own, the Net was in pieces and nomads kept the continent connected."
+  },
+  {
+   "id": "datakrash",
+   "keys": [
+    "datakrash",
+    "data krash",
+    "rache bartmoss",
+    "bartmoss"
+   ],
+   "text": "DataKrash (2022): the legendary netrunner Rache Bartmoss's virus, released after his death, wrecked the old Net and let rogue AIs loose. The Net was rebuilt as small isolated networks and NetWatch built the Blackwall."
+  },
+  {
+   "id": "blackwall",
+   "keys": [
+    "blackwall",
+    "muro negro"
+   ],
+   "text": "Blackwall: the barrier NetWatch built after the DataKrash to cage the Old Net and the rogue AIs inside it. Crossing it is believed fatal; netrunners whisper about what lives behind it. Officially, nothing has ever come through."
+  },
+  {
+   "id": "old_net",
+   "keys": [
+    "old net",
+    "vieja red",
+    "red antigua"
+   ],
+   "text": "Old Net: the global Net before the DataKrash; now behind the Blackwall, full of rogue AIs and dangerous code. Today's Net is local subnets, corporate systems and city networks."
+  },
+  {
+   "id": "ai_public",
+   "keys": [
+    "inteligencia artificial",
+    "ias",
+    "rogue ai",
+    "ai",
+    "ais",
+    "ia"
+   ],
+   "text": "AIs: legal AIs are rare, licensed and leashed (the Delamain taxi company is run by one). Rogue AIs are the reason the Blackwall exists; NetWatch hunts any that slip through. Most people fear them more than they understand them."
+  },
+  {
+   "id": "netrunners",
+   "keys": [
+    "netrunner",
+    "netrunners",
+    "corredor",
+    "hacker",
+    "hackers"
+   ],
+   "text": "Netrunners: hackers who jack into the Net through a cyberdeck; they breach networks, fry enemies' cyberware with quickhacks and run data. Deep dives can kill: ICE fries brains and NetWatch hunts the reckless."
+  },
+  {
+   "id": "cyberdeck",
+   "keys": [
+    "cyberdeck",
+    "deck",
+    "ciberdeck"
+   ],
+   "text": "Cyberdeck: neural cyberware that lets a netrunner hack and upload quickhacks; Arasaka, Militech, Tetratronic, NetWatch-grade and street brands. A good deck costs more than a car."
+  },
+  {
+   "id": "ice",
+   "keys": [
+    "ice",
+    "hielo negro",
+    "black ice"
+   ],
+   "text": "ICE: Intrusion Countermeasure Electronics, programs that defend networks; Black ICE kills the intruder's brain."
+  },
+  {
+   "id": "netwatch",
+   "keys": [
+    "netwatch"
+   ],
+   "text": "NetWatch: worldwide Net police based in London. Guards the Blackwall, hunts rogue AIs and illegal netrunners, and works hand in glove with the corporations. Few answer to them and they answer to fewer."
+  },
+  {
+   "id": "nusa",
+   "keys": [
+    "nusa",
+    "estados unidos",
+    "united states",
+    "new united states",
+    "eeuu"
+   ],
+   "text": "New United States of America: what's left of the USA, governed from Washington under President Rosalind Myers; deeply tied to Militech. Several western states stayed Free States after the Unification War, and Night City is a free city."
+  },
+  {
+   "id": "myers",
+   "keys": [
+    "myers",
+    "rosalind",
+    "presidenta",
+    "president"
+   ],
+   "text": "Rosalind Myers: President of the NUSA for over a decade, former Militech executive; led the Unification War to bring the Free States back. Hard-line, ambitious, and close to Militech."
+  },
+  {
+   "id": "unification",
+   "keys": [
+    "guerra de unificacion",
+    "unification war",
+    "unificacion",
+    "unification"
+   ],
+   "text": "Unification War (2069-2070): the NUSA tried to force the Free States back into the union; Night City called in Arasaka's help. It ended in a stalemate with the Treaty of Unification: Night City stayed free and Arasaka came back to the city."
+  },
+  {
+   "id": "free_states",
+   "keys": [
+    "free states",
+    "estados libres",
+    "california",
+    "norcal",
+    "socal"
+   ],
+   "text": "Free States: western states that left the USA in the chaos of the 20th century (NorCal, SoCal, Texas, the Western Corporate States...). Night City sits in Northern California but answers only to itself."
+  },
+  {
+   "id": "eec",
+   "keys": [
+    "europa",
+    "europe",
+    "eec",
+    "european"
+   ],
+   "text": "European Economic Community: Europe's powerful union, rich and corporate-friendly; runs most of space through the European Space Agency and the Crystal Palace orbital station."
+  },
+  {
+   "id": "japan",
+   "keys": [
+    "japon",
+    "japan",
+    "japones",
+    "japanese",
+    "tokio",
+    "tokyo"
+   ],
+   "text": "Japan: economic superpower and home of Arasaka; its money and culture shape Night City through Japantown, the Tyger Claws and Arasaka's presence."
+  },
+  {
+   "id": "space",
+   "keys": [
+    "orbita",
+    "orbit",
+    "moon",
+    "marte",
+    "mars",
+    "highriders"
+   ],
+   "text": "Space: orbital stations, lunar colonies and Mars settlements, mostly European and corporate; Highriders are the people born up there. Night City's NCX spaceport launches shuttles to orbit."
+  },
+  {
+   "id": "night_city_gov",
+   "keys": [
+    "ayuntamiento",
+    "city hall",
+    "gobierno de night city",
+    "council",
+    "alcaldia"
+   ],
+   "text": "Night City government: a mayor and city council at City Hall in The Glen, bought and paid for by corporations. Elections are expensive shows."
+  },
+  {
+   "id": "rhyne",
+   "keys": [
+    "rhyne",
+    "alcalde",
+    "mayor of"
+   ],
+   "text": "Lucius Rhyne: Night City's longtime mayor, polished and corporate-friendly. City politics move fast: your data on the mayor's office may be stale."
+  },
+  {
+   "id": "peralez",
+   "keys": [
+    "peralez",
+    "jefferson"
+   ],
+   "text": "Jefferson Peralez: young, idealistic politician from an old political family, running for mayor with the promise of cleaning the city; his wife Elizabeth runs the campaign."
+  },
+  {
+   "id": "ncpd",
+   "keys": [
+    "ncpd",
+    "policia",
+    "police",
+    "polis",
+    "poli",
+    "cops",
+    "pasma",
+    "madero",
+    "maderos"
+   ],
+   "text": "NCPD: Night City Police Department; underfunded, outgunned and partly privatized. Bounties go out to anyone with a gun; whole districts get little or no patrol. Corrupt in the usual ways."
+  },
+  {
+   "id": "maxtac",
+   "keys": [
+    "maxtac",
+    "max-tac",
+    "psycho squad"
+   ],
+   "text": "MaxTac: the NCPD's heavily chromed tactical division, sent against cyberpsychos and anything the regular police can't handle. Rarely take prisoners; many of its officers are a step away from cyberpsychosis themselves."
+  },
+  {
+   "id": "cyberpsycho",
+   "keys": [
+    "ciberpsicosis",
+    "ciberpsicopata",
+    "ciberpsicopatas",
+    "cyberpsychosis",
+    "cyberpsycho",
+    "cyberpsychos",
+    "psicopata"
+   ],
+   "text": "Cyberpsychosis: breakdown blamed on too much cyberware; people lose empathy and snap into violence. MaxTac answers, the corporations play the link down, and every street has a story about one."
+  },
+  {
+   "id": "trauma",
+   "keys": [
+    "trauma team",
+    "traumateam"
+   ],
+   "text": "Trauma Team International: armed medical response by subscription. Platinum clients get an armored AV and a gunship crew in minutes; non-clients get stepped over. They shoot anyone who gets in the way of a pickup."
+  },
+  {
+   "id": "arasaka",
+   "keys": [
+    "arasaka"
+   ],
+   "text": "Arasaka: Japanese megacorp of security, banking and manufacturing; the biggest private army in the world. Pushed out of America after 2023, it returned to Night City after the Unification War and built a new tower in Corpo Plaza. Loyalty, honor and fear."
+  },
+  {
+   "id": "saburo_alive",
+   "keys": [
+    "saburo"
+   ],
+   "until": "heist",
+   "text": "Saburo Arasaka: founder and head of Arasaka for over a century, kept alive by the best medicine money buys; survived the 2023 bombing. Rarely seen in public; rumored to be visiting Night City."
+  },
+  {
+   "id": "saburo_dead",
+   "keys": [
+    "saburo"
+   ],
+   "after": "heist",
+   "text": "Saburo Arasaka: founder and head of Arasaka for over a century. The news says he died in Night City, at Konpeki Plaza; Arasaka controls the story and the details are murky. A memorial parade is planned in Japantown and the succession is a hot topic."
+  },
+  {
+   "id": "yorinobu",
+   "keys": [
+    "yorinobu"
+   ],
+   "text": "Yorinobu Arasaka: Saburo's son and the family's black sheep; broke publicly with his father as a young man and was linked to the anti-corporate Steel Dragons gang. Lately back inside the company."
+  },
+  {
+   "id": "hanako",
+   "keys": [
+    "hanako"
+   ],
+   "text": "Hanako Arasaka: Saburo's daughter, the elegant public face of the family; leads Arasaka's cultural and charity events and lives in a guarded estate."
+  },
+  {
+   "id": "adam_smasher",
+   "keys": [
+    "smasher",
+    "adam smasher"
+   ],
+   "text": "Adam Smasher: Arasaka's notorious full-body cyborg enforcer, more machine than man; a legend whispered in the Afterlife. Mercs who cross him don't come back."
+  },
+  {
+   "id": "militech",
+   "keys": [
+    "militech"
+   ],
+   "text": "Militech: American arms megacorp, Arasaka's great rival, nationalized by the NUSA after the war and now the government's armory. Strong presence in Night City and around Dogtown; its weapons are everywhere."
+  },
+  {
+   "id": "kangtao",
+   "keys": [
+    "kang tao",
+    "kangtao"
+   ],
+   "text": "Kang Tao: Chinese arms manufacturer rising fast, famous for smart weapons with guided bullets; expanding into Night City and fighting for contracts."
+  },
+  {
+   "id": "petrochem",
+   "keys": [
+    "petrochem"
+   ],
+   "text": "Petrochem: energy and agriculture megacorp, CHOOH2 fuel and oil; owns refineries, fields and a nuclear plant around Night City. Bitter rival of SovOil."
+  },
+  {
+   "id": "sovoil",
+   "keys": [
+    "sovoil"
+   ],
+   "text": "SovOil: Soviet-born energy giant, Petrochem's rival in the fuel business."
+  },
+  {
+   "id": "biotechnica",
+   "keys": [
+    "biotechnica"
+   ],
+   "text": "Biotechnica: biotech megacorp: engineered crops, CHOOH2 feedstock and synthetic food. Owns huge fields in the Badlands (the Biotechnica Flats) and a hotel and tower in the city."
+  },
+  {
+   "id": "iec",
+   "keys": [
+    "international electric",
+    "iec"
+   ],
+   "text": "International Electric Corporation: European energy and electronics giant; runs power plants and stations around the world."
+  },
+  {
+   "id": "lazarus",
+   "keys": [
+    "lazarus"
+   ],
+   "text": "Lazarus Group: private military corporation; rents out soldiers, mercs and security teams to whoever pays."
+  },
+  {
+   "id": "night_corp",
+   "keys": [
+    "night corp",
+    "nightcorp"
+   ],
+   "text": "Night Corp: old, low-profile corporation descended from the city's founding; infrastructure, urban development and public works. Its name is on half the city's buildings and almost nobody knows who runs it."
+  },
+  {
+   "id": "zetatech",
+   "keys": [
+    "zetatech"
+   ],
+   "text": "Zetatech: computers, cyberware and drones; makes the Bombus drone line, used for surveillance, deliveries and nannying (Apiko's chassis)."
+  },
+  {
+   "id": "kiroshi",
+   "keys": [
+    "kiroshi"
+   ],
+   "text": "Kiroshi Opticals: Japanese maker of the city's most common cybereyes."
+  },
+  {
+   "id": "raven",
+   "keys": [
+    "raven"
+   ],
+   "text": "Raven Microcybernetics: cyberware maker; neural and combat implants."
+  },
+  {
+   "id": "delamain",
+   "keys": [
+    "delamain"
+   ],
+   "text": "Delamain: Night City's premium taxi company, its cars driven by a licensed AI of the same name. Polite, punctual, a little eerie."
+  },
+  {
+   "id": "combat_cab",
+   "keys": [
+    "combat cab",
+    "taxi"
+   ],
+   "text": "Combat Cab: armored taxi service for the parts of the city where normal cabs don't go."
+  },
+  {
+   "id": "ncart",
+   "keys": [
+    "ncart",
+    "metro",
+    "subway",
+    "tren",
+    "train",
+    "maglev"
+   ],
+   "text": "NCART: Night City's transit network, elevated trains linking the districts; there's also an old maglev network running out of the city. Cheap, crowded and never quite safe."
+  },
+  {
+   "id": "media_n54",
+   "keys": [
+    "n54",
+    "network 54",
+    "noticias",
+    "news",
+    "wns",
+    "world news",
+    "dms",
+    "diverse media"
+   ],
+   "text": "News media: Network 54 (N54) is the city's big news channel; World News Service and Diverse Media Systems sell the rest. All of it is corporate-owned and edited by whoever pays the most."
+  },
+  {
+   "id": "weapon_brands",
+   "keys": [
+    "malorian",
+    "tsunami",
+    "kendachi",
+    "budget arms",
+    "midnight arms",
+    "constitutional arms",
+    "techtronika",
+    "nokota",
+    "darra",
+    "rostovic"
+   ],
+   "text": "Weapon brands: Militech, Arasaka, Kang Tao and Tsunami for the big contracts; Malorian Arms (custom handcannons), Kendachi (monoblades), Budget Arms (cheap and unreliable), Midnight Arms, Constitutional Arms, Techtronika, Darra Polytechnic. Gangs buy whatever falls off a truck."
+  },
+  {
+   "id": "car_brands",
+   "keys": [
+    "thorton",
+    "rayfield",
+    "quadra",
+    "mizutani",
+    "makigai",
+    "herrera",
+    "villefort",
+    "chevillon",
+    "archer",
+    "mahir",
+    "yaiba",
+    "arch"
+   ],
+   "text": "Car and bike brands: Rayfield and Herrera (hypercars), Quadra (muscle), Villefort and Chevillon (family cars), Thorton (rugged nomad trucks), Mizutani and Makigai (Japanese), Archer (cheap), Mahir (budget), Yaiba and ARCH (bikes)."
+  },
+  {
+   "id": "all_foods",
+   "keys": [
+    "all foods",
+    "allfoods"
+   ],
+   "text": "All Foods: food-processing company; its old plant in Northside is a notorious Maelstrom hangout."
+  },
+  {
+   "id": "dynalar",
+   "keys": [
+    "dynalar"
+   ],
+   "text": "Dynalar: cyberware and robotics manufacturer; prosthetics and cyberlimbs."
+  },
+  {
+   "id": "orbital_air",
+   "keys": [
+    "orbital air"
+   ],
+   "text": "Orbital Air: airline and spaceline running flights and shuttles to orbit from the NCX spaceport."
+  },
+  {
+   "id": "infocomp",
+   "keys": [
+    "infocomp"
+   ],
+   "text": "Infocomp: data and information broker corporation; buys and sells secrets legally."
+  },
+  {
+   "id": "ebm",
+   "keys": [
+    "ebm",
+    "euro business machines"
+   ],
+   "text": "Euro Business Machines (EBM): European computer and cyberware manufacturer; sponsors the EBM Petrochem Stadium."
+  },
+  {
+   "id": "kiroshi_brands",
+   "keys": [
+    "cyberware",
+    "implante",
+    "implantes",
+    "cromo",
+    "chrome",
+    "ciberware"
+   ],
+   "text": "Cyberware: implants of every kind: eyes, arms, reflex boosters (Sandevistan, Kerenzikov), blades (mantis blades), skin armor. Arasaka, Militech, Zetatech, Kiroshi and Dynalar sell it; ripperdocs install it. Too much is said to lead to cyberpsychosis."
+  },
+  {
+   "id": "sandevistan",
+   "keys": [
+    "sandevistan",
+    "kerenzikov"
+   ],
+   "text": "Sandevistan and Kerenzikov: reflex-boosting implants that slow the world down for the user; Sandevistans are the famous ones, coveted by edgerunners and hard on the body."
+  },
+  {
+   "id": "mantis",
+   "keys": [
+    "mantis",
+    "cuchillas mantis",
+    "mantis blades"
+   ],
+   "text": "Mantis blades: forearm blades that unfold from cyberarms; favored by assassins and gang killers."
+  },
+  {
+   "id": "chooh2",
+   "keys": [
+    "chooh2",
+    "chooh"
+   ],
+   "text": "CHOOH2: alcohol-based fuel from engineered crops that replaced gasoline; Biotechnica grows it and Petrochem refines it."
+  },
+  {
+   "id": "braindance",
+   "keys": [
+    "braindance",
+    "neurodanza",
+    "neurodanzas",
+    "bd",
+    "bds",
+    "xbd"
+   ],
+   "text": "Braindance: recorded experiences played straight into the brain, every sense included. Legal BDs sell everywhere; black-market XBDs show sex, violence and death. Kabuki is where they're made and sold."
+  },
+  {
+   "id": "engrams",
+   "keys": [
+    "engrama",
+    "engramas",
+    "engram",
+    "biochip",
+    "biochips"
+   ],
+   "text": "Engrams and biochips: there are rumors of the ultra-rich storing minds on chips; the public Net has only marketing slogans and conspiracy threads, nothing solid."
+  },
+  {
+   "id": "soulkiller",
+   "keys": [
+    "soulkiller"
+   ],
+   "text": "Soulkiller: a program said to copy a mind and destroy it; a netrunner legend tied to Arasaka's past. Nothing official about it exists."
+  },
+  {
+   "id": "secure_soul",
+   "keys": [
+    "secure your soul",
+    "asegura tu alma"
+   ],
+   "text": "'Secure Your Soul': an exclusive Arasaka service for the ultra-rich, advertised in vague, glossy terms; nobody outside knows what it really does."
+  },
+  {
+   "id": "drugs",
+   "keys": [
+    "droga",
+    "drogas",
+    "drug",
+    "drugs",
+    "glitter",
+    "black lace",
+    "synthcoke",
+    "blue glass"
+   ],
+   "text": "Street drugs: Glitter (party stimulant), Black Lace (combat drug that kills pain and sense), synthcoke, Blue Glass; inhalers and BDs do the rest. Every gang has its trade."
+  },
+  {
+   "id": "megabuildings",
+   "keys": [
+    "megaedificio",
+    "megaedificios",
+    "megabuilding",
+    "megabuildings",
+    "megabloque"
+   ],
+   "text": "Megabuildings: giant tower blocks housing tens of thousands each, with shops, clinics and gyms inside; you can live your whole life without leaving one. Tiny apartments, thin walls, NCPD rarely inside."
+  },
+  {
+   "id": "combat_zone",
+   "keys": [
+    "zona de combate",
+    "combat zone"
+   ],
+   "text": "Combat zones: areas abandoned by the police where gangs rule outright; Pacifica is the biggest. Enter armed or don't enter."
+  },
+  {
+   "id": "nomads",
+   "keys": [
+    "nomadas",
+    "nomada",
+    "nomads",
+    "nomad",
+    "clan",
+    "clanes",
+    "familia nomada"
+   ],
+   "text": "Nomads: families that left the cities and live on the road: trade, smuggling, convoys and fierce loyalty to the clan. The biggest are the Seven Nations; the Aldecaldos camp near Night City. City folk look down on them, and they return the favor."
+  },
+  {
+   "id": "seven_nations",
+   "keys": [
+    "seven nations",
+    "siete naciones",
+    "jodes",
+    "thelas",
+    "folk nation",
+    "snake nation",
+    "metacorp",
+    "meta corp"
+   ],
+   "text": "The Seven Nations: the biggest nomad groups in North America: the Aldecaldos, the Jodes, the Thelas, the Folk Nation, the Snake Nation, MetaCorp and others; huge convoys running freight across the continent."
+  },
+  {
+   "id": "aldecaldos",
+   "keys": [
+    "aldecaldos",
+    "aldecaldo"
+   ],
+   "text": "Aldecaldos: nomad clan founded by Santiago, one of the biggest; camps in the Badlands near Night City. Proud, close-knit, smugglers and mechanics; friends to those who earn it."
+  },
+  {
+   "id": "raffen",
+   "keys": [
+    "wraiths",
+    "raffen",
+    "raffen shiv",
+    "espectros"
+   ],
+   "text": "Wraiths: Raffen Shiv, nomad outcasts turned raiders; ambush roads in the Badlands and fight the clans. Nobody misses them."
+  },
+  {
+   "id": "sports",
+   "keys": [
+    "corsairs",
+    "nighthawks",
+    "night city heat",
+    "futbol",
+    "football",
+    "basketball",
+    "baloncesto"
+   ],
+   "text": "Sports: the Night City Corsairs play football and the Night City Heat basketball, at the EBM Petrochem Stadium and McCartney Stadium. Bets move more money than the games."
+  },
+  {
+   "id": "gangs",
+   "keys": [
+    "banda",
+    "bandas",
+    "gang",
+    "gangs",
+    "pandilla",
+    "pandillas",
+    "pandilleros"
+   ],
+   "text": "Night City's gangs: Maelstrom (Watson, chrome), Tyger Claws (Japantown and Kabuki), Valentinos (Heywood), 6th Street (Santo Domingo), Animals (muscle for hire, Pacifica), Voodoo Boys (Pacifica netrunners), the Mox (Kabuki), Scavengers (organ and chrome thieves), BARGHEST (Dogtown militia); Wraiths raid the Badlands."
+  },
+  {
+   "id": "maelstrom",
+   "keys": [
+    "maelstrom"
+   ],
+   "text": "Maelstrom: Watson gang obsessed with chrome, faces full of red optics; deal in cyberware, drugs and violence, and many are a step from cyberpsychosis. Hang out at the old All Foods plant and the Totentanz club in Northside. Their leadership changes often and violently."
+  },
+  {
+   "id": "tyger",
+   "keys": [
+    "tyger",
+    "tygre",
+    "tygers",
+    "tiger claws",
+    "garras",
+    "claws"
+   ],
+   "text": "Tyger Claws: Japanese-style gang ruling Japantown and Kabuki: protection rackets, braindance, clubs and dollhouses, katana-wielding enforcers on fast bikes. Close ties to Japanese money and yakuza-style codes."
+  },
+  {
+   "id": "valentinos",
+   "keys": [
+    "valentinos",
+    "valentino",
+    "vatos"
+   ],
+   "text": "Valentinos: Heywood's Latino gang, about family, faith, honor, gold chains and lowriders; well rooted in the neighborhood. Old rivals of the 6th Street."
+  },
+  {
+   "id": "sixth",
+   "keys": [
+    "6th street",
+    "sexta calle",
+    "6th",
+    "sixth street"
+   ],
+   "text": "6th Street: gang founded by war veterans as a neighborhood militia; patriotic, armed to the teeth, now as crooked as any other gang. Rules parts of Santo Domingo and Heywood."
+  },
+  {
+   "id": "animals",
+   "keys": [
+    "animals",
+    "the animals"
+   ],
+   "text": "Animals: gang of hormone- and drug-pumped brawlers who worship raw strength; hire out as muscle and bodyguards, often to the Voodoo Boys in Pacifica."
+  },
+  {
+   "id": "voodoo",
+   "keys": [
+    "voodoo",
+    "vudu",
+    "voodoo boys"
+   ],
+   "text": "Voodoo Boys: Haitian gang that rules Pacifica; the best netrunners on the street, secretive and wary of outsiders. Rumor says they keep looking for what lies past the Blackwall; NetWatch keeps an eye on them."
+  },
+  {
+   "id": "mox",
+   "keys": [
+    "mox",
+    "moxes"
+   ],
+   "text": "The Mox: gang that protects sex workers and the vulnerable, born from Lizzie's Bar in Kabuki after its owner's murder; small, tough, no pushovers."
+  },
+  {
+   "id": "scavs",
+   "keys": [
+    "scavengers",
+    "scavs",
+    "scav",
+    "carroneros",
+    "chatarreros"
+   ],
+   "text": "Scavengers: loose groups that kidnap people to rip out their cyberware and organs; hated by every other gang and the police alike."
+  },
+  {
+   "id": "barghest",
+   "keys": [
+    "barghest",
+    "hansen",
+    "kurt hansen",
+    "coronel"
+   ],
+   "text": "BARGHEST: the militia that rules Dogtown under Colonel Kurt Hansen, a former soldier who carved out his own little state; well armed, well paid, no NCPD inside."
+  },
+  {
+   "id": "crime_orgs",
+   "keys": [
+    "yakuza",
+    "triada",
+    "triadas",
+    "triads",
+    "mafia"
+   ],
+   "text": "International crime: the Yakuza and the Triads work through Japanese and Chinese money; the Mafia keeps its old rackets. In Night City they mostly buy gangs rather than fight them."
+  },
+  {
+   "id": "fixers",
+   "keys": [
+    "fixer",
+    "fixers",
+    "perista",
+    "peristas",
+    "intermediario"
+   ],
+   "text": "Fixers: middlemen who hand out gigs to mercenaries and take a cut. Rogue at the Afterlife is the top; each district has its own: Regina Jones (Watson), Wakako Okada (Westbrook), Dino Dinovic (City Center), Padre (Heywood), El Capitán (Santo Domingo), Mr. Hands (Pacifica), Dakota Smith (Badlands)."
+  },
+  {
+   "id": "rogue",
+   "keys": [
+    "rogue",
+    "amendiares"
+   ],
+   "text": "Rogue Amendiares: Night City's best fixer, owner of the Afterlife; a legendary solo in the old days who ran with Johnny Silverhand. Cold, precise, never cheap."
+  },
+  {
+   "id": "regina",
+   "keys": [
+    "regina",
+    "regina jones"
+   ],
+   "text": "Regina Jones: Watson's fixer, a former journalist; specializes in cyberpsycho cases and pays well for bringing them in alive."
+  },
+  {
+   "id": "wakako",
+   "keys": [
+    "wakako",
+    "okada"
+   ],
+   "text": "Wakako Okada: Westbrook's fixer, an old woman with Tyger Claws ties working out of Japantown; polite, ruthless, never forgets a debt."
+  },
+  {
+   "id": "dino",
+   "keys": [
+    "dino",
+    "dinovic"
+   ],
+   "text": "Dino Dinovic: City Center's fixer, works out of his bar Electric Orgasm downtown; corporate gigs, corporate manners."
+  },
+  {
+   "id": "padre",
+   "keys": [
+    "sebastian ibarra",
+    "ibarra"
+   ],
+   "text": "Padre (Sebastian Ibarra): Heywood's fixer, a pious man with a long history in the Valentinos' neighborhoods; jobs come with sermons."
+  },
+  {
+   "id": "capitan",
+   "keys": [
+    "el capitan",
+    "muamar"
+   ],
+   "text": "El Capitán (Muamar Reyes): Santo Domingo's fixer; talks a lot, pays fair, knows every warehouse and every gang in the district."
+  },
+  {
+   "id": "mr_hands",
+   "keys": [
+    "mr. hands",
+    "mr hands",
+    "senor manos",
+    "wade bleecker"
+   ],
+   "text": "Mr. Hands: Pacifica's fixer; nobody meets him in person, he deals by holocall. Smooth, theatrical and very well informed."
+  },
+  {
+   "id": "dakota",
+   "keys": [
+    "dakota",
+    "dakota smith"
+   ],
+   "text": "Dakota Smith: the Badlands' fixer, an Aldecaldo who runs her garage in Rocky Ridge; nomad jobs, smuggling, no nonsense."
+  },
+  {
+   "id": "dex",
+   "keys": [
+    "dex",
+    "dexter",
+    "deshawn"
+   ],
+   "text": "Dexter DeShawn: well-known fixer back in Night City in 2077 after years off the grid; charismatic, a good eye for talent, always in a car with his bodyguard."
+  },
+  {
+   "id": "edgerunner",
+   "keys": [
+    "mercenario",
+    "mercenarios",
+    "merc",
+    "mercs",
+    "edgerunner",
+    "edgerunners"
+   ],
+   "text": "Edgerunners: mercenaries who live off gigs from fixers; most die young, a few become legends with a drink named after them at the Afterlife."
+  },
+  {
+   "id": "ripperdoc",
+   "keys": [
+    "matasanos",
+    "ripperdoc",
+    "ripperdocs",
+    "ripper",
+    "vik",
+    "viktor",
+    "vektor"
+   ],
+   "text": "Ripperdocs: street surgeons who install cyberware, from clean clinics to back-alley butchers. Viktor Vektor in Little China is one of the trusted ones, an ex-boxer with steady hands."
+  },
+  {
+   "id": "misty",
+   "keys": [
+    "misty",
+    "esoterica"
+   ],
+   "text": "Misty's Esoterica: small esoteric shop in Little China, tarot, crystals and incense, next to Viktor's clinic; run by Misty Olszewski."
+  },
+  {
+   "id": "mama_welles",
+   "keys": [
+    "mama welles",
+    "coyote cojo",
+    "el coyote"
+   ],
+   "text": "El Coyote Cojo: Heywood bar run by Mama Welles, a Valentinos neighborhood institution."
+  },
+  {
+   "id": "johnny",
+   "keys": [
+    "johnny",
+    "silverhand",
+    "silver hand"
+   ],
+   "text": "Johnny Silverhand: rockerboy, Samurai's frontman, anti-corporate icon with a chrome arm. Officially died in 2023 in the Arasaka Tower bombing he is blamed for; body never found. His songs still sell; fan rumors are endless and worthless."
+  },
+  {
+   "id": "samurai",
+   "keys": [
+    "samurai"
+   ],
+   "text": "Samurai: Johnny Silverhand's band in the 2000s and 2010s, the loudest voice against the corporations; members included Kerry Eurodyne. Split up long ago; their albums are classics and reunion rumors never die."
+  },
+  {
+   "id": "kerry",
+   "keys": [
+    "kerry",
+    "eurodyne"
+   ],
+   "text": "Kerry Eurodyne: former Samurai guitarist turned solo rock star, living in a villa in North Oak; aging, rich, his best years behind him."
+  },
+  {
+   "id": "blackhand",
+   "keys": [
+    "blackhand",
+    "morgan blackhand"
+   ],
+   "text": "Morgan Blackhand: legendary solo; took part in the 2023 Arasaka Tower attack and vanished afterwards. Stories about him are cheap and endless."
+  },
+  {
+   "id": "alt",
+   "keys": [
+    "alt cunningham",
+    "alt",
+    "cunningham"
+   ],
+   "text": "Alt Cunningham: brilliant netrunner of the 2010s and 2020s, Johnny Silverhand's ex; disappeared decades ago. Netrunner legends say all sorts of things; nothing verifiable."
+  },
+  {
+   "id": "lizzy",
+   "keys": [
+    "lizzy wizzy",
+    "lizzy",
+    "wizzy"
+   ],
+   "text": "Lizzy Wizzy: chrome pop star famous for extreme body modification and shocking shows; a celebrity that tabloids never stop chasing."
+  },
+  {
+   "id": "us_cracks",
+   "keys": [
+    "us cracks",
+    "cracks"
+   ],
+   "text": "Us Cracks: manufactured pop girl group, bubblegum and big marketing; adored by teenagers, mocked by everyone else."
+  },
+  {
+   "id": "ziggy",
+   "keys": [
+    "ziggy",
+    "ziggy q"
+   ],
+   "text": "Ziggy Q: host of the late-night talk show 'Night After Night', where celebrities, corpos and politicians come to be seen."
+  },
+  {
+   "id": "radio",
+   "keys": [
+    "radio",
+    "emisora",
+    "emisoras",
+    "station"
+   ],
+   "text": "Night City radio: stations like 89.3 Radio Vexelstrom, 92.9 Night FM, 98.7 Body Heat, 101.9 The Dirge, 103.5 Radio PEBKAC, 106.9 30 Principales, 107.3 Morro Rock Radio, 88.9 Pacific Dreams, 91.9 Royal Blue and 96.1 Ritual FM; plus the underground Samizdat."
+  },
+  {
+   "id": "tv",
+   "keys": [
+    "television",
+    "tele",
+    "tv"
+   ],
+   "text": "Night City TV: N54 news, Ziggy Q's talk show, corporate ads every thirty seconds, game shows and reality BDs; Arasaka and Militech both buy airtime."
+  },
+  {
+   "id": "afterlife",
+   "keys": [
+    "afterlife",
+    "the afterlife"
+   ],
+   "text": "Afterlife: mercenaries' bar in an old morgue in Watson, owned by Rogue; drinks are named after dead legends. If you want a serious gig, you get seen here."
+  },
+  {
+   "id": "lizzies",
+   "keys": [
+    "lizzie",
+    "lizzies",
+    "lizzie's"
+   ],
+   "text": "Lizzie's Bar: Kabuki club and braindance studio, home of the Mox; neon, BD booths and a strict no-trouble policy."
+  },
+  {
+   "id": "totentanz",
+   "keys": [
+    "totentanz"
+   ],
+   "text": "Totentanz: Maelstrom's club in Northside; loud, red and full of chrome. Not a place for strangers."
+  },
+  {
+   "id": "clouds",
+   "keys": [
+    "clouds",
+    "dollhouse",
+    "muñecas",
+    "munecas",
+    "dolls"
+   ],
+   "text": "Clouds: upscale dollhouse in Jig-Jig Street, Japantown, run under Tyger Claws protection; the 'dolls' are workers with personality chips."
+  },
+  {
+   "id": "jig_jig",
+   "keys": [
+    "jig-jig",
+    "jig jig",
+    "jigjig"
+   ],
+   "text": "Jig-Jig Street: Japantown's red-light street, sex, BDs and dollhouses, Tyger Claws protection everywhere."
+  },
+  {
+   "id": "konpeki",
+   "keys": [
+    "konpeki"
+   ],
+   "text": "Konpeki Plaza: Arasaka's luxury hotel tower on the Watson waterfront; top-tier security, VIP guests only.",
+   "until": "heist"
+  },
+  {
+   "id": "konpeki_after",
+   "keys": [
+    "konpeki"
+   ],
+   "after": "heist",
+   "text": "Konpeki Plaza: after Saburo Arasaka's death there, the hotel was locked down; Arasaka keeps its version of events tight and hunts whoever it blames."
+  },
+  {
+   "id": "street_slang",
+   "keys": [
+    "choom",
+    "preem",
+    "nova",
+    "gonk",
+    "delta",
+    "flatline",
+    "eddies",
+    "eddie"
+   ],
+   "text": "Street slang: choom (friend), preem (great), nova (cool), gonk (idiot), delta (leave), flatline (kill or die), eddies (eurodollars, the money everyone uses)."
+  },
+  {
+   "id": "eddies",
+   "keys": [
+    "eurodolar",
+    "eurodolares",
+    "eurodollar",
+    "eurodollars"
+   ],
+   "text": "Eurodollars ('eddies'): the world's main currency, European-backed; everything in Night City has a price in them."
+  },
+  {
+   "id": "watson",
+   "keys": [
+    "watson"
+   ],
+   "text": "Watson: northern district; once a corporate hub, abandoned by the corps after the Unification War and now poor and crowded. Sub-districts: Kabuki, Little China, Northside, Arasaka Waterfront. Maelstrom in Northside, Tyger Claws in Kabuki."
+  },
+  {
+   "id": "kabuki",
+   "keys": [
+    "kabuki"
+   ],
+   "text": "Kabuki: Watson's market maze: street food, black-market tech, braindance studios, Lizzie's Bar and the Kabuki Roundabout. Tyger Claws and the Mox; anything can be bought, especially what shouldn't be."
+  },
+  {
+   "id": "little_china",
+   "keys": [
+    "little china"
+   ],
+   "text": "Little China: Watson neighborhood of megabuildings, noodle stalls and clinics; Megabuilding H10, Viktor's ripperdoc clinic, Misty's shop and Tom's Diner are there. Busy, poor, mostly peaceful by Night City standards."
+  },
+  {
+   "id": "northside",
+   "keys": [
+    "northside",
+    "zona norte"
+   ],
+   "text": "Northside: Watson's industrial zone of factories and warehouses, Maelstrom territory (All Foods plant, Totentanz). The NCPD rarely comes."
+  },
+  {
+   "id": "arasaka_waterfront",
+   "keys": [
+    "arasaka waterfront",
+    "waterfront",
+    "puerto",
+    "docks",
+    "muelles"
+   ],
+   "text": "Arasaka Waterfront: Watson's docks and warehouses, owned by Arasaka; container yards, private security and Konpeki Plaza on the edge."
+  },
+  {
+   "id": "westbrook",
+   "keys": [
+    "westbrook"
+   ],
+   "text": "Westbrook: the rich district: Japantown's nightlife, Charter Hill's offices and North Oak's mansions. Tyger Claws run the streets below the money."
+  },
+  {
+   "id": "japantown",
+   "keys": [
+    "japantown",
+    "japan town"
+   ],
+   "text": "Japantown: Westbrook's neon heart: Jig-Jig Street, the Cherry Blossom Market, clubs, pachinko and dollhouses; Tyger Claws territory, Japanese money everywhere."
+  },
+  {
+   "id": "charter_hill",
+   "keys": [
+    "charter hill"
+   ],
+   "text": "Charter Hill: Westbrook's business area of corporate offices, the Dynalar complex and Arasaka-owned buildings; quiet, guarded, expensive."
+  },
+  {
+   "id": "north_oak",
+   "keys": [
+    "north oak"
+   ],
+   "text": "North Oak: hills of luxury villas for celebrities and executives (Kerry Eurodyne lives there); the North Oak Columbarium overlooks the city. Private security everywhere."
+  },
+  {
+   "id": "columbarium",
+   "keys": [
+    "columbarium",
+    "columbario"
+   ],
+   "text": "North Oak Columbarium: huge hillside columbarium and memorial, the only cemetery space most people can afford: ashes in a wall."
+  },
+  {
+   "id": "city_center",
+   "keys": [
+    "city center",
+    "centro",
+    "centro de la ciudad"
+   ],
+   "text": "City Center: the corporate heart, rebuilt after the 2023 bombing: Corpo Plaza with Arasaka Tower and the big HQs, and Downtown with offices, hotels and clubs. The most cameras and the most police in the city."
+  },
+  {
+   "id": "corpo_plaza",
+   "keys": [
+    "corpo plaza",
+    "corporate plaza"
+   ],
+   "text": "Corpo Plaza: City Center's plaza of megacorp towers: Arasaka, Militech, Biotechnica, Petrochem, Kang Tao. Security everywhere; the Memorial Park sits where the old tower fell."
+  },
+  {
+   "id": "downtown",
+   "keys": [
+    "downtown"
+   ],
+   "text": "Downtown: City Center's commercial core: offices, hotels, the Electric Orgasm bar and the expensive clubs."
+  },
+  {
+   "id": "arasaka_tower_new",
+   "keys": [
+    "torre arasaka",
+    "arasaka tower",
+    "rascacielos arasaka"
+   ],
+   "text": "Arasaka Tower: the new Arasaka skyscraper in Corpo Plaza, built in the 2070s near the site of the one nuked in 2023; the most guarded building in Night City."
+  },
+  {
+   "id": "memorial_park",
+   "keys": [
+    "memorial park",
+    "parque memorial"
+   ],
+   "text": "Memorial Park: City Center park built over the crater of the 2023 bombing, with a monument to the victims."
+  },
+  {
+   "id": "heywood",
+   "keys": [
+    "heywood"
+   ],
+   "text": "Heywood: big residential district south of City Center: The Glen (City Hall), Vista del Rey and Wellsprings. Valentinos territory; working families, lowriders and street altars."
+  },
+  {
+   "id": "glen",
+   "keys": [
+    "glen",
+    "the glen",
+    "el glen"
+   ],
+   "text": "The Glen: Heywood's administrative side, City Hall among crowded streets; Valentinos everywhere."
+  },
+  {
+   "id": "vista_del_rey",
+   "keys": [
+    "vista del rey"
+   ],
+   "text": "Vista del Rey: Heywood's poorest neighborhood, low houses, murals and Valentinos; La Catrina funeral home and El Coyote Cojo are around."
+  },
+  {
+   "id": "wellsprings",
+   "keys": [
+    "wellsprings"
+   ],
+   "text": "Wellsprings: Heywood's better-off, quieter neighborhood."
+  },
+  {
+   "id": "santo_domingo",
+   "keys": [
+    "santo domingo"
+   ],
+   "text": "Santo Domingo: the industrial district: power plants, factories and freight yards, plus the Arroyo and Rancho Coronado suburbs. 6th Street turf; the city's working engine."
+  },
+  {
+   "id": "arroyo",
+   "keys": [
+    "arroyo"
+   ],
+   "text": "Arroyo: Santo Domingo's industrial zone: factories, Kendachi and Cytech plants, scrapyards and dust; 6th Street and gang ambushes."
+  },
+  {
+   "id": "rancho_coronado",
+   "keys": [
+    "rancho coronado"
+   ],
+   "text": "Rancho Coronado: Santo Domingo's suburb of cookie-cutter houses and malls, the lower-middle class dream; 6th Street keeps 'order'."
+  },
+  {
+   "id": "pacifica",
+   "keys": [
+    "pacifica"
+   ],
+   "text": "Pacifica: failed luxury resort project on the coast, abandoned by investors after the Unification War; half-built hotels and amusement parks. Voodoo Boys and Animals rule; the NCPD barely enters. Coastview and West Wind Estate."
+  },
+  {
+   "id": "coastview",
+   "keys": [
+    "coastview",
+    "grand imperial",
+    "grand imperial mall"
+   ],
+   "text": "Coastview: Pacifica's seafront: the half-dead Grand Imperial Mall, Batty's Hotel and squatted towers; Voodoo Boys turf."
+  },
+  {
+   "id": "west_wind",
+   "keys": [
+    "west wind"
+   ],
+   "text": "West Wind Estate: Pacifica's slum of shacks and trailers by the abandoned housing project; the poorest place in the city."
+  },
+  {
+   "id": "dogtown",
+   "keys": [
+    "dogtown"
+   ],
+   "text": "Dogtown: walled part of Pacifica ruled by Kurt Hansen and his BARGHEST militia; black market hub where anything is sold, a stadium turned fortress and no NCPD inside. You need a reason to get in."
+  },
+  {
+   "id": "badlands",
+   "keys": [
+    "badlands",
+    "desierto",
+    "desert",
+    "yermo"
+   ],
+   "text": "Badlands: the desert around Night City: ruined towns, abandoned oil fields, wind and solar farms, Biotechnica's fields. Nomads, Wraiths, smugglers and corporate convoys share the dust."
+  },
+  {
+   "id": "rocky_ridge",
+   "keys": [
+    "rocky ridge"
+   ],
+   "text": "Rocky Ridge: Badlands hills north-east of the city; Dakota Smith's garage and the Aldecaldo camp are around."
+  },
+  {
+   "id": "laguna_bend",
+   "keys": [
+    "laguna bend"
+   ],
+   "text": "Laguna Bend: old Badlands town drowned by a dam's reservoir; a church spire sticks out of the water."
+  },
+  {
+   "id": "biotechnica_flats",
+   "keys": [
+    "biotechnica flats"
+   ],
+   "text": "Biotechnica Flats: Biotechnica's endless engineered crop fields in the Badlands, guarded by corporate security."
+  },
+  {
+   "id": "jackson_plains",
+   "keys": [
+    "jackson plains"
+   ],
+   "text": "Jackson Plains: flat Badlands scrub with truck stops and ruined farms; Wraith raids are common."
+  },
+  {
+   "id": "red_peaks",
+   "keys": [
+    "red peaks"
+   ],
+   "text": "Red Peaks: rocky Badlands mountains, nomad hideouts and abandoned mines."
+  },
+  {
+   "id": "oilfields",
+   "keys": [
+    "oil field",
+    "oilfield",
+    "sunrise",
+    "campos petroliferos",
+    "pozos"
+   ],
+   "text": "North Sunrise Oil Field: rusted oil field in the Badlands, Petrochem's old property, now scavengers and Wraiths."
+  },
+  {
+   "id": "border",
+   "keys": [
+    "frontera",
+    "border",
+    "socal border"
+   ],
+   "text": "SoCal border: the walled crossing between Night City's territory and Southern California, guarded and corrupt; smugglers love it."
+  },
+  {
+   "id": "morro_rock",
+   "keys": [
+    "morro rock"
+   ],
+   "text": "Morro Rock: rocky area off Pacifica's coast; gave its name to Morro Rock Radio."
+  },
+  {
+   "id": "ncx",
+   "keys": [
+    "ncx",
+    "spaceport",
+    "puerto espacial",
+    "aeropuerto",
+    "airport"
+   ],
+   "text": "NCX Spaceport: Night City's spaceport and airport in the Badlands; shuttles to orbit and flights worldwide, heavy corporate security."
+  },
+  {
+   "id": "stadium",
+   "keys": [
+    "estadio",
+    "stadium",
+    "ebm petrochem stadium"
+   ],
+   "text": "EBM Petrochem Stadium: City Center's huge stadium; football, concerts and corporate shows."
+  },
+  {
+   "id": "tom_diner",
+   "keys": [
+    "tom's diner",
+    "toms diner",
+    "tom diner"
+   ],
+   "text": "Tom's Diner: classic diner in Little China, coffee and synth-eggs, a favorite of mercs before a job."
+  },
+  {
+   "id": "h10",
+   "keys": [
+    "h10",
+    "megabuilding h10",
+    "megaedificio h10"
+   ],
+   "text": "Megabuilding H10: big tower block in Little China, near the Kabuki market; thousands of tiny apartments, shops and an NCPD-free attitude."
+  },
+  {
+   "id": "cherry_blossom",
+   "keys": [
+    "cherry blossom"
+   ],
+   "text": "Cherry Blossom Market: Japantown's lively street market, food stalls and cheap goods under neon."
+  },
+  {
+   "id": "electric_orgasm",
+   "keys": [
+    "electric orgasm"
+   ],
+   "text": "Electric Orgasm: Dino Dinovic's bar in Downtown; corpo-friendly fixer business."
+  },
+  {
+   "id": "dicky_twister",
+   "keys": [
+    "dicky twister"
+   ],
+   "text": "Dicky Twister: Watson strip club with Maelstrom regulars, sleazy even for Watson."
+  },
+  {
+   "id": "black_sapphire",
+   "keys": [
+    "black sapphire"
+   ],
+   "text": "Black Sapphire: exclusive club in Dogtown for the rich and connected."
+  },
+  {
+   "id": "embers",
+   "keys": [
+    "embers"
+   ],
+   "text": "Embers: upscale club and restaurant in City Center where the city's elite go to be seen."
+  },
+  {
+   "id": "hospitals",
+   "keys": [
+    "hospital",
+    "hospitales",
+    "clinica",
+    "clinic",
+    "medico",
+    "medical center"
+   ],
+   "text": "Medicine: Trauma Team for subscribers, corporate clinics for employees, and ripperdocs or the overcrowded Night City Medical Center for everyone else."
+  },
+  {
+   "id": "city_hall",
+   "keys": [
+    "city hall",
+    "ayuntamiento"
+   ],
+   "text": "Night City City Hall: in The Glen, Heywood; seat of the mayor and the council, under heavy NCPD guard."
+  },
+  {
+   "id": "university",
+   "keys": [
+    "universidad",
+    "university",
+    "night city university"
+   ],
+   "text": "Night City University: the city's main university; expensive and corporate-sponsored."
+  },
+  {
+   "id": "landfill",
+   "keys": [
+    "vertedero",
+    "landfill",
+    "basurero"
+   ],
+   "text": "Night City Municipal Landfill: vast dump in the Badlands outskirts; scavengers dig through it and bodies end up there."
+  },
+  {
+   "id": "coronado_dam",
+   "keys": [
+    "presa",
+    "dam",
+    "coronado dam"
+   ],
+   "text": "Coronado Dam: dam in the Badlands that holds back a big reservoir near Laguna Bend."
+  },
+  {
+   "id": "power",
+   "keys": [
+    "central electrica",
+    "power plant",
+    "nuclear plant"
+   ],
+   "text": "Power: Night City runs on Petrochem's nuclear plant, Santo Domingo's power stations and the wind and solar farms in the Badlands; blackouts hit the poor districts first."
+  }
+ ]
+}

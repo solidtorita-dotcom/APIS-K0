@@ -1,0 +1,11 @@
+# APIS-K0: the find's site in the Badlands (NetWatch case, van, bodies) and its journal entries and texts
+# (sources: tools\make_world.py).
+streaming:
+  blocks:
+    - apisk0\world\apisk0.streamingblock
+journal:
+  - apisk0\journal\apisk0.journal
+localization:
+  onscreens:
+    en-us: apisk0\localization\en-us.json
+    es-es: apisk0\localization\es-es.json

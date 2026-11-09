@@ -1,0 +1,81 @@
+# APIS-K0 follow behavior. Vanilla drones follow with DroneActions.FollowComposite (a selector called by the
+# drone behavior tree): FollowSprint / FollowWalk keep 3.5 m (+- 0.75) from V, so the drone hangs back and backs
+# off when V walks towards it.
+# Instead of changing those shared records (every follower drone, Drone Companions...), two copies with a
+# closer, wider band are put first in the selector, gated by a marker status effect that only APIS-K0 has.
+# Band: distance 1.75 +- 1.25 = 0.5..3 m, like the vanilla human FollowCloseMovePolicy (3 +- 3): with a narrow
+# band (1.5 +- 0.5) it backed off whenever V came closer than 1 m.
+# deadAngle stays at the vanilla 90: with 0 the drone only moved while V stood still.
+# Every other drone fails the gate and falls through to the vanilla actions.
+
+# Marker applied to APIS-K0 by ApisK0System. No effects, no UI, infinite.
+ApisK0.Marker:
+  $base: AdamSmasher.Emergency
+  packages: []
+
+ApisK0Actions.IsApisK0:
+  $type: AIStatusEffectCond
+  statusEffect: ApisK0.Marker
+
+ApisK0Actions.FollowSprint:
+  $type: AIAction
+  cooldowns: [MovementActions.MovePolicyCooldown]
+  activationCondition:
+    $type: AIActionCondition
+    condition:
+      $type: AIActionAND
+      AND: [ApisK0Actions.IsApisK0, Condition.FollowerAbove9m]
+  loop:
+    $type: AIActionPhase
+    movePolicy:
+      $type: MovementPolicy
+      target: AIActionTarget.FriendlyTarget
+      strafingTarget: AIActionTarget.FriendlyTarget
+      movementType: Run
+      distance: 1.75
+      tolerance: 1.25
+      deadAngle: 90.0
+      dynamicTargetUpdateTimer: 1.0
+      ignoreLoSPrecheck: true
+      avoidSafeArea: true
+    conditionSuccessDuration: 0.3
+    toNextPhaseConditionCheckInterval: 0.3
+    toNextPhaseCondition:
+      - $type: AIActionCondition
+        condition:
+          $type: AIActionOR
+          OR: [Condition.PathFindingFailed, Condition.FollowerInVehicle]
+
+ApisK0Actions.FollowWalk:
+  $type: AIAction
+  cooldowns: [MovementActions.MovePolicyCooldown]
+  activationCondition:
+    $type: AIActionCondition
+    condition:
+      $type: AIActionAND
+      AND: [ApisK0Actions.IsApisK0, Condition.FollowerBelow9m]
+  loop:
+    $type: AIActionPhase
+    movePolicy:
+      $type: MovementPolicy
+      target: AIActionTarget.FriendlyTarget
+      strafingTarget: AIActionTarget.FriendlyTarget
+      movementType: Walk
+      distance: 1.75
+      tolerance: 1.25
+      deadAngle: 90.0
+      dynamicTargetUpdateTimer: 1.0
+      ignoreLoSPrecheck: true
+      avoidSafeArea: true
+    conditionSuccessDuration: 0.3
+    toNextPhaseConditionCheckInterval: 0.3
+    toNextPhaseCondition:
+      - $type: AIActionCondition
+        condition:
+          $type: AIActionOR
+          OR: [Condition.FollowerAbove17m, Condition.PathFindingFailed, Condition.FollowerInVehicle]
+
+DroneActions.FollowComposite:
+  nodes:
+    - !prepend ApisK0Actions.FollowWalk
+    - !prepend ApisK0Actions.FollowSprint

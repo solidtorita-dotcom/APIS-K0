@@ -1,0 +1,52 @@
+# APIS-K0: the chip V finds in the NetWatch case at the end of the beacon's trail (ApisK0Find.reds puts it in the
+# case and starts the upload when V takes it). A quest item that stays: no dropping, selling or disassembling.
+# Texts from ApisK0.archive's localization (tools\make_world.py).
+Items.ApisK0Core:
+  $base: Items.sts_bad_ina_11_chip
+  friendlyName: ApisK0Core
+  entityName: ApisK0Core
+  displayName: LocKey#apisk0-core-name
+  localizedDescription: LocKey#apisk0-core-desc
+  objectActions: []
+  canDrop: false
+
+# The dead netrunner's last log, looted from his body (tools\make_world.py, PROPS; ApisK0Find.reds puts it there): a
+# vanilla world shard whose read action opens our journal onscreen entry (make_world.py, SHARD_ID).
+Items.ApisK0NetrunnerShard:
+  $base: Items.generic_outer_inner_dialogues_shard
+  itemSecondaryAction:
+    $base: Items.generic_outer_inner_dialogues_shard_inline0
+    journalEntry: onscreens/emails/generic/shards/world/apisk0_netrunner_log
+
+# The hidden second netrunner's loot (ApisK0Find.reds puts it in her body once). Copies of vanilla quickhacks, so that
+# "V has it" tells that V took this one even if V already owned the vanilla program.
+# Rows the scanner shows on the agents' bodies (their .ent copies list them; tools\make_world.py, BODIES), each a
+# label and a text, as the vanilla scan of a dead inmate (mq062). With "STATUS: Deceased" (scanning.q003_stout_dead1,
+# vanilla) between them. LocKey#33905 "Affiliation" and #44323 "NetWatch" (the faction's name), #49155 "Cause of
+# death": vanilla texts, in every language.
+scanning.apisk0_affiliation:
+  $base: scanning.mq062_escape_time_branch_dead_inmate_06a
+  localizedName: LocKey#33905
+  localizedDescription: LocKey#44323
+
+scanning.apisk0_kessler:
+  $base: scanning.mq062_escape_time_branch_dead_inmate_06a
+  localizedName: LocKey#49155
+  localizedDescription: LocKey#apisk0-scan-kessler
+
+scanning.apisk0_ortega:
+  $base: scanning.mq062_escape_time_branch_dead_inmate_06a
+  localizedName: LocKey#49155
+  localizedDescription: LocKey#apisk0-scan-ortega
+
+# The NetWatch case (the chip): its clue row.
+scanning.apisk0_case:
+  $base: scanning.mq062_escape_time_branch_dead_inmate_06a
+  localizedName: LocKey#apisk0-scan-signal
+  localizedDescription: LocKey#apisk0-scan-case
+
+Items.ApisK0StashMemoryWipe:
+  $base: Items.MemoryWipeLvl3Program
+
+Items.ApisK0StashSystemCollapse:
+  $base: Items.SystemCollapseLvl3Program

@@ -1,0 +1,534 @@
+{
+  "version": 1,
+  "languages": [
+    "es",
+    "en"
+  ],
+  "llm": {
+    "order": [
+      "openrouter",
+      "gemini",
+      "groq",
+      "openai",
+      "mistral",
+      "custom",
+      "ollama"
+    ],
+    "default": "openrouter",
+    "providers": {
+      "openrouter": {
+        "label": "OpenRouter",
+        "badge": "Best quality",
+        "note": "One key for hundreds of models (Claude, GPT, Gemini, free ones). You pay per use.",
+        "base_url": "https://openrouter.ai/api/v1",
+        "key": "openrouter",
+        "key_url": "https://openrouter.ai/settings/keys",
+        "reasoning": "openrouter",
+        "models": [
+          {
+            "id": "anthropic/claude-haiku-5.5",
+            "badge": "Recommended",
+            "note": "Best at playing Apiko's character. Fast. $0.10 / $0.50 per M tokens.",
+            "reasoning_effort": "none"
+          },
+          {
+            "id": "deepseek/deepseek-v4-flash",
+            "note": "Very cheap. $0.09 / $0.18 per M tokens."
+          },
+          {
+            "id": "google/gemini-3.5-flash-lite",
+            "note": "Fast. $0.30 / $2.50 per M tokens.",
+            "reasoning_effort": "low"
+          },
+          {
+            "id": "openai/gpt-5.4-nano",
+            "note": "Cheap. $0.20 / $1.25 per M tokens.",
+            "reasoning_effort": "low"
+          },
+          {
+            "id": "mistralai/mistral-small-2603",
+            "note": "Cheap. $0.15 / $0.60 per M tokens."
+          },
+          {
+            "id": "google/gemma-4-31b-it:free",
+            "badge": "Free",
+            "note": "Free but rate-limited, and weaker at staying in character."
+          }
+        ]
+      },
+      "groq": {
+        "label": "Groq",
+        "badge": "Fast - free tier",
+        "note": "Very fast, with a free tier. The free tier allows only about 2-3 Apiko replies per minute (8000 tokens per minute); Apiko waits a moment and retries when it hits the limit. The same key works for speech recognition and the Orpheus voice.",
+        "base_url": "https://api.groq.com/openai/v1",
+        "key": "groq",
+        "key_url": "https://console.groq.com/keys",
+        "reasoning": "openai",
+        "models": [
+          {
+            "id": "openai/gpt-oss-120b",
+            "badge": "Recommended",
+            "note": "Smart and fast, but plays Apiko's character flatter than Claude.",
+            "reasoning_effort": "low"
+          },
+          {
+            "id": "openai/gpt-oss-20b",
+            "note": "Faster and cheaper, a bit less clever.",
+            "reasoning_effort": "low"
+          },
+          {
+            "id": "qwen/qwen3.8-27b",
+            "note": "Alternative model."
+          }
+        ]
+      },
+      "openai": {
+        "label": "OpenAI",
+        "note": "OpenAI's own API.",
+        "base_url": "https://api.openai.com/v1",
+        "key": "openai",
+        "key_url": "https://platform.openai.com/api-keys",
+        "reasoning": "openai",
+        "models": [
+          {
+            "id": "gpt-5.4-nano",
+            "badge": "Recommended",
+            "note": "Cheap and fast.",
+            "reasoning_effort": "low"
+          },
+          {
+            "id": "gpt-5.4-mini",
+            "note": "Smarter, slower and pricier.",
+            "reasoning_effort": "low"
+          }
+        ],
+        "max_tokens_field": "max_completion_tokens"
+      },
+      "gemini": {
+        "label": "Google Gemini",
+        "note": "Google AI Studio key; has a free tier.",
+        "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
+        "key": "gemini",
+        "key_url": "https://aistudio.google.com/apikey",
+        "reasoning": "openai",
+        "models": [
+          {
+            "id": "gemini-3.5-flash-lite",
+            "badge": "Recommended",
+            "note": "Fast and cheap.",
+            "reasoning_effort": "low"
+          },
+          {
+            "id": "gemini-3.5-flash",
+            "note": "Smarter, pricier.",
+            "reasoning_effort": "low"
+          }
+        ],
+        "badge": "Best free"
+      },
+      "mistral": {
+        "label": "Mistral",
+        "note": "Mistral's own API.",
+        "base_url": "https://api.mistral.ai/v1",
+        "key": "mistral",
+        "key_url": "https://console.mistral.ai/api-keys",
+        "models": [
+          {
+            "id": "mistral-small-2603",
+            "badge": "Recommended",
+            "note": "Good balance."
+          },
+          {
+            "id": "ministral-8b-2512",
+            "note": "Cheapest."
+          }
+        ]
+      },
+      "ollama": {
+        "label": "Ollama",
+        "badge": "Free - Local",
+        "note": "Free and private: runs on your PC. Install Ollama, pull a model, and type its name below (as shown by 'ollama list'). It competes with the game for your GPU.",
+        "base_url": "http://127.0.0.1:11434/v1",
+        "url_editable": true,
+        "models": []
+      },
+      "custom": {
+        "label": "Custom URL",
+        "note": "Any OpenAI-compatible endpoint (LM Studio, vLLM, other providers). Base URL ends before /chat/completions.",
+        "base_url": "",
+        "url_editable": true,
+        "key": "custom",
+        "models": []
+      }
+    },
+    "fallback_note": "Best to worst at playing Apiko. When the chosen model cannot answer (no credits, rate limit, server down), the next one the player has a key for is used for that reply. model null = the model the player set for that provider (Ollama, custom URL). Initial estimate: only Haiku and gpt-oss-120b were compared in practice.",
+    "fallback_order": [
+      {
+        "provider": "openrouter",
+        "model": "anthropic/claude-haiku-5.5"
+      },
+      {
+        "provider": "openai",
+        "model": "gpt-5.4-mini"
+      },
+      {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash"
+      },
+      {
+        "provider": "openrouter",
+        "model": "google/gemini-3.5-flash-lite"
+      },
+      {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite"
+      },
+      {
+        "provider": "openai",
+        "model": "gpt-5.4-nano"
+      },
+      {
+        "provider": "openrouter",
+        "model": "openai/gpt-5.4-nano"
+      },
+      {
+        "provider": "mistral",
+        "model": "mistral-small-2603"
+      },
+      {
+        "provider": "openrouter",
+        "model": "mistralai/mistral-small-2603"
+      },
+      {
+        "provider": "openrouter",
+        "model": "deepseek/deepseek-v4-flash"
+      },
+      {
+        "provider": "groq",
+        "model": "openai/gpt-oss-120b"
+      },
+      {
+        "provider": "groq",
+        "model": "openai/gpt-oss-20b"
+      },
+      {
+        "provider": "groq",
+        "model": "qwen/qwen3.8-27b"
+      },
+      {
+        "provider": "mistral",
+        "model": "ministral-8b-2512"
+      },
+      {
+        "provider": "custom",
+        "model": null
+      },
+      {
+        "provider": "ollama",
+        "model": null
+      },
+      {
+        "provider": "openrouter",
+        "model": "google/gemma-4-31b-it:free"
+      }
+    ]
+  },
+  "stt": {
+    "order": [
+      "groq",
+      "openai",
+      "local"
+    ],
+    "default": "groq",
+    "providers": {
+      "groq": {
+        "label": "Groq",
+        "badge": "Best free - fast",
+        "note": "Fast and accurate (about 0.4 s), with a free tier. Your voice clips are sent to Groq.",
+        "base_url": "https://api.groq.com/openai/v1",
+        "key": "groq",
+        "key_url": "https://console.groq.com/keys",
+        "models": [
+          {
+            "id": "whisper-large-v3-turbo",
+            "badge": "Recommended",
+            "note": "Fastest."
+          },
+          {
+            "id": "whisper-large-v3",
+            "note": "A bit more accurate, a bit slower."
+          }
+        ]
+      },
+      "openai": {
+        "label": "OpenAI",
+        "note": "OpenAI's Whisper API. Your voice clips are sent to OpenAI.",
+        "base_url": "https://api.openai.com/v1",
+        "key": "openai",
+        "key_url": "https://platform.openai.com/api-keys",
+        "models": [
+          {
+            "id": "whisper-1",
+            "badge": "Recommended",
+            "note": "Whisper."
+          }
+        ]
+      },
+      "local": {
+        "label": "Whisper",
+        "badge": "Free - Local",
+        "note": "Free and private, but slow while the game runs (it shares your CPU). Downloaded on first use.",
+        "models": [
+          {
+            "id": "base",
+            "badge": "Recommended",
+            "note": "About 1.5-2 s while playing."
+          },
+          {
+            "id": "small",
+            "note": "Better, about 4.5 s while playing."
+          },
+          {
+            "id": "tiny",
+            "note": "Fastest, many mistakes."
+          }
+        ]
+      }
+    }
+  },
+  "tts": {
+    "order": [
+      "azure",
+      "cartesia",
+      "groq",
+      "openai",
+      "piper",
+      "kokoro"
+    ],
+    "default": "piper",
+    "providers": {
+      "piper": {
+        "label": "Piper",
+        "badge": "Free - Local",
+        "note": "Free, offline and very fast. Sounds more synthetic, especially in Spanish.",
+        "models": [],
+        "voices": {
+          "es": "es_ES-sharvard-medium#1",
+          "en": "en_US-amy-medium"
+        },
+        "style": {
+          "semitones": 1.5
+        },
+        "voice_names": {
+          "es": "sharvard F",
+          "en": "amy"
+        },
+        "speed": 1.15
+      },
+      "kokoro": {
+        "label": "Kokoro",
+        "badge": "Free - Local",
+        "note": "Free and offline, more natural than Piper but several times slower (about 1 s before Apiko starts talking).",
+        "models": [],
+        "voices": {
+          "es": "ef_dora",
+          "en": "af_sky"
+        },
+        "style": {
+          "semitones": 2.5
+        }
+      },
+      "azure": {
+        "label": "Azure",
+        "badge": "Best free - multilingual",
+        "note": "Microsoft's neural voices: very good Spanish and English, fast. Free plan: 500,000 characters a month (dozens of hours of Apiko); past that it stops, it never charges. Needs an Azure account and a Speech resource (free F0 tier): paste its key and its region.",
+        "base_url": "swedencentral",
+        "url_editable": true,
+        "url_label": "Region of your Speech resource",
+        "key": "azure",
+        "key_url": "https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices",
+        "voices": {
+          "es": "en-GB-AdaMultilingualNeural",
+          "en": "en-GB-AdaMultilingualNeural"
+        },
+        "speed": 1.1,
+        "regions": [
+          {
+            "id": "swedencentral",
+            "label": "Sweden Central"
+          },
+          {
+            "id": "northeurope",
+            "label": "North Europe (Ireland)"
+          },
+          {
+            "id": "westeurope",
+            "label": "West Europe (Netherlands)"
+          },
+          {
+            "id": "francecentral",
+            "label": "France Central"
+          },
+          {
+            "id": "germanywestcentral",
+            "label": "Germany West Central"
+          },
+          {
+            "id": "uksouth",
+            "label": "UK South"
+          },
+          {
+            "id": "switzerlandnorth",
+            "label": "Switzerland North"
+          },
+          {
+            "id": "norwayeast",
+            "label": "Norway East"
+          },
+          {
+            "id": "italynorth",
+            "label": "Italy North"
+          },
+          {
+            "id": "eastus",
+            "label": "East US"
+          },
+          {
+            "id": "eastus2",
+            "label": "East US 2"
+          },
+          {
+            "id": "centralus",
+            "label": "Central US"
+          },
+          {
+            "id": "southcentralus",
+            "label": "South Central US"
+          },
+          {
+            "id": "westus",
+            "label": "West US"
+          },
+          {
+            "id": "westus2",
+            "label": "West US 2"
+          },
+          {
+            "id": "westus3",
+            "label": "West US 3"
+          },
+          {
+            "id": "canadacentral",
+            "label": "Canada Central"
+          },
+          {
+            "id": "brazilsouth",
+            "label": "Brazil South"
+          },
+          {
+            "id": "japaneast",
+            "label": "Japan East"
+          },
+          {
+            "id": "koreacentral",
+            "label": "Korea Central"
+          },
+          {
+            "id": "eastasia",
+            "label": "East Asia (Hong Kong)"
+          },
+          {
+            "id": "southeastasia",
+            "label": "Southeast Asia (Singapore)"
+          },
+          {
+            "id": "centralindia",
+            "label": "Central India"
+          },
+          {
+            "id": "australiaeast",
+            "label": "Australia East"
+          }
+        ],
+        "url_note": "Pick the region you chose when creating the Speech resource (Keys and Endpoint page shows it).",
+        "voice_names": {
+          "es": "Ada (multilingual)",
+          "en": "Ada (multilingual)"
+        }
+      },
+      "cartesia": {
+        "label": "Cartesia",
+        "badge": "Best quality",
+        "note": "Very natural and fast, many languages. Paid per character: free plan 20k characters a month (about 2-4 hours of Apiko). Turn off overage billing to cap the cost.",
+        "base_url": "https://api.cartesia.ai",
+        "key": "cartesia",
+        "key_url": "https://play.cartesia.ai/keys",
+        "models": [
+          {
+            "id": "sonic-3.6",
+            "badge": "Recommended",
+            "note": "Latest Sonic."
+          }
+        ],
+        "voices": {
+          "es": "9d8c6b2e-0a23-4a15-ae1b-121d5b5af417",
+          "en": "55deba52-bc73-4481-ab69-9c8831c8a7c3"
+        },
+        "voice_names": {
+          "es": "Nuria",
+          "en": "Camille"
+        },
+        "emotion": "neutral",
+        "speed": 1.15
+      },
+      "groq": {
+        "label": "Groq Orpheus",
+        "note": "Very natural, uses your Groq key. English only: Spanish lines use Piper. $22 per M characters. Before the first use, accept the model's terms once at console.groq.com/playground (pick Orpheus there), or Groq refuses it.",
+        "base_url": "https://api.groq.com/openai/v1",
+        "key": "groq",
+        "key_url": "https://console.groq.com/keys",
+        "only_langs": [
+          "en"
+        ],
+        "models": [
+          {
+            "id": "canopylabs/orpheus-v1-english",
+            "badge": "Recommended",
+            "note": "Orpheus English."
+          }
+        ],
+        "voices": {
+          "en": "hannah"
+        }
+      },
+      "openai": {
+        "label": "OpenAI",
+        "note": "Cheap, many languages, decent quality. No free tier: needs prepaid credits on your OpenAI account.",
+        "base_url": "https://api.openai.com/v1",
+        "key": "openai",
+        "key_url": "https://platform.openai.com/api-keys",
+        "models": [
+          {
+            "id": "gpt-4o-mini-tts",
+            "badge": "Recommended",
+            "note": "Can be told how to speak."
+          }
+        ],
+        "voices": {
+          "es": "coral",
+          "en": "coral"
+        }
+      }
+    },
+    "note": "Apiko's voice for each provider is chosen by us so it always sounds like Apiko; you only pick who renders it.",
+    "style": {
+      "keep": 0.0,
+      "semitones": 1.5,
+      "steps": true,
+      "remove_breaths": true,
+      "level": 0.8,
+      "octave_mix": 0.15
+    },
+    "style_note": "Apiko's machine voice (apiko_dsp.machine_voice): flat pitch, no breaths, even loudness, octave layer. A provider may override any key in its own 'style'."
+  }
+}

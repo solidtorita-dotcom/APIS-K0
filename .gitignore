@@ -1,0 +1,25 @@
+# Build outputs
+build/
+dist/
+launcher/out/
+launcher/deps/
+__pycache__/
+*.pyc
+bridge/.venv/
+
+# Player data: never commit keys or memory
+settings.json
+config.json
+memory*.json
+*.log
+
+# Internal notes, art and local backups (not part of the source)
+art/
+backup_instalacion_*/
+DISENO.md
+NOTAS.md
+FRASES.md
+PRIMER_CONTACTO.md
+NEXUS_PAGE.txt
+pincho_datos.txt
+presentacion.txt

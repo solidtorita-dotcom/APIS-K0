@@ -1,0 +1,7 @@
+# Phase 3 (voice). Without these the bridge still runs, text only.
+numpy
+sounddevice
+faster-whisper
+kokoro-onnx
+piper-tts
+pedalboard

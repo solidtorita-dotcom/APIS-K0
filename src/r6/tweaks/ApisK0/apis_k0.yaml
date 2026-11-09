@@ -1,0 +1,14 @@
+# APIS-K0: friendly, unarmed Zetatech Bombus that hosts Apiko.
+# Base: the vanilla friendly city Bombus (unaffiliated, no weapon, friendly attitude).
+Character.ApisK0:
+  $base: Character.BombusFriendly_ow_city_scenes
+  displayName: LocKey#ApisK0-Name
+  # White nanny Bombus (with face). Entity: base/vehicles/special/av_zetatech_bombus__basic.ent
+  appearanceName: zetatech_bombus__basic_nanny_drone_white
+  # No quickhacks on our own companion (vanilla has suicide, madness, system collapse...).
+  objectActions: []
+  # Immortal by design: no death explosion, no loot.
+  onSpawnGLPs: []
+  dropsAmmoOnDeathChance: 0.0
+  canHaveGenericTalk: false
+  tags: [ApisK0]

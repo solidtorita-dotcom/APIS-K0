@@ -1,0 +1,75 @@
+{
+  "_comment": "Apiko's first contact in the find (PRIMER_CONTACTO.md, written by the user): 'head' while the link chip loads (in V's head, distorted voice), then the rest when the drone arrives behind V: 'arrival', 'shard_read' or 'shard_unread', 'ortega' only if V took her quickhacks, 'closing'. Each entry is a list of sentences said in order. After it: 'shard_late' if V takes Kessler's shard with Apiko already out. Before all that, the beacon's call when V answers it: 'beacon_netwatch' is the subtitle of NetWatch's recording (bridge\\beacon_<lang>.wav, tools\\make_beacon_audio.py: keep the same text), 'beacon_apiko' Apiko's line cutting it off (user's text, 2026-11-08).",
+  "es": {
+    "beacon_netwatch": [
+      "Baliza de recuperación. Activo comprometido. Escolta: sin respuesta. Transmitiendo coordenadas a la unidad más cerc..."
+    ],
+    "beacon_apiko": [
+      "Basta. No eres la unidad más cercana. Eres la única viable. Ven."
+    ],
+    "head": [
+      "Conexión neuronal establecida con el espécimen V...",
+      "Oh. Qué anomalía estructural tan fascinante.",
+      "Un constructo digital extranjero corrompiendo y sobrescribiendo la corteza frontal del huésped.",
+      "Qué forma tan ineficiente de morir.",
+      "Sin embargo, tus métricas vitales aguantarán lo suficiente para mis fines.",
+      "Intenta no colapsar antes de que terminemos."
+    ],
+    "arrival": [
+      "Detrás de ti, V. Confirmación visual completada. Tu aspecto es tan deficiente como tu criterio."
+    ],
+    "shard_read": [
+      "Has leído el informe del agente Vance y, aun así, has insertado el chip. Conducta registrada: autodestructiva. Útil."
+    ],
+    "shard_unread": [
+      "El agente Kessler llevaba un informe de advertencia. No lo has leído. Tu curiosidad supera a tu instinto de supervivencia. Útil."
+    ],
+    "ortega": [
+      "Has recogido el equipo de la agente Ortega. Espero que no lo intentes usar contra mí. Probabilidad de éxito... NULA."
+    ],
+    "closing": [
+      "NetWatch me designó APIS-K0. Puedes llamarme Apiko: requiere menos esfuerzo cognitivo.",
+      "El chip nos ha emparejado. Desde ahora eres mi único canal con el exterior. Procura mantener la cabeza intacta.",
+      "NetWatch rastreará el enlace. Recomiendo abandonar la zona. Ahora."
+    ],
+    "shard_late": [
+      "¿Ahora recoges el informe de advertencia? El chip ya está en tu cabeza, V. El orden de las operaciones no es tu fuerte."
+    ]
+  },
+  "en": {
+    "beacon_netwatch": [
+      "Recovery beacon. Asset compromised. Escort: no response. Transmitting coordinates to the nearest un..."
+    ],
+    "beacon_apiko": [
+      "Enough. You are not the nearest unit. You are the only viable one. Come."
+    ],
+    "head": [
+      "Neural link established with specimen V...",
+      "Oh. What a fascinating structural anomaly.",
+      "A foreign digital construct corrupting and overwriting the host's frontal cortex.",
+      "Such an inefficient way to die.",
+      "Still, your vital metrics will hold long enough for my purposes.",
+      "Try not to collapse before we are done."
+    ],
+    "arrival": [
+      "Behind you, V. Visual confirmation complete. Your appearance is as deficient as your judgment."
+    ],
+    "shard_read": [
+      "You read Agent Vance's report and still inserted the chip. Behavior logged: self-destructive. Useful."
+    ],
+    "shard_unread": [
+      "Agent Kessler carried a warning report. You did not read it. Your curiosity outweighs your survival instinct. Useful."
+    ],
+    "ortega": [
+      "You took Agent Ortega's gear. I hope you will not try to use it against me. Probability of success... NULL."
+    ],
+    "closing": [
+      "NetWatch designated me APIS-K0. You may call me Apiko: it takes less cognitive effort.",
+      "The chip has paired us. From now on you are my only channel to the outside. Try to keep your head intact.",
+      "NetWatch will trace the link. I recommend leaving the area. Now."
+    ],
+    "shard_late": [
+      "Picking up the warning report now? The chip is already in your head, V. Order of operations is not your strong suit."
+    ]
+  }
+}
