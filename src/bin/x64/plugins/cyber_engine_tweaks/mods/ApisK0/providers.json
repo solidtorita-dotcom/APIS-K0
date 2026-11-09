@@ -302,8 +302,7 @@
       "cartesia",
       "groq",
       "openai",
-      "piper",
-      "kokoro"
+      "piper"
     ],
     "default": "piper",
     "providers": {
@@ -324,19 +323,6 @@
           "en": "amy"
         },
         "speed": 1.15
-      },
-      "kokoro": {
-        "label": "Kokoro",
-        "badge": "Free - Local",
-        "note": "Free and offline, more natural than Piper but several times slower (about 1 s before Apiko starts talking).",
-        "models": [],
-        "voices": {
-          "es": "ef_dora",
-          "en": "af_sky"
-        },
-        "style": {
-          "semitones": 2.5
-        }
       },
       "azure": {
         "label": "Azure",

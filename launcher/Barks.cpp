@@ -16,7 +16,9 @@ namespace
 const std::set<std::string> DeviceSituations = {"spotted", "hostile", "alarm", "breached", "pinged", "destroyed", "hacked"};
 const std::set<std::string> Warnings = {"warn_netrunner", "warn_sniper", "warn_behind", "warn_elite",
                                         // V's wanted level rose: urgent like the others, but it goes to the diary too.
-                                        "heat_up"};
+                                        "heat_up",
+                                        // A camera or turret started tracking V: urgent too (user, 2026-11-09).
+                                        "spotted"};
 const std::set<std::string> EnemySituations = {"detected", "stealth_kill", "knockout"};
 // V entered a restricted or hostile security area, or a fight between others started close by: always written.
 const std::set<std::string> WrittenOnly = {"zone_restricted", "zone_dangerous", "fight_close"};

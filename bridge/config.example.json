@@ -4,7 +4,7 @@
   "chatter": 1.0,
   "chatter_cooldown_seconds": 90,
   "bark_chance": 0.4,
-  "bark_cooldown_seconds": 45,
+  "bark_cooldown_seconds": 30,
   "bark_llm_chance": 0.1,
   "idle_seconds": 300,
   "idle_chance": 0.6,

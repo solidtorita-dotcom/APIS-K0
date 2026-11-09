@@ -872,7 +872,7 @@ void Brain::React(const Json& aMessage)
     }
     else
     {
-        if (age > StaleEventSeconds || now - lastSpoken < Config("bark_cooldown_seconds", 45))
+        if (age > StaleEventSeconds || now - lastSpoken < Config("bark_cooldown_seconds", 30))
             return;
         if (Roll() > Config("bark_chance", 0.4) * chatter)
             return;
@@ -986,7 +986,7 @@ bool Brain::EventLine(const std::string& aEvent, const Json& aState, double aCha
     }
     if (aEvent != "idle_check")
     {
-        if (now - lastSpoken < Config("bark_cooldown_seconds", 45))
+        if (now - lastSpoken < Config("bark_cooldown_seconds", 30))
         {
             log::Write(aEvent + ": quiet (Apiko spoke " + std::to_string(std::lround(now - lastSpoken)) + " s ago)");
             return true;

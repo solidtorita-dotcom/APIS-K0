@@ -26,7 +26,9 @@ SITUATIONS = {
 # Enemy events (ApisK0Enemies.reds). Warnings are urgent: their own short pause, never the model.
 WARNINGS = ("warn_netrunner", "warn_sniper", "warn_behind", "warn_elite",
             # V's wanted level rose (ApisK0People.reds): urgent like the others, but it goes to the diary too.
-            "heat_up")
+            "heat_up",
+            # A camera or turret started tracking V: urgent too (user, 2026-11-09).
+            "spotted")
 ENEMY_SITUATIONS = ("detected", "stealth_kill", "knockout")
 # V entered a restricted or hostile security area: always a written line, never the model (user, 2026-11-07).
 WRITTEN_ONLY = ("zone_restricted", "zone_dangerous",
