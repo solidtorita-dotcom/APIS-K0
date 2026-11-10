@@ -60,7 +60,8 @@ public:
     void OnObjective();
     // For the focus line: how the last conversation relates to the current objective, or "".
     std::string SceneNote();
-    // A "story" message ("heard|conv|speaker|text", "heard|news|...", "scene|start", "scene|end|lines"). Returns the
+    // A "story" message ("heard|conv|speaker|text", "heard|news|...", "heard|chatter|...", "scene|start",
+    // "scene|end|lines"). Returns the
     // number of lines of a conversation that just ended.
     std::optional<int> Handle(const std::string& aEvent);
     // V is talking with someone: Apiko keeps quiet. A conversation that never ended stops counting after a while.
@@ -81,6 +82,8 @@ private:
     // "current"; "led" (the objective changed right after it); "past" (settled, shown only when V asks).
     std::string sceneStatus = "current";
     std::vector<Line> news;
+    // Ambient chatter around V ("heard|chatter|..."): never a conversation, only shown when V asks.
+    std::vector<Line> chatter;
     std::optional<double> inSceneSince;
 };
 

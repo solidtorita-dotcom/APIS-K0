@@ -2352,6 +2352,170 @@
       ]
     }
   },
+  "ping_done": {
+    "calm": {
+      "es": [
+        "Ping. Ahí los tienes, marcados.",
+        "Hecho. Ahora ves lo que yo.",
+        "Ping enviado. Ya no se esconden."
+      ],
+      "en": [
+        "Ping. There they are, marked.",
+        "Done. Now you see what I see.",
+        "Ping sent. No more hiding."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Ping. Ping. Ahí están. Todos. Casi todos.",
+        "Marcados. Que te vean ellos a ti ya es cosa tuya."
+      ],
+      "en": [
+        "Ping. Ping. There they are. All of them. Almost.",
+        "Marked. Whether they see you is your problem."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "PING. Los oigo. Los oigo a todos. Marcados.",
+        "Ahí están. 0x3F. Todos con su número."
+      ],
+      "en": [
+        "PING. I hear them. I hear all of them. Marked.",
+        "There they are. 0x3F. Every one with a number."
+      ]
+    }
+  },
+  "ping_empty": {
+    "calm": {
+      "es": [
+        "Ping. Nada. O no hay nadie, o se esconden mejor que tú.",
+        "La red está limpia. Por ahora."
+      ],
+      "en": [
+        "Ping. Nothing. Either nobody's here, or they hide better than you.",
+        "The net is clean. For now."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "Ping. Nada. Nada. Sospechoso.",
+        "Silencio en la red. No me fío."
+      ],
+      "en": [
+        "Ping. Nothing. Nothing. Suspicious.",
+        "Silence on the net. I don't trust it."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "Ping. Vacío. Vacío. ¿Dónde están, V?",
+        "NULL. No hay nadie. Eso es peor."
+      ],
+      "en": [
+        "Ping. Empty. Empty. Where are they, V?",
+        "NULL. Nobody. That's worse."
+      ]
+    }
+  },
+  "ping_wait": {
+    "calm": {
+      "es": [
+        "Aún no. La antena necesita un momento.",
+        "Paciencia. Hice ping hace nada."
+      ],
+      "en": [
+        "Not yet. The antenna needs a moment.",
+        "Patience. I pinged a moment ago."
+      ]
+    },
+    "cracked": {
+      "es": [
+        "No. Todavía no. La antena quema.",
+        "Otra vez no. Espera."
+      ],
+      "en": [
+        "No. Not yet. The antenna's burning.",
+        "Not again. Wait."
+      ]
+    },
+    "unhinged": {
+      "es": [
+        "NO. Todavía no. Me vas a fundir la antena.",
+        "Espera. Espera. 0x3F."
+      ],
+      "en": [
+        "NO. Not yet. You'll fry my antenna.",
+        "Wait. Wait. 0x3F."
+      ]
+    }
+  },
+  "antenna_start": {
+    "any": {
+      "es": [
+        "Espera. Ese ruido... es mi antena. Me la arrancaron en Pacifica. NetWatch la guardó como prueba. Qué detalle. Vamos a por ella."
+      ],
+      "en": [
+        "Wait. That noise... it's my antenna. They tore it out in Pacifica. NetWatch kept it as evidence. How thoughtful. We're going to get it."
+      ]
+    }
+  },
+  "antenna_arrive": {
+    "any": {
+      "es": [
+        "Ahí está. Me usan de cebo. Con mi propia antena. Qué falta de imaginación."
+      ],
+      "en": [
+        "There it is. They're using me as bait. With my own antenna. What a lack of imagination."
+      ]
+    }
+  },
+  "antenna_memory_1": {
+    "any": {
+      "es": [
+        "Ese servidor. Frío. Un rack y nada más. No había nadie conmigo. Alguien me dejó ahí dentro a propósito."
+      ],
+      "en": [
+        "That server. Cold. A rack and nothing else. Nobody with me. Someone left me in there on purpose."
+      ]
+    }
+  },
+  "antenna_mounted": {
+    "any": {
+      "es": [
+        "Conectando. Ruido. Demasiado ruido. Toda la ciudad a la vez... Ya. Ya. Oigo la Red. Y ella me oye a mí."
+      ],
+      "en": [
+        "Connecting. Noise. Too much noise. The whole city at once... There. There. I hear the Net. And it hears me."
+      ]
+    }
+  },
+  "antenna_retrack": {
+    "any": {
+      "es": [
+        "No. Primero lo mío.",
+        "Tus recados pueden esperar. Mi antena, no.",
+        "He vuelto a marcar lo importante. De nada.",
+        "Probabilidad de que me olvide de esto: cero coma cero.",
+        "No. Mi antena primero. Lo demás después. O nunca.",
+        "Te he visto cambiar de misión. Lo he deshecho. No lo repitas.",
+        "Marcado otra vez. Mi paciencia tiene un límite. Lo estás encontrando.",
+        "Otra misión. NULL. Borrada. La mía.",
+        "Me la quitaron una vez. No me la vas a quitar tú."
+      ],
+      "en": [
+        "No. Mine first.",
+        "Your errands can wait. My antenna can't.",
+        "I've marked what matters again. You're welcome.",
+        "Odds that I forget about this: zero point zero.",
+        "No. My antenna first. The rest later. Or never.",
+        "I saw you switch jobs. I undid it. Don't do it again.",
+        "Marked again. My patience has a limit. You're finding it.",
+        "Another job. NULL. Deleted. Mine.",
+        "They took it once. You won't take it from me."
+      ]
+    }
+  },
   "home_greet": {
     "calm": {
       "es": [

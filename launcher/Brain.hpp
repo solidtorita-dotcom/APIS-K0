@@ -22,6 +22,7 @@
 #include <chrono>
 #include <deque>
 #include <filesystem>
+#include <future>
 #include <map>
 #include <memory>
 #include <mutex>
@@ -93,6 +94,9 @@ private:
     void FirstContactRest(const std::set<std::string>& aFlags, const Json& aState);
     void FirstContactExtra(const std::string& aPart, const std::string& aWhat);
     void PhoneCall(bool aPresent, const Json& aState);
+    // The antenna mission's written lines (barks.json, the event's name): its start and the mounting also go in the
+    // history; the mounting ends with the "antenna_done" cue.
+    void AntennaLine(const std::string& aSituation, const Json& aState);
     // Says a line from barks.json (no tokens). False when there is none for it.
     bool SayWritten(const std::string& aSituation, const Json& aState);
     double ImproviseChance();
@@ -105,9 +109,15 @@ private:
     void WarnMissing();
 
     std::pair<std::string, std::string> SystemPrompt();
+    // A "Right now" line naming the topics Apiko's last replies already brought up (its 3.5% cap, NetWatch's past), or
+    // empty.
+    std::string WornOut();
     double Instability(const Json& aState);
     // The reply model's answer, trying the fallback chain; throws providers::Error when none answers.
     std::string Chat(const Json& aMessages, bool aJsonMode, int aMaxTokens, bool aFallback = true, bool aThink = true);
+    // The reaction face (DISENO.md, "Caras por estado de ánimo"): a small call on V's words, in parallel with the
+    // reply, for the face Apiko puts up at once (a "react" reply), dropped when the reply came first.
+    void ReactFace(const std::string& aSaid);
     void NoteFallback(const providers::Choice& aFirst, const providers::Choice& aUsed,
                       const std::vector<std::pair<providers::Choice, std::string>>& aFailures);
     // Subtitles (voice comes in phase 3). Nothing is said outside a game session.
@@ -184,6 +194,14 @@ private:
     // Phase 2c-2: written lines and when Apiko speaks (worker thread; steady seconds).
     barks::Barks barks;
     double lastSpoken = 0.0;
+    // The mood of the model reply Speak is saying: each of its subtitles goes with a "face" reply (the drone's
+    // screen, ApisK0Face.reds). Empty for written lines (barks, scripts): they leave the face alone.
+    std::string replyMood;
+    // V's turns, and the last one whose reply came back (a later reaction is dropped); ReactFace's call (its own
+    // thread; replacing it, or destroying the Brain, waits for it: declared after what it uses).
+    std::atomic<int> turnCount{0};
+    std::atomic<int> repliedTurn{0};
+    std::future<void> reaction;
     double lastWarning = 0.0;
     double lastVTalk = 0.0; // V's last words (long silences get a loose thought)
     std::string lastDistrictLine; // district situation of the last district V entered

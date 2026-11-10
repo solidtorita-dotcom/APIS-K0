@@ -79,7 +79,7 @@ private:
         ownerToken = "native-" + std::to_string(GetCurrentProcessId()) + "-" + std::to_string(UnixMillis());
         if (!WriteFileAtomic(ownerFile, ownerToken))
             log::Write("could not write bridge_owner.txt");
-        log::Write("APIS-K0 bridge 0.2.0 running in the game. Mod folder: " + text::PathString(files.ModDir()));
+        log::Write("APIS-K0 bridge 0.3.0 running in the game. Mod folder: " + text::PathString(files.ModDir()));
         try
         {
             brain.Start();

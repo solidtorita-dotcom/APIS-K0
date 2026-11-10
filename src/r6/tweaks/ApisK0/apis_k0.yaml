@@ -3,8 +3,10 @@
 Character.ApisK0:
   $base: Character.BombusFriendly_ow_city_scenes
   displayName: LocKey#ApisK0-Name
-  # White nanny Bombus (with face). Entity: base/vehicles/special/av_zetatech_bombus__basic.ent
-  appearanceName: zetatech_bombus__basic_nanny_drone_white
+  # Our copy of the white nanny Bombus (base/vehicles/special/av_zetatech_bombus__basic.ent) with Apiko's faces on
+  # its screen (tools\make_world.py, DRONE_ENT). Also in ApisK0.reds (ApisK0Config.Appearance).
+  entityTemplatePath: apisk0\drone\apisk0_bombus.ent
+  appearanceName: apisk0_bombus
   # No quickhacks on our own companion (vanilla has suicide, madness, system collapse...).
   objectActions: []
   # Immortal by design: no death explosion, no loot.

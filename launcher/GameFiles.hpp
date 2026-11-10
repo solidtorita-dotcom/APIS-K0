@@ -2,6 +2,8 @@
 // as the Python bridge (bridge\apiko_bridge.py), so either one can serve the game:
 //   to_bridge.jsonl    appended by the game: one JSON object per line (what V says, events, push-to-talk, tests...)
 //   from_bridge.txt    rewritten by the bridge: the last replies as "id<TAB>kind<TAB>duration<TAB>text" lines
+//                      ("face": the mood of the model reply's subtitle that follows, for the drone's screen;
+//                      "react": the face at V's words, before the reply)
 //   bridge_alive.txt   unix time, rewritten by the bridge every few seconds
 //   game_live.txt      unix time, rewritten by the game every second while a save is loaded and played
 #pragma once

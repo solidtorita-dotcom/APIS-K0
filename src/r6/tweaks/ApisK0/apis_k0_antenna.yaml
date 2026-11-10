@@ -1,0 +1,27 @@
+# APIS-K0: the antenna mission "Echo" (DISENO.md, "Misión: antena y cara"). ApisK0Antenna.reds puts the antenna and
+# the technician's log in the NetWatch evidence crate at the street site and mounts the antenna when V takes it.
+# Texts from ApisK0.archive's localization (tools\make_world.py).
+
+# Apiko's long-range antenna: a quest item that stays, as the link chip.
+Items.ApisK0Antenna:
+  $base: Items.sts_bad_ina_11_chip
+  friendlyName: ApisK0Antenna
+  entityName: ApisK0Antenna
+  displayName: LocKey#apisk0-antenna-name
+  localizedDescription: LocKey#apisk0-antenna-item-desc
+  objectActions: []
+  canDrop: false
+
+# The NetWatch technician's field log: a vanilla world shard whose read action opens our journal onscreen entry
+# (make_world.py, TECH_LOG_ID).
+Items.ApisK0TechLog:
+  $base: Items.generic_outer_inner_dialogues_shard
+  itemSecondaryAction:
+    $base: Items.generic_outer_inner_dialogues_shard_inline0
+    journalEntry: onscreens/emails/generic/shards/world/apisk0_tech_log
+
+# The evidence crate's clue row (make_world.py: the crate's .ent lists it).
+scanning.apisk0_evidence:
+  $base: scanning.mq062_escape_time_branch_dead_inmate_06a
+  localizedName: LocKey#apisk0-scan-seal
+  localizedDescription: LocKey#apisk0-scan-evidence

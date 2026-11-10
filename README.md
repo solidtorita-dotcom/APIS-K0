@@ -9,10 +9,11 @@ Nexus Mods page: https://www.nexusmods.com/cyberpunk2077/mods/ (link pending)
 
 | Part | Where | What it does |
 |---|---|---|
-| Game scripts | `src/r6/scripts/ApisK0/*.reds` (redscript) | Spawns the drone, follows V, perceives the world (combat, police, devices, enemies, people, quests), the find quest |
-| Tweaks | `src/r6/tweaks/ApisK0/*.yaml` (TweakXL) | The drone's record, the find quest's records |
+| Game scripts | `src/r6/scripts/ApisK0/*.reds` (redscript) | Spawns the drone, follows V, perceives the world (combat, police, devices, the enemies the game marks, people, quests), the find quest, the "Echo" quest and Apiko's ping, the faces on the drone's screen |
+| Tweaks | `src/r6/tweaks/ApisK0/*.yaml` (TweakXL) | The drone's record, the quests' items and scan records |
 | CET mod | `src/bin/x64/plugins/cyber_engine_tweaks/mods/ApisK0/` (Lua) | Push-to-talk, chat window, settings window, the file link with the bridge |
-| World | `tools/make_world.py` → `ApisK0.archive` (ArchiveXL) | The find site: the case, the van, the bodies, journal entries |
+| World | `tools/make_world.py` → `ApisK0.archive` (ArchiveXL) | The find site (case, van, bodies), the Echo site's props, journal entries, the drone's own entity with its screen and faces |
+| Faces | `caras/*.png` | Apiko's faces (128×128), imported as textures by `tools/build.ps1` |
 | Bridge | `launcher/*.cpp` (RED4ext plugin, C++) | Runs inside the game: speech recognition, the reply model, memory, perception, lore, written lines, voice (TTS, machine-voice effects, simulated 3D audio), local options (Piper, whisper.cpp, Ollama) |
 | Data | `bridge/prompt.md`, `barks.json`, `lore.json`, `first_contact.json`, `beacon_*.wav` | Apiko's prompt, written lines, public lore, the find's script, the beacon's recording |
 | Python bridge | `bridge/*.py` | The 0.1.0 bridge (shipped then as `Apiko.exe`), kept as a reference and development tool; not in the release |
@@ -26,7 +27,8 @@ this repository.
 Requirements (Windows):
 - Visual Studio 2022 (or later) Build Tools with the C++ workload and its CMake and Ninja (for the plugin)
 - Git and curl
-- Python 3.14 (only for `tools/make_world.py`, which writes the archive's JSON)
+- Python 3.14 (only for `tools/make_world.py`, which writes the archive's JSON; `tools\build.ps1` also uses
+  .NET's System.Drawing for the faces' glow masks)
 - [WolvenKit](https://github.com/WolvenKit/WolvenKit) CLI 8.x (for the archive)
 - PowerShell 5.1 or later
 
@@ -63,8 +65,8 @@ built with `launcher\tests\build_harness.bat`.
 Without `-Release`, the development tools (`dev.lua`: debug hotkeys, debug log) are installed too; they are never in
 the zip.
 
-`tools/vanilla/*.ent.json` are vanilla game entities serialized with WolvenKit, used as the base for the mod's own
-copies (van, bodies, case).
+`tools/vanilla/*.json` are vanilla game resources serialized with WolvenKit, used as the base for the mod's own
+copies (van, bodies, case, the drone's entity, appearance and meshes, the Echo site's crate and server).
 
 ## License
 

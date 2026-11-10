@@ -1,0 +1,3383 @@
+{
+  "Header": {
+    "WolvenKitVersion": "9.1.0",
+    "WKitJsonVersion": "0.0.9",
+    "GameVersion": 2310,
+    "ExportedDateTime": "2026-11-10T10:54:32.7604581Z",
+    "DataType": "CR2W",
+    "ArchiveFileName": "C:\\Users\\Tora\\AppData\\Local\\Temp\\claude\\0bce78bc65363595\\b7a36da5-79ab-4994-9576-575c0a8592ac\\scratchpad\\bombus\\base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\av_zetatech_bombus__ext02_nanny_display.mesh"
+  },
+  "Data": {
+    "Version": 195,
+    "BuildVersion": 1072,
+    "RootChunk": {
+      "$type": "CMesh",
+      "appearances": [
+        {
+          "HandleId": "0",
+          "Data": {
+            "$type": "meshMeshAppearance",
+            "chunkMaterials": [
+              {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "display"
+              }
+            ],
+            "name": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "blue"
+            },
+            "tags": []
+          }
+        },
+        {
+          "HandleId": "1",
+          "Data": {
+            "$type": "meshMeshAppearance",
+            "chunkMaterials": [
+              {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "green"
+              }
+            ],
+            "name": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "green"
+            },
+            "tags": []
+          }
+        },
+        {
+          "HandleId": "2",
+          "Data": {
+            "$type": "meshMeshAppearance",
+            "chunkMaterials": [
+              {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "display_off"
+              }
+            ],
+            "name": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "off"
+            },
+            "tags": []
+          }
+        },
+        {
+          "HandleId": "3",
+          "Data": {
+            "$type": "meshMeshAppearance",
+            "chunkMaterials": [
+              {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "burnt"
+              }
+            ],
+            "name": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "burnt"
+            },
+            "tags": []
+          }
+        },
+        {
+          "HandleId": "4",
+          "Data": {
+            "$type": "meshMeshAppearance",
+            "chunkMaterials": [
+              {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "orange_a"
+              }
+            ],
+            "name": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "orange_a"
+            },
+            "tags": []
+          }
+        },
+        {
+          "HandleId": "5",
+          "Data": {
+            "$type": "meshMeshAppearance",
+            "chunkMaterials": [
+              {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "orange_b"
+              }
+            ],
+            "name": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "orange_b"
+            },
+            "tags": []
+          }
+        },
+        {
+          "HandleId": "6",
+          "Data": {
+            "$type": "meshMeshAppearance",
+            "chunkMaterials": [
+              {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "orange_c"
+              }
+            ],
+            "name": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "orange_c"
+            },
+            "tags": []
+          }
+        },
+        {
+          "HandleId": "7",
+          "Data": {
+            "$type": "meshMeshAppearance",
+            "chunkMaterials": [
+              {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "orange_d"
+              }
+            ],
+            "name": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "orange_d"
+            },
+            "tags": []
+          }
+        },
+        {
+          "HandleId": "8",
+          "Data": {
+            "$type": "meshMeshAppearance",
+            "chunkMaterials": [
+              {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "display"
+              }
+            ],
+            "name": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "pink_a"
+            },
+            "tags": []
+          }
+        },
+        {
+          "HandleId": "9",
+          "Data": {
+            "$type": "meshMeshAppearance",
+            "chunkMaterials": [
+              {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "pink_b"
+              }
+            ],
+            "name": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "pink_b"
+            },
+            "tags": []
+          }
+        },
+        {
+          "HandleId": "10",
+          "Data": {
+            "$type": "meshMeshAppearance",
+            "chunkMaterials": [
+              {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "pink_c"
+              }
+            ],
+            "name": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "pink_c"
+            },
+            "tags": []
+          }
+        }
+      ],
+      "boneNames": [
+        {
+          "$type": "CName",
+          "$storage": "string",
+          "$value": "base"
+        }
+      ],
+      "boneRigMatrices": [
+        {
+          "$type": "Matrix",
+          "W": {
+            "$type": "Vector4",
+            "W": 1,
+            "X": -0.000170065017,
+            "Y": -0.126693085,
+            "Z": 0.00230171927
+          },
+          "X": {
+            "$type": "Vector4",
+            "W": 0,
+            "X": -1,
+            "Y": -1.22464685E-16,
+            "Z": 2.44929371E-16
+          },
+          "Y": {
+            "$type": "Vector4",
+            "W": 0,
+            "X": 2.44929371E-16,
+            "Y": -9.32643213E-32,
+            "Z": 1
+          },
+          "Z": {
+            "$type": "Vector4",
+            "W": 0,
+            "X": -1.22298005E-16,
+            "Y": 1,
+            "Z": 2.22044605E-16
+          }
+        }
+      ],
+      "boneVertexEpsilons": [0.15662396
+      ],
+      "boundingBox": {
+        "$type": "Box",
+        "Max": {
+          "$type": "Vector4",
+          "W": 1,
+          "X": 0.0766175836,
+          "Y": 0.125048488,
+          "Z": 0.202843636
+        },
+        "Min": {
+          "$type": "Vector4",
+          "W": 1,
+          "X": -0.0766075104,
+          "Y": 0.125048429,
+          "Z": 0.0489951298
+        }
+      },
+      "castGlobalShadowsCachedInCook": 1,
+      "castLocalShadowsCachedInCook": 1,
+      "castsRayTracedShadowsFromOriginalGeometry": 1,
+      "consoleBias": 0,
+      "constrainAutoHideDistanceToTerrainHeightMap": 0,
+      "cookingPlatform": "PLATFORM_PC",
+      "externalMaterials": [],
+      "floatTrackNames": [],
+      "forceLoadAllAppearances": 0,
+      "geometryHash": "14390919761051510109",
+      "inplaceResources": [],
+      "isPlayerShadowMesh": 0,
+      "isShadowMesh": 0,
+      "localMaterialBuffer": {
+        "$type": "meshMeshMaterialBuffer",
+        "materials": [
+          {
+            "$type": "CMaterialInstance",
+            "audioTag": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "baseMaterial": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "string",
+                "$value": "engine\\materials\\metal_base.remt"
+              },
+              "Flags": "Default"
+            },
+            "cookingPlatform": "PLATFORM_None",
+            "enableMask": 0,
+            "metadata": null,
+            "resourceVersion": 4,
+            "values": [
+              {
+                "$type": "rRef:ITexture",
+                "BaseColor": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_blue_d.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Vector4",
+                "BaseColorScale": {
+                  "$type": "Vector4",
+                  "W": 0,
+                  "X": 1,
+                  "Y": 1,
+                  "Z": 1
+                }
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Metalness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\black.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "MetalnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "MetalnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Roughness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "RoughnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "RoughnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Normal": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\normal.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "NormalStrength": 1
+              },
+              {
+                "$type": "Float",
+                "AlphaThreshold": 0.379999995
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Emissive": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "EmissiveEV": 9.54567337
+              },
+              {
+                "$type": "Color",
+                "EmissiveColor": {
+                  "$type": "Color",
+                  "Alpha": 255,
+                  "Blue": 218,
+                  "Green": 23,
+                  "Red": 181
+                }
+              },
+              {
+                "$type": "Float",
+                "LayerTile": 1
+              }
+            ]
+          },
+          {
+            "$type": "CMaterialInstance",
+            "audioTag": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "baseMaterial": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "string",
+                "$value": "engine\\materials\\metal_base.remt"
+              },
+              "Flags": "Default"
+            },
+            "cookingPlatform": "PLATFORM_None",
+            "enableMask": 0,
+            "metadata": null,
+            "resourceVersion": 4,
+            "values": [
+              {
+                "$type": "rRef:ITexture",
+                "BaseColor": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_green_d.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Vector4",
+                "BaseColorScale": {
+                  "$type": "Vector4",
+                  "W": 0,
+                  "X": 1,
+                  "Y": 1,
+                  "Z": 1
+                }
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Metalness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\black.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "MetalnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "MetalnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Roughness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "RoughnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "RoughnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Normal": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\normal.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "NormalStrength": 1
+              },
+              {
+                "$type": "Float",
+                "AlphaThreshold": 0.379999995
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Emissive": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "EmissiveEV": 10
+              },
+              {
+                "$type": "Color",
+                "EmissiveColor": {
+                  "$type": "Color",
+                  "Alpha": 255,
+                  "Blue": 75,
+                  "Green": 194,
+                  "Red": 17
+                }
+              },
+              {
+                "$type": "Float",
+                "LayerTile": 1
+              }
+            ]
+          },
+          {
+            "$type": "CMaterialInstance",
+            "audioTag": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "baseMaterial": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "string",
+                "$value": "engine\\materials\\metal_base.remt"
+              },
+              "Flags": "Default"
+            },
+            "cookingPlatform": "PLATFORM_None",
+            "enableMask": 0,
+            "metadata": null,
+            "resourceVersion": 4,
+            "values": [
+              {
+                "$type": "rRef:ITexture",
+                "BaseColor": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_pink_a.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Vector4",
+                "BaseColorScale": {
+                  "$type": "Vector4",
+                  "W": 0,
+                  "X": 1,
+                  "Y": 1,
+                  "Z": 1
+                }
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Metalness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\black.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "MetalnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "MetalnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Roughness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "RoughnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "RoughnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Normal": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\normal.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "NormalStrength": 1
+              },
+              {
+                "$type": "Float",
+                "AlphaThreshold": 0.379999995
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Emissive": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "EmissiveEV": 9.70118618
+              },
+              {
+                "$type": "Color",
+                "EmissiveColor": {
+                  "$type": "Color",
+                  "Alpha": 255,
+                  "Blue": 180,
+                  "Green": 7,
+                  "Red": 215
+                }
+              },
+              {
+                "$type": "Float",
+                "LayerTile": 1
+              }
+            ]
+          },
+          {
+            "$type": "CMaterialInstance",
+            "audioTag": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "baseMaterial": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "string",
+                "$value": "engine\\materials\\metal_base.remt"
+              },
+              "Flags": "Default"
+            },
+            "cookingPlatform": "PLATFORM_None",
+            "enableMask": 0,
+            "metadata": null,
+            "resourceVersion": 4,
+            "values": [
+              {
+                "$type": "rRef:ITexture",
+                "BaseColor": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_blue_d.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Vector4",
+                "BaseColorScale": {
+                  "$type": "Vector4",
+                  "W": 0,
+                  "X": 1,
+                  "Y": 1,
+                  "Z": 1
+                }
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Metalness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\black.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "MetalnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "MetalnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Roughness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "RoughnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "RoughnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Normal": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\normal.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "NormalStrength": 1
+              },
+              {
+                "$type": "Float",
+                "AlphaThreshold": 0.379999995
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Emissive": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "EmissiveEV": 1
+              },
+              {
+                "$type": "Color",
+                "EmissiveColor": {
+                  "$type": "Color",
+                  "Alpha": 255,
+                  "Blue": 214,
+                  "Green": 214,
+                  "Red": 63
+                }
+              },
+              {
+                "$type": "Float",
+                "LayerTile": 1
+              }
+            ]
+          },
+          {
+            "$type": "CMaterialInstance",
+            "audioTag": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "baseMaterial": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "string",
+                "$value": "base\\vehicles\\common\\materials\\burnt_ext.mi"
+              },
+              "Flags": "Default"
+            },
+            "cookingPlatform": "PLATFORM_None",
+            "enableMask": 0,
+            "metadata": null,
+            "resourceVersion": 4,
+            "values": []
+          },
+          {
+            "$type": "CMaterialInstance",
+            "audioTag": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "baseMaterial": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "string",
+                "$value": "engine\\materials\\metal_base.remt"
+              },
+              "Flags": "Default"
+            },
+            "cookingPlatform": "PLATFORM_None",
+            "enableMask": 0,
+            "metadata": null,
+            "resourceVersion": 4,
+            "values": [
+              {
+                "$type": "rRef:ITexture",
+                "BaseColor": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_orange_a.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Vector4",
+                "BaseColorScale": {
+                  "$type": "Vector4",
+                  "W": 0,
+                  "X": 1,
+                  "Y": 1,
+                  "Z": 1
+                }
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Metalness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\black.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "MetalnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "MetalnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Roughness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "RoughnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "RoughnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Normal": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\normal.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "NormalStrength": 1
+              },
+              {
+                "$type": "Float",
+                "AlphaThreshold": 0.379999995
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Emissive": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "EmissiveEV": 9.54567337
+              },
+              {
+                "$type": "Color",
+                "EmissiveColor": {
+                  "$type": "Color",
+                  "Alpha": 255,
+                  "Blue": 9,
+                  "Green": 136,
+                  "Red": 171
+                }
+              },
+              {
+                "$type": "Float",
+                "LayerTile": 1
+              }
+            ]
+          },
+          {
+            "$type": "CMaterialInstance",
+            "audioTag": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "baseMaterial": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "string",
+                "$value": "engine\\materials\\metal_base.remt"
+              },
+              "Flags": "Default"
+            },
+            "cookingPlatform": "PLATFORM_None",
+            "enableMask": 0,
+            "metadata": null,
+            "resourceVersion": 4,
+            "values": [
+              {
+                "$type": "rRef:ITexture",
+                "BaseColor": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_orange_b.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Vector4",
+                "BaseColorScale": {
+                  "$type": "Vector4",
+                  "W": 0,
+                  "X": 1,
+                  "Y": 1,
+                  "Z": 1
+                }
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Metalness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\black.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "MetalnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "MetalnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Roughness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "RoughnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "RoughnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Normal": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\normal.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "NormalStrength": 1
+              },
+              {
+                "$type": "Float",
+                "AlphaThreshold": 0.379999995
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Emissive": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "EmissiveEV": 9.54567337
+              },
+              {
+                "$type": "Color",
+                "EmissiveColor": {
+                  "$type": "Color",
+                  "Alpha": 255,
+                  "Blue": 9,
+                  "Green": 136,
+                  "Red": 171
+                }
+              },
+              {
+                "$type": "Float",
+                "LayerTile": 1
+              }
+            ]
+          },
+          {
+            "$type": "CMaterialInstance",
+            "audioTag": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "baseMaterial": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "string",
+                "$value": "engine\\materials\\metal_base.remt"
+              },
+              "Flags": "Default"
+            },
+            "cookingPlatform": "PLATFORM_None",
+            "enableMask": 0,
+            "metadata": null,
+            "resourceVersion": 4,
+            "values": [
+              {
+                "$type": "rRef:ITexture",
+                "BaseColor": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_orange_c.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Vector4",
+                "BaseColorScale": {
+                  "$type": "Vector4",
+                  "W": 0,
+                  "X": 1,
+                  "Y": 1,
+                  "Z": 1
+                }
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Metalness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\black.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "MetalnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "MetalnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Roughness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "RoughnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "RoughnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Normal": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\normal.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "NormalStrength": 1
+              },
+              {
+                "$type": "Float",
+                "AlphaThreshold": 0.379999995
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Emissive": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "EmissiveEV": 9.54567337
+              },
+              {
+                "$type": "Color",
+                "EmissiveColor": {
+                  "$type": "Color",
+                  "Alpha": 255,
+                  "Blue": 9,
+                  "Green": 136,
+                  "Red": 171
+                }
+              },
+              {
+                "$type": "Float",
+                "LayerTile": 1
+              }
+            ]
+          },
+          {
+            "$type": "CMaterialInstance",
+            "audioTag": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "baseMaterial": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "string",
+                "$value": "engine\\materials\\metal_base.remt"
+              },
+              "Flags": "Default"
+            },
+            "cookingPlatform": "PLATFORM_None",
+            "enableMask": 0,
+            "metadata": null,
+            "resourceVersion": 4,
+            "values": [
+              {
+                "$type": "rRef:ITexture",
+                "BaseColor": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_orange_d.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Vector4",
+                "BaseColorScale": {
+                  "$type": "Vector4",
+                  "W": 0,
+                  "X": 1,
+                  "Y": 1,
+                  "Z": 1
+                }
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Metalness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\black.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "MetalnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "MetalnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Roughness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "RoughnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "RoughnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Normal": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\normal.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "NormalStrength": 1
+              },
+              {
+                "$type": "Float",
+                "AlphaThreshold": 0.379999995
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Emissive": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "EmissiveEV": 9.54567337
+              },
+              {
+                "$type": "Color",
+                "EmissiveColor": {
+                  "$type": "Color",
+                  "Alpha": 255,
+                  "Blue": 9,
+                  "Green": 136,
+                  "Red": 171
+                }
+              },
+              {
+                "$type": "Float",
+                "LayerTile": 1
+              }
+            ]
+          },
+          {
+            "$type": "CMaterialInstance",
+            "audioTag": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "baseMaterial": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "string",
+                "$value": "engine\\materials\\metal_base.remt"
+              },
+              "Flags": "Default"
+            },
+            "cookingPlatform": "PLATFORM_None",
+            "enableMask": 0,
+            "metadata": null,
+            "resourceVersion": 4,
+            "values": [
+              {
+                "$type": "rRef:ITexture",
+                "BaseColor": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_pink_b.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Vector4",
+                "BaseColorScale": {
+                  "$type": "Vector4",
+                  "W": 0,
+                  "X": 1,
+                  "Y": 1,
+                  "Z": 1
+                }
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Metalness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\black.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "MetalnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "MetalnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Roughness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "RoughnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "RoughnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Normal": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\normal.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "NormalStrength": 1
+              },
+              {
+                "$type": "Float",
+                "AlphaThreshold": 0.379999995
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Emissive": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "EmissiveEV": 9.70118618
+              },
+              {
+                "$type": "Color",
+                "EmissiveColor": {
+                  "$type": "Color",
+                  "Alpha": 255,
+                  "Blue": 180,
+                  "Green": 7,
+                  "Red": 215
+                }
+              },
+              {
+                "$type": "Float",
+                "LayerTile": 1
+              }
+            ]
+          },
+          {
+            "$type": "CMaterialInstance",
+            "audioTag": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "baseMaterial": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "string",
+                "$value": "engine\\materials\\metal_base.remt"
+              },
+              "Flags": "Default"
+            },
+            "cookingPlatform": "PLATFORM_None",
+            "enableMask": 0,
+            "metadata": null,
+            "resourceVersion": 4,
+            "values": [
+              {
+                "$type": "rRef:ITexture",
+                "BaseColor": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_pink_c.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Vector4",
+                "BaseColorScale": {
+                  "$type": "Vector4",
+                  "W": 0,
+                  "X": 1,
+                  "Y": 1,
+                  "Z": 1
+                }
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Metalness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\black.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "MetalnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "MetalnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Roughness": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "RoughnessScale": 1
+              },
+              {
+                "$type": "Float",
+                "RoughnessBias": 0
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Normal": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\normal.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "NormalStrength": 1
+              },
+              {
+                "$type": "Float",
+                "AlphaThreshold": 0.379999995
+              },
+              {
+                "$type": "rRef:ITexture",
+                "Emissive": {
+                  "DepotPath": {
+                    "$type": "ResourcePath",
+                    "$storage": "string",
+                    "$value": "engine\\textures\\editor\\white.xbm"
+                  },
+                  "Flags": "Default"
+                }
+              },
+              {
+                "$type": "Float",
+                "EmissiveEV": 9.70118618
+              },
+              {
+                "$type": "Color",
+                "EmissiveColor": {
+                  "$type": "Color",
+                  "Alpha": 255,
+                  "Blue": 180,
+                  "Green": 7,
+                  "Red": 215
+                }
+              },
+              {
+                "$type": "Float",
+                "LayerTile": 1
+              }
+            ]
+          }
+        ],
+        "rawData": {
+          "BufferId": "0",
+          "Flags": 7471104,
+          "Type": "WolvenKit.RED4.Archive.Buffer.CR2WList, WolvenKit.RED4, Version=9.1.0.0, Culture=neutral, PublicKeyToken=null",
+          "Data": {
+            "Files": [
+              {
+                "Version": 195,
+                "BuildVersion": 0,
+                "RootChunk": {
+                  "$type": "CMaterialInstance",
+                  "audioTag": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "baseMaterial": {
+                    "DepotPath": {
+                      "$type": "ResourcePath",
+                      "$storage": "string",
+                      "$value": "engine\\materials\\metal_base.remt"
+                    },
+                    "Flags": "Default"
+                  },
+                  "cookingPlatform": "PLATFORM_None",
+                  "enableMask": 0,
+                  "metadata": null,
+                  "resourceVersion": 4,
+                  "values": [
+                    {
+                      "$type": "rRef:ITexture",
+                      "BaseColor": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_blue_d.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Vector4",
+                      "BaseColorScale": {
+                        "$type": "Vector4",
+                        "W": 0,
+                        "X": 1,
+                        "Y": 1,
+                        "Z": 1
+                      }
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Metalness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\black.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Roughness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Normal": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\normal.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "NormalStrength": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "AlphaThreshold": 0.379999995
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Emissive": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "EmissiveEV": 9.54567337
+                    },
+                    {
+                      "$type": "Color",
+                      "EmissiveColor": {
+                        "$type": "Color",
+                        "Alpha": 255,
+                        "Blue": 218,
+                        "Green": 23,
+                        "Red": 181
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "LayerTile": 1
+                    }
+                  ]
+                },
+                "EmbeddedFiles": []
+              },
+              {
+                "Version": 195,
+                "BuildVersion": 0,
+                "RootChunk": {
+                  "$type": "CMaterialInstance",
+                  "audioTag": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "baseMaterial": {
+                    "DepotPath": {
+                      "$type": "ResourcePath",
+                      "$storage": "string",
+                      "$value": "engine\\materials\\metal_base.remt"
+                    },
+                    "Flags": "Default"
+                  },
+                  "cookingPlatform": "PLATFORM_None",
+                  "enableMask": 0,
+                  "metadata": null,
+                  "resourceVersion": 4,
+                  "values": [
+                    {
+                      "$type": "rRef:ITexture",
+                      "BaseColor": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_green_d.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Vector4",
+                      "BaseColorScale": {
+                        "$type": "Vector4",
+                        "W": 0,
+                        "X": 1,
+                        "Y": 1,
+                        "Z": 1
+                      }
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Metalness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\black.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Roughness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Normal": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\normal.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "NormalStrength": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "AlphaThreshold": 0.379999995
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Emissive": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "EmissiveEV": 10
+                    },
+                    {
+                      "$type": "Color",
+                      "EmissiveColor": {
+                        "$type": "Color",
+                        "Alpha": 255,
+                        "Blue": 75,
+                        "Green": 194,
+                        "Red": 17
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "LayerTile": 1
+                    }
+                  ]
+                },
+                "EmbeddedFiles": []
+              },
+              {
+                "Version": 195,
+                "BuildVersion": 0,
+                "RootChunk": {
+                  "$type": "CMaterialInstance",
+                  "audioTag": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "baseMaterial": {
+                    "DepotPath": {
+                      "$type": "ResourcePath",
+                      "$storage": "string",
+                      "$value": "engine\\materials\\metal_base.remt"
+                    },
+                    "Flags": "Default"
+                  },
+                  "cookingPlatform": "PLATFORM_None",
+                  "enableMask": 0,
+                  "metadata": null,
+                  "resourceVersion": 4,
+                  "values": [
+                    {
+                      "$type": "rRef:ITexture",
+                      "BaseColor": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_pink_a.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Vector4",
+                      "BaseColorScale": {
+                        "$type": "Vector4",
+                        "W": 0,
+                        "X": 1,
+                        "Y": 1,
+                        "Z": 1
+                      }
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Metalness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\black.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Roughness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Normal": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\normal.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "NormalStrength": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "AlphaThreshold": 0.379999995
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Emissive": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "EmissiveEV": 9.70118618
+                    },
+                    {
+                      "$type": "Color",
+                      "EmissiveColor": {
+                        "$type": "Color",
+                        "Alpha": 255,
+                        "Blue": 180,
+                        "Green": 7,
+                        "Red": 215
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "LayerTile": 1
+                    }
+                  ]
+                },
+                "EmbeddedFiles": []
+              },
+              {
+                "Version": 195,
+                "BuildVersion": 0,
+                "RootChunk": {
+                  "$type": "CMaterialInstance",
+                  "audioTag": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "baseMaterial": {
+                    "DepotPath": {
+                      "$type": "ResourcePath",
+                      "$storage": "string",
+                      "$value": "engine\\materials\\metal_base.remt"
+                    },
+                    "Flags": "Default"
+                  },
+                  "cookingPlatform": "PLATFORM_None",
+                  "enableMask": 0,
+                  "metadata": null,
+                  "resourceVersion": 4,
+                  "values": [
+                    {
+                      "$type": "rRef:ITexture",
+                      "BaseColor": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_blue_d.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Vector4",
+                      "BaseColorScale": {
+                        "$type": "Vector4",
+                        "W": 0,
+                        "X": 1,
+                        "Y": 1,
+                        "Z": 1
+                      }
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Metalness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\black.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Roughness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Normal": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\normal.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "NormalStrength": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "AlphaThreshold": 0.379999995
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Emissive": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "EmissiveEV": 1
+                    },
+                    {
+                      "$type": "Color",
+                      "EmissiveColor": {
+                        "$type": "Color",
+                        "Alpha": 255,
+                        "Blue": 214,
+                        "Green": 214,
+                        "Red": 63
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "LayerTile": 1
+                    }
+                  ]
+                },
+                "EmbeddedFiles": []
+              },
+              {
+                "Version": 195,
+                "BuildVersion": 0,
+                "RootChunk": {
+                  "$type": "CMaterialInstance",
+                  "audioTag": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "baseMaterial": {
+                    "DepotPath": {
+                      "$type": "ResourcePath",
+                      "$storage": "string",
+                      "$value": "base\\vehicles\\common\\materials\\burnt_ext.mi"
+                    },
+                    "Flags": "Default"
+                  },
+                  "cookingPlatform": "PLATFORM_None",
+                  "enableMask": 0,
+                  "metadata": null,
+                  "resourceVersion": 4,
+                  "values": []
+                },
+                "EmbeddedFiles": []
+              },
+              {
+                "Version": 195,
+                "BuildVersion": 0,
+                "RootChunk": {
+                  "$type": "CMaterialInstance",
+                  "audioTag": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "baseMaterial": {
+                    "DepotPath": {
+                      "$type": "ResourcePath",
+                      "$storage": "string",
+                      "$value": "engine\\materials\\metal_base.remt"
+                    },
+                    "Flags": "Default"
+                  },
+                  "cookingPlatform": "PLATFORM_None",
+                  "enableMask": 0,
+                  "metadata": null,
+                  "resourceVersion": 4,
+                  "values": [
+                    {
+                      "$type": "rRef:ITexture",
+                      "BaseColor": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_orange_a.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Vector4",
+                      "BaseColorScale": {
+                        "$type": "Vector4",
+                        "W": 0,
+                        "X": 1,
+                        "Y": 1,
+                        "Z": 1
+                      }
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Metalness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\black.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Roughness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Normal": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\normal.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "NormalStrength": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "AlphaThreshold": 0.379999995
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Emissive": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "EmissiveEV": 9.54567337
+                    },
+                    {
+                      "$type": "Color",
+                      "EmissiveColor": {
+                        "$type": "Color",
+                        "Alpha": 255,
+                        "Blue": 9,
+                        "Green": 136,
+                        "Red": 171
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "LayerTile": 1
+                    }
+                  ]
+                },
+                "EmbeddedFiles": []
+              },
+              {
+                "Version": 195,
+                "BuildVersion": 0,
+                "RootChunk": {
+                  "$type": "CMaterialInstance",
+                  "audioTag": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "baseMaterial": {
+                    "DepotPath": {
+                      "$type": "ResourcePath",
+                      "$storage": "string",
+                      "$value": "engine\\materials\\metal_base.remt"
+                    },
+                    "Flags": "Default"
+                  },
+                  "cookingPlatform": "PLATFORM_None",
+                  "enableMask": 0,
+                  "metadata": null,
+                  "resourceVersion": 4,
+                  "values": [
+                    {
+                      "$type": "rRef:ITexture",
+                      "BaseColor": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_orange_b.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Vector4",
+                      "BaseColorScale": {
+                        "$type": "Vector4",
+                        "W": 0,
+                        "X": 1,
+                        "Y": 1,
+                        "Z": 1
+                      }
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Metalness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\black.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Roughness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Normal": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\normal.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "NormalStrength": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "AlphaThreshold": 0.379999995
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Emissive": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "EmissiveEV": 9.54567337
+                    },
+                    {
+                      "$type": "Color",
+                      "EmissiveColor": {
+                        "$type": "Color",
+                        "Alpha": 255,
+                        "Blue": 9,
+                        "Green": 136,
+                        "Red": 171
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "LayerTile": 1
+                    }
+                  ]
+                },
+                "EmbeddedFiles": []
+              },
+              {
+                "Version": 195,
+                "BuildVersion": 0,
+                "RootChunk": {
+                  "$type": "CMaterialInstance",
+                  "audioTag": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "baseMaterial": {
+                    "DepotPath": {
+                      "$type": "ResourcePath",
+                      "$storage": "string",
+                      "$value": "engine\\materials\\metal_base.remt"
+                    },
+                    "Flags": "Default"
+                  },
+                  "cookingPlatform": "PLATFORM_None",
+                  "enableMask": 0,
+                  "metadata": null,
+                  "resourceVersion": 4,
+                  "values": [
+                    {
+                      "$type": "rRef:ITexture",
+                      "BaseColor": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_orange_c.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Vector4",
+                      "BaseColorScale": {
+                        "$type": "Vector4",
+                        "W": 0,
+                        "X": 1,
+                        "Y": 1,
+                        "Z": 1
+                      }
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Metalness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\black.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Roughness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Normal": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\normal.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "NormalStrength": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "AlphaThreshold": 0.379999995
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Emissive": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "EmissiveEV": 9.54567337
+                    },
+                    {
+                      "$type": "Color",
+                      "EmissiveColor": {
+                        "$type": "Color",
+                        "Alpha": 255,
+                        "Blue": 9,
+                        "Green": 136,
+                        "Red": 171
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "LayerTile": 1
+                    }
+                  ]
+                },
+                "EmbeddedFiles": []
+              },
+              {
+                "Version": 195,
+                "BuildVersion": 0,
+                "RootChunk": {
+                  "$type": "CMaterialInstance",
+                  "audioTag": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "baseMaterial": {
+                    "DepotPath": {
+                      "$type": "ResourcePath",
+                      "$storage": "string",
+                      "$value": "engine\\materials\\metal_base.remt"
+                    },
+                    "Flags": "Default"
+                  },
+                  "cookingPlatform": "PLATFORM_None",
+                  "enableMask": 0,
+                  "metadata": null,
+                  "resourceVersion": 4,
+                  "values": [
+                    {
+                      "$type": "rRef:ITexture",
+                      "BaseColor": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_orange_d.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Vector4",
+                      "BaseColorScale": {
+                        "$type": "Vector4",
+                        "W": 0,
+                        "X": 1,
+                        "Y": 1,
+                        "Z": 1
+                      }
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Metalness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\black.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Roughness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Normal": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\normal.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "NormalStrength": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "AlphaThreshold": 0.379999995
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Emissive": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "EmissiveEV": 9.54567337
+                    },
+                    {
+                      "$type": "Color",
+                      "EmissiveColor": {
+                        "$type": "Color",
+                        "Alpha": 255,
+                        "Blue": 9,
+                        "Green": 136,
+                        "Red": 171
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "LayerTile": 1
+                    }
+                  ]
+                },
+                "EmbeddedFiles": []
+              },
+              {
+                "Version": 195,
+                "BuildVersion": 0,
+                "RootChunk": {
+                  "$type": "CMaterialInstance",
+                  "audioTag": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "baseMaterial": {
+                    "DepotPath": {
+                      "$type": "ResourcePath",
+                      "$storage": "string",
+                      "$value": "engine\\materials\\metal_base.remt"
+                    },
+                    "Flags": "Default"
+                  },
+                  "cookingPlatform": "PLATFORM_None",
+                  "enableMask": 0,
+                  "metadata": null,
+                  "resourceVersion": 4,
+                  "values": [
+                    {
+                      "$type": "rRef:ITexture",
+                      "BaseColor": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_pink_b.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Vector4",
+                      "BaseColorScale": {
+                        "$type": "Vector4",
+                        "W": 0,
+                        "X": 1,
+                        "Y": 1,
+                        "Z": 1
+                      }
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Metalness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\black.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Roughness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Normal": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\normal.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "NormalStrength": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "AlphaThreshold": 0.379999995
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Emissive": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "EmissiveEV": 9.70118618
+                    },
+                    {
+                      "$type": "Color",
+                      "EmissiveColor": {
+                        "$type": "Color",
+                        "Alpha": 255,
+                        "Blue": 180,
+                        "Green": 7,
+                        "Red": 215
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "LayerTile": 1
+                    }
+                  ]
+                },
+                "EmbeddedFiles": []
+              },
+              {
+                "Version": 195,
+                "BuildVersion": 0,
+                "RootChunk": {
+                  "$type": "CMaterialInstance",
+                  "audioTag": {
+                    "$type": "CName",
+                    "$storage": "string",
+                    "$value": "None"
+                  },
+                  "baseMaterial": {
+                    "DepotPath": {
+                      "$type": "ResourcePath",
+                      "$storage": "string",
+                      "$value": "engine\\materials\\metal_base.remt"
+                    },
+                    "Flags": "Default"
+                  },
+                  "cookingPlatform": "PLATFORM_None",
+                  "enableMask": 0,
+                  "metadata": null,
+                  "resourceVersion": 4,
+                  "values": [
+                    {
+                      "$type": "rRef:ITexture",
+                      "BaseColor": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\textures\\av_zetatech_bombus__ext02_nanny_dislpay_pink_c.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Vector4",
+                      "BaseColorScale": {
+                        "$type": "Vector4",
+                        "W": 0,
+                        "X": 1,
+                        "Y": 1,
+                        "Z": 1
+                      }
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Metalness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\black.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "MetalnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Roughness": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessScale": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "RoughnessBias": 0
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Normal": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\normal.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "NormalStrength": 1
+                    },
+                    {
+                      "$type": "Float",
+                      "AlphaThreshold": 0.379999995
+                    },
+                    {
+                      "$type": "rRef:ITexture",
+                      "Emissive": {
+                        "DepotPath": {
+                          "$type": "ResourcePath",
+                          "$storage": "string",
+                          "$value": "engine\\textures\\editor\\white.xbm"
+                        },
+                        "Flags": "Default"
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "EmissiveEV": 9.70118618
+                    },
+                    {
+                      "$type": "Color",
+                      "EmissiveColor": {
+                        "$type": "Color",
+                        "Alpha": 255,
+                        "Blue": 180,
+                        "Green": 7,
+                        "Red": 215
+                      }
+                    },
+                    {
+                      "$type": "Float",
+                      "LayerTile": 1
+                    }
+                  ]
+                },
+                "EmbeddedFiles": []
+              }
+            ]
+          }
+        },
+        "rawDataHeaders": [
+          {
+            "$type": "meshLocalMaterialHeader",
+            "offset": 0,
+            "size": 1348
+          },
+          {
+            "$type": "meshLocalMaterialHeader",
+            "offset": 1348,
+            "size": 1349
+          },
+          {
+            "$type": "meshLocalMaterialHeader",
+            "offset": 2697,
+            "size": 1348
+          },
+          {
+            "$type": "meshLocalMaterialHeader",
+            "offset": 4045,
+            "size": 1348
+          },
+          {
+            "$type": "meshLocalMaterialHeader",
+            "offset": 5393,
+            "size": 395
+          },
+          {
+            "$type": "meshLocalMaterialHeader",
+            "offset": 5788,
+            "size": 1350
+          },
+          {
+            "$type": "meshLocalMaterialHeader",
+            "offset": 7138,
+            "size": 1350
+          },
+          {
+            "$type": "meshLocalMaterialHeader",
+            "offset": 8488,
+            "size": 1350
+          },
+          {
+            "$type": "meshLocalMaterialHeader",
+            "offset": 9838,
+            "size": 1350
+          },
+          {
+            "$type": "meshLocalMaterialHeader",
+            "offset": 11188,
+            "size": 1348
+          },
+          {
+            "$type": "meshLocalMaterialHeader",
+            "offset": 12536,
+            "size": 1348
+          }
+        ]
+      },
+      "localMaterialInstances": [],
+      "lodBoneMask": [1
+      ],
+      "lodLevelInfo": [0
+      ],
+      "materialEntries": [
+        {
+          "$type": "CMeshMaterialEntry",
+          "index": 0,
+          "isLocalInstance": 1,
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "display"
+          }
+        },
+        {
+          "$type": "CMeshMaterialEntry",
+          "index": 1,
+          "isLocalInstance": 1,
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "green"
+          }
+        },
+        {
+          "$type": "CMeshMaterialEntry",
+          "index": 2,
+          "isLocalInstance": 1,
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "pink"
+          }
+        },
+        {
+          "$type": "CMeshMaterialEntry",
+          "index": 3,
+          "isLocalInstance": 1,
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "display_off"
+          }
+        },
+        {
+          "$type": "CMeshMaterialEntry",
+          "index": 4,
+          "isLocalInstance": 1,
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "burnt"
+          }
+        },
+        {
+          "$type": "CMeshMaterialEntry",
+          "index": 5,
+          "isLocalInstance": 1,
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "orange_a"
+          }
+        },
+        {
+          "$type": "CMeshMaterialEntry",
+          "index": 6,
+          "isLocalInstance": 1,
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "orange_b"
+          }
+        },
+        {
+          "$type": "CMeshMaterialEntry",
+          "index": 7,
+          "isLocalInstance": 1,
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "orange_c"
+          }
+        },
+        {
+          "$type": "CMeshMaterialEntry",
+          "index": 8,
+          "isLocalInstance": 1,
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "orange_d"
+          }
+        },
+        {
+          "$type": "CMeshMaterialEntry",
+          "index": 9,
+          "isLocalInstance": 1,
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "pink_b"
+          }
+        },
+        {
+          "$type": "CMeshMaterialEntry",
+          "index": 10,
+          "isLocalInstance": 1,
+          "name": {
+            "$type": "CName",
+            "$storage": "string",
+            "$value": "pink_c"
+          }
+        }
+      ],
+      "objectType": "ROT_Vehicle",
+      "parameters": [],
+      "preloadExternalMaterials": [],
+      "preloadLocalMaterialInstances": [],
+      "renderResourceBlob": {
+        "HandleId": "11",
+        "Data": {
+          "$type": "rendRenderMeshBlob",
+          "header": {
+            "$type": "rendRenderMeshBlobHeader",
+            "bonePositions": [
+              {
+                "$type": "Vector4",
+                "W": 1,
+                "X": -0.000170065017,
+                "Y": -0.00230171927,
+                "Z": 0.126693085
+              }
+            ],
+            "customData": [],
+            "customDataElemStride": 0,
+            "dataProcessing": 1,
+            "indexBufferOffset": 1024,
+            "indexBufferSize": 48,
+            "opacityMicromaps": [],
+            "quantizationOffset": {
+              "$type": "Vector4",
+              "W": 1,
+              "X": 5.03659248E-06,
+              "Y": 0.125048459,
+              "Z": 0.125919372
+            },
+            "quantizationScale": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": 0.076612547,
+              "Y": 2.98023224E-08,
+              "Z": 0.0769242495
+            },
+            "renderChunkInfos": [
+              {
+                "$type": "rendChunk",
+                "baseRenderMask": 0,
+                "chunkIndices": {
+                  "$type": "rendIndexBufferChunk",
+                  "pe": "IBCT_IndexUShort",
+                  "teOffset": 0
+                },
+                "chunkVertices": {
+                  "$type": "rendVertexBufferChunk",
+                  "byteOffsets": {
+                    "Elements": [0,144,192,272,0
+                    ]
+                  },
+                  "vertexLayout": {
+                    "$type": "GpuWrapApiVertexLayoutDesc",
+                    "elements": {
+                      "Elements": [
+                        {
+                          "$type": "GpuWrapApiVertexPackingPackingElement",
+                          "streamIndex": 0,
+                          "streamType": "ST_PerVertex",
+                          "type": "PT_Short4N",
+                          "usage": "PS_Position",
+                          "usageIndex": 0
+                        },
+                        {
+                          "$type": "GpuWrapApiVertexPackingPackingElement",
+                          "streamIndex": 0,
+                          "streamType": "ST_PerVertex",
+                          "type": "PT_UByte4",
+                          "usage": "PS_SkinIndices",
+                          "usageIndex": 0
+                        },
+                        {
+                          "$type": "GpuWrapApiVertexPackingPackingElement",
+                          "streamIndex": 0,
+                          "streamType": "ST_PerVertex",
+                          "type": "PT_UByte4N",
+                          "usage": "PS_SkinWeights",
+                          "usageIndex": 0
+                        },
+                        {
+                          "$type": "GpuWrapApiVertexPackingPackingElement",
+                          "streamIndex": 1,
+                          "streamType": "ST_PerVertex",
+                          "type": "PT_Float16_2",
+                          "usage": "PS_TexCoord",
+                          "usageIndex": 0
+                        },
+                        {
+                          "$type": "GpuWrapApiVertexPackingPackingElement",
+                          "streamIndex": 2,
+                          "streamType": "ST_PerVertex",
+                          "type": "PT_Dec4",
+                          "usage": "PS_Normal",
+                          "usageIndex": 0
+                        },
+                        {
+                          "$type": "GpuWrapApiVertexPackingPackingElement",
+                          "streamIndex": 2,
+                          "streamType": "ST_PerVertex",
+                          "type": "PT_Dec4",
+                          "usage": "PS_Tangent",
+                          "usageIndex": 0
+                        },
+                        {
+                          "$type": "GpuWrapApiVertexPackingPackingElement",
+                          "streamIndex": 3,
+                          "streamType": "ST_PerVertex",
+                          "type": "PT_Color",
+                          "usage": "PS_Color",
+                          "usageIndex": 0
+                        },
+                        {
+                          "$type": "GpuWrapApiVertexPackingPackingElement",
+                          "streamIndex": 3,
+                          "streamType": "ST_PerVertex",
+                          "type": "PT_Float16_2",
+                          "usage": "PS_TexCoord",
+                          "usageIndex": 1
+                        },
+                        {
+                          "$type": "GpuWrapApiVertexPackingPackingElement",
+                          "streamIndex": 7,
+                          "streamType": "ST_PerInstance",
+                          "type": "PT_Float4",
+                          "usage": "PS_InstanceTransform",
+                          "usageIndex": 0
+                        },
+                        {
+                          "$type": "GpuWrapApiVertexPackingPackingElement",
+                          "streamIndex": 7,
+                          "streamType": "ST_PerInstance",
+                          "type": "PT_Float4",
+                          "usage": "PS_InstanceTransform",
+                          "usageIndex": 1
+                        },
+                        {
+                          "$type": "GpuWrapApiVertexPackingPackingElement",
+                          "streamIndex": 7,
+                          "streamType": "ST_PerInstance",
+                          "type": "PT_Float4",
+                          "usage": "PS_InstanceTransform",
+                          "usageIndex": 2
+                        },
+                        {
+                          "$type": "GpuWrapApiVertexPackingPackingElement",
+                          "streamIndex": 7,
+                          "streamType": "ST_PerInstance",
+                          "type": "PT_UInt4",
+                          "usage": "PS_InstanceSkinningData",
+                          "usageIndex": 0
+                        },
+                        {
+                          "$type": "GpuWrapApiVertexPackingPackingElement",
+                          "streamIndex": 0,
+                          "streamType": "ST_Invalid",
+                          "type": "PT_Invalid",
+                          "usage": "PS_Invalid",
+                          "usageIndex": 0
+                        }
+                      ]
+                    },
+                    "hash": 3830958184,
+                    "slotMask": 143,
+                    "slotStrides": {
+                      "Elements": [16,4,8,8,0,0,0,64
+                      ]
+                    }
+                  }
+                },
+                "lodMask": 1,
+                "materialId": [],
+                "mergedRenderMask": 0,
+                "numIndices": 24,
+                "numVertices": 9,
+                "renderMask": "MCF_RenderInScene, MCF_RenderInShadows",
+                "vertexFactory": 3
+              }
+            ],
+            "renderChunks": [],
+            "renderLODs": [0
+            ],
+            "speedTreeWind": [],
+            "topology": [
+              {
+                "$type": "rendTopologyData",
+                "data": [],
+                "dataStride": 0,
+                "metadata": [],
+                "metadataStride": 0
+              }
+            ],
+            "topologyData": [],
+            "topologyDataStride": 0,
+            "topologyMetadata": [],
+            "topologyMetadataStride": 0,
+            "version": 20,
+            "vertexBufferSize": 344
+          },
+          "renderBuffer": {
+            "BufferId": "1",
+            "Flags": 7471104,
+            "Bytes": "AcABgP9//38AAAAA/wAAALr/AYCGAf9/AAAAAP8AAAABgAGA/0//fwAAAAD/AAAA/38BgAHA/38AAAAA/wAAAP8/AYABgP9/AAAAAP8AAAABsAGAAYD/fwAAAAD/AAAAAYABgAHA/38AAAAA/wAAAP9PAYD/f/9/AAAAAP8AAAD/fwGA/0//fwAAAAD/AAAA2zmwOw84Cji0O1Q6VCo/NIA03ChiOn4pvztjNOIypjuyKUI6AAAAAAAAAAAAAAAA//3/XwD8px///f9fAPynH//9/18A/Kcf//3/XwD8px///f9fAPynH//9/18A/Kcf//3/XwD8px//+f9fAPynH//9/18A/KcfAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAQAAAAAAAQAHAAIABgABAAcAAQAIAAYABQABAAgAAQADAAUABAABAAEABAADAA=="
+          }
+        }
+      },
+      "resourceVersion": 3,
+      "saveDateTime": "1048576",
+      "surfaceAreaPerAxis": {
+        "$type": "Vector3",
+        "X": 3.06692138E-09,
+        "Y": 0.0213173982,
+        "Z": 4.56646365E-09
+      },
+      "useRayTracingShadowLODBias": 0
+    },
+    "EmbeddedFiles": []
+  }
+}

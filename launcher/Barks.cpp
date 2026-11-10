@@ -190,6 +190,10 @@ std::optional<std::pair<std::string, std::string>> Barks::Pick(const std::string
     auto situation = lines.find(aSituation);
     if (situation == lines.end())
         return std::nullopt;
+    // "any": the same lines at every instability (the missions' lines, which lose their context otherwise; the
+    // user's call, 2026-11-10).
+    if (situation->second.count("any"))
+        level = "any";
     auto tier = situation->second.find(level);
     if (tier == situation->second.end() || tier->second.empty())
         return std::nullopt;

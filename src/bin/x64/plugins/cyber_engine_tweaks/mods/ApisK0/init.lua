@@ -5,7 +5,9 @@
 --   to_bridge.jsonl    appended here, one JSON object per line: what V says, game events, push-to-talk
 --                      start/stop, with game state
 --   from_bridge.txt    rewritten by the bridge: "id<TAB>kind<TAB>duration<TAB>text" lines;
---                      kind = say (subtitle) | heard (what the microphone understood) | status
+--                      kind = say (subtitle) | heard (what the microphone understood) | status |
+--                      face (the mood of the subtitle that follows, for the drone's screen) |
+--                      react (the face at V's words, before the reply)
 -- Phase 3: push-to-talk hotkey (hold it; the bridge records the microphone) with an on-screen indicator.
 --   bridge_alive.txt   unix time written by the bridge every few seconds
 --   audio_pose.txt     written here when it changes: where the drone is relative to the camera
@@ -216,6 +218,12 @@ local function pollReplies(system)
                 -- NetWatch's recording on the beacon's call (the find).
                 addLog("NETWATCH", reply.text)
                 system:SayNetWatch(reply.text, reply.duration)
+            elseif reply.kind == "face" then
+                -- The mood of the subtitle that follows: its face on the drone's screen for as long.
+                system:ShowFace(reply.text, reply.duration)
+            elseif reply.kind == "react" then
+                -- Apiko's face at V's words, while the reply is on its way.
+                system:ShowReaction(reply.text, reply.duration)
             elseif reply.kind == "heard" then
                 addLog("V", reply.text)
             elseif reply.kind == "test" then

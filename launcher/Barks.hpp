@@ -1,6 +1,7 @@
 // Apiko's written lines (barks.json) for world and chat events, said without asking the model: port of
 // bridge\apiko_barks.py. A line is picked by situation, instability tier and V's language, never repeating one until
-// all of that situation, tier and language were used.
+// all of that situation, tier and language were used. A situation with an "any" tier ignores the instability (the
+// missions' lines).
 #pragma once
 
 #include <filesystem>

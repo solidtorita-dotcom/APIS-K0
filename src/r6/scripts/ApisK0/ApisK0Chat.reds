@@ -210,6 +210,9 @@ public class ApisK0Chat extends IScriptable {
       ArrayPush(state, "v_vehicle=" + this.VehicleName(player));
     };
     ArrayPush(state, "v_gender=" + NameToString(player.GetResolvedGenderName()));
+    // Hidden from the sensors line: whether Apiko has its antenna (it can ping; the Net knows people of today).
+    ArrayPush(state, "antenna=" + (IsDefined(ApisK0System.Get(GetGameInstance()))
+      && ApisK0System.Get(GetGameInstance()).IsAntennaMounted() ? "yes" : "no"));
     return state;
   }
 

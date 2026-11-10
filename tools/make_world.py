@@ -13,6 +13,8 @@ Every file is written as "<game path>.json" under <out_dir>; build.ps1 turns the
   Merged into the game journal by ArchiveXL (`journal:` in ApisK0.archive.xl).
 - apisk0\\localization\\<lang>.json: the texts (onscreens), by secondary key from the journal, the item
   (apis_k0_find.yaml) and the scripts.
+- apisk0\\drone\\: Apiko's drone (the record's entity in apis_k0.yaml) with its own screen and faces (FACES). The
+  faces' textures (.xbm) are imported from Apis-K0\\caras\\*.png by build.ps1, not written here.
 """
 import json
 import math
@@ -96,6 +98,69 @@ PROP_REFS = {
     "apisk0_netrunner": "$/mod/apisk0/#apisk0_netrunner",
     "apisk0_netrunner2": "$/mod/apisk0/#apisk0_netrunner2",
 }
+# Apiko's faces (DISENO.md, "Caras por estado de ánimo"): our copy of the white nanny Bombus (DRONE_ENT, DRONE_APP)
+# whose screen is our copy of the nanny display mesh (DISPLAY_MESH) with one mesh appearance per face. The script
+# switches the screen component's mesh appearance (ApisK0Face.reds). Vanilla sources in tools\vanilla\, serialized
+# from the game.
+VANILLA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "vanilla")
+DRONE_ENT = "apisk0\\drone\\apisk0_bombus.ent"
+DRONE_APP = "apisk0\\drone\\apisk0_bombus.app"
+# entTemplateAppearance.name (what the record and the spawn ask for) and the .app appearance it points to.
+DRONE_APPEARANCE = "apisk0_bombus"
+DRONE_APP_APPEARANCE = "apisk0"
+VANILLA_APP_APPEARANCE = "nanny_drone_white"
+DISPLAY_MESH = "apisk0\\drone\\apisk0_display.mesh"
+VANILLA_DISPLAY_MESH = ("base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\"
+                        "av_zetatech_bombus__ext02_nanny_display.mesh")
+# (mesh appearance, drawing in Apis-K0\caras\ without .png). "default" is the resting face: the .app's screen
+# component asks for it. The textures are imported from the drawings by build.ps1 (FACE_TEXTURE).
+FACES = [
+    ("default", "default"),
+    ("happy", "contento"),
+    ("laughing", "chiste"),
+    ("bored", "indiferente"),
+    ("angry", "enfado"),
+    ("sad", "triste"),
+    ("confused", "confundido"),
+    ("surprised", "sorprendido"),
+]
+FACE_MATERIAL = "apisk0\\drone\\faces\\apisk0_face_{}.mi"
+FACE_TEXTURE = "apisk0\\drone\\faces\\apisk0_face_{}.xbm"
+# The screen switched off (glitching): the vanilla material, kept in the mesh's local buffer.
+FACE_OFF = ("off", "display_off")
+# The faces' glow: its own mask (FACE_GLOW, written by build.ps1: the drawing with its dark lines thickened; vanilla
+# uses a plain white one), tinted white so the drawing's own colors show. Tried in the game (2026-11-10): EV 9.55
+# (vanilla) with a plain mask hid the drawing; EV 7 with the drawing as the mask still swallowed thin lines.
+FACE_GLOW = "apisk0\\drone\\faces\\apisk0_face_{}_e.xbm"
+FACE_EMISSIVE = {"$type": "Color", "Alpha": 255, "Blue": 255, "Green": 255, "Red": 255}
+FACE_EMISSIVE_EV = 6.0
+# The glass over the screen: every vanilla nanny's glass ("glass_cover", local material 0 of the body mesh) is cracked
+# by its normal map (VANILLA_GLASS_CRACKS). Apiko's stays cracked until a mission repairs it (DISENO.md): our copy of
+# the body mesh (BODY_MESH) keeps the vanilla "default" (cracked, the one the .app asks for) and adds "repaired", with
+# our glass (GLASS_MI: the same glass with a flat normal map). The script switches it (ApisK0Face.reds).
+# The antenna mission's props at the NetWatch street site (DISENO.md, "Misión: antena y cara"), vanilla ones without their Arasaka logos
+# (the user's pick, 2026-11-10): the evidence crate (equipment_case_medium, its "default" look) with the mesh's own
+# empty decal ("decals_arasaka_clear", which its "cyberware" look uses) instead of the logo, on box and lid; and the
+# burnt server (explosive_server_arasaka_a_destroyed) with its letters (the chunks the intact look gives "z_font_*",
+# "emissive_destr" when destroyed) and its detail decals (with Arasaka symbols) on the mesh's invisible "off" material.
+EVIDENCE_ENT = "apisk0\\world\\apisk0_evidence.ent"
+EVIDENCE_APP = "apisk0\\world\\apisk0_evidence.app"
+EVIDENCE_APPEARANCE = "equipment_case_medium_default"
+EVIDENCE_MESHES = {
+    "base\\environment\\gameplay\\lootable_containers\\lootable_equipment_case\\lootable_equipment_case_medium_neomilitary_a.mesh":
+        ("lootable_equipment_case_medium_neomilitary_a.mesh.json", "apisk0\\world\\apisk0_evidence_box.mesh"),
+    "base\\environment\\gameplay\\lootable_containers\\lootable_equipment_case\\lootable_equipment_case_medium_neomilitary_a_lid.mesh":
+        ("lootable_equipment_case_medium_neomilitary_a_lid.mesh.json", "apisk0\\world\\apisk0_evidence_lid.mesh"),
+}
+SERVER_ENT = "apisk0\\world\\apisk0_server.ent"
+SERVER_MESH = "apisk0\\world\\apisk0_server.mesh"
+VANILLA_SERVER_MESH = "base\\environment\\decoration\\electronics\\hardware\\arasaka_computing_unit\\arasaka_computing_unit_a.mesh"
+BODY_MESH = "apisk0\\drone\\apisk0_body.mesh"
+VANILLA_BODY_MESH = "base\\vehicles\\special\\av_zetatech_bombus\\entities\\meshes\\av_zetatech_bombus__ext02_nanny.mesh"
+GLASS_MI = "apisk0\\drone\\apisk0_glass.mi"
+VANILLA_GLASS = "glass_cover"
+VANILLA_GLASS_CRACKS = "base\\mechanical\\ambient\\amb_005__nanny_drone\\textures\\amb_005__nanny_drone_n02.xbm"
+FLAT_NORMAL = "engine\\textures\\editor\\normal.xbm"
 # The shard's text: a journal onscreen entry (path also in apis_k0_find.yaml).
 SHARD_ID = "apisk0_netrunner_log"
 PROP_STREAMING = 150
@@ -112,6 +177,29 @@ PHASE_ID = "signal"
 OBJECTIVE_ID = "find_source"
 INVESTIGATE_ID = "investigate"
 MAPPIN_ID = "cache"
+# The antenna and face mission (DISENO.md, "Misión: antena y cara"; ApisK0Antenna.reds holds the same ids). Phase 1:
+# the quest and its first objective, no map pin yet (the site comes later).
+ANTENNA_QUEST_ID = "apisk0_antenna"
+ANTENNA_PHASE_ID = "antenna"
+ANTENNA_OBJECTIVE_ID = "apisk0_get_antenna"
+# Phase 3: the site, a vanilla street event in Pacifica (two NetWatch vehicles, four elite agents, drones scanning a
+# building); our props at the spots the user placed (placements.txt, 2026-11-10): the evidence crate (antenna and the
+# technician's log inside, put there by script), the burnt server and three body bags. The map pin points at the
+# crate. (name, entity, appearance, entity object, (x, y, z), yaw, NodeRef).
+ANTENNA_MAPPIN_ID = "apisk0_antenna_pin"
+ANTENNA_EVIDENCE_REF = "$/mod/apisk0/#apisk0_evidence"
+BODY_BAG = "base\\items\\quest\\q003_intro__body_bag.ent"
+ANTENNA_PROPS = [
+    ("apisk0_evidence", EVIDENCE_ENT, EVIDENCE_APPEARANCE, "LootContainerObjectAnimatedByTransform",
+     (-1842.66, -2103.24, 43.81), 151.7, ANTENNA_EVIDENCE_REF),
+    ("apisk0_server", SERVER_ENT, "default", "entEntity", (-1843.73, -2103.44, 43.81), 178.5,
+     "$/mod/apisk0/#apisk0_server"),
+    ("apisk0_bag_1", BODY_BAG, "default", "gameObject", (-1842.17, -2107.63, 43.82), -136.6, "$/mod/apisk0/#apisk0_bag_1"),
+    ("apisk0_bag_2", BODY_BAG, "default", "gameObject", (-1841.59, -2106.75, 43.81), -136.6, "$/mod/apisk0/#apisk0_bag_2"),
+    ("apisk0_bag_3", BODY_BAG, "default", "gameObject", (-1840.72, -2106.24, 43.81), -136.6, "$/mod/apisk0/#apisk0_bag_3"),
+]
+# The technician's log (a shard in the crate), with the netrunner's: onscreens/emails/generic/shards/world.
+TECH_LOG_ID = "apisk0_tech_log"
 
 # Texts by language, keyed by secondary key. The shard is the user's text (pincho_datos.txt, Spanish), revised and
 # translated. The rest are placeholders until the writing pass. ArchiveXL falls back to en-us for other languages.
@@ -217,6 +305,28 @@ static. It's asking for the chip.
 
 If anyone finds this: don't put it in your head."""
 
+# The technician's log: the user's text (eco.txt, 2026-11-10), translated. Technician L. Moreau: the user's pick.
+TECH_LOG_ES = """[DATASHARD] REGISTRO DE CAMPO // NW-4B-117
+Técnico L. Moreau
+
+La antena del activo APIS-K0 sigue emitiendo. No debería. Pedí destruirla; el agente sénior Vance dice que es una \
+prueba y que se queda.
+
+Ahora la usamos de cebo: si el activo sigue en Pacifica, la oirá y vendrá a por ella. Los drones barren el edificio \
+por si ya estuviera aquí.
+
+Que conste que lo avisé."""
+TECH_LOG_EN = """[DATASHARD] FIELD LOG // NW-4B-117
+Technician L. Moreau
+
+The APIS-K0 asset's antenna is still broadcasting. It shouldn't be. I asked to destroy it; Senior Agent Vance says \
+it's evidence and it stays.
+
+Now we're using it as bait: if the asset is still in Pacifica, it will hear it and come for it. The drones are \
+sweeping the building in case it's already here.
+
+For the record, I warned them."""
+
 TEXTS = {
     "en-us": {
         "apisk0-speaker": "APIKO",
@@ -237,6 +347,19 @@ TEXTS = {
                              "in the Badlands. Whatever sent it is still transmitting.",
         "apisk0-objective-find": "Find the source of the distress signal",
         "apisk0-objective-investigate": "Find out what happened",
+        "apisk0-antenna-title": "Echo",
+        "apisk0-antenna-desc": "Apiko picked up an echo of its own antenna. NetWatch cut it out of the drone in Pacifica "
+                               "and kept it as evidence. Apiko wants it back, and it is not asking.",
+        "apisk0-antenna-objective": "Recover Apiko's antenna in Pacifica",
+        "apisk0-antenna-name": "APIS-K0 Long-Range Antenna",
+        "apisk0-antenna-item-desc": "A Zetatech drone antenna, torn off its board. NetWatch seal. Still broadcasting.",
+        "apisk0-scan-seal": "NetWatch seal",
+        "apisk0-scan-evidence": "EVIDENCE NW-4B-117 // APIS-K0 // LONG-RANGE ANTENNA",
+        "apisk0-mount-1": "APIS-K0 ANTENNA // PHYSICAL LINK",
+        "apisk0-mount-2": "APIS-K0 // RANGE: NIGHT CITY",
+        "apisk0-mount-3": "APIS-K0 // THE NET ANSWERS",
+        "apisk0-techlog-title": "NW-4B-117 - field log",
+        "apisk0-techlog-content": TECH_LOG_EN,
         "apisk0-core-name": "APIS-K0 Link Chip",
         "apisk0-core-desc": "A NetWatch control chip, paired to a single drone. Still warm. Something on the other end "
                             "keeps trying to handshake with your neural port.",
@@ -265,6 +388,20 @@ TEXTS = {
                              "una posición en algún lugar de las Badlands. Lo que la envió sigue transmitiendo.",
         "apisk0-objective-find": "Encuentra el origen de la señal de socorro",
         "apisk0-objective-investigate": "Averigua qué ha pasado",
+        "apisk0-antenna-title": "Eco",
+        "apisk0-antenna-desc": "Apiko ha captado el eco de su propia antena. NetWatch se la arrancó al dron en Pacifica "
+                               "y la guardó como prueba. Apiko la quiere de vuelta, y no lo está pidiendo.",
+        "apisk0-antenna-objective": "Recupera la antena de Apiko en Pacifica",
+        "apisk0-antenna-name": "Antena de largo alcance APIS-K0",
+        "apisk0-antenna-item-desc": "Una antena de dron Zetatech, arrancada de su placa. Precinto de NetWatch. Sigue "
+                                    "emitiendo.",
+        "apisk0-scan-seal": "Precinto de NetWatch",
+        "apisk0-scan-evidence": "PRUEBA NW-4B-117 // APIS-K0 // ANTENA DE LARGO ALCANCE",
+        "apisk0-mount-1": "ANTENA APIS-K0 // ENLACE FÍSICO",
+        "apisk0-mount-2": "APIS-K0 // ALCANCE: NIGHT CITY",
+        "apisk0-mount-3": "APIS-K0 // LA RED RESPONDE",
+        "apisk0-techlog-title": "NW-4B-117 - registro de campo",
+        "apisk0-techlog-content": TECH_LOG_ES,
         "apisk0-core-name": "Chip de enlace APIS-K0",
         "apisk0-core-desc": "Un chip de control de NetWatch, emparejado con un único dron. Todavía está caliente. Algo "
                             "al otro lado intenta establecer conexión con tu puerto neural.",
@@ -333,6 +470,17 @@ def cache_instance():
         "$type": "LootContainerObjectAnimatedByTransform",
         "containerType": "GadgetCase",
         "displayName": locstring("LocKey#18687"),
+        "lootQuality": "Common",
+        "useAreaLoot": 0,
+    }
+
+
+def evidence_instance():
+    """The evidence crate's entity object: the vanilla crate's values, without area loot (the script fills it)."""
+    return {
+        "$type": "LootContainerObjectAnimatedByTransform",
+        "containerType": "ClothingContainer",
+        "displayName": locstring("LocKey#18689"),
         "lootQuality": "Common",
         "useAreaLoot": 0,
     }
@@ -416,6 +564,13 @@ def sector():
                                  PROP_STREAMING)
         nodes.append(node)
         node_data.append(data)
+    # The antenna mission's props at the NetWatch street site.
+    for name, ent, appearance, cls, pos, yaw, ref in ANTENNA_PROPS:
+        instance = evidence_instance() if ref == ANTENNA_EVIDENCE_REF else {"$type": cls}
+        node, data = entity_node(h, buffers, len(nodes), name, ent, appearance, instance, pos, yaw, ref,
+                                 PROP_STREAMING)
+        nodes.append(node)
+        node_data.append(data)
     return cr2w({
         "$type": "worldStreamingSector",
         "category": "AlwaysLoaded",
@@ -425,7 +580,8 @@ def sector():
         "localInplaceResource": [],
         "nodeData": {"BufferId": "0", "Flags": 0, "Type": "WolvenKit.RED4.Archive.Buffer.worldNodeDataBuffer, "
                      "WolvenKit.RED4, Version=9.1.0.0, Culture=neutral, PublicKeyToken=null", "Data": node_data},
-        "nodeRefs": [noderef(CACHE_REF)] + [noderef(ref) for ref in PROP_REFS.values()],
+        "nodeRefs": [noderef(CACHE_REF)] + [noderef(ref) for ref in PROP_REFS.values()] +
+                    [noderef(prop[6]) for prop in ANTENNA_PROPS],
         "nodes": nodes,
         "persistentNodeIndex": 0,
         "persistentNodes": [],
@@ -535,7 +691,43 @@ def journal():
         "id": QUEST_ID, "journalEntryOverrideDataList": [], "recommendedLevelID": tdbid(None),
         "title": locstring("apisk0-quest-title"), "type": "MinorQuest",
     })
-    minor = h({"$type": "gameJournalFolderEntry", "entries": [quest], "id": "minor_quest",
+    # The antenna and face mission: started by script (ApisK0Antenna.Start), tracked by Apiko itself. Its map pin
+    # points at the evidence crate (ANTENNA_PROPS).
+    antenna_mappin = h({
+        "$type": "gameJournalQuestMapPin", "enableGPS": 1, "id": ANTENNA_MAPPIN_ID, "journalEntryOverrideDataList": [],
+        "mappinData": {
+            "$type": "gamemappinsMappinData", "active": 1, "debugCaption": "", "localizedCaption": locstring(""),
+            "mappinType": tdbid("Mappins.QuestStaticMappinDefinition"), "scriptData": None,
+            "variant": "DefaultQuestVariant", "visibleThroughWalls": 1,
+        },
+        "offset": {"$type": "Vector3", "X": 0, "Y": 0, "Z": 0.5},
+        "reference": {
+            "$type": "gameEntityReference", "dynamicEntityUniqueName": cname("None"), "names": [],
+            "reference": noderef(ANTENNA_EVIDENCE_REF), "sceneActorContextName": cname("None"), "slotName": cname("None"),
+            "type": "EntityRef",
+        },
+        "slotName": cname("UI_Interaction"),
+        "uiAnimation": tdbid(None),
+    })
+    antenna_objective = h({
+        "$type": "gameJournalQuestObjective", "counter": 0, "description": locstring("apisk0-antenna-objective"),
+        "districtID": "", "entries": [antenna_mappin], "id": ANTENNA_OBJECTIVE_ID, "itemID": tdbid(None),
+        "journalEntryOverrideDataList": [], "locationPrefabRef": noderef(None), "optional": 0,
+    })
+    antenna_phase = h({
+        "$type": "gameJournalQuestPhase", "entries": [antenna_objective], "id": ANTENNA_PHASE_ID,
+        "journalEntryOverrideDataList": [], "locationPrefabRef": noderef(None),
+    })
+    antenna_description = h({
+        "$type": "gameJournalQuestDescription", "description": locstring("apisk0-antenna-desc"), "id": "desc",
+        "journalEntryOverrideDataList": [],
+    })
+    antenna_quest = h({
+        "$type": "gameJournalQuest", "districtID": "Districts.Pacifica", "entries": [antenna_description, antenna_phase],
+        "id": ANTENNA_QUEST_ID, "journalEntryOverrideDataList": [], "recommendedLevelID": tdbid(None),
+        "title": locstring("apisk0-antenna-title"), "type": "MinorQuest",
+    })
+    minor = h({"$type": "gameJournalFolderEntry", "entries": [quest, antenna_quest], "id": "minor_quest",
                "journalEntryOverrideDataList": []})
     quests = h({"$type": "gameJournalPrimaryFolderEntry", "entries": [minor], "id": "quests",
                 "journalEntryOverrideDataList": []})
@@ -546,7 +738,14 @@ def journal():
         "id": SHARD_ID, "journalEntryOverrideDataList": [], "tag": cname("articles"),
         "title": locstring("apisk0-shard-title"),
     })
-    world = h({"$type": "gameJournalOnscreenGroup", "entries": [shard], "id": "world", "journalEntryOverrideDataList": []})
+    # The NetWatch technician's log, in the antenna mission's evidence crate (ApisK0Antenna.reds).
+    tech_log = h({
+        "$type": "gameJournalOnscreen", "description": locstring("apisk0-techlog-content"), "iconID": tdbid(None),
+        "id": TECH_LOG_ID, "journalEntryOverrideDataList": [], "tag": cname("articles"),
+        "title": locstring("apisk0-techlog-title"),
+    })
+    world = h({"$type": "gameJournalOnscreenGroup", "entries": [shard, tech_log], "id": "world",
+               "journalEntryOverrideDataList": []})
     shards = h({"$type": "gameJournalFolderEntry", "entries": [world], "id": "shards", "journalEntryOverrideDataList": []})
     generic = h({"$type": "gameJournalFolderEntry", "entries": [shards], "id": "generic",
                  "journalEntryOverrideDataList": []})
@@ -602,6 +801,12 @@ def scannable_ent(vanilla, rows, bar_text, auto_inspect):
     """A vanilla entity as a quest scannable: a focus clue whose rows (records with a name and a description) show as
     the scan progresses, and a scanning bar."""
     doc = json.load(open(os.path.join(os.path.dirname(VANILLA_VAN), vanilla), encoding="utf-8"))
+    return make_scannable(doc, rows, bar_text, auto_inspect, vanilla)
+
+
+def make_scannable(doc, rows, bar_text, auto_inspect, label):
+    """An entity document (with a gameScanningComponent) as a quest scannable (scannable_ent)."""
+    vanilla = label
     count = 0
     extended = [
         {"$type": "ClueRecordData", "clueRecord": tdbid(record), "facts": [],
@@ -637,6 +842,232 @@ def scannable_ent(vanilla, rows, bar_text, auto_inspect):
     return doc
 
 
+def load_vanilla(name):
+    return json.load(open(os.path.join(VANILLA_DIR, name), encoding="utf-8"))
+
+
+def replace_strings(node, old, new):
+    """Replaces every string equal to old (paths in components and in their compiled copies alike). Returns how many."""
+    count = 0
+    if isinstance(node, dict):
+        for key, value in node.items():
+            if value == old:
+                node[key] = new
+                count += 1
+            else:
+                count += replace_strings(value, old, new)
+    elif isinstance(node, list):
+        for i, value in enumerate(node):
+            if value == old:
+                node[i] = new
+                count += 1
+            else:
+                count += replace_strings(value, old, new)
+    return count
+
+
+def handle_ids(node, defined, referenced):
+    """Collects the HandleIds a JSON subtree defines and the HandleRefIds it uses."""
+    if isinstance(node, dict):
+        if "HandleId" in node:
+            defined.add(node["HandleId"])
+        if "HandleRefId" in node:
+            referenced.add(node["HandleRefId"])
+        for value in node.values():
+            handle_ids(value, defined, referenced)
+    elif isinstance(node, list):
+        for value in node:
+            handle_ids(value, defined, referenced)
+
+
+def drone_ent():
+    """The vanilla Bombus entity with a single appearance: ours (DRONE_APP)."""
+    doc = load_vanilla("av_zetatech_bombus__basic.ent.json")
+    root = doc["Data"]["RootChunk"]
+    root["appearances"] = [{
+        "$type": "entTemplateAppearance", "appearanceName": cname(DRONE_APP_APPEARANCE),
+        "appearanceResource": resource(DRONE_APP), "name": cname(DRONE_APPEARANCE),
+    }]
+    root["defaultAppearance"] = cname(DRONE_APPEARANCE)
+    return doc
+
+
+def drone_app():
+    """The vanilla white nanny appearance alone, renamed, with our screen mesh."""
+    doc = load_vanilla("zetatech_bombus__basic.app.json")
+    root = doc["Data"]["RootChunk"]
+    picked = [a for a in root["appearances"] if a["Data"]["name"]["$value"] == VANILLA_APP_APPEARANCE]
+    if len(picked) != 1:
+        raise SystemExit(f"zetatech_bombus__basic.app.json: no single {VANILLA_APP_APPEARANCE} appearance")
+    appearance = picked[0]
+    # The other appearances go: everything this one uses must be defined inside it.
+    defined, referenced = set(), set()
+    handle_ids(appearance, defined, referenced)
+    if referenced - defined:
+        raise SystemExit(f"{VANILLA_APP_APPEARANCE} uses handles defined elsewhere: {sorted(referenced - defined)}")
+    data = appearance["Data"]
+    data["name"] = cname(DRONE_APP_APPEARANCE)
+    # Its parent ("default") is not in our .app; the appearance is complete without it.
+    data["parentAppearance"] = cname("None")
+    if replace_strings(appearance, VANILLA_DISPLAY_MESH, DISPLAY_MESH) < 2:
+        raise SystemExit(f"{VANILLA_APP_APPEARANCE}: screen mesh not found in its components and compiled data")
+    if replace_strings(appearance, VANILLA_BODY_MESH, BODY_MESH) < 2:
+        raise SystemExit(f"{VANILLA_APP_APPEARANCE}: body mesh not found in its components and compiled data")
+    root["appearances"] = [appearance]
+    return doc
+
+
+def face_material(texture, glow):
+    """A face: the vanilla screen material ("display") with our drawing as its color and its glow mask."""
+    mesh = load_vanilla("av_zetatech_bombus__ext02_nanny_display.mesh.json")
+    material = json.loads(json.dumps(mesh["Data"]["RootChunk"]["localMaterialBuffer"]["materials"][0]))
+    for value in material["values"]:
+        if "BaseColor" in value:
+            value["BaseColor"] = resource(texture, "Default")
+        elif "Emissive" in value:
+            value["Emissive"] = resource(glow, "Default")
+        elif "EmissiveColor" in value:
+            value["EmissiveColor"] = dict(FACE_EMISSIVE)
+        elif "EmissiveEV" in value:
+            value["EmissiveEV"] = FACE_EMISSIVE_EV
+    return cr2w(material)
+
+
+def display_mesh():
+    """The vanilla screen mesh with our faces (external materials) as its appearances, and the vanilla "off"."""
+    doc = load_vanilla("av_zetatech_bombus__ext02_nanny_display.mesh.json")
+    root = doc["Data"]["RootChunk"]
+    local = [e["name"]["$value"] for e in root["materialEntries"]]
+    if FACE_OFF[1] not in local:
+        raise SystemExit(f"display mesh: no local material {FACE_OFF[1]}")
+    root["externalMaterials"] = [resource(FACE_MATERIAL.format(png)) for _, png in FACES]
+    root["materialEntries"] += [
+        {"$type": "CMeshMaterialEntry", "index": i, "isLocalInstance": 0, "name": cname(f"apisk0_{png}")}
+        for i, (_, png) in enumerate(FACES)
+    ]
+    looks = [(name, f"apisk0_{png}") for name, png in FACES] + [FACE_OFF]
+    root["appearances"] = [
+        {"HandleId": str(i), "Data": {"$type": "meshMeshAppearance", "chunkMaterials": [cname(material)],
+                                      "name": cname(name), "tags": []}}
+        for i, (name, material) in enumerate(looks)
+    ]
+    return doc
+
+
+def mesh_appearance(root, name):
+    found = next((a for a in root["appearances"] if a["Data"]["name"]["$value"] == name), None)
+    if found is None:
+        raise SystemExit(f"mesh: no {name} appearance")
+    return found
+
+
+def evidence_mesh(vanilla):
+    """A crate mesh whose "default" look shows the empty decal where the Arasaka logo was."""
+    doc = load_vanilla(vanilla)
+    chunks = mesh_appearance(doc["Data"]["RootChunk"], "default")["Data"]["chunkMaterials"]
+    logos = [i for i, c in enumerate(chunks) if c["$value"] == "decals_arasaka"]
+    if not logos:
+        raise SystemExit(f"{vanilla}: no Arasaka decal in its default look")
+    for i in logos:
+        chunks[i] = cname("decals_arasaka_clear")
+    return doc
+
+
+def evidence_app():
+    """The crate's .app with only its default look, on our meshes."""
+    doc = load_vanilla("equipment_case_medium.app.json")
+    root = doc["Data"]["RootChunk"]
+    picked = [a for a in root["appearances"] if a["Data"]["name"]["$value"] == "default"]
+    if len(picked) != 1:
+        raise SystemExit("equipment_case_medium.app.json: no single default appearance")
+    defined, referenced = set(), set()
+    handle_ids(picked[0], defined, referenced)
+    if referenced - defined:
+        raise SystemExit(f"crate default look uses handles defined elsewhere: {sorted(referenced - defined)}")
+    for vanilla, (_, ours) in EVIDENCE_MESHES.items():
+        if replace_strings(picked[0], vanilla, ours) == 0:
+            raise SystemExit(f"crate default look: {vanilla} not found")
+    root["appearances"] = picked
+    return doc
+
+
+def evidence_ent():
+    """The vanilla crate entity (a loot container) with its default look on our .app."""
+    doc = load_vanilla("equipment_case_medium.ent.json")
+    root = doc["Data"]["RootChunk"]
+    picked = [a for a in root["appearances"] if a["name"]["$value"] == EVIDENCE_APPEARANCE]
+    if len(picked) != 1:
+        raise SystemExit(f"equipment_case_medium.ent.json: no {EVIDENCE_APPEARANCE} appearance")
+    picked[0]["appearanceResource"] = resource(EVIDENCE_APP)
+    root["appearances"] = picked
+    root["defaultAppearance"] = cname(EVIDENCE_APPEARANCE)
+    return doc
+
+
+def server_mesh():
+    """The burnt server's mesh with no letters in its destroyed look."""
+    doc = load_vanilla("arasaka_computing_unit_a.mesh.json")
+    root = doc["Data"]["RootChunk"]
+    intact = mesh_appearance(root, "default")["Data"]["chunkMaterials"]
+    destroyed = mesh_appearance(root, "destroyed")["Data"]["chunkMaterials"]
+    letters = [i for i, c in enumerate(intact) if c["$value"].startswith("z_font")]
+    if not letters or len(intact) != len(destroyed):
+        raise SystemExit("server mesh: letters not found in its looks")
+    # The logo was still there without the letters (tried in the game, 2026-11-10): the detail decal sheet
+    # (militarism_devices_01_ao_d) carries Arasaka symbols, so it goes too (vents and screws with it).
+    decals = [i for i, c in enumerate(destroyed) if c["$value"] == "z_decal_militarism"]
+    if not decals:
+        raise SystemExit("server mesh: no detail decal in its destroyed look")
+    for i in letters + decals:
+        destroyed[i] = cname("off")
+    return doc
+
+
+def server_ent():
+    """The vanilla burnt server entity on our mesh."""
+    doc = load_vanilla("explosive_server_arasaka_a_destroyed.ent.json")
+    if replace_strings(doc, VANILLA_SERVER_MESH, SERVER_MESH) == 0:
+        raise SystemExit("explosive_server_arasaka_a_destroyed.ent.json: server mesh not found")
+    return doc
+
+
+def glass_material():
+    """The vanilla screen glass without its cracks (flat normal map)."""
+    mesh = load_vanilla("av_zetatech_bombus__ext02_nanny.mesh.json")
+    root = mesh["Data"]["RootChunk"]
+    entry = next(e for e in root["materialEntries"] if e["name"]["$value"] == VANILLA_GLASS)
+    material = json.loads(json.dumps(root["localMaterialBuffer"]["materials"][entry["index"]]))
+    if replace_strings(material, VANILLA_GLASS_CRACKS, FLAT_NORMAL) != 1:
+        raise SystemExit("nanny body mesh: the glass has no cracks normal map")
+    return cr2w(material)
+
+
+def body_mesh():
+    """The vanilla nanny body plus a "repaired" appearance: its "default" with our glass (an external material)."""
+    doc = load_vanilla("av_zetatech_bombus__ext02_nanny.mesh.json")
+    root = doc["Data"]["RootChunk"]
+    root["externalMaterials"] = [resource(GLASS_MI)]
+    root["materialEntries"].append(
+        {"$type": "CMeshMaterialEntry", "index": 0, "isLocalInstance": 0, "name": cname("apisk0_glass")})
+    appearances = root["appearances"]
+    default = next((a for a in appearances if a["Data"]["name"]["$value"] == "default"), None)
+    if default is None:
+        raise SystemExit("nanny body mesh: no default appearance")
+    repaired = json.loads(json.dumps(default))
+    repaired["Data"]["name"] = cname("repaired")
+    defined, referenced = set(), set()
+    handle_ids(doc, defined, referenced)
+    repaired["HandleId"] = str(max(int(h) for h in defined | referenced) + 1)
+    chunks = repaired["Data"]["chunkMaterials"]
+    glass = [i for i, c in enumerate(chunks) if c["$value"] == VANILLA_GLASS]
+    if not glass:
+        raise SystemExit("nanny body mesh: default appearance has no glass")
+    for i in glass:
+        chunks[i] = cname("apisk0_glass")
+    appearances.append(repaired)
+    return doc
+
+
 def write(out, rel, doc):
     path = os.path.join(out, rel + ".json")
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -654,6 +1085,21 @@ def main():
     write(out, "apisk0\\journal\\apisk0.journal", journal())
     for lang, texts in TEXTS.items():
         write(out, f"apisk0\\localization\\{lang}.json", localization(texts))
+    write(out, DRONE_ENT, drone_ent())
+    write(out, DRONE_APP, drone_app())
+    write(out, DISPLAY_MESH, display_mesh())
+    write(out, BODY_MESH, body_mesh())
+    write(out, GLASS_MI, glass_material())
+    # The crate is a quest scannable: the seal's row, inspected when V takes the antenna (ApisK0Antenna.reds).
+    write(out, EVIDENCE_ENT, make_scannable(evidence_ent(), ["scanning.apisk0_evidence"],
+                                            "device_descriptions.RadioSpectrumAndHeat", False, EVIDENCE_ENT))
+    write(out, EVIDENCE_APP, evidence_app())
+    for vanilla, ours in EVIDENCE_MESHES.values():
+        write(out, ours, evidence_mesh(vanilla))
+    write(out, SERVER_ENT, server_ent())
+    write(out, SERVER_MESH, server_mesh())
+    for _, png in FACES:
+        write(out, FACE_MATERIAL.format(png), face_material(FACE_TEXTURE.format(png), FACE_GLOW.format(png)))
 
 
 if __name__ == "__main__":

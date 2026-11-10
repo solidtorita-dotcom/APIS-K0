@@ -169,7 +169,7 @@ SWEAR_WORDS = re.compile(
 NOT_A_FACT = re.compile(r"^(V|Apiko) (asked|asks|entered|enters|went to|requested)\b",
                         re.IGNORECASE)
 
-MOODS = {"curious", "happy", "laughing", "bored", "angry", "sad", "scared", "confused", "surprised", "glitching"}
+MOODS = {"curious", "happy", "laughing", "bored", "angry", "sad", "confused", "surprised", "glitching", "neutral"}
 
 
 def log(text):

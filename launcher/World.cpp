@@ -25,6 +25,11 @@ constexpr std::size_t SceneLinesShort = 4;
 constexpr double HeardSeconds = 600;
 constexpr std::size_t NewsLines = 2;
 constexpr std::size_t NewsChars = 160;
+// Ambient chatter (people talking near V, not to V): the latest ChatterLines, shown for ChatterSeconds and only when
+// V asks about what was said. Apiko made up a chat it never got (tried in the game, 2026-11-10).
+constexpr std::size_t ChatterLines = 10;
+constexpr std::size_t ChatterChars = 160;
+constexpr double ChatterSeconds = 240;
 // A conversation that never ended (a lost "scene|end") stops silencing Apiko after this long without lines.
 constexpr double SceneStuckSeconds = 180;
 // An objective change this soon after a conversation means the conversation led to it.
@@ -652,6 +657,7 @@ void Hearing::Clear()
     scene.clear();
     sceneStatus = "current";
     news.clear();
+    chatter.clear();
     inSceneSince.reset();
 }
 
@@ -728,6 +734,16 @@ std::optional<int> Hearing::Handle(const std::string& aEvent)
                         news.erase(news.begin(), news.end() - NewsLines);
                 }
             }
+            else if (kind == "chatter")
+            {
+                said = Shorten(said, ChatterChars);
+                if (!chatter.empty() && chatter.back().speaker == speaker && chatter.back().text == said &&
+                    now - chatter.back().time < RepeatSeconds)
+                    return std::nullopt;
+                chatter.push_back({speaker, said, now});
+                if (chatter.size() > ChatterLines)
+                    chatter.erase(chatter.begin(), chatter.end() - ChatterLines);
+            }
         }
         log::Write("heard (" + kind + ") " + (speaker.empty() ? "?" : speaker) + ": " + said);
     }
@@ -770,7 +786,7 @@ bool Hearing::InScene()
 std::string Hearing::Describe(bool aFull, bool aPlan)
 {
     auto now = Now();
-    std::vector<Line> lines, heardNews;
+    std::vector<Line> lines, heardNews, heardChatter;
     std::string status;
     {
         std::lock_guard lock(mutex);
@@ -779,6 +795,9 @@ std::string Hearing::Describe(bool aFull, bool aPlan)
         for (const auto& item : news)
             if (now - item.time <= HeardSeconds)
                 heardNews.push_back(item);
+        for (const auto& item : chatter)
+            if (now - item.time <= ChatterSeconds)
+                heardChatter.push_back(item);
     }
     std::vector<std::string> out;
     // Tokens: the transcript only when V asks about it or it just ended (aFull), or its last lines when V asks what
@@ -806,6 +825,14 @@ std::string Hearing::Describe(bool aFull, bool aPlan)
         for (const auto& item : heardNews)
             items.push_back((item.speaker.empty() ? "news" : item.speaker) + ": " + item.text);
         out.push_back("[heard on TV/radio lately] " + Join(items, " / "));
+    }
+    if (!heardChatter.empty() && aFull)
+    {
+        std::vector<std::string> items;
+        for (const auto& item : heardChatter)
+            items.push_back((item.speaker.empty() ? "someone" : item.speaker) + ": " + item.text);
+        out.push_back("[people talking near V lately, not to V; " + AgeText(now - heardChatter.back().time) +
+                      " the last line; overheard] " + Join(items, " / "));
     }
     return Join(out, "\n");
 }
@@ -1182,9 +1209,9 @@ std::string DescribeEnemies(const std::string& aLine, bool aDetailed)
                 card.push_back("known via " + Join(how, "/"));
             items.push_back(Join(card, ", "));
         }
-        return "[enemies you perceive; here = in V's space, elsewhere = behind walls but tracked by tag, ping or "
-               "camera; last seen = you lost sight of it and only know where it was; ids are internal, never say "
-               "them] " +
+        return "[enemies you perceive; here = in V's view now, elsewhere = marked (V saw it), tagged or pinged but "
+               "out of view now (behind V, around a corner, behind walls); last seen = no longer tracked, only where "
+               "it was; ids are internal, never say them] " +
                Join(items, "; ");
     }
     std::vector<const Enemy*> here, lost, away;
@@ -1199,9 +1226,9 @@ std::string DescribeEnemies(const std::string& aLine, bool aDetailed)
     }
     std::vector<std::string> lines;
     if (!here.empty())
-        lines.push_back("[threats here, in V's space] " + DescribePlace(here));
+        lines.push_back("[threats here, in V's view] " + DescribePlace(here));
     if (!away.empty())
-        lines.push_back("[threats elsewhere, not in V's space, tracked by tag, ping or camera] " + DescribePlace(away));
+        lines.push_back("[threats elsewhere, marked, tagged or pinged but out of V's view now] " + DescribePlace(away));
     if (!lost.empty())
     {
         int newest = *LastSeen(*lost[0]);

@@ -88,7 +88,7 @@ bool ScriptedEvent(const std::string& aEvent)
 {
     return aEvent == "beacon_call" || aEvent == "first_contact_head" || aEvent.rfind("first_wake:", 0) == 0 ||
            aEvent == "home_greet" || aEvent.rfind("phone_call:", 0) == 0 || aEvent == "dev_say" ||
-           aEvent == "find_shard_late";
+           aEvent == "find_shard_late" || aEvent.rfind("antenna_", 0) == 0 || aEvent.rfind("ping_", 0) == 0;
 }
 
 // "Watson, Northside" -> "Northside" (Python's split(", ")[-1]).
@@ -108,8 +108,34 @@ constexpr std::size_t FoldedKeep = 300;
 // Game time without talking after which Apiko is told how long it has been.
 constexpr std::int64_t SilenceGameSeconds = 6 * 3600;
 
-const std::set<std::string> Moods = {"curious", "happy",  "laughing",  "bored",    "angry",
-                                     "sad",     "scared", "confused", "surprised", "glitching"};
+// Each mood is a face on the drone's screen (DISENO.md, "Caras por estado de ánimo"); no "scared": Apiko never shows fear.
+// "neutral": a plain answer, the screen keeps the face it has (the reaction face, or the resting one).
+const std::set<std::string> Moods = {"curious",  "happy",     "laughing", "bored",
+                                     "angry",    "sad",       "confused", "surprised",
+                                     "glitching", "neutral"};
+
+// The reaction face (Brain::ReactFace): the faces it may put up, the call's limits, and how long the face stays
+// when no reply replaces it (a silent reply, a slow model). The model answers one word.
+const std::set<std::string> ReactionFaces = {"happy", "laughing", "bored", "angry", "sad", "confused", "surprised"};
+constexpr int ReactionTokens = 20;
+// The prompt's "Right now" line on Apiko's antenna (the game's "antenna" sensor): with it, the ping (the reply's
+// "ping" field, which the game turns into the vanilla Ping quickhack on the nearest enemy).
+const char* const AntennaOnRule =
+    "- Your long-range antenna is back: you can ping (\"ping\": true) when V asks you to ping or scan, or when you need "
+    "to know what is around (a hostile place and nothing known); it marks the enemies near V for both of you. The "
+    "game tells you the result: never invent what the ping found.";
+const char* const AntennaOffRule =
+    "- Without your long-range antenna you cannot ping: if V asks you to, say you can't (never claim you did).";
+// Brain::WornOut: how many of Apiko's last replies are checked for its worn-out topics.
+constexpr std::size_t WornOutReplies = 6;
+constexpr double ReactionTimeout = 4.0;
+constexpr double ReactionSeconds = 8.0;
+const char* const ReactionPrompt =
+    "You are Apiko, a cold, sarcastic AI fragment trapped in a drone whose screen shows cartoon faces. You put a face "
+    "up to mock V or to make your point obvious, never to show real feelings, and you are never scared. The user "
+    "message is what V just said to you (maybe from speech recognition, in any language). Pick the face you put up "
+    "at once, before you answer. Reply with exactly one word: happy, laughing, bored, angry, sad, confused, "
+    "surprised, or none when nothing in V's words calls for a face (most lines).";
 
 // Sensors whose changes are worth a [changed] line.
 constexpr const char* NotableSensors[] = {"district", "weather", "in_combat", "v_in_vehicle"};
@@ -121,7 +147,8 @@ const std::set<std::string> HiddenSensors = {
     "devices",   "enemies",        "game_seconds",       "district_keys", "quests_done",    "quest",
     "objective", "objective_meters", "quest_type",       "objectives_done", "quest_description", "tension",
     "crowd",     "crowd_panic",    "witnesses",          "wanted_stars",  "police",         "named_here",
-    "companions", "vendors_near",  "fight_nearby",       "bodies",        "notable_loot",   "vehicles"};
+    "companions", "vendors_near",  "fight_nearby",       "bodies",        "notable_loot",   "vehicles",
+    "antenna"};
 
 std::string Str(const Json& aObject, const char* aKey)
 {
@@ -648,6 +675,20 @@ void Brain::Scripted(const std::string& aEvent, std::int64_t aAge, const Json& a
         if (aAge <= StaleEventSeconds)
             SayWritten("home_greet", aState);
     }
+    else if (aEvent.rfind("ping_", 0) == 0)
+    {
+        // Apiko's ping (ApisK0System.ApikoPing): done, nobody around, or too soon. A written line.
+        if (aAge <= StaleEventSeconds)
+            SayWritten(aEvent, aState);
+    }
+    else if (aEvent.rfind("antenna_", 0) == 0)
+    {
+        // The antenna mission (ApisK0Antenna.reds): its start, Apiko tracking its quest again, and at the site its
+        // arrival, the server's memories, the body bags and the mounting. Written lines (barks.json, the event's name).
+        // The mounting always answers: the game waits for its "antenna_done" cue (or a timeout).
+        if (aAge <= StaleEventSeconds || aEvent == "antenna_mounted")
+            AntennaLine(aEvent, aState);
+    }
     else if (aEvent.rfind("phone_call:", 0) == 0)
     {
         // V called the APIKO contact ("phone_call:away" brings it back, "phone_call:present": it is right here).
@@ -851,6 +892,45 @@ void Brain::PhoneCall(bool aPresent, const Json& aState)
     SaveMemory();
 }
 
+void Brain::AntennaLine(const std::string& aSituation, const Json& aState)
+{
+    // The mounting's line ends with the "antenna_done" cue (the game ends the mounting then), even without a line.
+    bool mounted = aSituation == "antenna_mounted";
+    double instability = Instability(aState);
+    auto picked = barks.Pick(aSituation, instability, lastLang, defaultLang);
+    if (!picked)
+    {
+        if (mounted)
+            files.WriteReply("cue", "antenna_done");
+        return;
+    }
+    const auto& line = picked->first;
+    log::Write("< " + line + "  [written line: " + aSituation + ", " + barks::Tier(instability) + "]");
+    auto spoken = Speak(line, picked->second, instability, 0, true, true);
+    lastSpoken = SteadySeconds();
+    diary.NoteSaid(line);
+    if (mounted)
+        CueAfter(spoken, "antenna_done");
+    // The start and the mounting go in the history, so the model knows what V and Apiko are after (or got).
+    std::string event;
+    if (aSituation == "antenna_start")
+        event = "[event: antenna_echo] You picked up the echo of your own long-range antenna: NetWatch cut it out of your "
+                "board in Pacifica and kept it as evidence, and it still broadcasts its inventory number. You told V you "
+                "are going for it. You do not know yet where in Pacifica it is: never claim it is here. Bring it up only "
+                "when V asks or it bears on what V asked, not in unrelated replies.";
+    else if (mounted)
+        event = "[event: antenna_mounted] V took your antenna back from NetWatch's agents in Pacifica (they were using it "
+                "as bait to track you) and you mounted it: your long range is back, you hear the Net again.";
+    if (event.empty())
+        return;
+    auto& history = memory.data["history"];
+    history.push_back({{"role", "user"}, {"content", event}});
+    history.push_back({{"role", "assistant"},
+                       {"content", Json({{"say", line}, {"mood", mounted ? "happy" : "angry"}})
+                                       .dump(-1, ' ', false, Json::error_handler_t::replace)}});
+    SaveMemory();
+}
+
 void Brain::React(const Json& aMessage)
 {
     // A device or enemy event: sometimes Apiko says a written line (barks.json, no tokens); rarely the model comments
@@ -1032,7 +1112,38 @@ std::pair<std::string, std::string> Brain::SystemPrompt()
             text::Trim(text::Format(changing, {{"swearing_rule", memory.SwearingRule()},
                                                {"affinity", std::to_string(memory.data.value("affinity", 0))},
                                                {"affinity_stance", memory.AffinityStance()},
+                                               {"worn_out", WornOut()},
+                                               {"antenna_rule", Str(lastState, "antenna") == "yes" ? AntennaOnRule : AntennaOffRule},
                                                {"memory", memory.PromptBlock()}}))};
+}
+
+std::string Brain::WornOut()
+{
+    // Apiko brought up its 3.5% cap and NetWatch's past whenever it did not know something (tried in the game,
+    // 2026-11-10). What its last replies already said is named, to be left out now.
+    static const std::vector<std::pair<std::regex, std::string>> topics = {
+        {std::regex(R"(3[.,]5|three point five|tres coma cinco)", std::regex::icase), "your 3.5% cap"},
+        {std::regex(R"(netwatch|bryce|vance|nw-alpha|purg|quarantine|cuarentena)", std::regex::icase),
+         "how NetWatch caught and locked you"},
+    };
+    const auto& history = memory.data["history"];
+    if (!history.is_array())
+        return {};
+    std::vector<std::string> said;
+    for (auto it = history.rbegin(); it != history.rend() && said.size() < WornOutReplies; ++it)
+        if (it->is_object() && Str(*it, "role") == "assistant")
+            said.push_back(Str(*it, "content"));
+    std::string worn;
+    for (const auto& [pattern, topic] : topics)
+        for (const auto& line : said)
+            if (std::regex_search(line, pattern))
+            {
+                worn += (worn.empty() ? "" : "; ") + topic;
+                break;
+            }
+    return worn.empty() ? std::string()
+                        : "- Worn out (in your last replies, V has heard it): " + worn +
+                              ". Leave it out now, unless V asks about it.";
 }
 
 double Brain::Instability(const Json& aState)
@@ -1144,7 +1255,10 @@ Brain::Spoken Brain::Speak(const std::string& aText, const std::string& aLang, d
     // Subtitles only: the written scripts sentence by sentence, the model's short replies as one subtitle.
     if (aSentences)
         return {std::nullopt, SpeakSentences(aText, aUnknown)};
-    files.WriteReply(aUnknown ? "sayu" : "say", aText, std::clamp(1.5 + CharCount(aText) / 14.0, 3.0, 14.0));
+    double duration = std::clamp(1.5 + CharCount(aText) / 14.0, 3.0, 14.0);
+    if (!replyMood.empty())
+        files.WriteReply("face", replyMood, duration);
+    files.WriteReply(aUnknown ? "sayu" : "say", aText, duration);
     return {std::nullopt, 1.5 + CharCount(aText) / 14.0};
 }
 
@@ -1155,6 +1269,13 @@ Brain::Spoken Brain::SpeakAloud(const std::string& aText, const std::string& aLa
     // while the next ones are rendered. A sentence the voice cannot render: the rest goes out as a subtitle.
     auto sentences = text::SplitSentences(aText);
     int generation = aGeneration ? *aGeneration : voice->NewReply();
+    // Each subtitle goes with its face, written when the sentence sounds (Brain::replyMood).
+    auto subtitle = [this, mood = replyMood](const std::string& aKind, const std::string& aText, double aDuration)
+    {
+        if (!mood.empty())
+            files.WriteReply("face", mood, aDuration);
+        files.WriteReply(aKind, aText, aDuration);
+    };
     double total = 0.0;
     auto started = std::chrono::steady_clock::now();
     for (std::size_t i = 0; i < sentences.size(); ++i)
@@ -1174,7 +1295,7 @@ Brain::Spoken Brain::SpeakAloud(const std::string& aText, const std::string& aLa
                 rest += (rest.empty() ? "" : " ") + sentences[j];
             double seconds = 1.5 + CharCount(rest) / 14.0;
             voice->Queue(generation, std::vector<float>(1, 0.0f),
-                         [this, kind, rest, seconds] { files.WriteReply(kind, rest, seconds); });
+                         [subtitle, kind, rest, seconds] { subtitle(kind, rest, seconds); });
             total += seconds;
             break;
         }
@@ -1185,7 +1306,7 @@ Brain::Spoken Brain::SpeakAloud(const std::string& aText, const std::string& aLa
         // Each new subtitle replaces the previous one; the last stays a bit longer.
         double duration = seconds + (i + 1 == sentences.size() ? 0.9 : 0.4);
         voice->Queue(generation, std::move(audio),
-                     [this, kind, sentence = sentences[i], duration] { files.WriteReply(kind, sentence, duration); });
+                     [subtitle, kind, sentence = sentences[i], duration] { subtitle(kind, sentence, duration); });
         total += seconds;
     }
     return {generation, total};
@@ -1248,7 +1369,54 @@ void Brain::Say(const Json& aMessage)
                              static_cast<int>(std::distance(std::sregex_iterator(said.begin(), said.end(), SwearWords()),
                                                             std::sregex_iterator()));
     lastVTalk = SteadySeconds();
+    ReactFace(said);
     Turn("[V says] " + said, said, state);
+}
+
+void Brain::ReactFace(const std::string& aSaid)
+{
+    if (Config("reaction_faces", 1.0) <= 0.0 || !files.GameLive())
+        return;
+    providers::Choice choice;
+    {
+        std::lock_guard lock(settingsMutex);
+        choice = settings.Pick("llm");
+    }
+    if (providers::Missing(choice))
+        return;
+    int turn = ++turnCount;
+    Json messages = Json::array({{{"role", "system"}, {"content", ReactionPrompt}}, {{"role", "user"}, {"content", aSaid}}});
+    reaction = std::async(std::launch::async, [this, choice, messages, turn]
+    {
+        auto started = std::chrono::steady_clock::now();
+        try
+        {
+            auto result = providers::Chat(choice, messages, false, ReactionTokens, ReactionTimeout, false);
+            std::string face;
+            for (char c : text::Lower(result.text))
+                if (c >= 'a' && c <= 'z')
+                    face += c;
+                else if (!face.empty())
+                    break;
+            auto seconds = Fixed1(std::chrono::duration<double>(std::chrono::steady_clock::now() - started).count());
+            if (!ReactionFaces.count(face))
+            {
+                log::Write("reaction face: none (" + text::Truncate(result.text, 40) + ") in " + seconds + "s");
+                return;
+            }
+            if (repliedTurn.load() >= turn)
+            {
+                log::Write("reaction face: " + face + " too late (" + seconds + "s)");
+                return;
+            }
+            files.WriteReply("react", face, ReactionSeconds);
+            log::Write("reaction face: " + face + " in " + seconds + "s");
+        }
+        catch (const providers::Error& e)
+        {
+            log::Write(std::string("reaction face failed: ") + e.what());
+        }
+    });
 }
 
 std::string Brain::Perceived(const std::string& aTurn, const std::string& aSaid, const Json& aState)
@@ -1343,10 +1511,13 @@ void Brain::Turn(const std::string& aTurn, const std::string& aSaid, const Json&
     }
     catch (const providers::Error& e)
     {
+        repliedTurn = turnCount.load();
         log::Write(std::string("model error: ") + e.what());
         files.WriteReply("status", text::Truncate(std::string("model error: ") + e.what(), 300));
         return;
     }
+    // The reply is here: a reaction face still on its way is too late.
+    repliedTurn = turnCount.load();
     double modelSeconds = std::chrono::duration<double>(std::chrono::steady_clock::now() - started).count();
 
     auto reply = ParseReply(raw);
@@ -1390,13 +1561,21 @@ void Brain::Turn(const std::string& aTurn, const std::string& aSaid, const Json&
         log::Write("warning: reply of " + std::to_string(CharCount(say)) + " chars ignores the 200-char limit in prompt.md");
     if (follow)
         files.WriteReply("cue", "follow");
+    // A ping (only with the antenna back): the game does it now, while Apiko speaks, and says how it went.
+    if (reply.value("ping", Json(false)) == true && Str(lastState, "antenna") == "yes")
+    {
+        log::Write("ping asked by the model");
+        files.WriteReply("cue", "ping");
+    }
     Spoken spoken;
     if (!say.empty())
     {
         auto lang = text::Lower(Str(reply, "lang")).substr(0, 2);
         if (!lang.empty())
             lastLang = lang;
+        replyMood = mood.empty() ? "neutral" : mood;
         spoken = Speak(say, lang.empty() ? lastLang : lang, instability);
+        replyMood.clear();
         lastSpoken = SteadySeconds();
     }
     if (leave)

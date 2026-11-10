@@ -14,9 +14,9 @@ import Codeware.Localization.*
 public abstract class ApisK0Config {
   public static func RecordID() -> TweakDBID { return t"Character.ApisK0"; }
   public static func Tag() -> CName { return n"ApisK0"; }
-  // White nanny Bombus (the one with a face). Appearance names are from av_zetatech_bombus__basic.ent.
-  // Also set in apis_k0.yaml (appearanceName).
-  public static func Appearance() -> CName { return n"zetatech_bombus__basic_nanny_drone_white"; }
+  // Our white nanny Bombus with Apiko's faces (apisk0\drone\apisk0_bombus.ent, tools\make_world.py). Also set in
+  // apis_k0.yaml (entityTemplatePath, appearanceName).
+  public static func Appearance() -> CName { return n"apisk0_bombus"; }
   // Seconds between updates.
   public static func TickInterval() -> Float { return 0.25; }
   // Catch-up: normal speed up to MinCatchUpDistance meters from V, MaxSpeedFactor at MaxCatchUpDistance.
@@ -138,6 +138,46 @@ public class ApisK0System extends ScriptableSystem {
   private let m_debugLines: array<String>;
   // Phase 2: game side of the conversation (state, events, subtitles). See ApisK0Chat.reds.
   private let m_chat: ref<ApisK0Chat>;
+  // The face on the drone's screen for each reply's mood. See ApisK0Face.reds.
+  private let m_face: ref<ApisK0Face>;
+  // The glass over the screen repaired (the repair mission, to come; DISENO.md): until then it stays cracked.
+  private persistent let m_glassRepaired: Bool;
+  // The antenna mission (ApisK0Antenna.reds, UpdateAntenna): Apiko has been in the Badlands awake (saved: the echo
+  // comes the first time V leaves them after that), V is out of them since m_antennaLeftAt, the next check, V tracking
+  // another quest since m_antennaUntrackedAt, and Apiko's last line about it.
+  private persistent let m_antennaArmed: Bool;
+  private let m_antennaOutside: Bool;
+  private let m_antennaLeftAt: Float;
+  private let m_nextAntennaCheck: Float;
+  // Development: ghost mode (DevToggleGhost) and the NPCs and devices it made neutral, with their attitude before.
+  private let m_devGhost: Bool;
+  private let m_ghostedIds: array<EntityID>;
+  private let m_ghostedAttitudes: array<EAIAttitude>;
+  private let m_antennaUntracked: Bool;
+  private let m_antennaUntrackedAt: Float;
+  private let m_antennaLineAt: Float;
+  // The site (UpdateAntennaSite), saved: Apiko's arrival line, how many of the server's memories it said, the
+  // technician's log taken (not put back), and the antenna mounted (the Net search of people, later).
+  private persistent let m_antennaArrived: Bool;
+  private persistent let m_antennaMemories: Int32;
+  private persistent let m_techLogTaken: Bool;
+  private persistent let m_antennaMounted: Bool;
+  // The last memory's time, and the mounting (UpdateMount: going on, start, steps done, the bridge's "antenna_done",
+  // with voice, when the last glitch ends).
+  private let m_antennaMemoryAt: Float;
+  private let m_antennaPinChecked: Bool;
+  // Apiko's ping (ApikoPing): used this session and when, and V's security area at the last check (for the automatic
+  // ping on entering a restricted or hostile one; m_pingZoneRead: read once after a load).
+  private let m_pingUsed: Bool;
+  private let m_lastPingAt: Float;
+  private let m_pingZone: Int32;
+  private let m_pingZoneRead: Bool;
+  private let m_mounting: Bool;
+  private let m_mountStart: Float;
+  private let m_mountStep: Int32;
+  private let m_mountDone: Bool;
+  private let m_mountVoiced: Bool;
+  private let m_mountFinishAt: Float;
   // Phase 4: devices Apiko perceives and V's actions on them. See ApisK0Devices.reds.
   private let m_devices: ref<ApisK0Devices>;
   // Phase 4: enemies Apiko perceives, V's kills, warnings. See ApisK0Enemies.reds.
@@ -215,6 +255,13 @@ public class ApisK0System extends ScriptableSystem {
       this.m_chat = ApisK0Chat.Create(this.GetGameInstance());
     };
     return this.m_chat;
+  }
+
+  private func Face() -> ref<ApisK0Face> {
+    if !IsDefined(this.m_face) {
+      this.m_face = ApisK0Face.Create();
+    };
+    return this.m_face;
   }
 
   private func Devices() -> ref<ApisK0Devices> {
@@ -406,6 +453,100 @@ public class ApisK0System extends ScriptableSystem {
     spec.persistSpawn = false;
     spec.tags = [tag];
     des.CreateEntity(spec);
+  }
+
+  // Development: as DevPreview, an NPC from its TweakDB record (the antenna mission's NetWatch agents).
+  public func DevPreviewRecord(name: String, record: String, x: Float, y: Float, z: Float, yaw: Float) -> Void {
+    let des: ref<DynamicEntitySystem> = GameInstance.GetDynamicEntitySystem();
+    let tag: CName = StringToName("ApisK0Preview_" + name);
+    let spec: ref<DynamicEntitySpec> = new DynamicEntitySpec();
+    let half: Float = Deg2Rad(yaw) / 2.0;
+    if !IsDefined(des) {
+      return;
+    };
+    des.DeleteTagged(tag);
+    spec.recordID = TDBID.Create(record);
+    spec.position = new Vector4(x, y, z, 1.0);
+    spec.orientation = new Quaternion(0.0, 0.0, SinF(half), CosF(half));
+    spec.alwaysSpawned = true;
+    spec.persistState = false;
+    spec.persistSpawn = false;
+    spec.tags = [tag];
+    des.CreateEntity(spec);
+  }
+
+  // Development (dev.lua, "Dev: ghost mode"): NPCs, turrets and cameras near V treat V as neutral, to place things in
+  // a hostile area in peace; their attitude goes back when it is turned off. Best turned on before they see V: one
+  // already fighting may keep at it.
+  public func DevToggleGhost() -> Void {
+    let game: GameInstance = this.GetGameInstance();
+    let player: ref<PlayerPuppet> = GetPlayer(game);
+    let object: ref<GameObject>;
+    let i: Int32 = 0;
+    this.m_devGhost = !this.m_devGhost;
+    if !this.m_devGhost {
+      while i < ArraySize(this.m_ghostedIds) {
+        object = GameInstance.FindEntityByID(game, this.m_ghostedIds[i]) as GameObject;
+        if IsDefined(object) && IsDefined(player) && IsDefined(object.GetAttitudeAgent()) {
+          object.GetAttitudeAgent().SetAttitudeTowards(player.GetAttitudeAgent(), this.m_ghostedAttitudes[i]);
+        };
+        i += 1;
+      };
+      ArrayClear(this.m_ghostedIds);
+      ArrayClear(this.m_ghostedAttitudes);
+    };
+    this.ShowMessage(this.m_devGhost ? "APIS-K0: ghost mode ON (enemies ignore V)" : "APIS-K0: ghost mode OFF");
+  }
+
+  private func UpdateGhost() -> Void {
+    let player: ref<PlayerPuppet> = GetPlayer(this.GetGameInstance());
+    if !this.m_devGhost || !IsDefined(player) || !IsDefined(player.GetAttitudeAgent()) {
+      return;
+    };
+    this.GhostAround(player, TSFMV.Obj_Puppet);
+    this.GhostAround(player, TSFMV.Obj_Device);
+    this.GhostAround(player, TSFMV.Obj_Sensor);
+  }
+
+  private func GhostAround(player: ref<PlayerPuppet>, kind: TSFMV) -> Void {
+    let query: TargetSearchQuery;
+    let parts: array<TS_TargetPartInfo>;
+    let component: ref<TargetingComponent>;
+    let object: ref<GameObject>;
+    let agent: ref<AttitudeAgent>;
+    let attitude: EAIAttitude;
+    let i: Int32 = 0;
+    query.testedSet = TargetingSet.Complete;
+    query.searchFilter = TSF_Any(kind);
+    query.maxDistance = 80.0;
+    query.filterObjectByDistance = true;
+    query.includeSecondaryTargets = false;
+    query.ignoreInstigator = true;
+    GameInstance.GetTargetingSystem(this.GetGameInstance()).GetTargetParts(player, query, parts);
+    while i < ArraySize(parts) {
+      component = TS_TargetPartInfo.GetComponent(parts[i]);
+      object = IsDefined(component) ? component.GetEntity() as GameObject : null;
+      agent = IsDefined(object) ? object.GetAttitudeAgent() : null;
+      if IsDefined(agent) && !object.IsPlayer() {
+        attitude = agent.GetAttitudeTowards(player.GetAttitudeAgent());
+        if NotEquals(attitude, EAIAttitude.AIA_Neutral) && NotEquals(attitude, EAIAttitude.AIA_Friendly) {
+          if !ArrayContains(this.m_ghostedIds, object.GetEntityID()) {
+            ArrayPush(this.m_ghostedIds, object.GetEntityID());
+            ArrayPush(this.m_ghostedAttitudes, attitude);
+          };
+          agent.SetAttitudeTowards(player.GetAttitudeAgent(), EAIAttitude.AIA_Neutral);
+        };
+      };
+      i += 1;
+    };
+  }
+
+  // Development: removes a preview (DevPreview, DevPreviewRecord).
+  public func DevRemovePreview(name: String) -> Void {
+    let des: ref<DynamicEntitySystem> = GameInstance.GetDynamicEntitySystem();
+    if IsDefined(des) {
+      des.DeleteTagged(StringToName("ApisK0Preview_" + name));
+    };
   }
 
   public func DebugResetFind() -> Void {
@@ -686,6 +827,13 @@ public class ApisK0System extends ScriptableSystem {
     if Equals(cue, "beacon_done") {
       this.m_beaconDone = true;
     };
+    if Equals(cue, "antenna_done") {
+      this.m_mountDone = true;
+    };
+    // The model's reply asked for a ping (V asked, or Apiko wants to know what is around).
+    if Equals(cue, "ping") {
+      this.ApikoPing(true);
+    };
     if Equals(cue, "leave") && this.m_unlocked && !this.m_away {
       this.m_away = true;
       // Told to stay while at home: it stays there with V, no greeting.
@@ -869,6 +1017,319 @@ public class ApisK0System extends ScriptableSystem {
     };
   }
 
+  // The antenna mission (ApisK0Antenna.reds): it starts the first time V leaves the Badlands with Apiko awake (out of
+  // them for ApisK0Antenna.LeaveSeconds, not in combat nor a scene); while it is active, Apiko keeps it tracked.
+  private func UpdateAntenna(now: Float) -> Void {
+    let game: GameInstance = this.GetGameInstance();
+    let player: ref<PlayerPuppet> = GetPlayer(game);
+    let district: wref<District>;
+    if !this.m_unlocked || !IsDefined(player) || now < this.m_nextAntennaCheck {
+      return;
+    };
+    this.m_nextAntennaCheck = now + ApisK0Antenna.CheckInterval();
+    if !ApisK0Antenna.Exists(game) {
+      return;
+    };
+    if ApisK0Antenna.Active(game) {
+      // Saves where Echo started before its map pin existed: once per session, the pin on.
+      if !this.m_antennaPinChecked {
+        this.m_antennaPinChecked = true;
+        GameInstance.GetJournalManager(game).ChangeEntryState(ApisK0Antenna.MappinPath(), "gameJournalQuestMapPin",
+          gameJournalEntryState.Active, JournalNotifyOption.DoNotNotify);
+      };
+      this.KeepAntennaTracked(now, player);
+      this.UpdateAntennaSite(player);
+      this.UpdateAntennaProps(now, player);
+      this.UpdateMount(now, player);
+      return;
+    };
+    if ApisK0Antenna.Started(game) {
+      return;
+    };
+    district = player.GetPreventionSystem().GetCurrentDistrict();
+    if IsDefined(district) && district.IsBadlands() {
+      if !this.m_antennaArmed {
+        this.Debug("antenna: Apiko in the Badlands, the echo comes when V leaves them");
+      };
+      this.m_antennaArmed = true;
+      this.m_antennaOutside = false;
+      return;
+    };
+    if !this.m_antennaArmed {
+      return;
+    };
+    if !this.m_antennaOutside {
+      this.m_antennaOutside = true;
+      this.m_antennaLeftAt = now;
+      return;
+    };
+    if now - this.m_antennaLeftAt < ApisK0Antenna.LeaveSeconds() || player.IsInCombat()
+      || PlayerPuppet.GetSceneTier(player) > 1 {
+      return;
+    };
+    this.StartAntenna();
+  }
+
+  // The echo: the quest starts tracked, Apiko comes back if V had sent it away, and it says so (a written line).
+  private func StartAntenna() -> Void {
+    if !ApisK0Antenna.Start(this.GetGameInstance()) {
+      this.ShowNotice("APIS-K0: antenna mission entries missing (ApisK0.archive / ArchiveXL)", 6.0);
+      return;
+    };
+    if this.m_away {
+      // As when V calls it back (UpdateApikoCall): the drone appears behind V, with fresh baselines.
+      this.m_away = false;
+      this.m_atHomeWithV = false;
+      this.m_spawnRequestTime = -1000.0;
+      this.Chat().Reset();
+      this.People().Reset();
+      this.Debug("antenna: Apiko comes back for its antenna");
+    };
+    this.m_antennaUntracked = false;
+    this.Chat().PushEvent("antenna_start");
+    this.Debug("antenna mission started");
+  }
+
+  // V tracked another quest (or none): after ApisK0Antenna.RetrackDelay Apiko tracks its own again, every time, and
+  // says so (a line, at most one per RetrackLineCooldown). Not while it is away (it cannot see), nor in combat or a
+  // scene (the game's own tracking may be busy): then it waits.
+  private func KeepAntennaTracked(now: Float, player: ref<PlayerPuppet>) -> Void {
+    let game: GameInstance = this.GetGameInstance();
+    if ApisK0Antenna.IsTracked(game) {
+      this.m_antennaUntracked = false;
+      return;
+    };
+    if this.IsAway() || player.IsInCombat() || PlayerPuppet.GetSceneTier(player) > 1 {
+      return;
+    };
+    if !this.m_antennaUntracked {
+      this.m_antennaUntracked = true;
+      this.m_antennaUntrackedAt = now;
+      return;
+    };
+    if now - this.m_antennaUntrackedAt < ApisK0Antenna.RetrackDelay() {
+      return;
+    };
+    this.m_antennaUntracked = false;
+    ApisK0Antenna.Track(game);
+    this.Debug("antenna: V tracked another quest, Apiko tracks its own again");
+    if now - this.m_antennaLineAt >= ApisK0Antenna.RetrackLineCooldown() {
+      this.m_antennaLineAt = now;
+      this.Chat().PushEvent("antenna_retrack");
+    };
+  }
+
+  // The site's NetWatch agents (a vanilla street event, police-type: they never attacked V) turn hostile towards V
+  // while the quest is active and V is near (killing them brings the police: fine for NetWatch, the user's call).
+  // Not in ghost mode (development: it makes them neutral).
+  private func UpdateAntennaSite(player: ref<PlayerPuppet>) -> Void {
+    let query: TargetSearchQuery;
+    let parts: array<TS_TargetPartInfo>;
+    let component: ref<TargetingComponent>;
+    let npc: ref<NPCPuppet>;
+    let i: Int32 = 0;
+    if this.m_devGhost || !IsDefined(player.GetAttitudeAgent())
+      || Vector4.Distance(player.GetWorldPosition(), ApisK0Antenna.SiteCenter()) > ApisK0Antenna.SiteCheckDistance() {
+      return;
+    };
+    query.testedSet = TargetingSet.Complete;
+    query.searchFilter = TSF_Any(TSFMV.Obj_Puppet);
+    query.maxDistance = ApisK0Antenna.SiteCheckDistance();
+    query.filterObjectByDistance = true;
+    query.includeSecondaryTargets = false;
+    query.ignoreInstigator = true;
+    GameInstance.GetTargetingSystem(this.GetGameInstance()).GetTargetParts(player, query, parts);
+    while i < ArraySize(parts) {
+      component = TS_TargetPartInfo.GetComponent(parts[i]);
+      npc = IsDefined(component) ? component.GetEntity() as NPCPuppet : null;
+      if IsDefined(npc) && npc.GetRecordID() == ApisK0Antenna.SiteAgent()
+        && Vector4.Distance(npc.GetWorldPosition(), ApisK0Antenna.SiteCenter()) <= ApisK0Antenna.SiteRadius()
+        && IsDefined(npc.GetAttitudeAgent())
+        && NotEquals(npc.GetAttitudeAgent().GetAttitudeTowards(player.GetAttitudeAgent()), EAIAttitude.AIA_Hostile) {
+        npc.GetAttitudeAgent().SetAttitudeTowards(player.GetAttitudeAgent(), EAIAttitude.AIA_Hostile);
+        this.Debug("antenna: a NetWatch agent at the site turns hostile");
+      };
+      i += 1;
+    };
+  }
+
+  // The site's props while the quest is active and V is near: the crate holds the antenna (until V takes it, which
+  // mounts it) and the technician's log (until V has taken it once or read it); Apiko's lines on arriving and on the
+  // server (its memories, one per look).
+  private func UpdateAntennaProps(now: Float, player: ref<PlayerPuppet>) -> Void {
+    let game: GameInstance = this.GetGameInstance();
+    let crate: ref<GameObject>;
+    let distance: Float = Vector4.Distance(player.GetWorldPosition(), ApisK0Antenna.SiteCenter());
+    if this.m_mounting || distance > ApisK0Antenna.SiteCheckDistance() {
+      return;
+    };
+    if ApisK0Find.Count(game, player, ApisK0Antenna.Antenna()) > 0 {
+      this.StartMount(now);
+      return;
+    };
+    crate = ApisK0Find.FindByRef(game, ApisK0Antenna.EvidenceRef());
+    if IsDefined(crate) {
+      ApisK0Find.EnsureOne(game, crate, ApisK0Antenna.Antenna());
+      if !this.m_techLogTaken {
+        if ApisK0Find.Count(game, player, ApisK0Antenna.TechLog()) > 0 || ApisK0Antenna.TechLogRead(game) {
+          this.m_techLogTaken = true;
+        } else {
+          ApisK0Find.EnsureOne(game, crate, ApisK0Antenna.TechLog());
+        };
+      };
+    };
+    if this.IsAway() {
+      return;
+    };
+    if !this.m_antennaArrived && distance <= ApisK0Antenna.ArriveDistance() {
+      this.m_antennaArrived = true;
+      this.Chat().PushEvent("antenna_arrive");
+      return;
+    };
+    if this.m_antennaMemories < ApisK0Antenna.MemoryCount() && now - this.m_antennaMemoryAt >= ApisK0Antenna.MemoryCooldown()
+      && ApisK0Antenna.LooksAt(game, player, ApisK0Antenna.ServerPosition()) {
+      this.m_antennaMemories += 1;
+      this.m_antennaMemoryAt = now;
+      this.Chat().PushEvent("antenna_memory_" + IntToString(this.m_antennaMemories));
+    };
+  }
+
+  // V took the antenna: Apiko mounts it there and then (glitches over V's view, notices, its line).
+  private func StartMount(now: Float) -> Void {
+    this.Debug("antenna taken: mounting" + (this.m_bridgeOnline ? "" : ", bridge offline"));
+    this.m_mounting = true;
+    this.m_mountStart = now;
+    this.m_mountStep = 0;
+    this.m_mountDone = false;
+    this.m_mountFinishAt = -1.0;
+    this.m_mountVoiced = this.m_bridgeOnline;
+    if this.m_mountVoiced {
+      this.Chat().PushEvent("antenna_mounted");
+    };
+  }
+
+  // The mounting, as the chip's upload: glitches growing, then a heavy one when Apiko's line is over (the bridge's
+  // "antenna_done" cue, or a timeout; a fixed time without the bridge); then the quest is done, the crate inspected.
+  private func UpdateMount(now: Float, player: ref<PlayerPuppet>) -> Void {
+    let game: GameInstance = this.GetGameInstance();
+    let elapsed: Float = now - this.m_mountStart;
+    let finishing: Bool;
+    let crate: ref<GameObject>;
+    if !this.m_mounting {
+      return;
+    };
+    if this.m_mountStep < 1 && elapsed >= ApisK0Antenna.MountStep1() {
+      this.m_mountStep = 1;
+      GameObjectEffectHelper.StartEffectEvent(player, ApisK0Find.GlitchLow());
+      this.ShowNotice(ApisK0Find.Text(n"apisk0-mount-1"), 2.0);
+    };
+    // Only the weakest glitch, for the whole mounting (the user's call, 2026-11-10: the upload's stronger ones were too
+    // much here).
+    if this.m_mountStep < 2 && elapsed >= ApisK0Antenna.MountStep2() {
+      this.m_mountStep = 2;
+      this.ShowNotice(ApisK0Find.Text(n"apisk0-mount-2"), 2.0);
+    };
+    finishing = this.m_mountVoiced ? (this.m_mountDone || elapsed >= ApisK0Antenna.MountTimeout())
+      : elapsed >= ApisK0Antenna.MountFixed();
+    if this.m_mountStep == 2 && finishing {
+      this.m_mountStep = 3;
+      this.m_mountFinishAt = now + ApisK0Antenna.MountFinish();
+      this.ShowNotice(ApisK0Find.Text(n"apisk0-mount-3"), 1.5);
+    };
+    if this.m_mountStep >= 3 && now >= this.m_mountFinishAt {
+      GameObjectEffectHelper.BreakEffectLoopEvent(player, ApisK0Find.GlitchLow());
+      this.m_mounting = false;
+      this.m_antennaMounted = true;
+      // Mounted on the drone: no longer in V's inventory.
+      ApisK0Find.RemoveAll(game, player, ApisK0Antenna.Antenna());
+      ApisK0Antenna.Complete(game);
+      crate = ApisK0Find.FindByRef(game, ApisK0Antenna.EvidenceRef());
+      if IsDefined(crate) {
+        ApisK0Find.InspectClue(crate);
+      };
+      this.Debug("antenna mounted: Echo done");
+    };
+  }
+
+  public func IsAntennaMounted() -> Bool {
+    return this.m_antennaMounted;
+  }
+
+  // Apiko's ping, with its antenna back (DISENO.md, "Ping"): the vanilla Ping quickhack's status effect on the nearest
+  // enemy around V (seen or not), which marks its squad and pulses its network as V's own ping does; the enemy scan
+  // then knows them (ApisK0Enemies: pinged squads). When V asks (the model's "ping", the bridge's "ping" cue) or
+  // when Apiko needs it (entering a restricted or hostile area with no enemy known, UpdateAutoPing); at most one per
+  // PingCooldown. A written line says how it went ("ping_done", "ping_empty", "ping_wait" when V asked too soon).
+  public static func PingCooldown() -> Float { return 60.0; }
+  public static func PingRange() -> Float { return 50.0; }
+
+  public func ApikoPing(asked: Bool) -> Void {
+    let player: ref<PlayerPuppet> = GetPlayer(this.GetGameInstance());
+    let now: Float = this.Now();
+    let target: ref<NPCPuppet>;
+    if !this.m_antennaMounted || !this.m_unlocked || this.IsAway() || !IsDefined(player)
+      || IsDefined(GetMountedVehicle(player)) {
+      return;
+    };
+    if this.m_pingUsed && now - this.m_lastPingAt < ApisK0System.PingCooldown() {
+      if asked {
+        this.Chat().PushEvent("ping_wait");
+      };
+      return;
+    };
+    this.m_pingUsed = true;
+    this.m_lastPingAt = now;
+    target = this.Enemies().PingTarget(player, ApisK0System.PingRange());
+    if !IsDefined(target) {
+      this.Debug("ping: no enemy around");
+      this.Chat().PushEvent("ping_empty");
+      return;
+    };
+    StatusEffectHelper.ApplyStatusEffect(target, t"BaseStatusEffect.Ping", player.GetEntityID());
+    this.Debug("ping: " + (asked ? "asked" : "on its own"));
+    this.Chat().PushEvent("ping_done");
+  }
+
+  // Entering a restricted or hostile area with no enemy known: Apiko pings on its own.
+  private func UpdateAutoPing() -> Void {
+    let player: ref<PlayerPuppet> = GetPlayer(this.GetGameInstance());
+    let zone: Int32;
+    if !this.m_antennaMounted || !IsDefined(player) {
+      return;
+    };
+    zone = this.Enemies().ZoneLevel(player);
+    if this.m_pingZoneRead && zone >= 2 && this.m_pingZone < 2 && this.Enemies().LiveCount() == 0 {
+      this.ApikoPing(false);
+    };
+    this.m_pingZone = zone;
+    this.m_pingZoneRead = true;
+  }
+
+  // Development (dev.lua): the antenna mission starts now, or goes back to not started (and Apiko to never having
+  // been in the Badlands) when it already had.
+  public func DevToggleAntenna() -> Void {
+    let game: GameInstance = this.GetGameInstance();
+    if ApisK0Antenna.Started(game) {
+      ApisK0Antenna.Reset(game);
+      ApisK0Find.RemoveAll(game, GetPlayer(game), ApisK0Antenna.Antenna());
+      ApisK0Find.RemoveAll(game, GetPlayer(game), ApisK0Antenna.TechLog());
+      this.m_antennaArmed = false;
+      this.m_antennaOutside = false;
+      this.m_antennaArrived = false;
+      this.m_antennaMemories = 0;
+      this.m_techLogTaken = false;
+      this.m_antennaMounted = false;
+      this.m_mounting = false;
+      this.ShowMessage("APIS-K0: antenna mission reset");
+      return;
+    };
+    if !this.m_unlocked {
+      this.ShowMessage("APIS-K0: wake Apiko first");
+      return;
+    };
+    this.StartAntenna();
+  }
+
   // From the CET side, every couple of seconds: whether the bridge is running (the upload waits for its voice).
   public func SetBridgeOnline(online: Bool) -> Void {
     this.m_bridgeOnline = online;
@@ -926,6 +1387,8 @@ public class ApisK0System extends ScriptableSystem {
     this.UpdateFind(this.Now());
     this.UpdateUpload(this.Now());
     this.UpdateApikoCall(this.Now());
+    this.UpdateAntenna(this.Now());
+    this.UpdateGhost();
     // The upload woke Apiko: RestartLoop already scheduled the new loop.
     if generation != this.m_generation {
       return;
@@ -934,12 +1397,14 @@ public class ApisK0System extends ScriptableSystem {
       // Saves from before m_everWoken existed: Apiko is awake there, so it has been woken.
       this.m_everWoken = true;
       this.Update(this.Now());
+      this.Face().Update(this.Now(), this.Drone(), this.m_glassRepaired);
     };
     // Out of reach: no perception and no events until V calls it back or comes home (Update keeps the drone gone).
     if this.m_unlocked && !this.IsAway() {
       this.Chat().Update(this.Now(), GetPlayer(this.GetGameInstance()));
       this.Devices().Update(this.Now(), GetPlayer(this.GetGameInstance()), this.Drone(), this.Chat());
       this.Enemies().Update(this.Now(), GetPlayer(this.GetGameInstance()), this.Drone(), this.Devices());
+      this.UpdateAutoPing();
       this.Story().Update(this.Now(), GetPlayer(this.GetGameInstance()));
       this.People().Update(this.Now(), GetPlayer(this.GetGameInstance()), this.Enemies().GetFound(), this.Enemies().ScannedThisTick(),
         this.Enemies().PoliceSummary());
@@ -1395,6 +1860,28 @@ public class ApisK0System extends ScriptableSystem {
   // Called by the CET side with a reply from the bridge.
   public func Say(text: String, duration: Float) -> Void {
     this.Chat().Say(text, duration, this.Speaker());
+  }
+
+  // Called by the CET side with the bridge's "face" reply: the reply's mood, shown with its subtitle (ApisK0Face.reds).
+  public func ShowFace(mood: String, duration: Float) -> Void {
+    this.Face().Show(mood, duration, this.Now());
+    this.Face().Update(this.Now(), this.Drone(), this.m_glassRepaired);
+  }
+
+  // Called by the CET side with the bridge's "react" reply: the face at V's words before the reply (ApisK0Face.reds).
+  public func ShowReaction(mood: String, duration: Float) -> Void {
+    this.Face().React(mood, duration, this.Now());
+    this.Face().Update(this.Now(), this.Drone(), this.m_glassRepaired);
+  }
+
+  // The repair mission's end (to come, DISENO.md): the glass over the screen, no longer cracked. Also dev.lua.
+  public func SetGlassRepaired(repaired: Bool) -> Void {
+    this.m_glassRepaired = repaired;
+    this.Face().Update(this.Now(), this.Drone(), this.m_glassRepaired);
+  }
+
+  public func IsGlassRepaired() -> Bool {
+    return this.m_glassRepaired;
   }
 
   // NetWatch's recording on the beacon's call: subtitled by NETWATCH.

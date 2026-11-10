@@ -1,9 +1,9 @@
 // APIS-K0 - phase 4, piece 4: narrative perception (DISENO.md, "Pieza 4").
 // - Tracked quest: name and current objective as sensors; a new objective, and quests started, completed or failed
 //   go to Apiko's diary.
-// - Hearing: the subtitles of the conversations and calls V takes part in (speaker + text) and the news V hears on
-//   TVs and radios. Ambient chatter (lines over NPCs' heads) is left out, and so is everything while V drives
-//   (Apiko is not around then).
+// - Hearing: the subtitles of the conversations and calls V takes part in (speaker + text), the news V hears on
+//   TVs and radios and, since 2026-11-10, ambient chatter (lines over NPCs' heads, "chatter": only for when V asks
+//   about it). Nothing while V drives (Apiko is not around then).
 // - Conversation state: V is in a conversation while in a locked scene, on a call, or while lines keep coming. The
 //   bridge keeps Apiko quiet meanwhile and may let it remark on the conversation when it ends.
 // - Text messages V receives: sender and text to the diary.
@@ -403,7 +403,8 @@ public class ApisK0Story extends IScriptable {
     return false;
   }
 
-  // "conv" (a conversation or call V is in), "news" (TV and radio) or "" (ambient chatter, invisible lines).
+  // "conv" (a conversation or call V is in), "news" (TV and radio), "chatter" (people talking near V, the lines over
+  // their heads: the bridge keeps them apart and shows them only when V asks what was said) or "" (invisible lines).
   private func LineKind(type: scnDialogLineType) -> String {
     switch type {
       case scnDialogLineType.Regular:
@@ -417,6 +418,9 @@ public class ApisK0Story extends IScriptable {
       case scnDialogLineType.GlobalTV:
       case scnDialogLineType.GlobalTVAlwaysVisible:
         return "news";
+      case scnDialogLineType.OverHead:
+      case scnDialogLineType.OverHeadAlwaysVisible:
+        return "chatter";
     };
     return "";
   }

@@ -2,14 +2,13 @@
 // perceives, warns and judges.
 // - Enemies: NPCs hostile to V now, plus potential ones (armed gang or corp members, aggressive and not civilians,
 //   police or vendors) that would attack V in their territory but have not yet.
-// - Same two levels as devices (ApisK0Devices.reds):
-//   - "here": a clear line from V's eyes (any direction) or from the drone, within SightRange. A new enemy needs
-//     a clear line in two scans in a row (one-scan glimpses through gaps are leaks), and the drone only counts while
-//     it is in V's space itself (a clear line from V's eyes to it).
-//   - known elsewhere, live: tagged by V in focus mode, in a squad V pinged now, or seen by a camera of a breached
-//     network; up to NetworkRange.
-//   - remembered: an enemy Apiko lost sight of keeps the card it had when last seen (position, health, awareness),
-//     never live readings, and is forgotten after MemorySeconds or when V moves away from where it was.
+// - Since 2026-11-10 (the user's call) Apiko knows the enemies the game itself marks, as V sees them on screen:
+//   - known, live: marked by the game (seen by V once: TargetTrackingExtension's "seen by player", the mark that
+//     follows them), tagged by V in focus mode, or in a pinged squad (V's ping or Apiko's own,
+//     ApisK0System.ApikoPing); up to NetworkRange.
+//   - "here": among those, the ones V has in view right now (the targeting system's visibility), within SightRange.
+//   - remembered: an enemy no longer live (a ping wore off, never seen) keeps its last card for MemorySeconds.
+//   No raycasts, no drone sight, no breached cameras (Apiko's own sight before: it talked of enemies V never saw).
 // - Each known enemy gets a detailed card (faction, role, rarity, difficulty for V, awareness of V, health, weapon,
 //   visible cyberware, own name) sent to the bridge as one "enemies=" state line.
 // - World events for the diary: V killed or knocked out an enemy (and how), a boss fell, an enemy detected V.
@@ -73,12 +72,14 @@ public class ApisK0KnownEnemy extends IScriptable {
   public let hostile: Bool;
   public let targetingV: Bool;
   public let hackingV: Bool;
-  // In the same space as V right now (clear line from V's eyes or from the drone).
+  // In V's view right now.
   public let here: Bool;
   public let pinged: Bool;
   public let tagged: Bool;
+  // Marked by the game: V has seen it (the mark follows it).
+  public let marked: Bool;
   public let byCamera: Bool;
-  // How Apiko first learned of it: "V sight", "drone sight", "tagged", "ping" or "camera" (debug window).
+  // How Apiko first learned of it: "V sight", "marked", "tagged" or "ping" (debug window).
   public let source: String;
   public let lastScan: Int32;
   // Last time and place Apiko perceived it live (seen, tagged, pinged or on a camera).
@@ -174,6 +175,7 @@ public class ApisK0Enemies extends IScriptable {
     let how: String;
     let pinged: Bool;
     let tagged: Bool;
+    let marked: Bool;
     let network: ref<NetworkSystem>;
     let i: Int32;
     this.m_scanned = false;
@@ -193,11 +195,6 @@ public class ApisK0Enemies extends IScriptable {
     this.m_scan += 1;
     this.m_now = now;
     this.m_eye = this.EyePosition(player);
-    this.m_droneInSpace = false;
-    if IsDefined(drone) {
-      raycasts += 1;
-      this.m_droneInSpace = this.DroneInSpace(drone);
-    };
     this.CheckZone(player);
     // First what happened to the enemies Apiko knew: killed or knocked out since the last scan.
     this.CheckDowned(player);
@@ -220,25 +217,25 @@ public class ApisK0Enemies extends IScriptable {
         this.CheckHacking(npc);
         pinged = IsDefined(network) && network.IsSquadMarkedWithPing(AISquadHelper.GetSquadName(npc));
         tagged = npc.IsTaggedinFocusMode();
-        // "V sight", "drone sight", "" (no clear line) or "?" (not checked: out of range or out of raycasts).
+        marked = ApisK0Enemies.IsMarked(npc);
+        // "V sight" (in V's view now) or "".
         sight = distance <= ApisK0EnemiesConfig.SightRange() ? this.Sight(npc, player, drone, raycasts) : "";
         known = this.FindKnown(npc.GetEntityID());
         if IsDefined(known) {
           known.lastScan = this.m_scan;
-          if NotEquals(sight, "?") {
-            known.here = StrLen(sight) > 0;
-          };
+          known.here = StrLen(sight) > 0;
           // Live sources only while they last (a ping wears off); then the enemy is remembered, not tracked.
           known.pinged = pinged;
           known.tagged = tagged;
-          known.byCamera = !known.here && this.SeenByCamera(npc, cameras, raycasts);
+          known.marked = marked;
+          known.byCamera = false;
           if this.Live(known) {
             known.lastSeen = now;
             known.lastPosition = npc.GetWorldPosition();
             this.Refresh(known, now, player, distance);
           };
         } else {
-          how = this.FirstSource(npc, sight, tagged, pinged, cameras, raycasts);
+          how = this.FirstSource(sight, marked, tagged, pinged);
           if StrLen(how) > 0 {
             this.AddKnown(npc, now, player, distance, how);
           };
@@ -353,9 +350,53 @@ public class ApisK0Enemies extends IScriptable {
     return this.m_scanned;
   }
 
-  // Perceived live right now: seen, tagged, in a pinged squad or on a breached camera.
+  // Perceived live right now: in V's view, marked by the game, tagged or in a pinged squad.
   private func Live(known: ref<ApisK0KnownEnemy>) -> Bool {
-    return known.here || known.pinged || known.tagged || known.byCamera;
+    return known.here || known.marked || known.pinged || known.tagged;
+  }
+
+  // Apiko's ping (ApisK0System.ApikoPing): V's security area (as Zone), how many enemies Apiko knows live, and the
+  // enemy to ping: the nearest one around V within `range`, seen by V or not (the ping reveals its squad), alive.
+  public func ZoneLevel(player: ref<PlayerPuppet>) -> Int32 {
+    return this.Zone(player);
+  }
+
+  public func LiveCount() -> Int32 {
+    let count: Int32 = 0;
+    let i: Int32 = 0;
+    while i < ArraySize(this.m_known) {
+      if this.Live(this.m_known[i]) {
+        count += 1;
+      };
+      i += 1;
+    };
+    return count;
+  }
+
+  public func PingTarget(player: ref<PlayerPuppet>, range: Float) -> ref<NPCPuppet> {
+    let best: ref<NPCPuppet>;
+    let bestDistance: Float = range;
+    let distance: Float;
+    let npc: ref<NPCPuppet>;
+    let i: Int32 = 0;
+    while i < ArraySize(this.m_found) {
+      npc = this.m_found[i];
+      if IsDefined(npc) && !npc.IsDead() && !ScriptedPuppet.IsUnconscious(npc) && this.IsEnemy(npc, player) {
+        distance = Vector4.Distance(npc.GetWorldPosition(), player.GetWorldPosition());
+        if distance <= bestDistance {
+          best = npc;
+          bestDistance = distance;
+        };
+      };
+      i += 1;
+    };
+    return best;
+  }
+
+  // The game's own mark: V has seen this NPC (it then follows it on the HUD).
+  public static func IsMarked(npc: ref<NPCPuppet>) -> Bool {
+    let tracker: ref<TargetTrackingExtension> = npc.GetTargetTrackerComponent() as TargetTrackingExtension;
+    return IsDefined(tracker) && tracker.ApisK0SeenByPlayer();
   }
 
   // A new enemy with a clear line ("?" = not checked this scan). True on the second scan in a row with one; a
@@ -375,21 +416,17 @@ public class ApisK0Enemies extends IScriptable {
     return false;
   }
 
-  // How Apiko first learns of an NPC this scan: a clear line in two scans in a row ("V sight" / "drone sight"),
-  // "tagged", "ping", "camera", or "" (not perceived).
-  private func FirstSource(npc: ref<NPCPuppet>, sight: String, tagged: Bool, pinged: Bool, cameras: array<wref<Device>>,
-    out raycasts: Int32) -> String {
-    if StrLen(sight) > 0 && this.Glimpse(npc.GetEntityID(), sight) {
-      return sight;
+  // How Apiko first learns of an NPC this scan: "V sight" (in view and marked: the game marks what V sees), "marked",
+  // "tagged", "ping", or "" (not perceived). In view but not marked yet: not yet (the mark comes as V notices it).
+  private func FirstSource(sight: String, marked: Bool, tagged: Bool, pinged: Bool) -> String {
+    if marked {
+      return StrLen(sight) > 0 ? sight : "marked";
     };
     if tagged {
       return "tagged";
     };
     if pinged {
       return "ping";
-    };
-    if this.SeenByCamera(npc, cameras, raycasts) {
-      return "camera";
     };
     return "";
   }
@@ -407,16 +444,16 @@ public class ApisK0Enemies extends IScriptable {
     let pinged: Bool = IsDefined(network) && network.IsSquadMarkedWithPing(AISquadHelper.GetSquadName(npc));
     let tagged: Bool = npc.IsTaggedinFocusMode();
     let sight: String = distance <= ApisK0EnemiesConfig.SightRange() ? this.Sight(npc, player, drone, raycasts) : "";
+    let marked: Bool = ApisK0Enemies.IsMarked(npc);
     let cop: ref<ApisK0KnownEnemy> = this.FindPolice(npc.GetEntityID());
     let how: String;
     if IsDefined(cop) {
       cop.lastScan = this.m_scan;
-      if NotEquals(sight, "?") {
-        cop.here = StrLen(sight) > 0;
-      };
+      cop.here = StrLen(sight) > 0;
       cop.pinged = pinged;
       cop.tagged = tagged;
-      cop.byCamera = !cop.here && this.SeenByCamera(npc, cameras, raycasts);
+      cop.marked = marked;
+      cop.byCamera = false;
       if this.Live(cop) {
         cop.lastSeen = now;
         cop.lastPosition = npc.GetWorldPosition();
@@ -424,7 +461,7 @@ public class ApisK0Enemies extends IScriptable {
       };
       return;
     };
-    how = this.FirstSource(npc, sight, tagged, pinged, cameras, raycasts);
+    how = this.FirstSource(sight, marked, tagged, pinged);
     if StrLen(how) == 0 {
       return;
     };
@@ -436,10 +473,10 @@ public class ApisK0Enemies extends IScriptable {
     cop.lastSeen = now;
     cop.lastPosition = npc.GetWorldPosition();
     cop.distance = distance;
-    cop.here = Equals(how, "V sight") || Equals(how, "drone sight");
-    cop.pinged = Equals(how, "ping");
-    cop.tagged = Equals(how, "tagged");
-    cop.byCamera = Equals(how, "camera");
+    cop.here = Equals(how, "V sight");
+    cop.marked = marked;
+    cop.pinged = pinged;
+    cop.tagged = tagged;
     cop.threat = this.Threat(npc);
     ArrayPush(this.m_police, cop);
   }
@@ -550,6 +587,7 @@ public class ApisK0Enemies extends IScriptable {
         known.here = false;
         known.pinged = false;
         known.tagged = false;
+        known.marked = false;
         known.byCamera = false;
       };
       if !this.Live(known) {
@@ -640,28 +678,10 @@ public class ApisK0Enemies extends IScriptable {
     return npc.GetWorldPosition() + new Vector4(0.0, 0.0, ApisK0EnemiesConfig.AimHeight(), 0.0);
   }
 
-  // "V sight" (on screen and visible, or a clear line from V's eyes in any direction), "drone sight", "" or "?".
+  // "V sight" (in V's view now: on screen and visible) or "". No raycasts since 2026-11-10 (the game's marks).
   private func Sight(npc: ref<NPCPuppet>, player: ref<PlayerPuppet>, drone: ref<GameObject>, out raycasts: Int32) -> String {
-    let target: Vector4 = this.Chest(npc);
     if GameInstance.GetTargetingSystem(GetGameInstance()).IsVisibleTarget(player, npc) {
       return "V sight";
-    };
-    if raycasts >= ApisK0EnemiesConfig.MaxRaycastsPerScan() {
-      return "?";
-    };
-    raycasts += 1;
-    if this.ClearLine(this.m_eye, target) {
-      return "V sight";
-    };
-    if !IsDefined(drone) || !this.m_droneInSpace {
-      return "";
-    };
-    if raycasts >= ApisK0EnemiesConfig.MaxRaycastsPerScan() {
-      return "?";
-    };
-    raycasts += 1;
-    if this.ClearLine(drone.GetWorldPosition(), target) {
-      return "drone sight";
     };
     return "";
   }
@@ -717,10 +737,11 @@ public class ApisK0Enemies extends IScriptable {
     known.lastScan = this.m_scan;
     known.lastSeen = now;
     known.lastPosition = npc.GetWorldPosition();
-    known.here = Equals(source, "V sight") || Equals(source, "drone sight");
+    // The other live sources are read on the next scan.
+    known.here = Equals(source, "V sight");
+    known.marked = Equals(source, "V sight") || Equals(source, "marked");
     known.pinged = Equals(source, "ping");
     known.tagged = Equals(source, "tagged");
-    known.byCamera = Equals(source, "camera");
     known.faction = this.Faction(npc);
     known.role = this.Role(npc);
     known.threat = this.Threat(npc);
@@ -1158,4 +1179,11 @@ public func ApisK0LastHitMethod() -> String {
       return "thrown";
   };
   return "";
+}
+
+// The game's own mark on an enemy: V has properly seen it (gameProperlySeenByPlayerEvent); the HUD follows it from then
+// on. Private in vanilla.
+@addMethod(TargetTrackingExtension)
+public func ApisK0SeenByPlayer() -> Bool {
+  return this.m_hasBeenSeenByPlayer;
 }

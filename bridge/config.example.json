@@ -11,6 +11,7 @@
   "warning_chance": 0.9,
   "warning_cooldown_seconds": 8,
   "base_instability": 0.2,
+  "reaction_faces": 1,
   "history_messages": 24,
   "request_timeout_seconds": 30,
   "voice_enabled": true,
