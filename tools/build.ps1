@@ -6,7 +6,7 @@
 # (a development install); -Install -Release installs exactly what the zip has and removes it from the game.
 # -Game: the Cyberpunk 2077 folder (for -Install). -WolvenKit: WolvenKit.CLI.exe (default: the workspace's copy in
 # ..\_shared, else WolvenKit.CLI on the PATH).
-param([switch]$Install, [switch]$Release, [string]$Version = '0.3.0',
+param([switch]$Install, [switch]$Release, [string]$Version = '0.3.1',
       [string]$Game = 'C:\Steam\steamapps\common\Cyberpunk 2077', [string]$WolvenKit = '')
 $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
@@ -77,7 +77,10 @@ public static class ApisK0FaceMask
     }
 }
 '@
-Get-ChildItem (Join-Path $root 'caras') -Filter *.png | ForEach-Object {
+# The drawings: caras\ (the repo layout) or art\caras\ (the local working copy).
+$facesSrc = Join-Path $root 'caras'
+if (-not (Test-Path $facesSrc)) { $facesSrc = Join-Path $root 'art\caras' }
+Get-ChildItem $facesSrc -Filter *.png | ForEach-Object {
     Copy-Item $_.FullName (Join-Path $facesStage "apisk0_face_$($_.Name)")
     [ApisK0FaceMask]::Write($_.FullName, (Join-Path $facesStage "apisk0_face_$($_.BaseName)_e.png"), 2, 0.3)
 }

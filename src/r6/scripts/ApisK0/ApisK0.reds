@@ -1609,6 +1609,7 @@ public class ApisK0System extends ScriptableSystem {
     if !StatusEffectSystem.ObjectHasStatusEffect(drone, t"ApisK0.Marker") {
       StatusEffectHelper.ApplyStatusEffect(drone, t"ApisK0.Marker", drone.GetEntityID());
     };
+    this.EnsureFriendly(drone, player);
     if !IsDefined(ai) {
       this.SetState("no AI component");
       return;
@@ -1623,6 +1624,25 @@ public class ApisK0System extends ScriptableSystem {
     role.ApisK0SetFollowerRef(CreateEntityReference("#player", noNames));
     role.SetFollowTarget(player);
     AIHumanComponent.SetCurrentRole(drone, role);
+  }
+
+  // The drone is friendly through its attitude group ("friendly", from the base record) only. Quests can change
+  // group attitudes or V's own group (a player report: hostile during a modded Lucy romance quest), so the drone
+  // and V are pinned friendly to each other per agent, which wins over group attitudes.
+  private func EnsureFriendly(drone: ref<NPCPuppet>, player: ref<PlayerPuppet>) -> Void {
+    let droneAgent: ref<AttitudeAgent> = drone.GetAttitudeAgent();
+    let playerAgent: ref<AttitudeAgent> = player.GetAttitudeAgent();
+    if !IsDefined(droneAgent) || !IsDefined(playerAgent) {
+      return;
+    };
+    if NotEquals(droneAgent.GetAttitudeTowards(playerAgent), EAIAttitude.AIA_Friendly) {
+      droneAgent.SetAttitudeTowards(playerAgent, EAIAttitude.AIA_Friendly);
+      this.Debug("attitude: drone pinned friendly to V");
+    };
+    if NotEquals(playerAgent.GetAttitudeTowards(droneAgent), EAIAttitude.AIA_Friendly) {
+      playerAgent.SetAttitudeTowards(droneAgent, EAIAttitude.AIA_Friendly);
+      this.Debug("attitude: V pinned friendly to the drone");
+    };
   }
 
   // A navmesh point behind V. The drone's root must be on the navmesh (its flying height comes from the
