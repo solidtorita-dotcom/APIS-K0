@@ -3,7 +3,7 @@
 A Cyberpunk 2077 mod: a rogue AI fragment in a small Zetatech Bombus drone that follows V, perceives the game world,
 remembers what you live together and talks back with its own voice, powered by the AI providers the player chooses.
 
-Nexus Mods page: https://www.nexusmods.com/cyberpunk2077/mods/ (link pending)
+Nexus Mods page: https://www.nexusmods.com/cyberpunk2077/mods/37881
 
 ## How it works
 
@@ -21,52 +21,6 @@ Nexus Mods page: https://www.nexusmods.com/cyberpunk2077/mods/ (link pending)
 The game and the bridge talk through files in the CET mod folder (`to_bridge.jsonl`, `from_bridge.txt`).
 Player data (settings with API keys, memory) lives in the player's game folder and `%LOCALAPPDATA%\Apiko`, never in
 this repository.
-
-## Building
-
-Requirements (Windows):
-- Visual Studio 2022 (or later) Build Tools with the C++ workload and its CMake and Ninja (for the plugin)
-- Git and curl
-- Python 3.14 (only for `tools/make_world.py`, which writes the archive's JSON; `tools\build.ps1` also uses
-  .NET's System.Drawing for the faces' glow masks)
-- [WolvenKit](https://github.com/WolvenKit/WolvenKit) CLI 8.x (for the archive)
-- PowerShell 5.1 or later
-
-Steps, from the repository root:
-
-```bat
-:: 1. Third-party sources into launcher\deps (not in this repository)
-git clone --depth 1 https://github.com/WopsS/RED4ext.SDK.git launcher\deps\RED4ext.SDK
-mkdir launcher\deps\nlohmann launcher\deps\miniaudio
-curl -L -o launcher\deps\nlohmann\json.hpp https://github.com/nlohmann/json/releases/download/v3.11.3/json.hpp
-curl -L -o launcher\deps\miniaudio\miniaudio.h https://raw.githubusercontent.com/mackron/miniaudio/0.11.21/miniaudio.h
-git clone https://github.com/espeak-ng/espeak-ng.git launcher\deps\espeak-ng
-git -C launcher\deps\espeak-ng checkout 6b96deb
-git clone --depth 1 --branch v1.9.5 https://github.com/ggml-org/whisper.cpp.git launcher\deps\whisper.cpp
-:: onnxruntime: extract https://github.com/microsoft/onnxruntime/releases/download/v1.20.1/onnxruntime-win-x64-1.20.1.zip
-:: and rename its folder to launcher\deps\onnxruntime
-
-:: 2. espeak-ng (with its data) and whisper.cpp as static libraries, then the plugin
-launcher\build_deps.bat
-launcher\build.bat
-
-:: 3. Python environment for make_world.py
-python -m venv bridge\.venv
-bridge\.venv\Scripts\python.exe -m pip install -r bridge\requirements.txt
-
-:: 4. Archive (WolvenKit) and the release zip in dist\
-powershell -ExecutionPolicy Bypass -File tools\build.ps1 -WolvenKit "C:\path\to\WolvenKit.CLI.exe"
-```
-
-Test programs (the bridge outside the game, the voice effects, speech recognition, Piper): `launcher\tests\`,
-built with `launcher\tests\build_harness.bat`.
-
-`tools\build.ps1 -Install -Release -Game "C:\path\to\Cyberpunk 2077"` also installs the release into the game.
-Without `-Release`, the development tools (`dev.lua`: debug hotkeys, debug log) are installed too; they are never in
-the zip.
-
-`tools/vanilla/*.json` are vanilla game resources serialized with WolvenKit, used as the base for the mod's own
-copies (van, bodies, case, the drone's entity, appearance and meshes, the Echo site's crate and server).
 
 ## License
 
